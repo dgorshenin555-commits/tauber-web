@@ -1,0 +1,21 @@
+---
+import { kategorii } from '../lib/content.js';
+import KartochkaKategorii from './KartochkaKategorii.astro';
+---
+
+<section class="setka">
+  <div class="setka__shapka">
+    <h2 class="setka__zagolovok">Основные категории</h2>
+  </div>
+
+  <div class="setka__kartochki">
+    {kategorii.map((k) => <KartochkaKategorii kategoriya={k} />)}
+  </div>
+</section>
+
+<style>
+  .setka { background: var(--fon); padding: 34px var(--pole-bok) 30px; }
+  .setka__shapka { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 22px; }
+  .setka__zagolovok { margin: 0; font-size: 33px; font-weight: 700; letter-spacing: -.02em; }
+  .setka__kartochki { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; }
+</style>

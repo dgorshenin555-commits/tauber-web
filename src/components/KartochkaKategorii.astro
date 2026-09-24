@@ -1,0 +1,64 @@
+---
+interface Props {
+  kategoriya: {
+    klyuch: string;
+    nazvanie: string;
+    kolichestvo: string;
+    kartinka: string;
+    svoye: boolean;
+  };
+}
+
+const { kategoriya } = Astro.props;
+---
+
+<article class="kartochka" data-kartochka data-svoye={String(kategoriya.svoye)}>
+  <a class="kartochka__ssylka" href={`/catalog/${kategoriya.klyuch}/`}>
+    <div class="kartochka__kartinka">
+      <img src={kategoriya.kartinka} alt={kategoriya.nazvanie} loading="lazy" />
+      {kategoriya.svoye && (
+        <span class="kartochka__plashka">
+          <span class="kartochka__tochka"></span>Собственное производство
+        </span>
+      )}
+    </div>
+    <h3 class="kartochka__nazvanie">{kategoriya.nazvanie}</h3>
+    <div class="kartochka__kolichestvo">{kategoriya.kolichestvo}</div>
+  </a>
+</article>
+
+<style>
+  .kartochka__ssylka { display: flex; flex-direction: column; gap: 10px; }
+
+  .kartochka__kartinka {
+    position: relative;
+    border-radius: var(--radius-karta);
+    overflow: hidden;
+    background: #DCE3DF;
+    aspect-ratio: 4 / 3;
+  }
+
+  .kartochka__kartinka img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .kartochka__plashka {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, .88);
+    backdrop-filter: blur(6px);
+    border-radius: var(--radius-pilyulya);
+    padding: 4px 10px 4px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--tekst-vtoroy);
+    white-space: nowrap;
+  }
+
+  .kartochka__tochka { width: 6px; height: 6px; border-radius: 50%; background: var(--akcent); }
+
+  .kartochka__nazvanie { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.25; }
+  .kartochka__kolichestvo { font-size: 13px; color: var(--tekst-tihiy); }
+</style>
