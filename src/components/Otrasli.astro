@@ -1,0 +1,81 @@
+---
+import { otrasli, kategorii } from '../lib/content.js';
+
+const korotkie = new Map(kategorii.map((k) => [k.klyuch, k.korotko]));
+---
+
+<section class="otrasli">
+  <div class="otrasli__shapka">
+    <h2 class="otrasli__zagolovok">Отрасли</h2>
+  </div>
+
+  <div class="otrasli__spisok">
+    {otrasli.map((o, i) => (
+      <article class="otrasl" data-otrasl>
+        <div class="otrasl__verh">
+          <span class="otrasl__nomer" data-nomer>{String(i + 1).padStart(2, '0')}</span>
+          <span class="ms otrasl__znachok">{o.znachok}</span>
+        </div>
+
+        <h3 class="otrasl__nazvanie" data-nazvanie>{o.nazvanie}</h3>
+        <p class="otrasl__opisanie">{o.opisanie}</p>
+
+        <div class="otrasl__napravleniya">
+          {o.kategorii.map((k) => (
+            <a class="otrasl__napravlenie" href={`/catalog/${k}/`}>
+              {korotkie.get(k)} <span class="ms">arrow_outward</span>
+            </a>
+          ))}
+        </div>
+
+        <div class="otrasl__itog">{o.kategorii.length} направления каталога</div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .otrasli { background: var(--fon); padding: 0 var(--pole-bok) 34px; }
+  .otrasli__shapka { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 22px; }
+  .otrasli__zagolovok { margin: 0; font-size: 33px; font-weight: 700; letter-spacing: -.02em; }
+
+  .otrasli__spisok { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+
+  .otrasl {
+    background: #F6F8F7;
+    border-radius: var(--radius-karta);
+    padding: 26px 28px 22px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .otrasl__verh { display: flex; align-items: center; justify-content: space-between; }
+  .otrasl__nomer { font-size: 13px; color: var(--akcent); font-weight: 600; letter-spacing: .08em; }
+  .otrasl__znachok { font-size: 30px; color: var(--tekst-tihiy); }
+
+  .otrasl__nazvanie {
+    margin: 14px 0 0;
+    font-size: 36px;
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -.02em;
+  }
+
+  .otrasl__opisanie { margin: 10px 0 0; font-size: 14px; line-height: 1.5; color: var(--tekst-vtoroy); }
+
+  .otrasl__napravleniya { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .otrasl__napravlenie {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    border-radius: var(--radius-pilyulya);
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  .otrasl__napravlenie .ms { font-size: 16px; color: var(--tekst-tihiy); }
+
+  .otrasl__itog { margin-top: auto; padding-top: 16px; font-size: 13px; color: var(--tekst-tihiy); }
+</style>
