@@ -1,0 +1,110 @@
+{
+  "zagolovok": "Фильтры-водоотделители топливные ФТВ",
+  "vvodnyy_tekst": "Эффективная очистка топлива от механических примесей и отделение воды. Применяются в авиационном топливе, на топливных базах, складах ГСМ, в системах хранения, перекачки и заправки топлива. Широкая линейка исполнений для любых условий эксплуатации.",
+  "fakty": [
+    {
+      "znachok": "thermostat",
+      "podpis": "Рабочая температура"
+    },
+    {
+      "znachok": "filter_alt",
+      "podpis": "Рекомендуемая предварительная очистка"
+    },
+    {
+      "znachok": "speed",
+      "podpis": "Рабочее давление"
+    },
+    {
+      "znachok": "verified_user",
+      "podpis": "Срок службы"
+    }
+  ],
+  "sekcii": [
+    {
+      "zagolovok": "",
+      "tip": "tablica",
+      "elementy": [
+        {
+          "nazvanie": "ФТВг-1-4,5/250/25-25",
+          "harakteristika": "4,5 м³/ч   DN 25",
+          "metka1": "Горизонтальный",
+          "metka2": "Дизель",
+          "kartinka": "/images/ftv-p1.webp"
+        },
+        {
+          "nazvanie": "ФТВв-1-10/250/40-40",
+          "harakteristika": "10 м³/ч   DN 40",
+          "metka1": "Вертикальный",
+          "metka2": "Авиа",
+          "kartinka": "/images/ftv-p2.webp"
+        },
+        {
+          "nazvanie": "ФТВг-1-21/250/50-50",
+          "harakteristika": "21 м³/ч   DN 50",
+          "metka1": "Горизонтальный",
+          "metka2": "Керосин",
+          "kartinka": "/images/ftv-p3.webp"
+        },
+        {
+          "nazvanie": "ФТВв-1-30/400/65-65",
+          "harakteristika": "30 м³/ч   DN 65",
+          "metka1": "Вертикальный",
+          "metka2": "Дизель",
+          "kartinka": "/images/ftv-p4.webp"
+        },
+        {
+          "nazvanie": "ФТВг-1-21/250/50-60",
+          "harakteristika": "30 м³/ч   DN 65",
+          "metka1": "Горизонтальный",
+          "metka2": "Дизель",
+          "kartinka": "/images/ftv-p5.webp"
+        },
+        {
+          "nazvanie": "ФТВг-1-40/400/65-65",
+          "harakteristika": "40 м³/ч   DN 65",
+          "metka1": "Горизонтальный",
+          "metka2": "СУГ",
+          "kartinka": "/images/ftv-p6.webp"
+        },
+        {
+          "nazvanie": "ФТВ-100",
+          "harakteristika": "до 100 м³/ч   DN 100",
+          "metka1": "Вертикальный",
+          "metka2": "Дизель",
+          "kartinka": "/images/ftv-p7.webp"
+        },
+        {
+          "nazvanie": "ФТВ-200",
+          "harakteristika": "до 200 м³/ч   DN 200",
+          "metka1": "Вертикальный",
+          "metka2": "Керосин",
+          "kartinka": "/images/ftv-p8.webp"
+        },
+        {
+          "nazvanie": "ФТВ-300",
+          "harakteristika": "до 300 м³/ч   DN 300",
+          "metka1": "Вертикальный",
+          "metka2": "СУГ",
+          "kartinka": "/images/ftv-p9.webp"
+        },
+        {
+          "nazvanie": "ФТВ-500",
+          "harakteristika": "до 500 м³/ч   DN 500",
+          "metka1": "Горизонтальный",
+          "metka2": "Дизель",
+          "kartinka": "/images/ftv-p10.webp"
+        },
+        {
+          "nazvanie": "ФТВ-1000",
+          "harakteristika": "до 1000 м³/ч   DN 600",
+          "metka1": "Блочное исп.",
+          "metka2": "Керосин",
+          "kartinka": "/images/ftv-p1.webp"
+        }
+      ]
+    }
+  ],
+  "podbor": null,
+  "kartinka": "/images/ftv-hero.webp",
+  "galereya": []
+}

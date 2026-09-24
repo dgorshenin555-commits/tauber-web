@@ -1,0 +1,113 @@
+{
+  "zagolovok": "АНК В-НМ-1/2",
+  "vvodnyy_tekst": "Двухпостовой комплекс верхнего налива нефтепродуктов для автоцистерн с измерительными модулями, насосными модулями и системой управления.",
+  "fakty": [
+    {
+      "znachok": "local_shipping",
+      "nazvanie": "2",
+      "znachenie": "поста налива"
+    },
+    {
+      "znachok": "plumbing",
+      "nazvanie": "DN80 / DN100",
+      "znachenie": "Условный диаметр налива"
+    },
+    {
+      "znachok": "speed",
+      "nazvanie": "до 50 / 100 м³/ч",
+      "znachenie": "Производительность на пост"
+    },
+    {
+      "znachok": "my_location",
+      "nazvanie": "точность ±0,15%",
+      "znachenie": "Коммерческий учёт"
+    }
+  ],
+  "sekcii": [
+    {
+      "zagolovok": "Состав комплекса",
+      "tip": "prostoy",
+      "elementy": [
+        "{'n': '1', 'img': 'assets/ank-p1.png', 'title': 'Эстакада', 'sub': 'Металлоконструкция, площадки обслуживания, лестницы, ограждения'}",
+        "{'n': '2', 'img': 'assets/ank-c2.png', 'title': 'Устройства верхнего налива', 'sub': 'Телескопические терминалы с системами безопасности'}",
+        "{'n': '3', 'img': 'assets/ank-p3.png', 'title': 'Измерительный модуль', 'sub': 'Коммерческий учёт, измерительные линии, запорная арматура'}",
+        "{'n': '4', 'img': 'assets/ank-p4.png', 'title': 'Насосный модуль', 'sub': 'Насосы, фильтры, трубопроводы, арматура, КИП'}"
+      ]
+    },
+    {
+      "zagolovok": "Как работает комплекс",
+      "tip": "bloki",
+      "elementy": [
+        {
+          "znachok": "propane_tank",
+          "zagolovok": "Резервуар",
+          "podpis": "нефтепродукта"
+        },
+        {
+          "znachok": "plumbing",
+          "zagolovok": "Насосный модуль",
+          "podpis": "перекачка"
+        },
+        {
+          "znachok": "filter_alt",
+          "zagolovok": "Фильтрация",
+          "podpis": "100 мкм"
+        },
+        {
+          "znachok": "speed",
+          "zagolovok": "Измерительный модуль",
+          "podpis": "коммерческий учёт"
+        },
+        {
+          "znachok": "precision_manufacturing",
+          "zagolovok": "Верхний налив",
+          "podpis": "DN80 / DN100"
+        },
+        {
+          "znachok": "local_shipping",
+          "zagolovok": "Автоцистерна",
+          "podpis": "налив"
+        }
+      ]
+    },
+    {
+      "zagolovok": "Ключевые параметры",
+      "tip": "bloki",
+      "elementy": [
+        {
+          "znachok": "schedule",
+          "zagolovok": "Режим работы",
+          "podpis": ""
+        },
+        {
+          "znachok": "wb_sunny",
+          "zagolovok": "Размещение",
+          "podpis": ""
+        },
+        {
+          "znachok": "speed",
+          "zagolovok": "Рабочее давление",
+          "podpis": ""
+        },
+        {
+          "znachok": "ac_unit",
+          "zagolovok": "Климатическое исполнение",
+          "podpis": ""
+        },
+        {
+          "znachok": "local_shipping",
+          "zagolovok": "Высота автоцистерн",
+          "podpis": ""
+        },
+        {
+          "znachok": "account_tree",
+          "zagolovok": "Интерфейс",
+          "podpis": ""
+        }
+      ]
+    }
+  ],
+  "podbor": null,
+  "kartinka": "/images/ank-hero.webp",
+  "galereya": []
+}

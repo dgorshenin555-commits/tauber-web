@@ -1,0 +1,127 @@
+{
+  "zagolovok": "Серия 1803",
+  "vvodnyy_tekst": "Надёжное решение для нижнего закрытого налива и слива СУГ, пропан-бутан, ДМЭ, аммиака, метанола, спиртов и других химических и индустриальных жидкостей из железнодорожных цистерн, автоцистерн и танк-контейнеров под давлением.",
+  "fakty": [
+    {
+      "znachok": "sync_alt",
+      "zagolovok": "Рабочая зона 4–6 м",
+      "podpis": ""
+    },
+    {
+      "znachok": "luggage",
+      "zagolovok": "Нижний закрытый слив / налив под давлением",
+      "podpis": ""
+    },
+    {
+      "znachok": "share",
+      "zagolovok": "Жидкая и газовая фазы (две линии)",
+      "podpis": ""
+    },
+    {
+      "znachok": "science",
+      "zagolovok": "Для СУГ и агрессивных сред",
+      "podpis": ""
+    }
+  ],
+  "sekcii": [
+    {
+      "zagolovok": "Варианты эксплуатации",
+      "tip": "prostoy",
+      "elementy": [
+        "{'img': 'assets/s1803-v1.png', 'title': 'Автоцистерны', 'sub': 'Нижний налив / слив СУГ, аммиака, химии'}",
+        "{'img': 'assets/s1803-v2.png', 'title': 'Железнодорожные цистерны', 'sub': 'Нижний налив / слив под давлением'}",
+        "{'img': 'assets/s1803-v3.png', 'title': 'Танк-контейнеры', 'sub': 'Нижний налив / слив СУГ, химических продуктов'}",
+        "{'img': 'assets/s1803-v4.png', 'title': 'Закрытый слив / налив', 'sub': 'С минимальными выбросами, для опасных сред'}"
+      ]
+    },
+    {
+      "zagolovok": "Применимые среды",
+      "tip": "bloki",
+      "elementy": [
+        {
+          "znachok": "local_fire_department",
+          "zagolovok": "СУГ",
+          "podpis": "пропан-бутан"
+        },
+        {
+          "znachok": "hub",
+          "zagolovok": "ДМЭ",
+          "podpis": ""
+        },
+        {
+          "znachok": "opacity",
+          "zagolovok": "Аммиак",
+          "podpis": ""
+        },
+        {
+          "znachok": "water_drop",
+          "zagolovok": "Метанол",
+          "podpis": "спирты"
+        },
+        {
+          "znachok": "science",
+          "zagolovok": "Химические",
+          "podpis": "жидкости"
+        },
+        {
+          "znachok": "settings",
+          "zagolovok": "Индустриальные",
+          "podpis": "жидкости"
+        }
+      ]
+    },
+    {
+      "zagolovok": "Автоматизация и опции",
+      "tip": "prostoy",
+      "elementy": [
+        "{'img': 'assets/s1803-o1.png', 'title': 'Датчик предельного уровня', 'sub': 'Защита от переполнения'}",
+        "{'img': 'assets/s1803-o2.png', 'title': 'Клапан-отсекатель', 'sub': 'Ручной или автоматический'}",
+        "{'img': 'assets/s1803-o3.png', 'title': 'Обогрев и изоляция', 'sub': 'Для низких температур и вязких сред'}",
+        "{'img': 'assets/s1803-o4.png', 'title': 'Быстросъёмные соединения (БРС)', 'sub': ''}",
+        "{'img': 'assets/s1803-o5.png', 'title': 'Специальные материалы и уплотнения', 'sub': 'Для агрессивных сред'}"
+      ]
+    },
+    {
+      "zagolovok": "Ключевые характеристики",
+      "tip": "bloki",
+      "elementy": [
+        {
+          "znachok": "radio_button_unchecked",
+          "zagolovok": "Диаметры устройства",
+          "podpis": ""
+        },
+        {
+          "znachok": "speed",
+          "zagolovok": "Рабочее давление",
+          "podpis": ""
+        },
+        {
+          "znachok": "layers",
+          "zagolovok": "Материалы корпуса",
+          "podpis": ""
+        },
+        {
+          "znachok": "tonality",
+          "zagolovok": "Материалы уплотнений",
+          "podpis": ""
+        },
+        {
+          "znachok": "device_thermostat",
+          "zagolovok": "Климатическое исполнение",
+          "podpis": ""
+        },
+        {
+          "znachok": "settings_input_component",
+          "zagolovok": "Присоединение к горловине",
+          "podpis": ""
+        }
+      ]
+    }
+  ],
+  "podbor": null,
+  "kartinka": "/images/s1803-hero.webp",
+  "galereya": [
+    "/images/s1803-scheme.webp",
+    "/images/s1803-band.webp"
+  ]
+}

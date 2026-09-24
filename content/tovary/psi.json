@@ -1,0 +1,170 @@
+{
+  "zagolovok": "Опорно-направляющие кольца PSI",
+  "vvodnyy_tekst": "Опорно-направляющие кольца PSI центрируют рабочий трубопровод внутри футляра, предотвращают контакт с его стенками, защищают изоляционное покрытие, снижают трение и обеспечивают надёжный и безопасный монтаж трубопровода.",
+  "fakty": [
+    {
+      "znachok": "database",
+      "zagolovok": "6 типов решений",
+      "podpis": "для различных условий эксплуатации"
+    },
+    {
+      "znachok": "my_location",
+      "zagolovok": "Центровка трубопровода",
+      "podpis": "внутри футляра"
+    },
+    {
+      "znachok": "shield",
+      "zagolovok": "Защита внутреннего покрытия",
+      "podpis": "от повреждений"
+    },
+    {
+      "znachok": "settings",
+      "zagolovok": "Монтаж в футляре",
+      "podpis": "просто и надёжно"
+    }
+  ],
+  "sekcii": [
+    {
+      "zagolovok": "Основные типы колец PSI",
+      "tip": "kartochki",
+      "elementy": [
+        {
+          "nazvanie": "PA / PE",
+          "opisanie": "Стандартные опорно-направляющие кольца из полиамида / полиэтилена для типовых условий.",
+          "kartinka": "/images/psi-1.webp",
+          "vedyot_na": "pape"
+        },
+        {
+          "nazvanie": "AZ / AC",
+          "opisanie": "Усиленные кольца с металлическими элементами для повышенных нагрузок.",
+          "kartinka": "/images/psi-2.webp"
+        },
+        {
+          "nazvanie": "GKO-mk",
+          "opisanie": "Модульные кольца с увеличенной опорной поверхностью для сложных условий.",
+          "kartinka": "/images/psi-3.webp"
+        },
+        {
+          "nazvanie": "GKO-gl / GKO-gs",
+          "opisanie": "Кольца с низким коэффициентом трения для максимальной защиты покрытия.",
+          "kartinka": "/images/psi-4.webp"
+        },
+        {
+          "nazvanie": "MA",
+          "opisanie": "Монолитные кольца для надёжной центровки в стандартных и сложных условиях.",
+          "kartinka": "/images/psi-5.webp"
+        },
+        {
+          "nazvanie": "RGV",
+          "opisanie": "Роликовые кольца для минимального трения при протяжке и эксплуатации.",
+          "kartinka": "/images/psi-6.webp"
+        }
+      ]
+    },
+    {
+      "zagolovok": "Как работают кольца",
+      "tip": "bloki",
+      "elementy": [
+        {
+          "znachok": "filter_center_focus",
+          "zagolovok": "Центровка",
+          "podpis": "удерживают трубу по оси футляра"
+        },
+        {
+          "znachok": "shield",
+          "zagolovok": "Защита покрытия",
+          "podpis": "исключают контакт со стенками футляра"
+        },
+        {
+          "znachok": "monitoring",
+          "zagolovok": "Снижение трения",
+          "podpis": "обеспечивают свободное перемещение"
+        },
+        {
+          "znachok": "fit_screen",
+          "zagolovok": "Компенсация допусков",
+          "podpis": "адаптируются к отклонениям и неровностям"
+        }
+      ]
+    },
+    {
+      "zagolovok": "Где применяются",
+      "tip": "bloki",
+      "elementy": [
+        {
+          "znachok": "add_road",
+          "zagolovok": "Переходы под дорогами",
+          "podpis": "Автомобильные и железные дороги"
+        },
+        {
+          "znachok": "plumbing",
+          "zagolovok": "Подземные трубопроводы",
+          "podpis": "Инженерные сети и магистральные трубопроводы"
+        },
+        {
+          "znachok": "propane_tank",
+          "zagolovok": "Нефтебазы",
+          "podpis": "Объекты хранения и транспортировки нефти"
+        },
+        {
+          "znachok": "flight",
+          "zagolovok": "Аэропортовая инфраструктура",
+          "podpis": "Взлётно-посадочные полосы и технические зоны"
+        }
+      ]
+    },
+    {
+      "zagolovok": "Преимущества опорно-направляющих колец PSI",
+      "tip": "bloki",
+      "elementy": [
+        {
+          "znachok": "shield",
+          "zagolovok": "Надёжная фиксация",
+          "podpis": "Устойчивое положение трубы в течение всего срока службы"
+        },
+        {
+          "znachok": "layers",
+          "zagolovok": "Защита изоляции",
+          "podpis": "Сохранение целостности защитного покрытия трубопровода"
+        },
+        {
+          "znachok": "schedule",
+          "zagolovok": "Быстрый монтаж",
+          "podpis": "Простая и проверенная конструкция"
+        },
+        {
+          "znachok": "all_inclusive",
+          "zagolovok": "Долговечная эксплуатация",
+          "podpis": "Стойкие материалы в сложных условиях"
+        }
+      ]
+    }
+  ],
+  "podbor": {
+    "zagolovok": "Подобрать кольцо",
+    "tip": "parametry",
+    "parametry": [
+      {
+        "znachok": "block",
+        "podpis": "Наружный диаметр рабочей трубы, мм"
+      },
+      {
+        "znachok": "radio_button_unchecked",
+        "podpis": "Внутренний диаметр футляра, мм"
+      },
+      {
+        "znachok": "height",
+        "podpis": "Высота опоры (ширина кольца), мм"
+      },
+      {
+        "znachok": "layers",
+        "podpis": "Материал"
+      }
+    ]
+  },
+  "kartinka": "/images/psi-hero.webp",
+  "galereya": [
+    "/images/psi-scheme.webp",
+    "/images/psi-seal.webp"
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "zagolovok": "Серия 1201",
+  "vvodnyy_tekst": "Надёжные решения для безопасного и эффективного слива и налива жидкостей в железнодорожные цистерны, автоцистерны и танк-контейнеры. Подходит для нефтепродуктов, растворителей, ароматических углеводородов, кислот, вязких и других агрессивных сред.",
+  "fakty": [
+    {
+      "znachok": "sync_alt",
+      "zagolovok": "Рабочая зона 4–6 м",
+      "podpis": ""
+    },
+    {
+      "znachok": "luggage",
+      "zagolovok": "Верхний открытый / закрытый налив",
+      "podpis": ""
+    },
+    {
+      "znachok": "settings",
+      "zagolovok": "Автоматизация 1–3 плоскости",
+      "podpis": ""
+    },
+    {
+      "znachok": "science",
+      "zagolovok": "Для агрессивных сред",
+      "podpis": ""
+    }
+  ],
+  "sekcii": [
+    {
+      "zagolovok": "Варианты эксплуатации",
+      "tip": "prostoy",
+      "elementy": [
+        "{'img': 'assets/s1201-v1.png', 'title': 'Автоцистерны'}",
+        "{'img': 'assets/s1201-v2.png', 'title': 'Железнодорожные цистерны'}",
+        "{'img': 'assets/s1201-v3.png', 'title': 'Танк-контейнеры'}"
+      ]
+    },
+    {
+      "zagolovok": "Конфигурация под среду",
+      "tip": "bloki",
+      "elementy": [
+        {
+          "znachok": "water_drop",
+          "zagolovok": "Нефтепродукты",
+          "podpis": "бензин, дизель, керосин"
+        },
+        {
+          "znachok": "hub",
+          "zagolovok": "Растворители",
+          "podpis": "и ароматические углеводороды"
+        },
+        {
+          "znachok": "science",
+          "zagolovok": "Кислоты",
+          "podpis": "и щёлочи"
+        },
+        {
+          "znachok": "waves",
+          "zagolovok": "Вязкие продукты",
+          "podpis": "масла, битумы и др."
+        }
+      ]
+    },
+    {
+      "zagolovok": "Автоматизация и опции",
+      "tip": "prostoy",
+      "elementy": [
+        "{'img': 'assets/s1201-o1.png', 'title': 'Пневмоприводы', 'sub': 'для перемещения в 1–3 плоскостях'}",
+        "{'img': 'assets/s1201-o2.png', 'title': 'Пульт управления', 'sub': 'Автоматизация процесса'}",
+        "{'img': 'assets/s1201-o3.png', 'title': 'Датчик предельного уровня', 'sub': 'Защита от перелива'}",
+        "{'img': 'assets/s1201-o4.png', 'title': 'Клапан-отсекатель', 'sub': 'Автоматическое перекрытие'}",
+        "{'img': 'assets/s1201-o5.png', 'title': 'Обогрев и изоляция', 'sub': 'Для низких температур и вязких сред'}"
+      ]
+    },
+    {
+      "zagolovok": "Ключевые характеристики",
+      "tip": "bloki",
+      "elementy": [
+        {
+          "znachok": "radio_button_unchecked",
+          "zagolovok": "ДУ",
+          "podpis": ""
+        },
+        {
+          "znachok": "speed",
+          "zagolovok": "Рабочее давление",
+          "podpis": ""
+        },
+        {
+          "znachok": "layers",
+          "zagolovok": "Материалы корпуса",
+          "podpis": ""
+        },
+        {
+          "znachok": "device_thermostat",
+          "zagolovok": "Климатическое исполнение",
+          "podpis": ""
+        },
+        {
+          "znachok": "local_shipping",
+          "zagolovok": "Высота обслуживаемых цистерн",
+          "podpis": ""
+        },
+        {
+          "znachok": "weight",
+          "zagolovok": "Масса и исполнение",
+          "podpis": ""
+        }
+      ]
+    }
+  ],
+  "podbor": null,
+  "kartinka": "/images/s1201-hero.webp",
+  "galereya": [
+    "/images/s1201-scheme.webp",
+    "/images/s1201-big.webp",
+    "/images/s1201-band.webp"
+  ]
+}
