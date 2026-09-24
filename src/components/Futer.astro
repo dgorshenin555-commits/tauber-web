@@ -1,0 +1,93 @@
+---
+import { sayt, kategorii } from '../lib/content.js';
+
+const kategoriiFutera = kategorii.slice(0, 6);
+const telefonSsylka = `tel:${sayt.telefon.replace(/[^\d+]/g, '')}`;
+const god = new Date().getFullYear();
+
+const razdelyKompanii = ['О компании', 'Проекты', 'Пресс-центр', 'Контакты'];
+---
+
+<footer class="futer">
+  <div class="futer__kolonki">
+    <div class="futer__kolonka">
+      <div class="futer__zagolovok">Продукция</div>
+      {kategoriiFutera.map((k) => (
+        <a class="futer__ssylka" href={`/catalog/${k.klyuch}/`}>{k.korotko}</a>
+      ))}
+    </div>
+
+    <div class="futer__kolonka">
+      <div class="futer__zagolovok">Компания</div>
+      {razdelyKompanii.map((r) => (
+        <span class="futer__ssylka futer__ssylka--net">{r}</span>
+      ))}
+    </div>
+
+    <div class="futer__kolonka">
+      <div class="futer__zagolovok">Контакты</div>
+      <a class="futer__ssylka futer__kontakt" href={telefonSsylka}>{sayt.telefon}</a>
+      <a class="futer__ssylka" href={`mailto:${sayt.pochta}`}>{sayt.pochta}</a>
+      <a class="futer__zayavka" href={`mailto:${sayt.pochta}?subject=${encodeURIComponent('Заявка с сайта')}`}>
+        Подать заявку <span class="ms">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="futer__niz">
+    <span>© {god} {sayt.nazvanie}. Все права защищены.</span>
+    <span class="futer__politika">Политика обработки персональных данных</span>
+  </div>
+</footer>
+
+<style>
+  .futer {
+    background: var(--futer);
+    color: var(--futer-tekst);
+    padding: 40px var(--pole-bok) 26px;
+  }
+
+  .futer__kolonki { display: flex; gap: 64px; flex-wrap: wrap; }
+  .futer__kolonka { display: flex; flex-direction: column; gap: 10px; min-width: 200px; }
+
+  .futer__zagolovok {
+    font-size: 12.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #7E8783;
+    margin-bottom: 6px;
+  }
+
+  .futer__ssylka { color: var(--futer-tekst); font-size: 15px; }
+  .futer__ssylka:hover { color: #fff; }
+  .futer__ssylka--net { color: #7E8783; cursor: default; }
+  .futer__kontakt { font-size: 19px; font-weight: 600; color: #fff; }
+
+  .futer__zayavka {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 13px 22px;
+    background: var(--akcent);
+    color: #fff;
+    border-radius: var(--radius-pilyulya);
+    font-size: 15px;
+    align-self: flex-start;
+  }
+
+  .futer__zayavka:hover { color: #fff; opacity: .9; }
+  .futer__zayavka .ms { font-size: 18px; }
+
+  .futer__niz {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    font-size: 13px;
+    color: #7E8783;
+  }
+</style>

@@ -3,6 +3,7 @@ import '../styles/tokens.css';
 import '../styles/fonts.css';
 import '../styles/base.css';
 import Shapka from '../components/Shapka.astro';
+import Futer from '../components/Futer.astro';
 
 interface Props {
   title: string;
@@ -23,5 +24,6 @@ const { title, description } = Astro.props;
   <body>
     <Shapka />
     <slot />
+    <Futer />
   </body>
 </html>
