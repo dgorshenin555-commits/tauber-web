@@ -1,0 +1,67 @@
+{
+  "hlebnaya_kroshka": "Обслуживание самолёта на стоянке",
+  "zagolovok": "Обслуживание самолёта на стоянке",
+  "vvodnyy_tekst": [
+    "Комплексные решения для более быстрого, безопасного и эффективного наземного обслуживания воздушных судов."
+  ],
+  "knopka": "Получить консультацию",
+  "kartinka": "/images/ground-hero.webp",
+  "plashka": "Надёжные решения для авиации",
+  "chislo": "",
+  "chislo_podpis": "Наземное обслуживание",
+  "perechislenie": "Электропитание 400 Гц • PCA / кондиционирование • вода • сервисные подключения",
+  "tyomnaya_panel": false,
+  "razdel": {
+    "zagolovok": "Основные решения",
+    "podzagolovok": "Оборудование и системы для полного цикла обслуживания на стоянке.",
+    "ssylka": "Смотреть весь каталог"
+  },
+  "kartochki": [
+    {
+      "zagolovok": "Кабельные накопители",
+      "opisanie": "",
+      "kartinka": "/images/ground-1.webp",
+      "vedyot_na": "cable"
+    },
+    {
+      "zagolovok": "Металлические штекеры 400 Гц",
+      "opisanie": "",
+      "kartinka": "/images/ground-2.webp",
+      "vedyot_na": "plug"
+    },
+    {
+      "zagolovok": "Наземное электропитание 400 Гц",
+      "opisanie": "",
+      "kartinka": "/images/ground-3.webp",
+      "vedyot_na": "power"
+    },
+    {
+      "zagolovok": "PCA / кондиционирование воздуха",
+      "opisanie": "",
+      "kartinka": "/images/ground-4.webp",
+      "vedyot_na": "pca"
+    }
+  ],
+  "preimushchestva": [
+    {
+      "znachok": "bolt",
+      "zagolovok": "Быстрее обслуживание воздушных судов",
+      "opisanie": ""
+    },
+    {
+      "znachok": "shield",
+      "zagolovok": "Повышение безопасности",
+      "opisanie": ""
+    },
+    {
+      "znachok": "eco",
+      "zagolovok": "Снижение нагрузки на ВСУ",
+      "opisanie": ""
+    },
+    {
+      "znachok": "settings",
+      "zagolovok": "Комплексная техническая поддержка",
+      "opisanie": ""
+    }
+  ]
+}

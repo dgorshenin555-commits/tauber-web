@@ -1,0 +1,79 @@
+{
+  "hlebnaya_kroshka": "Автоматизированные наливные комплексы",
+  "zagolovok": "Автоматизированные наливные комплексы",
+  "vvodnyy_tekst": [
+    "Всепогодные автоматизированные системы налива нефтепродуктов светлых и тёмных, для авто- и ж/д эстакад. Коммерческий учёт, автоматизация, дистанционное управление, мониторинг параметров процесса, ручной режим, противоаварийная защита и пожарная безопасность."
+  ],
+  "knopka": "Получить консультацию",
+  "kartinka": "/images/auto-hero.webp",
+  "plashka": "Надёжные решения для ваших проектов",
+  "chislo": "10",
+  "chislo_podpis": "решений",
+  "perechislenie": "Налив нефтепродуктов • СУГ • Керосин • Авто- и ж/д эстакады • Учёт • Автоматизация",
+  "tyomnaya_panel": false,
+  "razdel": {
+    "zagolovok": "Основные решения",
+    "podzagolovok": "",
+    "ssylka": "Смотреть весь каталог"
+  },
+  "kartochki": [
+    {
+      "zagolovok": "Комплекс верхнего налива",
+      "opisanie": "Автоцистерны • Автоматизация",
+      "kartinka": "/images/auto-1.webp",
+      "vedyot_na": "ank"
+    },
+    {
+      "zagolovok": "Комплекс нижнего налива",
+      "opisanie": "Автоцистерны • Герметичные соединения",
+      "kartinka": "/images/auto-2.webp"
+    },
+    {
+      "zagolovok": "Налив для ж/д цистерн",
+      "opisanie": "Ж/д эстакады • Автоматизация",
+      "kartinka": "/images/auto-3.webp"
+    },
+    {
+      "zagolovok": "Узел коммерческого учёта",
+      "opisanie": "Расходомеры • Измерительные линии",
+      "kartinka": "/images/auto-4.webp"
+    },
+    {
+      "zagolovok": "Шкаф управления и автоматизация",
+      "opisanie": "АСУ ТП • Дистанционный контроль",
+      "kartinka": "/images/auto-5.webp"
+    },
+    {
+      "zagolovok": "Система защиты и блокировок",
+      "opisanie": "Противоаварийные системы • Пожарная безопасность",
+      "kartinka": "/images/auto-6.webp"
+    }
+  ],
+  "preimushchestva": [
+    {
+      "znachok": "cloud",
+      "zagolovok": "Всепогодное исполнение",
+      "opisanie": ""
+    },
+    {
+      "znachok": "speed",
+      "zagolovok": "Коммерческий учёт",
+      "opisanie": ""
+    },
+    {
+      "znachok": "settings",
+      "zagolovok": "Автоматическое управление",
+      "opisanie": ""
+    },
+    {
+      "znachok": "shield",
+      "zagolovok": "Противоаварийная защита",
+      "opisanie": ""
+    },
+    {
+      "znachok": "headset_mic",
+      "zagolovok": "Техническая поддержка",
+      "opisanie": ""
+    }
+  ]
+}

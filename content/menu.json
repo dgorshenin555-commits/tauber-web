@@ -1,37 +1,99 @@
 [
   {
     "podpis": "Продукция",
-    "adres": "/catalog/",
+    "adres": "/",
     "kolonki": [
       {
         "zagolovok": "Топливо и фильтрация",
         "punkty": [
-          { "podpis": "Фильтры",               "poyasnenie": "Топливные и жидкостные", "znachok": "filter_alt",    "adres": "/catalog/filters/" },
-          { "podpis": "Фильтрационные модули", "poyasnenie": "Модульная очистка сред", "znachok": "deployed_code", "adres": "/catalog/fmod/" },
-          { "podpis": "Пробоотборники",        "poyasnenie": "Закрытый отбор проб",    "znachok": "science",       "adres": "/catalog/probe/" }
+          {
+            "podpis": "Фильтры",
+            "poyasnenie": "Топливные и жидкостные",
+            "znachok": "filter_alt",
+            "adres": "/catalog/filters/"
+          },
+          {
+            "podpis": "Фильтрационные модули",
+            "poyasnenie": "Модульная очистка сред",
+            "znachok": "deployed_code",
+            "adres": "/catalog/fmod/"
+          },
+          {
+            "podpis": "Пробоотборники",
+            "poyasnenie": "Закрытый отбор проб",
+            "znachok": "science",
+            "adres": "/catalog/probe/"
+          }
         ]
       },
       {
         "zagolovok": "Авиация",
         "punkty": [
-          { "podpis": "Обслуживание на стоянке", "poyasnenie": "Питание 400 Гц, PCA, кабели",  "znachok": "flight",            "adres": "/catalog/ground/" },
-          { "podpis": "Гидрантная система",      "poyasnenie": "Пантографы, колодцы, клапаны", "znachok": "local_gas_station", "adres": "/catalog/hydrant/" },
-          { "podpis": "ПИТ-системы",             "poyasnenie": "Подземные точки подключения",  "znachok": "input",             "adres": "/catalog/pit/" },
-          { "podpis": "Кэдди",                   "poyasnenie": "Мобильные кабельные тележки",  "znachok": "trolley",           "adres": "/catalog/caddy/" }
+          {
+            "podpis": "Обслуживание на стоянке",
+            "poyasnenie": "Питание 400 Гц, PCA, кабели",
+            "znachok": "flight",
+            "adres": "/catalog/ground/"
+          },
+          {
+            "podpis": "Гидрантная система",
+            "poyasnenie": "Пантографы, колодцы, клапаны",
+            "znachok": "local_gas_station",
+            "adres": "/catalog/hydrant/"
+          },
+          {
+            "podpis": "ПИТ-системы",
+            "poyasnenie": "Подземные точки подключения",
+            "znachok": "input",
+            "adres": "/catalog/pit/"
+          },
+          {
+            "podpis": "Кэдди",
+            "poyasnenie": "Мобильные кабельные тележки",
+            "znachok": "trolley",
+            "adres": "/catalog/caddy/"
+          }
         ]
       },
       {
         "zagolovok": "Нефтебазы и трубопроводы",
         "punkty": [
-          { "podpis": "Трубопроводы",       "poyasnenie": "С внутренним покрытием",               "znachok": "plumbing",                "adres": "/catalog/pipelines/" },
-          { "podpis": "Слив/налив",         "poyasnenie": "Устройства верхнего и нижнего налива", "znachok": "oil_barrel",              "adres": "/catalog/load/" },
-          { "podpis": "Наливные комплексы", "poyasnenie": "Автоматизированные АНК",               "znachok": "precision_manufacturing", "adres": "/catalog/auto/" }
+          {
+            "podpis": "Трубопроводы",
+            "poyasnenie": "С внутренним покрытием",
+            "znachok": "plumbing",
+            "adres": "/catalog/pipelines/"
+          },
+          {
+            "podpis": "Слив/налив",
+            "poyasnenie": "Устройства верхнего и нижнего налива",
+            "znachok": "oil_barrel",
+            "adres": "/catalog/load/"
+          },
+          {
+            "podpis": "Наливные комплексы",
+            "poyasnenie": "Автоматизированные АНК",
+            "znachok": "precision_manufacturing",
+            "adres": "/catalog/auto/"
+          }
         ]
       }
     ]
   },
-  { "podpis": "Проекты",     "adres": null },
-  { "podpis": "Компания",    "adres": null },
-  { "podpis": "Пресс-центр", "adres": null },
-  { "podpis": "Контакты",    "adres": null }
+  {
+    "podpis": "Проекты",
+    "adres": null
+  },
+  {
+    "podpis": "Компания",
+    "adres": null
+  },
+  {
+    "podpis": "Пресс-центр",
+    "adres": null
+  },
+  {
+    "podpis": "Контакты",
+    "adres": null
+  }
 ]
