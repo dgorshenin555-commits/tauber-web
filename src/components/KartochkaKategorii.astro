@@ -1,0 +1,112 @@
+---
+interface Props {
+  kategoriya: {
+    klyuch: string;
+    nazvanie: string;
+    kolichestvo: string;
+    kartinka: string;
+    svoye: boolean;
+  };
+}
+
+const { kategoriya } = Astro.props;
+---
+
+<article class="kartochka" data-kartochka data-svoye={String(kategoriya.svoye)}>
+  <a class="kartochka__ssylka" href={`/catalog/${kategoriya.klyuch}/`}>
+    <div class="kartochka__kartinka">
+      <img src={kategoriya.kartinka} alt={kategoriya.nazvanie} loading="lazy" />
+      {kategoriya.svoye && (
+        <span class="kartochka__plashka">
+          <span class="kartochka__tochka"></span>Собственное производство
+        </span>
+      )}
+    </div>
+    <div class="kartochka__niz">
+      <div>
+        <h3 class="kartochka__nazvanie">{kategoriya.nazvanie}</h3>
+        <span class="kartochka__kolichestvo" data-kolichestvo>{kategoriya.kolichestvo}</span>
+      </div>
+      <span class="kartochka__strelka" data-strelka aria-hidden="true"><span class="ms">arrow_outward</span></span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .kartochka__ssylka {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fff;
+    border-radius: 24px;
+    padding: 10px;
+    box-shadow: 0 6px 22px rgba(16, 18, 20, .06);
+    height: 100%;
+    transition: transform .25s, box-shadow .25s;
+  }
+
+  .kartochka__ssylka:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(16, 18, 20, .12); }
+
+  .kartochka__kartinka {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #DCE3DF;
+    height: 150px;
+  }
+
+  .kartochka__kartinka img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .kartochka__plashka {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, .88);
+    backdrop-filter: blur(6px);
+    border-radius: var(--radius-pilyulya);
+    padding: 4px 10px 4px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--tekst-vtoroy);
+    white-space: nowrap;
+  }
+
+  .kartochka__tochka { width: 6px; height: 6px; border-radius: 50%; background: var(--akcent); }
+
+  .kartochka__niz {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 2px 6px 8px;
+  }
+
+  .kartochka__nazvanie { margin: 0 0 8px; font-size: 16px; font-weight: 600; line-height: 1.25; }
+
+  .kartochka__kolichestvo {
+    display: inline-block;
+    background: #EFF3F0;
+    border-radius: var(--radius-pilyulya);
+    padding: 5px 12px;
+    font-size: 13px;
+    color: var(--tekst-vtoroy);
+  }
+
+  .kartochka__strelka {
+    flex: 0 0 auto;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #F2F5F3;
+    color: var(--tekst);
+  }
+
+  .kartochka__strelka .ms { font-size: 18px; }
+  .kartochka__ssylka:hover .kartochka__strelka { background: var(--akcent); color: #fff; }
+</style>

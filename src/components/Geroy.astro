@@ -1,0 +1,159 @@
+---
+import { sayt, gero } from '../lib/content.js';
+import GalereyaProizvodstva from './GalereyaProizvodstva.astro';
+
+const pochtaKatalog = `mailto:${sayt.pochta}?subject=${encodeURIComponent('Запрос каталога')}`;
+---
+
+<section class="gero">
+  <div class="gero__tekst">
+    <div class="gero__nadzagolovok">{gero.nadzagolovok}</div>
+    <h1 class="gero__zagolovok">{gero.zagolovok}</h1>
+    <p class="gero__opisanie">{sayt.opisanie}</p>
+    <div class="gero__knopki">
+      <a class="gero__knopka gero__knopka--tyomnaya" data-knopka-gero href="/company/">
+        {gero.knopka_glavnaya} <span class="ms">arrow_forward</span>
+      </a>
+      <a class="gero__knopka gero__knopka--belaya" data-knopka-gero href={pochtaKatalog}>
+        <span class="ms">arrow_downward</span> {gero.knopka_katalog}
+      </a>
+    </div>
+  </div>
+
+  <GalereyaProizvodstva />
+
+  <div class="gero__panel">
+    <div class="gero__panel-podpis">{gero.panel.podpis}</div>
+    <div class="gero__pokazateli">
+      {gero.panel.pokazateli.map((p) => (
+        <div class="gero__pokazatel" data-pokazatel>
+          <div class="gero__chislo">{p.chislo}</div>
+          <div class="gero__pokazatel-podpis">{p.podpis}</div>
+        </div>
+      ))}
+    </div>
+    <a class="gero__panel-knopka" data-knopka-gero href="/company/">{gero.panel.knopka} <span class="ms">arrow_forward</span></a>
+  </div>
+</section>
+
+<style>
+  .gero {
+    display: grid;
+    grid-template-columns: 37.1% 1fr 25%;
+    gap: 16px;
+    background: var(--fon);
+    min-height: 392px;
+    padding: 16px var(--pole-bok) 0;
+  }
+
+  .gero__tekst {
+    padding: 44px 40px 46px 42px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--fon-gero);
+    border-radius: var(--radius-karta);
+  }
+
+  .gero__nadzagolovok {
+    font-size: 12.5px;
+    letter-spacing: .1em;
+    color: var(--tekst-tihiy);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+
+  .gero__zagolovok {
+    margin: 0;
+    /* колонка героя задана процентом, поэтому кегль тянется за шириной:
+       фиксированные 78px вылезали из колонки на ноутбуках 1281-1600px */
+    font-size: clamp(34px, 4.9vw, 78px);
+    line-height: .98;
+    letter-spacing: -.03em;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  .gero__opisanie {
+    margin: 26px 0 0;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--tekst-vtoroy);
+    max-width: 430px;
+  }
+
+  .gero__knopki { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+  .gero__knopka {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: var(--radius-pilyulya);
+    padding: 14px 26px;
+    font-size: 16px;
+  }
+
+  .gero__knopka .ms { font-size: 20px; }
+  .gero__knopka--tyomnaya { background: var(--tekst); color: #fff; }
+  .gero__knopka--belaya { background: #fff; box-shadow: 0 4px 14px rgba(16, 18, 20, .06); }
+
+  .gero__panel {
+    background: var(--akcent);
+    border-radius: var(--radius-karta);
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gero__panel-podpis {
+    font-size: 12px;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: rgba(16, 18, 20, .7);
+  }
+
+  .gero__pokazateli { margin-top: 22px; display: flex; flex-direction: column; gap: 16px; flex: 1 1 auto; }
+  .gero__pokazatel + .gero__pokazatel { border-top: 1px solid rgba(16, 18, 20, .3); padding-top: 16px; }
+  .gero__chislo { font-size: 62px; line-height: .9; font-weight: 700; letter-spacing: -.03em; }
+  .gero__pokazatel-podpis { font-size: 18px; font-weight: 600; margin-top: 4px; }
+
+  .gero__panel-knopka {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, .9);
+    border-radius: var(--radius-pilyulya);
+    font-size: 15px;
+    align-self: flex-start;
+  }
+
+  .gero__panel-knopka .ms { font-size: 18px; }
+  .gero__panel-knopka:hover { color: var(--tekst); opacity: .88; }
+  .gero__knopka--tyomnaya:hover { color: #fff; opacity: .9; }
+
+  @media (max-width: 1280px) {
+    .gero { grid-template-columns: 1fr 1fr; }
+    .gero__panel { grid-column: 1 / -1; }
+    .gero__pokazateli { flex-direction: row; gap: 24px; }
+    .gero__pokazatel + .gero__pokazatel { border-top: 0; border-left: 1px solid rgba(16, 18, 20, .3); padding: 0 0 0 24px; }
+  }
+
+  @media (max-width: 1024px) {
+    .gero { grid-template-columns: 1fr; }
+    .gero__tekst { padding: 34px 28px 36px; }
+  }
+
+  @media (max-width: 768px) {
+    .gero__opisanie { font-size: 16px; }
+    .gero__pokazateli { flex-direction: column; }
+    .gero__pokazatel + .gero__pokazatel { border-left: 0; border-top: 1px solid rgba(16, 18, 20, .3); padding: 16px 0 0; }
+    .gero__chislo { font-size: 48px; }
+  }
+
+  @media (max-width: 480px) {
+    .gero__tekst { padding: 26px 20px 28px; }
+    .gero__knopka { padding: 12px 18px; font-size: 15px; }
+  }
+</style>

@@ -1,0 +1,270 @@
+---
+import { sayt, menyu } from '../lib/content.js';
+import MobilnoeMenyu from './MobilnoeMenyu.astro';
+
+const telefonSsylka = `tel:${sayt.telefon.replace(/[^\d+]/g, '')}`;
+const zayavkaSsylka = `mailto:${sayt.pochta}?subject=${encodeURIComponent('Заявка с сайта')}`;
+---
+
+<header class="shapka">
+  <button
+    type="button"
+    class="shapka__burger"
+    data-burger
+    aria-label="Меню"
+    aria-controls="mobilnoe-menyu"
+    aria-expanded="false"
+  >
+    <span></span><span></span><span></span>
+  </button>
+
+  <a class="shapka__logotip" data-logotip href="/">
+    {sayt.logotip ? <img src={sayt.logotip} alt={sayt.nazvanie} /> : sayt.nazvanie}
+  </a>
+
+  <nav class="shapka__nav" aria-label="Основное меню">
+    {menyu.map((punkt, i) => (
+      <div class="shapka__punkt">
+        {punkt.adres
+          ? <a class="shapka__ssylka" data-punkt href={punkt.adres}>{punkt.podpis}</a>
+          : <span class="shapka__ssylka shapka__ssylka--net" data-punkt>{punkt.podpis}</span>}
+
+        {punkt.kolonki && (
+          <button
+            type="button"
+            class="shapka__strelka"
+            data-podmenyu
+            aria-expanded="false"
+            aria-controls={`podmenyu-${i}`}
+            aria-label={`Раскрыть раздел «${punkt.podpis}»`}
+          >
+            <span class="ms">expand_more</span>
+          </button>
+        )}
+
+        {punkt.kolonki && (
+          <div class="shapka__podmenyu" id={`podmenyu-${i}`}>
+            {punkt.kolonki.map((kol) => (
+              <div class="shapka__kolonka" data-kolonka>
+                <div class="shapka__kolonka-zagolovok">{kol.zagolovok}</div>
+                {kol.punkty.map((p) => (
+                  <a class="shapka__punkt-podmenyu" href={p.adres}>
+                    <span class="ms shapka__znachok">{p.znachok}</span>
+                    <span>
+                      <span class="shapka__podpis">{p.podpis}</span>
+                      <span class="shapka__poyasnenie">{p.poyasnenie}</span>
+                    </span>
+                  </a>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    ))}
+  </nav>
+
+  <div class="shapka__svyaz">
+    <a class="shapka__telefon" href={telefonSsylka}>
+      <span class="ms">call</span>{sayt.telefon}
+    </a>
+    <a class="shapka__zayavka" data-zayavka href={zayavkaSsylka}>
+      Подать заявку <span class="ms">arrow_forward</span>
+    </a>
+  </div>
+
+  <MobilnoeMenyu />
+</header>
+
+<style>
+  .shapka {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+    padding: 14px var(--pole-bok);
+    background: var(--fon-shapka);
+    position: relative;
+  }
+
+  .shapka__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 24px;
+    flex: 0 0 auto;
+    border: 0;
+    background: none;
+    padding: 6px 0;
+    cursor: pointer;
+  }
+
+  .shapka__burger span { display: block; height: 1.5px; background: var(--tekst); }
+
+  .shapka__logotip {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    height: 74px;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: .04em;
+  }
+
+  .shapka__logotip img { height: 74px; width: auto; display: block; }
+
+  .shapka__nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 15px;
+    color: var(--tekst-menyu);
+    flex: 1 1 auto;
+  }
+
+  .shapka__punkt { position: static; display: flex; align-items: center; }
+
+  .shapka__ssylka {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 9px 13px;
+    border-radius: var(--radius-pilyulya);
+    white-space: nowrap;
+    color: var(--tekst-menyu);
+    transition: color .2s;
+  }
+
+  .shapka__ssylka--net { cursor: default; color: var(--tekst-tihiy); }
+
+  .shapka__strelka {
+    display: inline-flex;
+    align-items: center;
+    border: 0;
+    background: none;
+    padding: 9px 4px 9px 0;
+    margin-left: -10px;
+    cursor: pointer;
+    color: var(--tekst-menyu);
+  }
+
+  .shapka__strelka .ms { font-size: 18px; transition: transform .3s; }
+  .shapka__strelka[aria-expanded='true'] .ms { transform: rotate(180deg); }
+
+  .shapka__svyaz { display: flex; align-items: center; gap: 18px; flex: 0 0 auto; }
+
+  .shapka__telefon {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .shapka__telefon .ms { font-size: 19px; color: var(--tekst-tihiy); }
+
+  .shapka__zayavka {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: var(--navedenie);
+    color: #fff;
+    border-radius: var(--radius-pilyulya);
+    padding: 11px 20px;
+    font-size: 15px;
+    white-space: nowrap;
+  }
+
+  .shapka__zayavka:hover { color: #fff; opacity: .9; }
+  .shapka__zayavka .ms { font-size: 18px; }
+
+  .shapka__podmenyu {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 20;
+    display: flex;
+    gap: 48px;
+    padding: 28px var(--pole-bok) 34px;
+    background: #fff;
+    box-shadow: 0 18px 40px rgba(16, 18, 20, .1);
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    /* без visibility закрытая панель остаётся в обходе Tab: десять невидимых остановок */
+    visibility: hidden;
+    transition: opacity .25s, transform .25s, visibility .25s;
+  }
+
+  .shapka__punkt:hover .shapka__podmenyu,
+  .shapka__punkt:focus-within .shapka__podmenyu,
+  .shapka__strelka[aria-expanded='true'] + .shapka__podmenyu {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .shapka__kolonka { display: flex; flex-direction: column; gap: 14px; min-width: 220px; }
+
+  .shapka__kolonka-zagolovok {
+    font-size: 12.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--tekst-tihiy);
+  }
+
+  .shapka__punkt-podmenyu { display: flex; align-items: flex-start; gap: 12px; color: var(--tekst); }
+  .shapka__punkt-podmenyu:hover { color: var(--navedenie); }
+  .shapka__znachok { font-size: 22px; color: var(--akcent); }
+  .shapka__podpis { display: block; font-size: 15px; font-weight: 500; }
+  .shapka__poyasnenie { display: block; font-size: 13px; color: var(--tekst-tihiy); margin-top: 2px; }
+
+  @media (max-width: 1024px) {
+    .shapka__burger { display: flex; }
+    .shapka__nav { display: none; }
+    .shapka__zayavka { display: none; }
+    .shapka__svyaz { margin-left: auto; }
+  }
+
+  @media (max-width: 600px) {
+    .shapka__telefon { font-size: 0; gap: 0; }
+    .shapka__telefon .ms { font-size: 22px; color: var(--tekst); }
+  }
+
+  @media (max-width: 768px) {
+    .shapka { gap: 18px; padding: 10px var(--pole-bok); }
+    .shapka__logotip { height: 54px; font-size: 21px; }
+    .shapka__logotip img { height: 54px; }
+  }
+
+  @media (max-width: 480px) {
+    .shapka__logotip { height: 46px; font-size: 19px; }
+    .shapka__logotip img { height: 46px; }
+  }
+</style>
+
+<script>
+  const knopki = document.querySelectorAll('[data-podmenyu]');
+
+  const zakryt = () => knopki.forEach((k) => k.setAttribute('aria-expanded', 'false'));
+
+  knopki.forEach((knopka) => {
+    knopka.addEventListener('click', (e) => {
+      e.preventDefault();
+      const otkryto = knopka.getAttribute('aria-expanded') === 'true';
+      zakryt();
+      knopka.setAttribute('aria-expanded', String(!otkryto));
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') zakryt();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!(e.target instanceof Element)) return;
+    if (!e.target.closest('.shapka__punkt')) zakryt();
+  });
+</script>

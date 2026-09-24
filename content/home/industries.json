@@ -1,0 +1,30 @@
+[
+  {
+    "znachok": "flight",
+    "nazvanie": "Аэропорты",
+    "opisanie": "Заправка, электропитание и кондиционирование воздушных судов на стоянке",
+    "glavnaya": "ground",
+    "kategorii": ["ground", "hydrant", "pit", "caddy"]
+  },
+  {
+    "znachok": "propane_tank",
+    "nazvanie": "Нефтебазы и терминалы",
+    "opisanie": "Слив и налив, автоматизированные наливные комплексы",
+    "glavnaya": "load",
+    "kategorii": ["load", "auto", "probe"]
+  },
+  {
+    "znachok": "local_gas_station",
+    "nazvanie": "Склады ГСМ",
+    "opisanie": "Фильтрация, учёт и контроль качества топлива",
+    "glavnaya": "fmod",
+    "kategorii": ["fmod", "filters", "probe"]
+  },
+  {
+    "znachok": "factory",
+    "nazvanie": "Промышленные объекты",
+    "opisanie": "Трубопроводы, фильтрация и пробоотбор",
+    "glavnaya": "pipelines",
+    "kategorii": ["pipelines", "filters", "load"]
+  }
+]

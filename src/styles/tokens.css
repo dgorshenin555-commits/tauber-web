@@ -1,0 +1,21 @@
+/* Значения скопированы из эталона design/Tauber.dc.html. Менять только вместе с дизайном. */
+:root {
+  --fon: #E9EFEB;
+  --fon-shapka: #EDF2EE;
+  --fon-gero: #DEE8E1;
+  --akcent: #F5761B;
+  --temnaya: #1C1F21;
+  --futer: #16191C;
+  --futer-tekst: #C9CFCB;
+  --tekst: #101214;
+  --tekst-vtoroy: #3B4247;
+  --tekst-tihiy: #5C6560;
+  --navedenie: #E31E24;
+  --tekst-menyu: #2A2F33;
+
+  --shrift: 'Golos Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+
+  --pole-bok: max(16px, 2.6%);
+  --radius-karta: 28px;
+  --radius-pilyulya: 999px;
+}

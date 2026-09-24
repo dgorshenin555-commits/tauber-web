@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import Geroy from '../components/Geroy.astro';
+import SetkaKategoriy from '../components/SetkaKategoriy.astro';
+import Otrasli from '../components/Otrasli.astro';
+import { sayt } from '../lib/content.js';
+---
+
+<Base title={`${sayt.nazvanie} — собственное производство`} description={sayt.opisanie}>
+  <Geroy />
+  <SetkaKategoriy />
+  <Otrasli />
+</Base>

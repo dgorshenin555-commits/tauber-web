@@ -1,0 +1,173 @@
+---
+import { otrasli, kategorii } from '../lib/content.js';
+import PanelZadacha from './PanelZadacha.astro';
+
+const korotkie = new Map(kategorii.map((k) => [k.klyuch, k.korotko]));
+---
+
+<section class="otrasli">
+  <div class="otrasli__shapka">
+    <div>
+      <h2 class="otrasli__zagolovok">Отрасли</h2>
+      <p class="otrasli__podzagolovok">Решения для объектов, где важны надёжность и безопасность</p>
+    </div>
+  </div>
+
+  <div class="otrasli__telo">
+    <div class="otrasli__spisok">
+      {otrasli.map((o, i) => (
+        <article class="otrasl" data-otrasl>
+          <button
+            type="button"
+            class="otrasl__knopka"
+            data-otrasl-knopka
+            aria-expanded={i === 0 ? 'true' : 'false'}
+            aria-controls={`otrasl-${i}`}
+          >
+            <span class="otrasl__nomer" data-nomer>{String(i + 1).padStart(2, '0')}</span>
+            <span class="ms otrasl__znachok">{o.znachok}</span>
+            <span class="otrasl__nazvanie" data-nazvanie>{o.nazvanie}</span>
+            <span class="otrasl__krug"><span class="ms">arrow_outward</span></span>
+          </button>
+
+          <div class="otrasl__raskrytie" id={`otrasl-${i}`} hidden={i !== 0}>
+            <p class="otrasl__opisanie">{o.opisanie}</p>
+            <div class="otrasl__napravleniya">
+              {o.kategorii.map((k) => (
+                <a class="otrasl__napravlenie" href={`/catalog/${k}/`}>{korotkie.get(k)}</a>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <PanelZadacha />
+  </div>
+</section>
+
+<style>
+  .otrasli { background: var(--fon); padding: 0 var(--pole-bok) 34px; }
+  .otrasli__shapka { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 22px; }
+  .otrasli__zagolovok { margin: 0; font-size: 33px; font-weight: 700; letter-spacing: -.02em; }
+  .otrasli__podzagolovok { margin: 8px 0 0; font-size: 15px; color: var(--tekst-vtoroy); }
+
+  .otrasli__telo { display: grid; grid-template-columns: 1fr 32%; gap: 15px; align-items: start; }
+
+  .otrasli__spisok { display: flex; flex-direction: column; gap: 2px; }
+
+  .otrasl {
+    background: transparent;
+    border-radius: 18px;
+    border-left: 3px solid transparent;
+    transition: background .25s, border-color .25s;
+  }
+
+  .otrasl:has([aria-expanded='true']) { background: #F6F8F7; border-left-color: var(--akcent); }
+
+  .otrasl__knopka {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 34px 30px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    color: var(--tekst);
+  }
+
+  .otrasl__nomer { font-size: 13px; font-weight: 600; letter-spacing: .08em; color: #B5BBB8; }
+  .otrasl__knopka[aria-expanded='true'] .otrasl__nomer { color: var(--akcent); }
+
+  .otrasl__znachok { font-size: 24px; color: var(--tekst-tihiy); transition: font-size .25s; }
+  .otrasl__knopka[aria-expanded='true'] .otrasl__znachok { font-size: 30px; color: var(--tekst); }
+
+  .otrasl__nazvanie {
+    font-size: 28px;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    color: #A3AAA6;
+    transition: color .25s, font-size .25s;
+  }
+
+  .otrasl__knopka[aria-expanded='true'] .otrasl__nazvanie { color: var(--tekst); font-size: 36px; }
+
+  .otrasl__krug {
+    width: 46px;
+    height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #F2F5F3;
+    color: var(--tekst);
+    transition: background .25s, color .25s, transform .25s;
+  }
+
+  .otrasl__knopka[aria-expanded='true'] .otrasl__krug {
+    background: var(--akcent);
+    color: #fff;
+    transform: rotate(-45deg);
+  }
+
+  .otrasl__raskrytie { padding: 0 20px 22px 82px; }
+  .otrasl__raskrytie[hidden] { display: none; }
+
+  .otrasl__opisanie { margin: 0; font-size: 15px; line-height: 1.5; color: var(--tekst-vtoroy); max-width: 620px; }
+
+  .otrasl__napravleniya { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .otrasl__napravlenie {
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    border-radius: var(--radius-pilyulya);
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 1024px) {
+    .otrasli__telo { grid-template-columns: 1fr; }
+    .otrasl__nazvanie { font-size: 24px; }
+    .otrasl__knopka[aria-expanded='true'] .otrasl__nazvanie { font-size: 30px; }
+  }
+
+  @media (max-width: 768px) {
+    .otrasli__zagolovok { font-size: 26px; }
+    .otrasl__knopka { grid-template-columns: 28px minmax(0, 1fr) auto; gap: 10px; padding: 14px 14px; }
+    .otrasl__znachok { display: none; }
+    .otrasl__nazvanie { font-size: 20px; }
+    .otrasl__knopka[aria-expanded='true'] .otrasl__nazvanie { font-size: 24px; }
+    .otrasl__raskrytie { padding: 0 14px 18px 42px; }
+    .otrasl__krug { width: 38px; height: 38px; }
+  }
+
+  @media (max-width: 480px) {
+    .otrasl__raskrytie { padding: 0 14px 18px 14px; }
+  }
+</style>
+
+<script>
+  const knopki = document.querySelectorAll('[data-otrasl-knopka]');
+
+  knopki.forEach((knopka) => {
+    knopka.addEventListener('click', () => {
+      const otkryto = knopka.getAttribute('aria-expanded') === 'true';
+      if (otkryto) return;
+
+      knopki.forEach((k) => {
+        k.setAttribute('aria-expanded', 'false');
+        const telo = document.getElementById(k.getAttribute('aria-controls'));
+        if (telo) telo.hidden = true;
+      });
+
+      knopka.setAttribute('aria-expanded', 'true');
+      const telo = document.getElementById(knopka.getAttribute('aria-controls'));
+      if (telo) telo.hidden = false;
+    });
+  });
+</script>

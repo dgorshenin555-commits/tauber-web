@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import { sayt } from '../lib/content.js';
+---
+
+<Base title={`Раздел готовится — ${sayt.nazvanie}`}>
+  <section class="netu">
+    <div class="netu__nadzagolovok">Страница не найдена</div>
+    <h1 class="netu__zagolovok">Этот раздел готовится</h1>
+    <p class="netu__tekst">
+      Сайт наполняется постепенно. Если вы искали конкретное оборудование — позвоните или напишите,
+      подскажем и пришлём документацию.
+    </p>
+    <div class="netu__knopki">
+      <a class="netu__knopka netu__knopka--tyomnaya" href="/">На главную</a>
+      <a class="netu__knopka" href={`tel:${sayt.telefon.replace(/[^\d+]/g, '')}`}>{sayt.telefon}</a>
+      <a class="netu__knopka" href={`mailto:${sayt.pochta}`}>{sayt.pochta}</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .netu { padding: 80px var(--pole-bok) 120px; max-width: 760px; }
+  .netu__nadzagolovok {
+    font-size: 12.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--tekst-tihiy);
+  }
+  .netu__zagolovok {
+    margin: 18px 0 0;
+    font-size: clamp(30px, 5vw, 56px);
+    line-height: 1.02;
+    letter-spacing: -.03em;
+    font-weight: 700;
+  }
+  .netu__tekst { margin: 20px 0 0; font-size: 18px; line-height: 1.55; color: var(--tekst-vtoroy); }
+  .netu__knopki { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .netu__knopka {
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    border-radius: var(--radius-pilyulya);
+    padding: 13px 22px;
+    font-size: 16px;
+  }
+  .netu__knopka--tyomnaya { background: var(--tekst); color: #fff; }
+  .netu__knopka--tyomnaya:hover { color: #fff; opacity: .9; }
+</style>
