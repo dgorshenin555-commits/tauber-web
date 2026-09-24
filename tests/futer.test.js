@@ -12,7 +12,7 @@ describe('футер', () => {
   });
 
   it('в футере шесть первых категорий, как в эталоне', () => {
-    const ssylki = $('footer a[href^="/catalog/"]');
+    const ssylki = $('footer a[href^="/tauber-web/catalog/"]');
     expect(ssylki.length).toBe(6);
     expect($(ssylki[0]).text().trim()).toBe(kategorii[0].korotko);
   });

@@ -10,7 +10,7 @@ describe('шапка', () => {
   it('логотип ведёт на главную', () => {
     const logo = $('header [data-logotip]');
     expect(logo.length).toBe(1);
-    expect(logo.attr('href')).toBe('/');
+    expect(logo.attr('href')).toBe('/tauber-web/');
   });
 
   it('пока файла логотипа нет — в шапке читается название компании', () => {
@@ -72,7 +72,7 @@ describe('шапка', () => {
 
   it('пункты подменю присутствуют в разметке, а не подгружаются скриптом', () => {
     // 10 ссылок подменю плюс сама «Продукция» — в разметке, а не из скрипта
-    const ssylki = $('header nav a[href^="/catalog/"]');
+    const ssylki = $('header nav a[href^="/tauber-web/catalog/"]');
     expect(ssylki.length).toBeGreaterThanOrEqual(10);
   });
 

@@ -1,11 +1,12 @@
 ---
+import { put } from '../lib/put.js';
 import { fotoProizvodstva } from '../lib/content.js';
 ---
 
 <div class="galereya" data-galereya>
   {fotoProizvodstva.map((f, i) => (
     <div class="galereya__kadr" data-kadr style={`opacity:${i === 0 ? 1 : 0}`}>
-      <img src={f.fayl} alt={f.podpis} loading={i === 0 ? 'eager' : 'lazy'} />
+      <img src={put(f.fayl)} alt={f.podpis} loading={i === 0 ? 'eager' : 'lazy'} />
     </div>
   ))}
 

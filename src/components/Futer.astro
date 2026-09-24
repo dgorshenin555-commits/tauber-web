@@ -1,4 +1,5 @@
 ---
+import { put } from '../lib/put.js';
 import { sayt, kategorii, futer } from '../lib/content.js';
 
 const kategoriiFutera = kategorii.slice(0, 6);
@@ -17,14 +18,14 @@ const god = new Date().getFullYear();
     <div class="futer__kolonka">
       <div class="futer__zagolovok">Продукция</div>
       {kategoriiFutera.map((k) => (
-        <a class="futer__ssylka" href={`/catalog/${k.klyuch}/`}>{k.korotko}</a>
+        <a class="futer__ssylka" href={put(`/catalog/${k.klyuch}/`)}>{k.korotko}</a>
       ))}
     </div>
 
     <div class="futer__kolonka">
       <div class="futer__zagolovok">Компания</div>
       {futer.razdely.map((r) => (
-        <a class="futer__ssylka" href={r.adres}>{r.podpis}</a>
+        <a class="futer__ssylka" href={put(r.adres)}>{r.podpis}</a>
       ))}
     </div>
 
@@ -40,7 +41,7 @@ const god = new Date().getFullYear();
 
   <div class="futer__niz">
     <span>© {god} {sayt.nazvanie}. Все права защищены.</span>
-    <a class="futer__politika" data-politika href={futer.politika.adres}>{futer.politika.podpis}</a>
+    <a class="futer__politika" data-politika href={put(futer.politika.adres)}>{futer.politika.podpis}</a>
   </div>
 </footer>
 

@@ -1,4 +1,5 @@
 ---
+import { put } from '../lib/put.js';
 import { sayt, menyu } from '../lib/content.js';
 import MobilnoeMenyu from './MobilnoeMenyu.astro';
 
@@ -18,15 +19,15 @@ const zayavkaSsylka = `mailto:${sayt.pochta}?subject=${encodeURIComponent('За�
     <span></span><span></span><span></span>
   </button>
 
-  <a class="shapka__logotip" data-logotip href="/">
-    {sayt.logotip ? <img src={sayt.logotip} alt={sayt.nazvanie} /> : sayt.nazvanie}
+  <a class="shapka__logotip" data-logotip href={put("/")}>
+    {sayt.logotip ? <img src={put(sayt.logotip)} alt={sayt.nazvanie} /> : sayt.nazvanie}
   </a>
 
   <nav class="shapka__nav" aria-label="Основное меню">
     {menyu.map((punkt, i) => (
       <div class="shapka__punkt">
         {punkt.adres
-          ? <a class="shapka__ssylka" data-punkt href={punkt.adres}>{punkt.podpis}</a>
+          ? <a class="shapka__ssylka" data-punkt href={put(punkt.adres)}>{punkt.podpis}</a>
           : <span class="shapka__ssylka shapka__ssylka--net" data-punkt>{punkt.podpis}</span>}
 
         {punkt.kolonki && (
@@ -48,7 +49,7 @@ const zayavkaSsylka = `mailto:${sayt.pochta}?subject=${encodeURIComponent('За�
               <div class="shapka__kolonka" data-kolonka>
                 <div class="shapka__kolonka-zagolovok">{kol.zagolovok}</div>
                 {kol.punkty.map((p) => (
-                  <a class="shapka__punkt-podmenyu" href={p.adres}>
+                  <a class="shapka__punkt-podmenyu" href={put(p.adres)}>
                     <span class="ms shapka__znachok">{p.znachok}</span>
                     <span>
                       <span class="shapka__podpis">{p.podpis}</span>
