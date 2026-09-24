@@ -1,8 +1,20 @@
 ---
 import { sayt, menyu } from '../lib/content.js';
+import MobilnoeMenyu from './MobilnoeMenyu.astro';
 ---
 
 <header class="shapka">
+  <button
+    type="button"
+    class="shapka__burger"
+    data-burger
+    aria-label="Меню"
+    aria-controls="mobilnoe-menyu"
+    aria-expanded="false"
+  >
+    <span></span><span></span><span></span>
+  </button>
+
   <a class="shapka__logotip" data-logotip href="/">
     {sayt.logotip ? <img src={sayt.logotip} alt={sayt.nazvanie} /> : sayt.nazvanie}
   </a>
@@ -48,6 +60,8 @@ import { sayt, menyu } from '../lib/content.js';
       </div>
     ))}
   </nav>
+
+  <MobilnoeMenyu />
 </header>
 
 <style>
@@ -59,6 +73,20 @@ import { sayt, menyu } from '../lib/content.js';
     background: var(--fon-shapka);
     position: relative;
   }
+
+  .shapka__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 24px;
+    flex: 0 0 auto;
+    border: 0;
+    background: none;
+    padding: 6px 0;
+    cursor: pointer;
+  }
+
+  .shapka__burger span { display: block; height: 1.5px; background: var(--tekst); }
 
   .shapka__logotip {
     flex: 0 0 auto;
@@ -148,6 +176,11 @@ import { sayt, menyu } from '../lib/content.js';
   .shapka__znachok { font-size: 22px; color: var(--akcent); }
   .shapka__podpis { display: block; font-size: 15px; font-weight: 500; }
   .shapka__poyasnenie { display: block; font-size: 13px; color: var(--tekst-tihiy); margin-top: 2px; }
+
+  @media (max-width: 1024px) {
+    .shapka__burger { display: flex; }
+    .shapka__nav { display: none; }
+  }
 </style>
 
 <script>
