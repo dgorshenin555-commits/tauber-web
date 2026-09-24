@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { load } from 'cheerio';
 import { kategorii } from '../src/lib/content.js';
 
@@ -25,6 +25,20 @@ describe('мобильное меню', () => {
     for (const k of kategorii) {
       expect(punkty, `в мобильном меню нет категории «${k.korotko}»`).toContain(k.korotko);
     }
+  });
+
+  it('меню не остаётся висеть при переходе на широкий экран', () => {
+    const css = readdirSync('dist/_astro').filter((f) => f.endsWith('.css'))
+      .map((f) => readFileSync(`dist/_astro/${f}`, 'utf8')).join('\n');
+    // минификатор переписывает медиазапросы в синтаксис диапазонов: (width>=1025px)
+    expect(css, 'нет правила, скрывающего мобильное меню на широком экране')
+      .toMatch(/(min-width:\s*1025px|width\s*>=\s*1025px)/);
+  });
+
+  it('прокрутка блокируется на корневом элементе — на body она бы не сработала', () => {
+    const html = readFileSync('dist/index.html', 'utf8');
+    expect(html).toContain('documentElement');
+    expect(html).not.toContain("body.style.overflow");
   });
 
   it('ссылки мобильного меню ведут на страницы категорий', () => {

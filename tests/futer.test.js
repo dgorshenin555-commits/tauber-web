@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { load } from 'cheerio';
-import { sayt, kategorii } from '../src/lib/content.js';
+import { sayt, kategorii, futer } from '../src/lib/content.js';
 
 let $;
 beforeAll(() => { $ = load(readFileSync('dist/index.html', 'utf8')); });
@@ -26,6 +26,16 @@ describe('футер', () => {
   it('телефон в ссылке записан цифрами, без пробелов и скобок', () => {
     const href = $('footer a[href^="tel:"]').attr('href');
     expect(href).toMatch(/^tel:\+\d{11}$/);
+  });
+
+  it('в футере есть описание компании, как в эталоне', () => {
+    expect($('footer').text()).toContain(futer.opisanie);
+  });
+
+  it('политика обработки данных — действующая ссылка, а не надпись', () => {
+    const politika = $('footer [data-politika]');
+    expect(politika.length).toBe(1);
+    expect(politika.prop('tagName').toLowerCase()).toBe('a');
   });
 
   it('год в подписи текущий', () => {

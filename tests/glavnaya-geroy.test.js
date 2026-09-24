@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { load } from 'cheerio';
 import { fotoProizvodstva } from '../src/lib/content.js';
 
@@ -59,6 +59,46 @@ describe('герой главной', () => {
       expect($(t).prop('tagName').toLowerCase()).toBe('button');
       expect($(t).attr('aria-label')).toBeTruthy();
     });
+  });
+
+  it('заголовок тянется за шириной колонки, а не держит фиксированный кегль', () => {
+    // колонка героя задана процентом: фиксированные 78px вылезают из неё на ноутбуках 1281-1600px
+    const css = readdirSync('dist/_astro').filter((f) => f.endsWith('.css'))
+      .map((f) => readFileSync(`dist/_astro/${f}`, 'utf8')).join('\n');
+    expect(css).toMatch(/clamp\([^)]*78px\)/);
+    expect(css).toMatch(/overflow-wrap:\s*(anywhere|break-word)/);
+  });
+
+  it('кнопки героя — живые ссылки, а не надписи', () => {
+    const knopki = $('[data-knopka-gero]');
+    expect(knopki.length).toBe(3);
+    knopki.each((_, k) => {
+      expect($(k).prop('tagName').toLowerCase()).toBe('a');
+      expect($(k).attr('href'), 'у кнопки героя нет адреса').toBeTruthy();
+    });
+  });
+
+  it('у галереи есть кнопки перелистывания, как в эталоне', () => {
+    expect($('[data-galereya-nazad]').length).toBe(1);
+    expect($('[data-galereya-vpered]').length).toBe(1);
+    for (const sel of ['[data-galereya-nazad]', '[data-galereya-vpered]']) {
+      expect($(sel).prop('tagName').toLowerCase()).toBe('button');
+      expect($(sel).attr('aria-label')).toBeTruthy();
+    }
+  });
+
+  it('по точкам можно попасть пальцем — область нажатия не меньше 24 пикселей', () => {
+    const css = readdirSync('dist/_astro').filter((f) => f.endsWith('.css'))
+      .map((f) => readFileSync(`dist/_astro/${f}`, 'utf8')).join('\n');
+    const pravilo = css.match(/\.galereya__tochka[^{]*\{[^}]*\}/);
+    expect(pravilo, 'нет правила для точки галереи').toBeTruthy();
+    expect(pravilo[0], 'точка 8x8 без увеличенной области нажатия').toMatch(/min-(width|height):\s*24px|padding/);
+  });
+
+  it('галерея останавливается, когда на неё смотрят, и уважает «уменьшить движение»', () => {
+    expect(html).toContain('mouseenter');
+    expect(html).toContain('focusin');
+    expect(html).toContain('prefers-reduced-motion');
   });
 
   it('таймер галереи останавливается при скрытии вкладки и уходе со страницы', () => {

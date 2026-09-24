@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { load } from 'cheerio';
 import { sayt } from '../src/lib/content.js';
 
@@ -42,6 +42,32 @@ describe('шапка', () => {
     expect(knopka.prop('tagName').toLowerCase()).toBe('button');
     expect(knopka.attr('aria-expanded')).toBe('false');
     expect(knopka.attr('aria-controls')).toBeTruthy();
+  });
+
+  it('в шапке есть телефон — основной путь обращения, он был в эталоне', () => {
+    const tel = $('header a[href^="tel:"]');
+    expect(tel.length).toBe(1);
+    expect(tel.text()).toContain(sayt.telefon);
+  });
+
+  it('в шапке есть кнопка заявки, как в эталоне', () => {
+    const knopka = $('header [data-zayavka]');
+    expect(knopka.length).toBe(1);
+    expect(knopka.attr('href')).toMatch(/^mailto:/);
+  });
+
+  it('закрытое подменю убрано из обхода с клавиатуры, а не просто прозрачно', () => {
+    const css = readdirSync('dist/_astro').filter((f) => f.endsWith('.css'))
+      .map((f) => readFileSync(`dist/_astro/${f}`, 'utf8')).join('\n');
+    // без visibility прозрачная панель оставляет десять невидимых остановок Tab
+    expect(css).toMatch(/visibility:\s*hidden/);
+    expect(css).toMatch(/visibility:\s*visible/);
+  });
+
+  it('подменю раскрывается и при переходе на него с клавиатуры', () => {
+    const css = readdirSync('dist/_astro').filter((f) => f.endsWith('.css'))
+      .map((f) => readFileSync(`dist/_astro/${f}`, 'utf8')).join('\n');
+    expect(css).toContain('focus-within');
   });
 
   it('пункты подменю присутствуют в разметке, а не подгружаются скриптом', () => {

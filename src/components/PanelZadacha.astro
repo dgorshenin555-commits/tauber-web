@@ -1,0 +1,69 @@
+---
+import { sayt, futer } from '../lib/content.js';
+
+const telefonSsylka = `tel:${sayt.telefon.replace(/[^\d+]/g, '')}`;
+const zayavkaSsylka = `mailto:${sayt.pochta}?subject=${encodeURIComponent('Заявка с сайта')}`;
+---
+
+<aside class="zadacha" data-panel-zadacha>
+  <div class="zadacha__nadzagolovok">Есть задача?</div>
+  <div class="zadacha__zagolovok">Обсудим ваш проект</div>
+  <p class="zadacha__tekst">
+    Подберём оборудование под объект, посчитаем комплектацию и пришлём документацию.
+  </p>
+
+  <div class="zadacha__kontakty">
+    <a class="zadacha__kontakt" href={telefonSsylka}><span class="ms">call</span>{sayt.telefon}</a>
+    <a class="zadacha__kontakt" href={`mailto:${sayt.pochta}`}><span class="ms">mail</span>{sayt.pochta}</a>
+  </div>
+
+  <a class="zadacha__knopka" href={zayavkaSsylka}>
+    {futer.knopka_zayavki} <span class="ms">arrow_forward</span>
+  </a>
+</aside>
+
+<style>
+  .zadacha {
+    background: var(--temnaya);
+    color: #fff;
+    border-radius: var(--radius-karta);
+    padding: 30px 32px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .zadacha__nadzagolovok {
+    font-size: 12.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--akcent);
+  }
+
+  .zadacha__zagolovok {
+    margin-top: 14px;
+    font-size: 32px;
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -.02em;
+  }
+
+  .zadacha__tekst { margin: 14px 0 0; font-size: 15px; line-height: 1.55; color: #A9B0AC; }
+
+  .zadacha__kontakty { margin-top: 22px; display: flex; flex-direction: column; gap: 10px; }
+
+  .zadacha__kontakt { display: inline-flex; align-items: center; gap: 9px; color: #fff; font-size: 17px; }
+  .zadacha__kontakt:hover { color: var(--akcent); }
+  .zadacha__kontakt .ms { font-size: 20px; color: var(--akcent); }
+
+  .zadacha__knopka {
+    margin-top: auto;
+    padding-top: 26px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 15px;
+  }
+
+  .zadacha__knopka:hover { color: var(--akcent); }
+</style>

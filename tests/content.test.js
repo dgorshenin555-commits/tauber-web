@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { existsSync } from 'node:fs';
-import { sayt, kategorii, otrasli, fotoProizvodstva } from '../src/lib/content.js';
+import { sayt, kategorii, otrasli, fotoProizvodstva, menyu, futer } from '../src/lib/content.js';
 
 describe('содержание', () => {
   it('десять категорий, как на главной эталона', () => {
@@ -58,6 +58,30 @@ describe('содержание', () => {
         expect(klyuchi.has(k), `отрасль «${o.nazvanie}» ссылается на несуществующую категорию ${k}`).toBe(true);
       }
     }
+  });
+
+  it('каждый пункт подменю ведёт на существующую категорию', () => {
+    // два списка категорий — в меню и в каталоге — иначе расходятся молча
+    const klyuchi = new Set(kategorii.map((k) => k.klyuch));
+    const adresa = menyu.flatMap((p) => (p.kolonki ?? []).flatMap((k) => k.punkty.map((x) => x.adres)));
+    expect(adresa.length).toBe(kategorii.length);
+    for (const adres of adresa) {
+      const klyuch = adres.replace(/^\/catalog\/|\/$/g, '');
+      expect(klyuchi.has(klyuch), `подменю ведёт на несуществующую категорию: ${adres}`).toBe(true);
+    }
+  });
+
+  it('все категории каталога попали в подменю — иначе часть товаров недостижима из меню', () => {
+    const vMenyu = new Set(menyu.flatMap((p) => (p.kolonki ?? []).flatMap((k) => k.punkty.map((x) => x.adres.replace(/^\/catalog\/|\/$/g, '')))));
+    for (const k of kategorii) {
+      expect(vMenyu.has(k.klyuch), `категории «${k.nazvanie}» нет в подменю`).toBe(true);
+    }
+  });
+
+  it('разделы и правовые подписи футера лежат в содержании, а не в вёрстке', () => {
+    expect(futer.razdely.length).toBeGreaterThan(0);
+    expect(futer.politika).toBeTruthy();
+    expect(futer.opisanie).toBeTruthy();
   });
 
   it('четыре фотографии производства с подписями и существующими файлами', () => {

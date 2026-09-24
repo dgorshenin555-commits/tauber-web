@@ -11,16 +11,25 @@ import { fotoProizvodstva } from '../lib/content.js';
 
   <div class="galereya__niz">
     <span class="galereya__podpis" data-podpis>{fotoProizvodstva[0].podpis}</span>
-    <div class="galereya__tochki">
-      {fotoProizvodstva.map((f, i) => (
-        <button
-          type="button"
-          class="galereya__tochka"
-          data-tochka
-          aria-label={`Показать фотографию: ${f.podpis}`}
-          aria-current={i === 0 ? 'true' : 'false'}
-        ></button>
-      ))}
+    <div class="galereya__upravlenie">
+      <div class="galereya__tochki">
+        {fotoProizvodstva.map((f, i) => (
+          <button
+            type="button"
+            class="galereya__tochka"
+            data-tochka
+            aria-label={`Показать фотографию: ${f.podpis}`}
+            aria-current={i === 0 ? 'true' : 'false'}
+          ><span class="galereya__tochka-vid"></span></button>
+        ))}
+      </div>
+
+      <button type="button" class="galereya__strelka" data-galereya-nazad aria-label="Предыдущая фотография">
+        <span class="ms">arrow_back</span>
+      </button>
+      <button type="button" class="galereya__strelka galereya__strelka--akcent" data-galereya-vpered aria-label="Следующая фотография">
+        <span class="ms">arrow_forward</span>
+      </button>
     </div>
   </div>
 </div>
@@ -64,20 +73,57 @@ import { fotoProizvodstva } from '../lib/content.js';
     backdrop-filter: blur(6px);
   }
 
-  .galereya__tochki { display: flex; align-items: center; gap: 6px; }
+  .galereya__upravlenie { display: flex; align-items: center; gap: 8px; }
 
+  .galereya__tochki {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: rgba(16, 18, 20, .55);
+    border-radius: var(--radius-pilyulya);
+    padding: 0 4px;
+    backdrop-filter: blur(6px);
+  }
+
+  /* сама точка остаётся 8px, но кнопка вокруг неё — 24px, иначе в неё не попасть пальцем */
   .galereya__tochka {
-    width: 8px;
-    height: 8px;
+    min-width: 24px;
+    min-height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 0;
     border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  .galereya__tochka-vid {
+    display: block;
+    width: 8px;
+    height: 8px;
     border-radius: var(--radius-pilyulya);
     background: rgba(255, 255, 255, .7);
-    cursor: pointer;
     transition: width .3s, background .3s;
   }
 
-  .galereya__tochka[aria-current='true'] { width: 22px; background: var(--akcent); }
+  .galereya__tochka[aria-current='true'] .galereya__tochka-vid { width: 22px; background: var(--akcent); }
+
+  .galereya__strelka {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .92);
+    color: var(--tekst);
+    cursor: pointer;
+  }
+
+  .galereya__strelka--akcent { background: var(--akcent); color: #fff; }
+  .galereya__strelka .ms { font-size: 20px; }
 
   @media (max-width: 1024px) { .galereya { min-height: 300px; } }
   @media (max-width: 768px) { .galereya { min-height: 240px; } }
@@ -109,9 +155,24 @@ import { fotoProizvodstva } from '../lib/content.js';
     const pusk = () => { stop(); taymer = setInterval(() => pokazat(tekushchiy + 1), 5000); };
 
     tochki.forEach((t, n) => t.addEventListener('click', () => { pokazat(n); pusk(); }));
+
+    galereya.querySelector('[data-galereya-nazad]')
+      ?.addEventListener('click', () => { pokazat(tekushchiy - 1); pusk(); });
+    galereya.querySelector('[data-galereya-vpered]')
+      ?.addEventListener('click', () => { pokazat(tekushchiy + 1); pusk(); });
+
+    // человек читает подпись — не подменяем кадр под ним
+    galereya.addEventListener('mouseenter', stop);
+    galereya.addEventListener('mouseleave', pusk);
+    galereya.addEventListener('focusin', stop);
+    galereya.addEventListener('focusout', pusk);
+
     document.addEventListener('visibilitychange', () => (document.hidden ? stop() : pusk()));
     window.addEventListener('pagehide', stop);
 
-    pusk();
+    // при системной настройке «уменьшить движение» кадры не листаются сами
+    const spokoyno = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!spokoyno.matches) pusk();
+    spokoyno.addEventListener('change', (e) => (e.matches ? stop() : pusk()));
   }
 </script>

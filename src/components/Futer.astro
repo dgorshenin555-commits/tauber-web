@@ -1,15 +1,19 @@
 ---
-import { sayt, kategorii } from '../lib/content.js';
+import { sayt, kategorii, futer } from '../lib/content.js';
 
 const kategoriiFutera = kategorii.slice(0, 6);
 const telefonSsylka = `tel:${sayt.telefon.replace(/[^\d+]/g, '')}`;
 const god = new Date().getFullYear();
 
-const razdelyKompanii = ['О компании', 'Проекты', 'Пресс-центр', 'Контакты'];
 ---
 
 <footer class="futer">
   <div class="futer__kolonki">
+    <div class="futer__kolonka futer__kolonka--pervaya">
+      <div class="futer__znak">{sayt.nazvanie}</div>
+      <p class="futer__opisanie">{futer.opisanie}</p>
+    </div>
+
     <div class="futer__kolonka">
       <div class="futer__zagolovok">Продукция</div>
       {kategoriiFutera.map((k) => (
@@ -19,8 +23,8 @@ const razdelyKompanii = ['О компании', 'Проекты', 'Пресс-ц
 
     <div class="futer__kolonka">
       <div class="futer__zagolovok">Компания</div>
-      {razdelyKompanii.map((r) => (
-        <span class="futer__ssylka futer__ssylka--net">{r}</span>
+      {futer.razdely.map((r) => (
+        <a class="futer__ssylka" href={r.adres}>{r.podpis}</a>
       ))}
     </div>
 
@@ -29,14 +33,14 @@ const razdelyKompanii = ['О компании', 'Проекты', 'Пресс-ц
       <a class="futer__ssylka futer__kontakt" href={telefonSsylka}>{sayt.telefon}</a>
       <a class="futer__ssylka" href={`mailto:${sayt.pochta}`}>{sayt.pochta}</a>
       <a class="futer__zayavka" href={`mailto:${sayt.pochta}?subject=${encodeURIComponent('Заявка с сайта')}`}>
-        Подать заявку <span class="ms">arrow_forward</span>
+        {futer.knopka_zayavki} <span class="ms">arrow_forward</span>
       </a>
     </div>
   </div>
 
   <div class="futer__niz">
     <span>© {god} {sayt.nazvanie}. Все права защищены.</span>
-    <span class="futer__politika">Политика обработки персональных данных</span>
+    <a class="futer__politika" data-politika href={futer.politika.adres}>{futer.politika.podpis}</a>
   </div>
 </footer>
 
@@ -48,6 +52,9 @@ const razdelyKompanii = ['О компании', 'Проекты', 'Пресс-ц
   }
 
   .futer__kolonki { display: flex; gap: 64px; flex-wrap: wrap; }
+  .futer__kolonka--pervaya { flex: 1 1 260px; max-width: 360px; }
+  .futer__znak { font-size: 24px; font-weight: 800; letter-spacing: .04em; color: #fff; }
+  .futer__opisanie { margin: 14px 0 0; font-size: 14px; line-height: 1.55; color: #9AA3A0; }
   .futer__kolonka { display: flex; flex-direction: column; gap: 10px; min-width: 200px; }
 
   .futer__zagolovok {
@@ -63,20 +70,25 @@ const razdelyKompanii = ['О компании', 'Проекты', 'Пресс-ц
   .futer__ssylka--net { color: #7E8783; cursor: default; }
   .futer__kontakt { font-size: 19px; font-weight: 600; color: #fff; }
 
+  .futer__politika { color: #7E8783; }
+  .futer__politika:hover { color: #fff; }
+
   .futer__zayavka {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     margin-top: 12px;
     padding: 13px 22px;
-    background: var(--akcent);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, .25);
     color: #fff;
     border-radius: var(--radius-pilyulya);
     font-size: 15px;
     align-self: flex-start;
   }
 
-  .futer__zayavka:hover { color: #fff; opacity: .9; }
+  .futer__zayavka { color: #fff; }
+  .futer__zayavka:hover { color: #fff; background: rgba(255, 255, 255, .08); }
   .futer__zayavka .ms { font-size: 18px; }
 
   .futer__niz {

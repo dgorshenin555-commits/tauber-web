@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { load } from 'cheerio';
 import { otrasli, kategorii } from '../src/lib/content.js';
 
@@ -38,8 +38,34 @@ describe('отрасли на главной', () => {
     expect(podpisi).toEqual(otrasli[0].kategorii.map((k) => korotkie.get(k)));
   });
 
-  it('подпись про число направлений считается из содержания, а не вписана руками', () => {
-    expect($('[data-otrasl]').first().text()).toContain('4 направления каталога');
+  it('отрасли выведены вертикальным списком-гармошкой, как в утверждённом варианте эталона', () => {
+    const css = readdirSync('dist/_astro').filter((f) => f.endsWith('.css'))
+      .map((f) => readFileSync(`dist/_astro/${f}`, 'utf8')).join('\n');
+    const spisok = css.match(/\.otrasli__spisok[^{]*\{[^}]*\}/);
+    expect(spisok, 'нет правила для списка отраслей').toBeTruthy();
+    expect(spisok[0], 'список отраслей не должен быть сеткой из карточек').not.toMatch(/repeat\(2/);
+  });
+
+  it('строка отрасли раскрывается и с клавиатуры', () => {
+    const knopki = $('[data-otrasl] [data-otrasl-knopka]');
+    expect(knopki.length).toBe(4);
+    knopki.each((_, k) => {
+      expect($(k).prop('tagName').toLowerCase()).toBe('button');
+      expect($(k).attr('aria-expanded')).toMatch(/^(true|false)$/);
+    });
+  });
+
+  it('первая отрасль раскрыта, остальные свёрнуты', () => {
+    const sostoyaniya = $('[data-otrasl] [data-otrasl-knopka]').map((_, k) => $(k).attr('aria-expanded')).get();
+    expect(sostoyaniya).toEqual(['true', 'false', 'false', 'false']);
+  });
+
+  it('у секции есть подзаголовок из эталона', () => {
+    expect($('body').text()).toContain('Решения для объектов, где важны надёжность и безопасность');
+  });
+
+  it('нет подписи с жёсткой формой числа — «5 направления каталога» звучало бы неграмотно', () => {
+    expect($('body').text()).not.toContain('направления каталога');
   });
 
   it('у каждой отрасли есть порядковый номер с ведущим нулём', () => {

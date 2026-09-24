@@ -29,6 +29,9 @@ import { kategorii } from '../lib/content.js';
 
   .mobmenyu[hidden] { display: none; }
 
+  /* на широком экране работает обычная навигация: панель не должна висеть поверх страницы */
+  @media (min-width: 1025px) { .mobmenyu { display: none; } }
+
   .mobmenyu__zagolovok {
     font-size: 12.5px;
     letter-spacing: .1em;
@@ -55,7 +58,9 @@ import { kategorii } from '../lib/content.js';
     if (!burger || !menyu) return;
     burger.setAttribute('aria-expanded', String(otkryt));
     menyu.hidden = !otkryt;
-    document.body.style.overflow = otkryt ? 'hidden' : '';
+    // блокировать прокрутку нужно на корневом элементе: у body это не сработает,
+    // потому что overflow-x задан на html и значения берутся оттуда
+    document.documentElement.style.overflow = otkryt ? 'hidden' : '';
   };
 
   burger?.addEventListener('click', () => {
@@ -64,5 +69,10 @@ import { kategorii } from '../lib/content.js';
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && burger?.getAttribute('aria-expanded') === 'true') pereklyuchit(false);
+  });
+
+  // поворот планшета в горизонт возвращает обычную навигацию — панель закрываем
+  window.matchMedia('(min-width: 1025px)').addEventListener('change', (e) => {
+    if (e.matches && burger?.getAttribute('aria-expanded') === 'true') pereklyuchit(false);
   });
 </script>
