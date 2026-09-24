@@ -1,0 +1,25 @@
+#!/bin/sh
+# Не даёт отправить правку напрямую в main.
+# Работа идёт через ветки и pull request: main обновляется только слиянием на GitHub.
+# Включается один раз командой:  git config core.hooksPath .githooks
+# Разовый обход (осознанно):     git push --no-verify
+
+while read local_ref local_sha remote_ref remote_sha; do
+  case "$remote_ref" in
+    refs/heads/main)
+      echo ""
+      echo "  Пуш напрямую в main остановлен."
+      echo ""
+      echo "  Так договорились: main меняется только через pull request."
+      echo "  Как правильно:"
+      echo "    git switch -c имя-правки"
+      echo "    git push -u origin имя-правки"
+      echo "    gh pr create --fill"
+      echo ""
+      echo "  Если это осознанное исключение: git push --no-verify"
+      echo ""
+      exit 1
+      ;;
+  esac
+done
+exit 0
