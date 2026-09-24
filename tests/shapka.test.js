@@ -13,13 +13,11 @@ describe('шапка', () => {
     expect(logo.attr('href')).toBe('/tauber-web/');
   });
 
-  it('пока файла логотипа нет — в шапке читается название компании', () => {
-    const logo = $('header [data-logotip]');
-    if (sayt.logotip === null) {
-      expect(logo.text().trim()).toBe(sayt.nazvanie);
-    } else {
-      expect(logo.find('img').attr('alt')).toBe(sayt.nazvanie);
-    }
+  it('в шапке стоит знак компании с подписью для читалок', () => {
+    const logo = $('header [data-logotip] img');
+    expect(logo.length, 'логотип не выводится картинкой').toBe(1);
+    expect(logo.attr('alt')).toBe(sayt.nazvanie);
+    expect(logo.attr('src')).toMatch(/^\/tauber-web\/images\//);
   });
 
   it('в навигации все пять пунктов верхнего уровня, дословно как в эталоне', () => {

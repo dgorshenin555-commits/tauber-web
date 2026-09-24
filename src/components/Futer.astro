@@ -11,7 +11,11 @@ const god = new Date().getFullYear();
 <footer class="futer">
   <div class="futer__kolonki">
     <div class="futer__kolonka futer__kolonka--pervaya">
-      <div class="futer__znak">{sayt.nazvanie}</div>
+      <a class="futer__znak" data-logotip-futer href={put('/')}>
+        {sayt.logotip
+          ? <img src={put(sayt.logotip)} alt={sayt.nazvanie} />
+          : sayt.nazvanie}
+      </a>
       <p class="futer__opisanie">{futer.opisanie}</p>
     </div>
 
@@ -54,7 +58,16 @@ const god = new Date().getFullYear();
 
   .futer__kolonki { display: flex; gap: 64px; flex-wrap: wrap; }
   .futer__kolonka--pervaya { flex: 1 1 260px; max-width: 360px; }
-  .futer__znak { font-size: 24px; font-weight: 800; letter-spacing: .04em; color: #fff; }
+  .futer__znak {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: .04em;
+    color: #fff;
+  }
+
+  /* знак тёмный, а футер тёмный — осветляем, как в эталоне */
+  .futer__znak img { height: 54px; width: auto; display: block; filter: brightness(0) invert(1); }
   .futer__opisanie { margin: 14px 0 0; font-size: 14px; line-height: 1.55; color: #9AA3A0; }
   .futer__kolonka { display: flex; flex-direction: column; gap: 10px; min-width: 200px; }
 
