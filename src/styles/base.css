@@ -1,0 +1,30 @@
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+html { overflow-x: hidden; }
+
+body {
+  background: var(--fon);
+  font-family: var(--shrift);
+  color: var(--tekst);
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+
+img { max-width: 100%; height: auto; }
+
+a { color: var(--tekst); text-decoration: none; }
+a:hover { color: var(--navedenie); }
+
+.ms {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  direction: ltr;
+}
