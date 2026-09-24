@@ -6,4 +6,6 @@ export default defineConfig({
   site: 'https://dgorshenin555-commits.github.io',
   base: '/tauber-web',
   build: { inlineStylesheets: 'never' },
+  // каталог и есть главный экран — так в эталоне
+  redirects: { '/catalog': '/' },
 });

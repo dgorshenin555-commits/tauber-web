@@ -1,0 +1,74 @@
+{
+  "hlebnaya_kroshka": "Фильтрационные модули",
+  "zagolovok": "Фильтрационные модули",
+  "vvodnyy_tekst": [
+    "Комплексные модульные решения для очистки и учёта топлива и технологических жидкостей. Фильтрация, водоотделение, контроль параметров и готовность к интеграции в инфраструктуру объекта."
+  ],
+  "knopka": "Получить консультацию",
+  "kartinka": "/images/fmod-hero.webp",
+  "plashka": "Чистое топливо надёжная инфраструктура",
+  "chislo": "6",
+  "chislo_podpis": "решений",
+  "perechislenie": "Модульная фильтрация • водоотделение • учёт • контроль качества",
+  "tyomnaya_panel": false,
+  "razdel": {
+    "zagolovok": "Основные решения",
+    "podzagolovok": "",
+    "ssylka": "Смотреть весь каталог"
+  },
+  "kartochki": [
+    {
+      "zagolovok": "Фильтрационный модуль для авиационного топлива",
+      "opisanie": "",
+      "kartinka": "/images/fmod-1.webp",
+      "vedyot_na": "fmk"
+    },
+    {
+      "zagolovok": "Модуль тонкой очистки",
+      "opisanie": "",
+      "kartinka": "/images/fmod-2.webp"
+    },
+    {
+      "zagolovok": "Модуль водоотделения",
+      "opisanie": "",
+      "kartinka": "/images/fmod-3.webp"
+    },
+    {
+      "zagolovok": "Узел учёта топлива",
+      "opisanie": "",
+      "kartinka": "/images/fmod-4.webp"
+    },
+    {
+      "zagolovok": "Счётчик Smith Meter APS",
+      "opisanie": "",
+      "kartinka": "/images/fmod-5.webp"
+    },
+    {
+      "zagolovok": "Комплексный фильтрационный блок",
+      "opisanie": "",
+      "kartinka": "/images/fmod-6.webp"
+    }
+  ],
+  "preimushchestva": [
+    {
+      "znachok": "shield",
+      "zagolovok": "Высокая степень очистки",
+      "opisanie": ""
+    },
+    {
+      "znachok": "bar_chart",
+      "zagolovok": "Контроль качества топлива",
+      "opisanie": ""
+    },
+    {
+      "znachok": "deployed_code",
+      "zagolovok": "Модульная интеграция",
+      "opisanie": ""
+    },
+    {
+      "znachok": "settings",
+      "zagolovok": "Техническая поддержка",
+      "opisanie": ""
+    }
+  ]
+}

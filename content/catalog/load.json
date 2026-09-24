@@ -1,0 +1,85 @@
+{
+  "hlebnaya_kroshka": "Слив/налив",
+  "zagolovok": "Слив/налив",
+  "vvodnyy_tekst": [
+    "Оборудование для безопасного и точного слива и налива нефтепродуктов, жидкого газа, керосина и серы. Решения для авто- и железнодорожных эстакад и промышленных объектов."
+  ],
+  "knopka": "Получить консультацию",
+  "kartinka": "/images/load-hero.webp",
+  "plashka": "Надёжные решения для ваших проектов",
+  "chislo": "7",
+  "chislo_podpis": "решений",
+  "perechislenie": "Автоцистерны • Ж/д цистерны • Нефтепродукты • СУГ • Керосин • Сера • Промышленные объекты",
+  "tyomnaya_panel": false,
+  "razdel": {
+    "zagolovok": "Основные решения",
+    "podzagolovok": "",
+    "ssylka": "Смотреть весь каталог"
+  },
+  "kartochki": [
+    {
+      "zagolovok": "Серия 1803",
+      "opisanie": "Верхний налив • Автоцистерны",
+      "kartinka": "/images/load-1.webp",
+      "vedyot_na": "s1803"
+    },
+    {
+      "zagolovok": "Серия 1405",
+      "opisanie": "Муфты и поворотные узлы",
+      "kartinka": "/images/load-2.webp"
+    },
+    {
+      "zagolovok": "Серия 1403",
+      "opisanie": "Нижний налив • Автоцистерны",
+      "kartinka": "/images/load-3.webp"
+    },
+    {
+      "zagolovok": "Серия 1802",
+      "opisanie": "Верхний налив • Ж/д цистерны",
+      "kartinka": "/images/load-4.webp"
+    },
+    {
+      "zagolovok": "Серия 1101",
+      "opisanie": "Наливные стояки и скиды",
+      "kartinka": "/images/load-5.webp"
+    },
+    {
+      "zagolovok": "Серия 1201RV",
+      "opisanie": "Клапанные блоки",
+      "kartinka": "/images/load-6.webp"
+    },
+    {
+      "zagolovok": "Серия 1201",
+      "opisanie": "Нижний налив • Ж/д цистерны",
+      "kartinka": "/images/load-7.webp",
+      "vedyot_na": "s1201"
+    }
+  ],
+  "preimushchestva": [
+    {
+      "znachok": "shield",
+      "zagolovok": "Безопасность на всех этапах",
+      "opisanie": ""
+    },
+    {
+      "znachok": "speed",
+      "zagolovok": "Точный налив и учёт",
+      "opisanie": ""
+    },
+    {
+      "znachok": "water_drop",
+      "zagolovok": "Герметичность и экология",
+      "opisanie": ""
+    },
+    {
+      "znachok": "bolt",
+      "zagolovok": "Быстрое подключение",
+      "opisanie": ""
+    },
+    {
+      "znachok": "settings",
+      "zagolovok": "Техническая поддержка 24/7",
+      "opisanie": ""
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "hlebnaya_kroshka": "ПИТ-системы",
+  "zagolovok": "ПИТ-системы",
+  "vvodnyy_tekst": [
+    "Подземные системы подключения воздушных судов к электропитанию, кондиционированному воздуху, воде и сервисным коммуникациям.",
+    "Меньше оборудования на перроне — больше безопасности и свободного пространства."
+  ],
+  "knopka": "Получить консультацию",
+  "kartinka": "/images/pit-hero.webp",
+  "plashka": "Инфраструктура современных аэропортов",
+  "chislo": "6",
+  "chislo_podpis": "решений",
+  "perechislenie": "400 Гц • PCA • вода • канализация • наземные сервисы",
+  "tyomnaya_panel": false,
+  "razdel": {
+    "zagolovok": "Основные решения",
+    "podzagolovok": "",
+    "ssylka": "Смотреть весь каталог"
+  },
+  "kartochki": [
+    {
+      "zagolovok": "Лифтовая ПИТ-система PCA",
+      "opisanie": "",
+      "kartinka": "/images/pit-1.webp",
+      "vedyot_na": "pitp"
+    },
+    {
+      "zagolovok": "ПИТ-система с опрокидывающейся крышкой PCA",
+      "opisanie": "",
+      "kartinka": "/images/pit-2.webp"
+    },
+    {
+      "zagolovok": "ПИТ-системы с откидными крышками",
+      "opisanie": "",
+      "kartinka": "/images/pit-3.webp"
+    },
+    {
+      "zagolovok": "PowerPack QuickConnect 400 Гц",
+      "opisanie": "",
+      "kartinka": "/images/pit-4.webp"
+    },
+    {
+      "zagolovok": "Подземная система воды и канализации",
+      "opisanie": "",
+      "kartinka": "/images/pit-5.webp"
+    },
+    {
+      "zagolovok": "PCAir — кондиционированный воздух",
+      "opisanie": "",
+      "kartinka": "/images/pit-6.webp"
+    }
+  ],
+  "preimushchestva": [
+    {
+      "znachok": "straighten",
+      "zagolovok": "Свободный перрон",
+      "opisanie": "Минимум наземного оборудования"
+    },
+    {
+      "znachok": "shield",
+      "zagolovok": "Безопасность эксплуатации",
+      "opisanie": "Соответствие международным стандартам"
+    },
+    {
+      "znachok": "bolt",
+      "zagolovok": "Быстрое подключение",
+      "opisanie": "Сокращение времени обслуживания"
+    },
+    {
+      "znachok": "settings",
+      "zagolovok": "Комплексная техническая поддержка",
+      "opisanie": "От проектирования до сервиса"
+    }
+  ]
+}

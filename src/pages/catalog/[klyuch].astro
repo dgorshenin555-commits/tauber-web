@@ -1,0 +1,242 @@
+---
+import Base from '../../layouts/Base.astro';
+import { kategorii, sayt } from '../../lib/content.js';
+import { put } from '../../lib/put.js';
+
+const fayly = import.meta.glob('../../../content/catalog/*.json', { eager: true });
+
+export async function getStaticPaths() {
+  const { kategorii } = await import('../../lib/content.js');
+  return kategorii.map((k) => ({ params: { klyuch: k.klyuch } }));
+}
+
+const { klyuch } = Astro.params;
+const zapis = Object.entries(fayly).find(([p]) => p.endsWith(`/${klyuch}.json`));
+const d = zapis ? (zapis[1].default ?? zapis[1]) : null;
+if (!d) throw new Error(`Нет содержания для категории ${klyuch}`);
+
+const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}: ${d.hlebnaya_kroshka}`)}`;
+---
+
+<Base title={`${d.hlebnaya_kroshka} — ${sayt.nazvanie}`} description={d.vvodnyy_tekst?.[0]}>
+  <nav class="kroshki" aria-label="Вы здесь">
+    <a href={put('/')}>Главная</a>
+    <span class="ms">chevron_right</span>
+    <span class="kroshki__tekushchaya">{d.hlebnaya_kroshka}</span>
+  </nav>
+
+  <section class="verh">
+    <div class="verh__tekst">
+      {d.plashka && <div class="verh__plashka">{d.plashka}</div>}
+      <h1 class="verh__zagolovok">{d.zagolovok}</h1>
+      {d.vvodnyy_tekst.map((abzac) => <p class="verh__abzac">{abzac}</p>)}
+      <a class="verh__knopka" href={zayavka}>{d.knopka} <span class="ms">arrow_forward</span></a>
+    </div>
+
+    {d.kartinka && (
+      <div class="verh__kartinka">
+        <img src={put(d.kartinka)} alt={d.hlebnaya_kroshka} />
+      </div>
+    )}
+
+    <div class:list={['verh__panel', { 'verh__panel--tyomnaya': d.tyomnaya_panel }]}>
+      <div class="verh__chislo">{d.chislo}</div>
+      <div class="verh__chislo-podpis">{d.chislo_podpis}</div>
+      {d.perechislenie && <p class="verh__perechislenie">{d.perechislenie}</p>}
+    </div>
+  </section>
+
+  <section class="razdel">
+    <div class="razdel__shapka">
+      <div>
+        <h2 class="razdel__zagolovok">{d.razdel.zagolovok}</h2>
+        {d.razdel.podzagolovok && <p class="razdel__podzagolovok">{d.razdel.podzagolovok}</p>}
+      </div>
+    </div>
+
+    <div class="razdel__kartochki">
+      {d.kartochki.map((c) => (
+        <article class="tovar" data-kartochka-razdela>
+          <a class="tovar__ssylka" href={c.vedyot_na ? put(`/catalog/${c.vedyot_na}/`) : zayavka}>
+            {c.kartinka && (
+              <div class="tovar__kartinka">
+                <img src={put(c.kartinka)} alt={c.zagolovok} loading="lazy" />
+                {c.nomer && <span class="tovar__nomer">{c.nomer}</span>}
+              </div>
+            )}
+            <h3 class="tovar__zagolovok">{c.zagolovok}</h3>
+            {c.opisanie && <p class="tovar__opisanie">{c.opisanie}</p>}
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  {d.preimushchestva.length > 0 && (
+    <section class="plyusy">
+      <div class="plyusy__spisok">
+        {d.preimushchestva.map((p) => (
+          <article class="plyus" data-preimushchestvo>
+            <span class="ms plyus__znachok">{p.znachok}</span>
+            <h3 class="plyus__zagolovok">{p.zagolovok}</h3>
+            <p class="plyus__opisanie">{p.opisanie}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .kroshki {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 18px var(--pole-bok) 0;
+    font-size: 13px;
+    color: var(--tekst-tihiy);
+  }
+
+  .kroshki a { color: var(--tekst-tihiy); }
+  .kroshki a:hover { color: var(--navedenie); }
+  .kroshki .ms { font-size: 16px; }
+  .kroshki__tekushchaya { color: var(--tekst); }
+
+  .verh {
+    display: grid;
+    grid-template-columns: 37.1% 1fr 25%;
+    gap: 16px;
+    padding: 16px var(--pole-bok) 0;
+    align-items: stretch;
+  }
+
+  .verh__tekst {
+    padding: 40px 38px 42px;
+    background: var(--fon-gero);
+    border-radius: var(--radius-karta);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .verh__plashka {
+    align-self: flex-start;
+    background: #fff;
+    border-radius: var(--radius-pilyulya);
+    padding: 6px 14px;
+    font-size: 12.5px;
+    color: var(--tekst-vtoroy);
+    margin-bottom: 16px;
+  }
+
+  .verh__zagolovok {
+    margin: 0;
+    font-size: clamp(30px, 3.6vw, 56px);
+    line-height: 1.02;
+    letter-spacing: -.03em;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  .verh__abzac { margin: 18px 0 0; font-size: 17px; line-height: 1.55; color: var(--tekst-vtoroy); }
+
+  .verh__knopka {
+    align-self: flex-start;
+    margin-top: 26px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--tekst);
+    color: #fff;
+    border-radius: var(--radius-pilyulya);
+    padding: 14px 26px;
+    font-size: 16px;
+  }
+
+  .verh__knopka:hover { color: #fff; opacity: .9; }
+  .verh__knopka .ms { font-size: 20px; }
+
+  .verh__kartinka { border-radius: var(--radius-karta); overflow: hidden; background: #DCE3DF; min-height: 320px; }
+  .verh__kartinka img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .verh__panel {
+    background: var(--akcent);
+    border-radius: var(--radius-karta);
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .verh__panel--tyomnaya { background: var(--temnaya); color: #fff; }
+  .verh__chislo { font-size: 62px; line-height: .9; font-weight: 700; letter-spacing: -.03em; }
+  .verh__chislo-podpis { font-size: 18px; font-weight: 600; margin-top: 4px; }
+  .verh__perechislenie { margin: 18px 0 0; font-size: 14px; line-height: 1.5; opacity: .85; }
+
+  .razdel { padding: 34px var(--pole-bok) 10px; }
+  .razdel__shapka { margin-bottom: 22px; }
+  .razdel__zagolovok { margin: 0; font-size: 33px; font-weight: 700; letter-spacing: -.02em; }
+  .razdel__podzagolovok { margin: 8px 0 0; font-size: 15px; color: var(--tekst-vtoroy); }
+
+  .razdel__kartochki { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+
+  .tovar__ssylka {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fff;
+    border-radius: 24px;
+    padding: 10px;
+    box-shadow: 0 6px 22px rgba(16, 18, 20, .06);
+    height: 100%;
+    transition: transform .25s, box-shadow .25s;
+  }
+
+  .tovar__ssylka:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(16, 18, 20, .12); }
+
+  .tovar__kartinka { position: relative; border-radius: 18px; overflow: hidden; background: #DCE3DF; height: 152px; }
+  .tovar__kartinka img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .tovar__nomer {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background: rgba(255, 255, 255, .9);
+    border-radius: var(--radius-pilyulya);
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .tovar__zagolovok { margin: 4px 6px 0; font-size: 16px; font-weight: 600; line-height: 1.25; }
+  .tovar__opisanie { margin: 0 6px 10px; font-size: 13px; line-height: 1.45; color: var(--tekst-tihiy); }
+
+  .plyusy { padding: 24px var(--pole-bok) 40px; }
+  .plyusy__spisok { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+
+  .plyus { background: #F6F8F7; border-radius: var(--radius-karta); padding: 24px 24px 26px; }
+  .plyus__znachok { font-size: 30px; color: var(--akcent); }
+  .plyus__zagolovok { margin: 14px 0 0; font-size: 17px; font-weight: 600; line-height: 1.3; }
+  .plyus__opisanie { margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: var(--tekst-vtoroy); }
+
+  @media (max-width: 1280px) {
+    .verh { grid-template-columns: 1fr 1fr; }
+    .verh__panel { grid-column: 1 / -1; }
+    .razdel__kartochki, .plyusy__spisok { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 1024px) {
+    .verh { grid-template-columns: 1fr; }
+    .verh__kartinka { min-height: 260px; }
+  }
+
+  @media (max-width: 768px) {
+    .razdel__kartochki, .plyusy__spisok { grid-template-columns: repeat(2, 1fr); }
+    .razdel__zagolovok { font-size: 26px; }
+    .verh__tekst { padding: 28px 22px 30px; }
+    .verh__chislo { font-size: 48px; }
+  }
+
+  @media (max-width: 480px) {
+    .razdel__kartochki, .plyusy__spisok { grid-template-columns: repeat(1, 1fr); }
+  }
+</style>

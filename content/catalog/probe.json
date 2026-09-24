@@ -1,0 +1,73 @@
+{
+  "hlebnaya_kroshka": "Пробоотборники",
+  "zagolovok": "Пробоотборники",
+  "vvodnyy_tekst": [
+    "Безопасный и точный отбор проб нефтепродуктов из подземных и надземных резервуаров. Закрытые системы, соответствующие отраслевым стандартам."
+  ],
+  "knopka": "Получить консультацию",
+  "kartinka": "/images/probe-hero.webp",
+  "plashka": "Надёжные решения для нефтегазовой инфраструктуры",
+  "chislo": "1",
+  "chislo_podpis": "основное решение",
+  "perechislenie": "Закрытый контур • Безопасный отбор • Контроль качества • Для резервуаров",
+  "tyomnaya_panel": true,
+  "razdel": {
+    "zagolovok": "Наши решения",
+    "podzagolovok": "",
+    "ssylka": "Смотреть все решения"
+  },
+  "kartochki": [
+    {
+      "zagolovok": "Закрытая система отбора проб нефтепродуктов",
+      "opisanie": "Комплексное решение с учётом требований безопасности",
+      "kartinka": "/images/probe-1.webp",
+      "vedyot_na": "prb",
+      "nomer": "01"
+    },
+    {
+      "zagolovok": "Отбор из резервуара",
+      "opisanie": "Решения для наземных и подземных резервуаров",
+      "kartinka": "/images/probe-2.webp",
+      "nomer": "02"
+    },
+    {
+      "zagolovok": "Контроль пробы",
+      "opisanie": "Удобный и безопасный анализ",
+      "kartinka": "/images/probe-3.webp",
+      "nomer": "03"
+    },
+    {
+      "zagolovok": "Арматура и подключение",
+      "opisanie": "Надёжные узлы и соединения",
+      "kartinka": "/images/probe-4.webp",
+      "nomer": "04"
+    }
+  ],
+  "preimushchestva": [
+    {
+      "znachok": "shield",
+      "zagolovok": "Безопасность персонала и экологии",
+      "opisanie": ""
+    },
+    {
+      "znachok": "water_drop",
+      "zagolovok": "Герметичность закрытый контур",
+      "opisanie": ""
+    },
+    {
+      "znachok": "science",
+      "zagolovok": "Репрезентативность пробы",
+      "opisanie": ""
+    },
+    {
+      "znachok": "settings",
+      "zagolovok": "Простое обслуживание",
+      "opisanie": ""
+    },
+    {
+      "znachok": "headset_mic",
+      "zagolovok": "Техническая поддержка",
+      "opisanie": ""
+    }
+  ]
+}
