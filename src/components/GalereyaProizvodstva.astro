@@ -1,0 +1,110 @@
+---
+import { fotoProizvodstva } from '../lib/content.js';
+---
+
+<div class="galereya" data-galereya>
+  {fotoProizvodstva.map((f, i) => (
+    <div class="galereya__kadr" data-kadr style={`opacity:${i === 0 ? 1 : 0}`}>
+      <img src={f.fayl} alt={f.podpis} loading={i === 0 ? 'eager' : 'lazy'} />
+    </div>
+  ))}
+
+  <div class="galereya__niz">
+    <span class="galereya__podpis" data-podpis>{fotoProizvodstva[0].podpis}</span>
+    <div class="galereya__tochki">
+      {fotoProizvodstva.map((f, i) => (
+        <button
+          type="button"
+          class="galereya__tochka"
+          data-tochka
+          aria-label={`Показать фотографию: ${f.podpis}`}
+          aria-current={i === 0 ? 'true' : 'false'}
+        ></button>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .galereya {
+    position: relative;
+    background: #9AA3A0;
+    border-radius: var(--radius-karta);
+    overflow: hidden;
+    min-height: 360px;
+  }
+
+  .galereya__kadr {
+    position: absolute;
+    inset: 0;
+    transition: opacity .6s;
+  }
+
+  .galereya__kadr img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .galereya__niz {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .galereya__podpis {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(16, 18, 20, .55);
+    color: #fff;
+    border-radius: var(--radius-pilyulya);
+    padding: 7px 14px;
+    font-size: 13px;
+    backdrop-filter: blur(6px);
+  }
+
+  .galereya__tochki { display: flex; align-items: center; gap: 6px; }
+
+  .galereya__tochka {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-pilyulya);
+    background: rgba(255, 255, 255, .7);
+    cursor: pointer;
+    transition: width .3s, background .3s;
+  }
+
+  .galereya__tochka[aria-current='true'] { width: 22px; background: var(--akcent); }
+</style>
+
+<script>
+  const galereya = document.querySelector('[data-galereya]');
+
+  if (galereya) {
+    const kadry = [...galereya.querySelectorAll('[data-kadr]')];
+    const tochki = [...galereya.querySelectorAll('[data-tochka]')];
+    const podpis = galereya.querySelector('[data-podpis]');
+    let tekushchiy = 0;
+    let taymer = null;
+
+    const pokazat = (i) => {
+      tekushchiy = (i + kadry.length) % kadry.length;
+      kadry.forEach((k, n) => { k.style.opacity = n === tekushchiy ? '1' : '0'; });
+      tochki.forEach((t, n) => t.setAttribute('aria-current', String(n === tekushchiy)));
+      const img = kadry[tekushchiy].querySelector('img');
+      if (podpis && img) podpis.textContent = img.getAttribute('alt') ?? '';
+    };
+
+    const stop = () => { if (taymer) { clearInterval(taymer); taymer = null; } };
+    const pusk = () => { stop(); taymer = setInterval(() => pokazat(tekushchiy + 1), 5000); };
+
+    tochki.forEach((t, n) => t.addEventListener('click', () => { pokazat(n); pusk(); }));
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : pusk()));
+    window.addEventListener('pagehide', stop);
+
+    pusk();
+  }
+</script>
