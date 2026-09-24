@@ -1,4 +1,5 @@
 ---
+import { put } from '../lib/put.js';
 import Base from '../layouts/Base.astro';
 import { sayt } from '../lib/content.js';
 ---
@@ -12,7 +13,7 @@ import { sayt } from '../lib/content.js';
       подскажем и пришлём документацию.
     </p>
     <div class="netu__knopki">
-      <a class="netu__knopka netu__knopka--tyomnaya" href="/">На главную</a>
+      <a class="netu__knopka netu__knopka--tyomnaya" href={put("/")}>На главную</a>
       <a class="netu__knopka" href={`tel:${sayt.telefon.replace(/[^\d+]/g, '')}`}>{sayt.telefon}</a>
       <a class="netu__knopka" href={`mailto:${sayt.pochta}`}>{sayt.pochta}</a>
     </div>

@@ -37,7 +37,7 @@ describe('значки', () => {
   });
 
   it('шрифт значков не разрастается незаметно', () => {
-    const razmer = statSync('public/fonts/MaterialSymbolsOutlined-200.woff2').size;
+    const razmer = statSync('src/assets/fonts/MaterialSymbolsOutlined-200.woff2').size;
     // 351 КБ ради двадцати значков — много; проверка держит планку и ловит рост
     expect(razmer).toBeLessThan(400 * 1024);
   });

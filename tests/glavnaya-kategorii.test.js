@@ -36,7 +36,7 @@ describe('категории на главной', () => {
 
   it('каждая карточка ведёт на страницу категории', () => {
     $('[data-kartochka]').each((_, k) => {
-      expect($(k).find('a').attr('href')).toMatch(/^\/catalog\/[a-z0-9-]+\/$/);
+      expect($(k).find('a').attr('href')).toMatch(/^\/tauber-web\/catalog\/[a-z0-9-]+\/$/);
     });
   });
 
@@ -69,7 +69,7 @@ describe('категории на главной', () => {
     const kartinki = $('[data-kartochka] img');
     expect(kartinki.length).toBe(10);
     kartinki.each((_, img) => {
-      const src = $(img).attr('src');
+      const src = $(img).attr('src').replace(/^\/tauber-web/, '');
       expect(existsSync(`dist${src}`), `нет файла ${src}`).toBe(true);
     });
   });

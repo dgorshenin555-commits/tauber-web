@@ -1,4 +1,5 @@
 ---
+import { put } from '../lib/put.js';
 interface Props {
   kategoriya: {
     klyuch: string;
@@ -13,9 +14,9 @@ const { kategoriya } = Astro.props;
 ---
 
 <article class="kartochka" data-kartochka data-svoye={String(kategoriya.svoye)}>
-  <a class="kartochka__ssylka" href={`/catalog/${kategoriya.klyuch}/`}>
+  <a class="kartochka__ssylka" href={put(`/catalog/${kategoriya.klyuch}/`)}>
     <div class="kartochka__kartinka">
-      <img src={kategoriya.kartinka} alt={kategoriya.nazvanie} loading="lazy" />
+      <img src={put(kategoriya.kartinka)} alt={kategoriya.nazvanie} loading="lazy" />
       {kategoriya.svoye && (
         <span class="kartochka__plashka">
           <span class="kartochka__tochka"></span>Собственное производство

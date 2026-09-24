@@ -20,6 +20,20 @@ describe('готовность к публикации', () => {
     expect(workflow).toContain('npm ci');
   });
 
+  it('описана публикация на GitHub Pages', () => {
+    expect(existsSync('.github/workflows/publikaciya.yml')).toBe(true);
+    const w = readFileSync('.github/workflows/publikaciya.yml', 'utf8');
+    expect(w).toContain('actions/deploy-pages');
+    expect(w).toContain('actions/upload-pages-artifact');
+    expect(w).toContain('pages: write');
+  });
+
+  it('в настройках сборки задана подпапка сайта — без неё ссылки уйдут в пустоту', () => {
+    const conf = readFileSync('astro.config.mjs', 'utf8');
+    expect(conf).toContain("base: '/tauber-web'");
+    expect(conf).toContain('github.io');
+  });
+
   it('инструкция по публикации написана и называет команду сборки и каталог', () => {
     expect(existsSync('docs/PUBLIKATSIYA.md')).toBe(true);
     const doc = readFileSync('docs/PUBLIKATSIYA.md', 'utf8');

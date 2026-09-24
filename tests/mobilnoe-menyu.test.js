@@ -43,7 +43,7 @@ describe('мобильное меню', () => {
 
   it('ссылки мобильного меню ведут на страницы категорий', () => {
     $('#mobilnoe-menyu a').each((_, a) => {
-      expect($(a).attr('href')).toMatch(/^\/catalog\/[a-z0-9-]+\/$/);
+      expect($(a).attr('href')).toMatch(/^\/tauber-web\/catalog\/[a-z0-9-]+\/$/);
     });
   });
 });

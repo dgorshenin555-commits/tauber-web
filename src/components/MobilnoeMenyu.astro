@@ -1,4 +1,5 @@
 ---
+import { put } from '../lib/put.js';
 import { kategorii } from '../lib/content.js';
 ---
 
@@ -7,7 +8,7 @@ import { kategorii } from '../lib/content.js';
   <ul class="mobmenyu__spisok">
     {kategorii.map((k) => (
       <li>
-        <a href={`/catalog/${k.klyuch}/`}>{k.korotko}</a>
+        <a href={put(`/catalog/${k.klyuch}/`)}>{k.korotko}</a>
       </li>
     ))}
   </ul>

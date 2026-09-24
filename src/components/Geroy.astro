@@ -1,4 +1,5 @@
 ---
+import { put } from '../lib/put.js';
 import { sayt, gero } from '../lib/content.js';
 import GalereyaProizvodstva from './GalereyaProizvodstva.astro';
 
@@ -11,7 +12,7 @@ const pochtaKatalog = `mailto:${sayt.pochta}?subject=${encodeURIComponent('За�
     <h1 class="gero__zagolovok">{gero.zagolovok}</h1>
     <p class="gero__opisanie">{sayt.opisanie}</p>
     <div class="gero__knopki">
-      <a class="gero__knopka gero__knopka--tyomnaya" data-knopka-gero href="/company/">
+      <a class="gero__knopka gero__knopka--tyomnaya" data-knopka-gero href={put("/company/")}>
         {gero.knopka_glavnaya} <span class="ms">arrow_forward</span>
       </a>
       <a class="gero__knopka gero__knopka--belaya" data-knopka-gero href={pochtaKatalog}>
@@ -32,7 +33,7 @@ const pochtaKatalog = `mailto:${sayt.pochta}?subject=${encodeURIComponent('За�
         </div>
       ))}
     </div>
-    <a class="gero__panel-knopka" data-knopka-gero href="/company/">{gero.panel.knopka} <span class="ms">arrow_forward</span></a>
+    <a class="gero__panel-knopka" data-knopka-gero href={put("/company/")}>{gero.panel.knopka} <span class="ms">arrow_forward</span></a>
   </div>
 </section>
 
