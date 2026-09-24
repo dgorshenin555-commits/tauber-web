@@ -28,6 +28,12 @@ describe('футер', () => {
     expect(href).toMatch(/^tel:\+\d{11}$/);
   });
 
+  it('в футере стоит тот же знак, осветлённый под тёмный фон', () => {
+    const logo = $('footer [data-logotip-futer] img');
+    expect(logo.length, 'в футере нет знака компании').toBe(1);
+    expect(logo.attr('alt')).toBe(sayt.nazvanie);
+  });
+
   it('в футере есть описание компании, как в эталоне', () => {
     expect($('footer').text()).toContain(futer.opisanie);
   });
