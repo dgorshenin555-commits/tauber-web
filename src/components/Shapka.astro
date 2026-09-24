@@ -181,6 +181,17 @@ import MobilnoeMenyu from './MobilnoeMenyu.astro';
     .shapka__burger { display: flex; }
     .shapka__nav { display: none; }
   }
+
+  @media (max-width: 768px) {
+    .shapka { gap: 18px; padding: 10px var(--pole-bok); }
+    .shapka__logotip { height: 54px; font-size: 21px; }
+    .shapka__logotip img { height: 54px; }
+  }
+
+  @media (max-width: 480px) {
+    .shapka__logotip { height: 46px; font-size: 19px; }
+    .shapka__logotip img { height: 46px; }
+  }
 </style>
 
 <script>

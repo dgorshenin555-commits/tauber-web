@@ -78,6 +78,13 @@ import { fotoProizvodstva } from '../lib/content.js';
   }
 
   .galereya__tochka[aria-current='true'] { width: 22px; background: var(--akcent); }
+
+  @media (max-width: 1024px) { .galereya { min-height: 300px; } }
+  @media (max-width: 768px) { .galereya { min-height: 240px; } }
+  @media (max-width: 480px) {
+    .galereya { min-height: 200px; }
+    .galereya__podpis { font-size: 12px; padding: 6px 11px; }
+  }
 </style>
 
 <script>

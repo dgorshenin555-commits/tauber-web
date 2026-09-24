@@ -125,4 +125,31 @@ import GalereyaProizvodstva from './GalereyaProizvodstva.astro';
   }
 
   .gero__panel-knopka .ms { font-size: 18px; }
+
+  @media (max-width: 1280px) {
+    .gero { grid-template-columns: 1fr 1fr; }
+    .gero__panel { grid-column: 1 / -1; }
+    .gero__pokazateli { flex-direction: row; gap: 24px; }
+    .gero__pokazatel + .gero__pokazatel { border-top: 0; border-left: 1px solid rgba(16, 18, 20, .3); padding: 0 0 0 24px; }
+    .gero__zagolovok { font-size: 58px; }
+  }
+
+  @media (max-width: 1024px) {
+    .gero { grid-template-columns: 1fr; }
+    .gero__tekst { padding: 34px 28px 36px; }
+  }
+
+  @media (max-width: 768px) {
+    .gero__zagolovok { font-size: 44px; }
+    .gero__opisanie { font-size: 16px; }
+    .gero__pokazateli { flex-direction: column; }
+    .gero__pokazatel + .gero__pokazatel { border-left: 0; border-top: 1px solid rgba(16, 18, 20, .3); padding: 16px 0 0; }
+    .gero__chislo { font-size: 48px; }
+  }
+
+  @media (max-width: 480px) {
+    .gero__zagolovok { font-size: 34px; }
+    .gero__tekst { padding: 26px 20px 28px; }
+    .gero__knopka { padding: 12px 18px; font-size: 15px; }
+  }
 </style>

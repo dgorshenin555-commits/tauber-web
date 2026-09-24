@@ -90,4 +90,11 @@ const razdelyKompanii = ['О компании', 'Проекты', 'Пресс-ц
     font-size: 13px;
     color: #7E8783;
   }
+
+  @media (max-width: 1024px) { .futer__kolonki { gap: 40px; } }
+  @media (max-width: 768px) {
+    .futer__kolonki { flex-direction: column; gap: 28px; }
+    .futer__niz { flex-direction: column; gap: 8px; }
+  }
+  @media (max-width: 480px) { .futer { padding-top: 30px; } }
 </style>
