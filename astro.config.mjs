@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   output: 'static',
-  site: 'https://tauber-web.pages.dev',
+  // сайт публикуется не в корне домена, а в подпапке с именем репозитория
+  site: 'https://dgorshenin555-commits.github.io',
+  base: '/tauber-web',
   build: { inlineStylesheets: 'never' },
 });

@@ -25,7 +25,7 @@ describe('отрасли на главной', () => {
   it('у каждой отрасли выведено описание и её направления ссылками', () => {
     $('[data-otrasl]').each((i, o) => {
       expect($(o).text()).toContain(otrasli[i].opisanie);
-      const ssylki = $(o).find('a[href^="/catalog/"]');
+      const ssylki = $(o).find('a[href^="/tauber-web/catalog/"]');
       expect(ssylki.length).toBe(otrasli[i].kategorii.length);
     });
   });
@@ -34,7 +34,7 @@ describe('отрасли на главной', () => {
     const korotkie = new Map(kategorii.map((k) => [k.klyuch, k.korotko]));
     const pervaya = $('[data-otrasl]').first();
     // в ссылке рядом с подписью лежит значок — берём только первый текстовый узел
-    const podpisi = pervaya.find('a[href^="/catalog/"]').map((_, a) => $(a).contents().first().text().trim()).get();
+    const podpisi = pervaya.find('a[href^="/tauber-web/catalog/"]').map((_, a) => $(a).contents().first().text().trim()).get();
     expect(podpisi).toEqual(otrasli[0].kategorii.map((k) => korotkie.get(k)));
   });
 

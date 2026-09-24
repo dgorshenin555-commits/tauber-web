@@ -1,4 +1,5 @@
 ---
+import { put } from '../lib/put.js';
 import { otrasli, kategorii } from '../lib/content.js';
 import PanelZadacha from './PanelZadacha.astro';
 
@@ -34,7 +35,7 @@ const korotkie = new Map(kategorii.map((k) => [k.klyuch, k.korotko]));
             <p class="otrasl__opisanie">{o.opisanie}</p>
             <div class="otrasl__napravleniya">
               {o.kategorii.map((k) => (
-                <a class="otrasl__napravlenie" href={`/catalog/${k}/`}>{korotkie.get(k)}</a>
+                <a class="otrasl__napravlenie" href={put(`/catalog/${k}/`)}>{korotkie.get(k)}</a>
               ))}
             </div>
           </div>

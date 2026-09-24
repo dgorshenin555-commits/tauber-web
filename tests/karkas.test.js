@@ -29,16 +29,21 @@ describe('каркас', () => {
     }
   });
 
-  it('каждое начертание разбито на четыре диапазона символов — иначе часть кириллицы уедет на системный шрифт', () => {
-    const golos = css.match(/GolosText-\d00-[a-z-]+\.woff2/g) ?? [];
-    expect(new Set(golos).size).toBe(20);
+  it('кириллица покрыта всеми четырьмя диапазонами символов', () => {
+    // шрифт вариативный: один файл на подмножество покрывает все веса
+    const golos = css.match(/GolosText-[a-z-]+\.[A-Za-z0-9_-]+\.woff2/g) ?? [];
+    expect(new Set(golos).size).toBe(4);
+    for (const subset of ['cyrillic-ext', 'cyrillic', 'latin-ext', 'latin']) {
+      expect(css, `нет подмножества ${subset}`).toContain(`GolosText-${subset}.`);
+    }
   });
 
   it('все файлы шрифтов, на которые ссылается вёрстка, есть в сборке', () => {
-    const ssylki = new Set((css.match(/\/fonts\/[A-Za-z0-9-]+\.woff2/g) ?? []));
+    const ssylki = new Set([...css.matchAll(/url\(([^)]+\.woff2)\)/g)].map((m) => m[1].replace(/['"]/g, '')));
     expect(ssylki.size).toBeGreaterThan(0);
     for (const s of ssylki) {
-      expect(existsSync(`dist${s}`), `нет файла ${s}`).toBe(true);
+      const vnutri = s.replace(/^\/tauber-web\//, '');
+      expect(existsSync(`dist/${vnutri}`), `нет файла ${s}`).toBe(true);
     }
   });
 
