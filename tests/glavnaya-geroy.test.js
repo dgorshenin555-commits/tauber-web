@@ -1,4 +1,5 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { runInNewContext } from 'node:vm';
+import { describe, it, expect, beforeAll, vi } from 'vitest';
 import { readFileSync, readdirSync } from 'node:fs';
 import { load } from 'cheerio';
 import { fotoProizvodstva } from '../src/lib/content.js';
@@ -27,7 +28,7 @@ describe('герой главной', () => {
     expect(tekst).toContain('Скачать каталог');
   });
 
-  it('показатели на оранжевой панели дословно из эталона', () => {
+  it('показатели на белой панели дословно из эталона', () => {
     const pokazateli = $('[data-pokazatel]');
     expect(pokazateli.length).toBe(3);
     const tekst = pokazateli.text().replace(/\s+/g, ' ');
@@ -65,7 +66,7 @@ describe('герой главной', () => {
     // колонка героя задана процентом: фиксированные 78px вылезают из неё на ноутбуках 1281-1600px
     const css = readdirSync('dist/_astro').filter((f) => f.endsWith('.css'))
       .map((f) => readFileSync(`dist/_astro/${f}`, 'utf8')).join('\n');
-    expect(css).toMatch(/clamp\([^)]*78px\)/);
+    expect(css).toMatch(/clamp\([^)]*66px\)/);
     expect(css).toMatch(/overflow-wrap:\s*(anywhere|break-word)/);
   });
 
@@ -104,5 +105,38 @@ describe('герой главной', () => {
   it('таймер галереи останавливается при скрытии вкладки и уходе со страницы', () => {
     expect(html).toContain('visibilitychange');
     expect(html).toContain('pagehide');
+  });
+});
+
+
+describe('автоматическая смена фотографий', () => {
+  it('не перезапускается после действий при уменьшенном движении и пока галерея в фокусе', () => {
+    const source = readFileSync('src/components/GalereyaProizvodstva.astro', 'utf8').match(/<script>([\s\S]*?)<\/script>/)[1];
+    const events = new Map();
+    const listeners = (name) => ({ addEventListener: (type, callback) => events.set(`${name}:${type}`, callback) });
+    const dots = [0, 1].map((i) => ({ ...listeners(`dot${i}`), setAttribute() {} }));
+    const frames = dots.map(() => ({ style: {}, querySelector: () => ({ getAttribute: () => 'Фото' }) }));
+    const motion = { matches: true, ...listeners('motion') };
+    const gallery = {
+      ...listeners('gallery'),
+      querySelectorAll: (selector) => selector === '[data-kadr]' ? frames : dots,
+      querySelector: (selector) => selector === '[data-podpis]' ? { textContent: '' } : listeners(selector),
+    };
+    const document = { hidden: false, ...listeners('document'), querySelector: () => gallery };
+    const setInterval = vi.fn(() => 1);
+    runInNewContext(source, { document, window: { ...listeners('window'), matchMedia: () => motion }, setInterval, clearInterval: vi.fn() });
+    events.get('dot1:click')();
+    events.get('gallery:mouseleave')();
+    events.get('gallery:focusout')();
+    events.get('document:visibilitychange')();
+    expect(setInterval).not.toHaveBeenCalled();
+    motion.matches = false;
+    events.get('motion:change')({ matches: false });
+    expect(setInterval).toHaveBeenCalledTimes(1);
+    events.get('gallery:focusin')();
+    events.get('dot0:click')();
+    expect(setInterval).toHaveBeenCalledTimes(1);
+    events.get('gallery:focusout')();
+    expect(setInterval).toHaveBeenCalledTimes(2);
   });
 });

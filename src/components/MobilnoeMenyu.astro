@@ -1,79 +1,76 @@
 ---
 import { put } from '../lib/put.js';
-import { kategorii } from '../lib/content.js';
+import { kategorii, menyu, sayt } from '../lib/content.js';
+const korotko = new Map(kategorii.map((k) => [`/catalog/${k.klyuch}/`, k.korotko]));
 ---
 
-<nav class="mobmenyu" id="mobilnoe-menyu" hidden aria-label="Каталог">
-  <div class="mobmenyu__zagolovok">Каталог</div>
-  <ul class="mobmenyu__spisok">
-    {kategorii.map((k) => (
-      <li>
-        <a href={put(`/catalog/${k.klyuch}/`)}>{k.korotko}</a>
-      </li>
+<dialog class="mobmenyu" id="mobilnoe-menyu" aria-label="Меню сайта">
+  <div class="mobmenyu__shapka">
+    <img src={put(sayt.logotip)} alt={sayt.nazvanie} />
+    <button type="button" data-drawer-close aria-label="Закрыть меню" autofocus><span class="ms" aria-hidden="true">close</span></button>
+  </div>
+  <nav aria-label="Каталог" class="mobmenyu__katalog">
+    <div class="mobmenyu__zagolovok">Продукция</div>
+    {menyu[0].kolonki.map((gruppa) => (
+      <section>
+        <h2>{gruppa.zagolovok}</h2>
+        <ul class="mobmenyu__spisok">
+          {gruppa.punkty.map((k) => (
+            <li><a href={put(k.adres)}><span class="ms" aria-hidden="true">{k.znachok}</span><span>{korotko.get(k.adres) ?? k.podpis}</span></a></li>
+          ))}
+        </ul>
+      </section>
     ))}
-  </ul>
-</nav>
+  </nav>
+  <a class="mobmenyu__glavnaya" href={put('/')}>Главная <span aria-hidden="true">→</span></a>
+  <div class="mobmenyu__kontakty">
+    <a href={`tel:${sayt.telefon.replace(/[^\d+]/g, '')}`}>{sayt.telefon}</a>
+    <span>Пн–Пт, 9:00–18:00 · Москва</span>
+    <a class="mobmenyu__zayavka" href={`mailto:${sayt.pochta}?subject=${encodeURIComponent('Заявка с сайта')}`}>Подать заявку</a>
+  </div>
+</dialog>
 
 <style>
-  .mobmenyu {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    z-index: 30;
-    background: var(--fon-shapka);
-    padding: 20px var(--pole-bok) 32px;
-    box-shadow: 0 18px 40px rgba(16, 18, 20, .12);
-    max-height: calc(100vh - 102px);
-    overflow-y: auto;
-  }
-
-  .mobmenyu[hidden] { display: none; }
-
-  /* на широком экране работает обычная навигация: панель не должна висеть поверх страницы */
-  @media (min-width: 1025px) { .mobmenyu { display: none; } }
-
-  .mobmenyu__zagolovok {
-    font-size: 12.5px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--tekst-tihiy);
-    margin-bottom: 14px;
-  }
-
-  .mobmenyu__spisok { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-
-  .mobmenyu__spisok a {
-    display: block;
-    padding: 13px 0;
-    font-size: 17px;
-    border-bottom: 1px solid rgba(16, 18, 20, .08);
-  }
+  .mobmenyu { position: fixed; inset: 0 auto 0 0; width: min(420px, 92vw); max-width: none; height: 100dvh; max-height: none; margin: 0; border: 0; background: var(--fon); color: var(--tekst); padding: 22px 20px; overflow-y: auto; }
+  .mobmenyu::backdrop { background: rgba(15,14,18,.35); }
+  .mobmenyu__shapka { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 8px 22px; }
+  .mobmenyu__shapka img { width: min(210px, 65%); height: auto; }
+  .mobmenyu__shapka button { flex: none; width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 0; display: grid; place-items: center; cursor: pointer; }
+  .mobmenyu__katalog { background: #fff; border-radius: 32px; padding: 18px; }
+  .mobmenyu__zagolovok { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; padding: 4px 8px 10px; }
+  .mobmenyu h2 { font-size: 12px; font-weight: 400; color: var(--tekst-tihiy); margin: 10px 8px 4px; }
+  .mobmenyu__spisok { list-style: none; margin: 0; padding: 0; }
+  .mobmenyu__spisok a { display: flex; align-items: center; gap: 12px; padding: 9px 8px; border-radius: 100px; font-size: 15px; line-height: 1.25; }
+  .mobmenyu__spisok a:hover { background: var(--fon); }
+  .mobmenyu__spisok .ms { width: 36px; height: 36px; flex: none; background: var(--fon); border-radius: 50%; display: grid; place-items: center; font-size: 18px; }
+  .mobmenyu__glavnaya { margin-top: 8px; padding: 20px 24px; background: #fff; border-radius: 32px; display: flex; justify-content: space-between; }
+  .mobmenyu__kontakty { margin-top: 8px; padding: 24px; background: var(--tekst); color: #fff; border-radius: 32px; display: flex; flex-direction: column; gap: 14px; }
+  .mobmenyu__kontakty a { color: #fff; font-size: 20px; }
+  .mobmenyu__kontakty span { font-size: 13px; color: #c9c5bd; }
+  .mobmenyu__kontakty .mobmenyu__zayavka { padding: 15px; background: var(--fon); color: var(--tekst); text-align: center; border-radius: 100px; font-size: 14px; }
 </style>
 
 <script>
-  const burger = document.querySelector('[data-burger]');
-  const menyu = document.getElementById('mobilnoe-menyu');
-
-  const pereklyuchit = (otkryt) => {
-    if (!burger || !menyu) return;
-    burger.setAttribute('aria-expanded', String(otkryt));
-    menyu.hidden = !otkryt;
-    // блокировать прокрутку нужно на корневом элементе: у body это не сработает,
-    // потому что overflow-x задан на html и значения берутся оттуда
-    document.documentElement.style.overflow = otkryt ? 'hidden' : '';
-  };
-
+  const burger = document.querySelector<HTMLButtonElement>('[data-burger]');
+  const menyu = document.querySelector<HTMLDialogElement>('#mobilnoe-menyu');
+  let predydushchiyOverflow = '';
+  const zakryt = () => menyu?.close();
   burger?.addEventListener('click', () => {
-    pereklyuchit(burger.getAttribute('aria-expanded') !== 'true');
+    if (!menyu || menyu.open) return;
+    predydushchiyOverflow = document.documentElement.style.overflow;
+    menyu.showModal();
+    burger.setAttribute('aria-expanded', 'true');
+    document.documentElement.style.overflow = 'hidden';
   });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && burger?.getAttribute('aria-expanded') === 'true') pereklyuchit(false);
+  menyu?.querySelector('[data-drawer-close]')?.addEventListener('click', zakryt);
+  menyu?.addEventListener('click', (e) => {
+    const granicy = menyu.getBoundingClientRect();
+    if (e.target === menyu && (e.clientX < granicy.left || e.clientX > granicy.right || e.clientY < granicy.top || e.clientY > granicy.bottom)) zakryt();
   });
-
-  // поворот планшета в горизонт возвращает обычную навигацию — панель закрываем
-  window.matchMedia('(min-width: 1025px)').addEventListener('change', (e) => {
-    if (e.matches && burger?.getAttribute('aria-expanded') === 'true') pereklyuchit(false);
+  menyu?.addEventListener('close', () => {
+    document.documentElement.style.overflow = predydushchiyOverflow;
+    burger?.setAttribute('aria-expanded', 'false');
+    burger?.focus();
   });
+  menyu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', zakryt));
 </script>

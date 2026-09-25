@@ -5,7 +5,7 @@
     "Оборудование для безопасного и точного слива и налива нефтепродуктов, жидкого газа, керосина и серы. Решения для авто- и железнодорожных эстакад и промышленных объектов."
   ],
   "knopka": "Получить консультацию",
-  "kartinka": "/images/load-hero.webp",
+  "kartinka": "/images/load-hero.png",
   "plashka": "Надёжные решения для ваших проектов",
   "chislo": "7",
   "chislo_podpis": "решений",
@@ -20,38 +20,38 @@
     {
       "zagolovok": "Серия 1803",
       "opisanie": "Верхний налив • Автоцистерны",
-      "kartinka": "/images/load-1.webp",
+      "kartinka": "/images/load-1.png",
       "vedyot_na": "s1803"
     },
     {
       "zagolovok": "Серия 1405",
       "opisanie": "Муфты и поворотные узлы",
-      "kartinka": "/images/load-2.webp"
+      "kartinka": "/images/load-2.png"
     },
     {
       "zagolovok": "Серия 1403",
       "opisanie": "Нижний налив • Автоцистерны",
-      "kartinka": "/images/load-3.webp"
+      "kartinka": "/images/load-3.png"
     },
     {
       "zagolovok": "Серия 1802",
       "opisanie": "Верхний налив • Ж/д цистерны",
-      "kartinka": "/images/load-4.webp"
+      "kartinka": "/images/load-4.png"
     },
     {
       "zagolovok": "Серия 1101",
       "opisanie": "Наливные стояки и скиды",
-      "kartinka": "/images/load-5.webp"
+      "kartinka": "/images/load-5.png"
     },
     {
       "zagolovok": "Серия 1201RV",
       "opisanie": "Клапанные блоки",
-      "kartinka": "/images/load-6.webp"
+      "kartinka": "/images/load-6.png"
     },
     {
       "zagolovok": "Серия 1201",
       "opisanie": "Нижний налив • Ж/д цистерны",
-      "kartinka": "/images/load-7.webp",
+      "kartinka": "/images/load-7.png",
       "vedyot_na": "s1201"
     }
   ],

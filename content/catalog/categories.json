@@ -1,12 +1,12 @@
 [
-  { "klyuch": "filters",   "nazvanie": "Фильтры топливные, фильтры жидкостные", "korotko": "Фильтры",                 "kolichestvo": "3 товара",   "kartinka": "/images/cat-c1.webp",     "svoye": true },
-  { "klyuch": "pipelines", "nazvanie": "Трубопроводы с внутренним покрытием",   "korotko": "Трубопроводы",            "kolichestvo": "1 товар",    "kartinka": "/images/cat-c2.webp",     "svoye": true },
-  { "klyuch": "ground",    "nazvanie": "Обслуживание самолёта на стоянке",      "korotko": "Обслуживание на стоянке", "kolichestvo": "5 товаров",  "kartinka": "/images/cat-c3.webp",     "svoye": false },
-  { "klyuch": "hydrant",   "nazvanie": "Гидрантная система",                   "korotko": "Гидрантная система",      "kolichestvo": "5 товаров",  "kartinka": "/images/cat-c4.webp",     "svoye": true },
-  { "klyuch": "fmod",      "nazvanie": "Фильтрационные модули",                "korotko": "Фильтрационные модули",   "kolichestvo": "6 товаров",  "kartinka": "/images/cat-c5.webp",     "svoye": true },
-  { "klyuch": "load",      "nazvanie": "Слив/налив",                           "korotko": "Слив/налив",              "kolichestvo": "7 товаров",  "kartinka": "/images/cat-c6.webp",     "svoye": true },
-  { "klyuch": "auto",      "nazvanie": "Автоматизированные наливные комплексы","korotko": "Наливные комплексы",      "kolichestvo": "10 товаров", "kartinka": "/images/auto-hero.webp",  "svoye": true },
-  { "klyuch": "probe",     "nazvanie": "Пробоотборники",                       "korotko": "Пробоотборники",          "kolichestvo": "1 товар",    "kartinka": "/images/probe-hero.webp", "svoye": true },
-  { "klyuch": "pit",       "nazvanie": "ПИТ-системы",                          "korotko": "ПИТ-системы",             "kolichestvo": "3 товара",   "kartinka": "/images/pit-hero.webp",   "svoye": false },
-  { "klyuch": "caddy",     "nazvanie": "Кэдди",                                "korotko": "Кэдди",                   "kolichestvo": "2 товара",   "kartinka": "/images/caddy-hero.webp", "svoye": false }
+  { "klyuch": "filters",   "nazvanie": "Фильтры топливные, фильтры жидкостные", "korotko": "Фильтры",                 "kolichestvo": "3 товара",   "kartinka": "/images/cat-c1.png",     "svoye": true },
+  { "klyuch": "pipelines", "nazvanie": "Трубопроводы с внутренним покрытием",   "korotko": "Трубопроводы",            "kolichestvo": "1 товар",    "kartinka": "/images/cat-c2.png",     "svoye": true },
+  { "klyuch": "ground",    "nazvanie": "Обслуживание самолёта на стоянке",      "korotko": "Обслуживание на стоянке", "kolichestvo": "5 товаров",  "kartinka": "/images/cat-c3.png",     "svoye": false },
+  { "klyuch": "hydrant",   "nazvanie": "Гидрантная система",                   "korotko": "Гидрантная система",      "kolichestvo": "5 товаров",  "kartinka": "/images/cat-c4.png",     "svoye": true },
+  { "klyuch": "fmod",      "nazvanie": "Фильтрационные модули",                "korotko": "Фильтрационные модули",   "kolichestvo": "6 товаров",  "kartinka": "/images/cat-c5.png",     "svoye": true },
+  { "klyuch": "load",      "nazvanie": "Слив/налив",                           "korotko": "Слив/налив",              "kolichestvo": "7 товаров",  "kartinka": "/images/cat-c6.png",     "svoye": true },
+  { "klyuch": "auto",      "nazvanie": "Автоматизированные наливные комплексы","korotko": "Наливные комплексы",      "kolichestvo": "10 товаров", "kartinka": "/images/auto-hero.png",  "svoye": true },
+  { "klyuch": "probe",     "nazvanie": "Пробоотборники",                       "korotko": "Пробоотборники",          "kolichestvo": "1 товар",    "kartinka": "/images/probe-hero.png", "svoye": true },
+  { "klyuch": "pit",       "nazvanie": "ПИТ-системы",                          "korotko": "ПИТ-системы",             "kolichestvo": "3 товара",   "kartinka": "/images/pit-hero.png",   "svoye": false },
+  { "klyuch": "caddy",     "nazvanie": "Кэдди",                                "korotko": "Кэдди",                   "kolichestvo": "2 товара",   "kartinka": "/images/caddy-hero.png", "svoye": false }
 ]

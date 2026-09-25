@@ -23,19 +23,23 @@ describe('каркас', () => {
     expect(css).not.toContain('fonts.gstatic.com');
   });
 
-  it('есть все пять начертаний, которые использует дизайн', () => {
-    for (const ves of ['400', '500', '600', '700', '800']) {
+  it('подключены тонкое и обычное начертания нового дизайна', () => {
+    for (const ves of ['300', '400']) {
       expect(css, `нет начертания ${ves}`).toMatch(new RegExp(`font-weight:\\s*${ves}`));
     }
   });
 
-  it('кириллица покрыта всеми четырьмя диапазонами символов', () => {
-    // шрифт вариативный: один файл на подмножество покрывает все веса
-    const golos = css.match(/GolosText-[a-z-]+\.[A-Za-z0-9_-]+\.woff2/g) ?? [];
-    expect(new Set(golos).size).toBe(4);
+  it('кириллица и латиница покрыты локальными подмножествами Manrope', () => {
+    const source = readFileSync('src/styles/fonts.css', 'utf8');
     for (const subset of ['cyrillic-ext', 'cyrillic', 'latin-ext', 'latin']) {
-      expect(css, `нет подмножества ${subset}`).toContain(`GolosText-${subset}.`);
+      expect(source).toContain(`Manrope-${subset}.woff2`);
+      expect(existsSync(`src/assets/fonts/Manrope-${subset}.woff2`)).toBe(true);
     }
+    // Vite embeds the small cyrillic-ext subset as a data URL; names can disappear.
+    const faces = css.match(/@font-face\s*\{[^}]+\}/g).filter((f) => f.includes('Manrope'));
+    expect(faces.length).toBeGreaterThanOrEqual(8);
+    expect(faces.some((f) => /unicode-range:[^}]*u\+0?400-0?45f/i.test(f))).toBe(true);
+    expect(faces.some((f) => /unicode-range:[^}]*u\+0?460-0?52f/i.test(f))).toBe(true);
   });
 
   it('все файлы шрифтов, на которые ссылается вёрстка, есть в сборке', () => {
@@ -50,7 +54,7 @@ describe('каркас', () => {
   it('токены палитры заданы значениями из эталона', () => {
     // Astro минифицирует CSS и приводит hex к нижнему регистру — сравниваем без учёта регистра.
     const nizhniy = css.toLowerCase();
-    for (const cvet of ['#e9efeb', '#edf2ee', '#dee8e1', '#f5761b', '#1c1f21', '#16191c', '#101214', '#e31e24']) {
+    for (const cvet of ['#f0efe9', '#e8e6de', '#322d2a', '#8b8b8b']) {
       expect(nizhniy, `нет цвета ${cvet}`).toContain(cvet);
     }
   });

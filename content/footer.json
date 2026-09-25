@@ -1,11 +1,34 @@
 {
   "opisanie": "Проектирование, производство и поставка оборудования для топливной, авиационной и промышленной инфраструктуры.",
   "razdely": [
-    { "podpis": "О компании",  "adres": "/company/" },
-    { "podpis": "Проекты",     "adres": "/projects/" },
-    { "podpis": "Пресс-центр", "adres": "/press/" },
-    { "podpis": "Контакты",    "adres": "/contacts/" }
+    {
+      "podpis": "О компании",
+      "adres": "/company/"
+    },
+    {
+      "podpis": "Проекты",
+      "adres": "/projects/"
+    },
+    {
+      "podpis": "Пресс-центр",
+      "adres": "/press/"
+    },
+    {
+      "podpis": "Контакты",
+      "adres": "/contacts/"
+    }
   ],
-  "politika": { "podpis": "Политика обработки персональных данных", "adres": "/policy/" },
-  "knopka_zayavki": "Подать заявку"
+  "politika": {
+    "podpis": "Политика обработки персональных данных",
+    "adres": "/policy/"
+  },
+  "knopka_zayavki": "Подать заявку",
+  "kategorii": [
+    "filters",
+    "pipelines",
+    "ground",
+    "hydrant",
+    "pit",
+    "caddy"
+  ]
 }

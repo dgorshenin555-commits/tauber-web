@@ -26,62 +26,74 @@
   "sekcii": [
     {
       "zagolovok": "Состав системы",
-      "tip": "prostoy",
+      "tip": "resheniya",
       "elementy": [
-        "{'img': 'assets/probe-2b.png', 'title': 'Отбор из резервуара', 'sub': 'Решения для наземных и подземных резервуаров'}",
-        "{'img': 'assets/probe-3b.png', 'title': 'Контроль пробы', 'sub': 'Удобный и безопасный анализ без контакта с продуктом'}",
-        "{'img': 'assets/probe-4b.png', 'title': 'Арматура и подключение', 'sub': 'Надёжные узлы и герметичные соединения'}"
+        {
+          "zagolovok": "Отбор из резервуара",
+          "opisanie": "Решения для наземных и подземных резервуаров",
+          "kartinka": "/images/probe-2b.png"
+        },
+        {
+          "zagolovok": "Контроль пробы",
+          "opisanie": "Удобный и безопасный анализ без контакта с продуктом",
+          "kartinka": "/images/probe-3b.png"
+        },
+        {
+          "zagolovok": "Арматура и подключение",
+          "opisanie": "Надёжные узлы и герметичные соединения",
+          "kartinka": "/images/probe-4b.png"
+        }
       ]
     },
     {
       "zagolovok": "Как работает",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "link",
           "zagolovok": "Подключение",
-          "podpis": "Соединение пробоотборника с резервуаром"
+          "opisanie": "Соединение пробоотборника с резервуаром",
+          "znachok": "link"
         },
         {
-          "znachok": "water_drop",
           "zagolovok": "Отбор пробы",
-          "podpis": "Забор продукта с заданного уровня"
+          "opisanie": "Забор продукта с заданного уровня",
+          "znachok": "water_drop"
         },
         {
-          "znachok": "lock",
           "zagolovok": "Герметичная передача",
-          "podpis": "Проба остаётся в закрытом контуре"
+          "opisanie": "Проба остаётся в закрытом контуре",
+          "znachok": "lock"
         },
         {
-          "znachok": "fact_check",
           "zagolovok": "Анализ",
-          "podpis": "Передача пробы в лабораторию"
+          "opisanie": "Передача пробы в лабораторию",
+          "znachok": "fact_check"
         }
       ]
     },
     {
       "zagolovok": "Где применяется",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "propane_tank",
           "zagolovok": "Нефтебазы",
-          "podpis": "Хранение и отгрузка нефтепродуктов"
+          "opisanie": "Хранение и отгрузка нефтепродуктов",
+          "znachok": "propane_tank"
         },
         {
-          "znachok": "local_gas_station",
           "zagolovok": "АЗС и АЗК",
-          "podpis": "Подземные резервуары"
+          "opisanie": "Подземные резервуары",
+          "znachok": "local_gas_station"
         },
         {
-          "znachok": "flight",
           "zagolovok": "Склады ГСМ аэропортов",
-          "podpis": "Контроль качества авиатоплива"
+          "opisanie": "Контроль качества авиатоплива",
+          "znachok": "flight"
         },
         {
-          "znachok": "factory",
           "zagolovok": "НПЗ и терминалы",
-          "podpis": "Технологический контроль"
+          "opisanie": "Технологический контроль",
+          "znachok": "factory"
         }
       ]
     }
@@ -117,8 +129,8 @@
       }
     ]
   },
-  "kartinka": "/images/probe-1.webp",
+  "kartinka": "/images/probe-1.png",
   "galereya": [
-    "/images/probe-hero.webp"
+    "/images/probe-hero.png"
   ]
 }

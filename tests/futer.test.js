@@ -11,10 +11,10 @@ describe('футер', () => {
     expect($('footer').length).toBe(1);
   });
 
-  it('в футере шесть первых категорий, как в эталоне', () => {
+  it('в футере шесть категорий из актуального эталона', () => {
     const ssylki = $('footer a[href^="/tauber-web/catalog/"]');
     expect(ssylki.length).toBe(6);
-    expect($(ssylki[0]).text().trim()).toBe(kategorii[0].korotko);
+    expect(ssylki.map((_, a) => $(a).attr('href')).get()).toEqual(futer.kategorii.map((key) => `/tauber-web/catalog/${key}/`));
   });
 
   it('телефон и почта берутся из site.json и кликабельны', () => {
@@ -28,7 +28,7 @@ describe('футер', () => {
     expect(href).toMatch(/^tel:\+\d{11}$/);
   });
 
-  it('в футере стоит тот же знак, осветлённый под тёмный фон', () => {
+  it('в футере стоит тот же знак, в исходных цветах на светлом фоне', () => {
     const logo = $('footer [data-logotip-futer] img');
     expect(logo.length, 'в футере нет знака компании').toBe(1);
     expect(logo.attr('alt')).toBe(sayt.nazvanie);

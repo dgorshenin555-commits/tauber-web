@@ -109,8 +109,8 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
     margin: 0;
     font-size: clamp(30px, 3.6vw, 56px);
     line-height: 1.02;
-    letter-spacing: -.03em;
-    font-weight: 700;
+    letter-spacing: .005em;
+    font-weight: 300;
     overflow-wrap: anywhere;
   }
 
@@ -132,7 +132,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
   .verh__knopka:hover { color: #fff; opacity: .9; }
   .verh__knopka .ms { font-size: 20px; }
 
-  .verh__kartinka { border-radius: var(--radius-karta); overflow: hidden; background: #DCE3DF; min-height: 320px; }
+  .verh__kartinka { border-radius: var(--radius-karta); overflow: hidden; background: #e8e6de; min-height: 320px; }
   .verh__kartinka img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   .verh__panel {
@@ -144,32 +144,32 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
   }
 
   .verh__panel--tyomnaya { background: var(--temnaya); color: #fff; }
-  .verh__chislo { font-size: 62px; line-height: .9; font-weight: 700; letter-spacing: -.03em; }
-  .verh__chislo-podpis { font-size: 18px; font-weight: 600; margin-top: 4px; }
+  .verh__chislo { font-size: 62px; line-height: .9; font-weight: 300; letter-spacing: .005em; }
+  .verh__chislo-podpis { font-size: 18px; font-weight: 400; margin-top: 4px; }
   .verh__perechislenie { margin: 18px 0 0; font-size: 14px; line-height: 1.5; opacity: .85; }
 
   .razdel { padding: 34px var(--pole-bok) 10px; }
   .razdel__shapka { margin-bottom: 22px; }
-  .razdel__zagolovok { margin: 0; font-size: 33px; font-weight: 700; letter-spacing: -.02em; }
+  .razdel__zagolovok { margin: 0; font-size: 33px; font-weight: 300; letter-spacing: .005em; }
   .razdel__podzagolovok { margin: 8px 0 0; font-size: 15px; color: var(--tekst-vtoroy); }
 
-  .razdel__kartochki { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+  .razdel__kartochki { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
 
   .tovar__ssylka {
     display: flex;
     flex-direction: column;
     gap: 10px;
     background: #fff;
-    border-radius: 24px;
+    border-radius: 36px;
     padding: 10px;
-    box-shadow: 0 6px 22px rgba(16, 18, 20, .06);
+    box-shadow: none;
     height: 100%;
     transition: transform .25s, box-shadow .25s;
   }
 
-  .tovar__ssylka:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(16, 18, 20, .12); }
+  .tovar__ssylka:hover { transform: translateY(-3px); box-shadow: none; }
 
-  .tovar__kartinka { position: relative; border-radius: 18px; overflow: hidden; background: #DCE3DF; height: 152px; }
+  .tovar__kartinka { position: relative; border-radius: 24px; overflow: hidden; background: #e8e6de; height: 152px; }
   .tovar__kartinka img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   .tovar__nomer {
@@ -180,24 +180,24 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
     border-radius: var(--radius-pilyulya);
     padding: 3px 10px;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 400;
   }
 
-  .tovar__zagolovok { margin: 4px 6px 0; font-size: 16px; font-weight: 600; line-height: 1.25; }
+  .tovar__zagolovok { margin: 4px 6px 0; font-size: 16px; font-weight: 400; line-height: 1.25; }
   .tovar__opisanie { margin: 0 6px 10px; font-size: 13px; line-height: 1.45; color: var(--tekst-tihiy); }
 
   .plyusy { padding: 24px var(--pole-bok) 40px; }
-  .plyusy__spisok { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+  .plyusy__spisok { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
 
-  .plyus { background: #F6F8F7; border-radius: var(--radius-karta); padding: 24px 24px 26px; }
+  .plyus { background: #ffffff; border-radius: var(--radius-karta); padding: 24px 24px 26px; }
   .plyus__znachok { font-size: 30px; color: var(--akcent); }
-  .plyus__zagolovok { margin: 14px 0 0; font-size: 17px; font-weight: 600; line-height: 1.3; }
+  .plyus__zagolovok { margin: 14px 0 0; font-size: 17px; font-weight: 400; line-height: 1.3; }
   .plyus__opisanie { margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: var(--tekst-vtoroy); }
 
   @media (max-width: 1280px) {
     .verh { grid-template-columns: 1fr 1fr; }
     .verh__panel { grid-column: 1 / -1; }
-    .razdel__kartochki, .plyusy__spisok { grid-template-columns: repeat(3, 1fr); }
+    .razdel__kartochki, .plyusy__spisok { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
 
   @media (max-width: 1024px) {
@@ -206,7 +206,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
   }
 
   @media (max-width: 768px) {
-    .razdel__kartochki, .plyusy__spisok { grid-template-columns: repeat(2, 1fr); }
+    .razdel__kartochki, .plyusy__spisok { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .razdel__zagolovok { font-size: 26px; }
     .verh__tekst { padding: 28px 22px 30px; }
     .verh__chislo { font-size: 48px; }
@@ -215,4 +215,19 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
   @media (max-width: 480px) {
     .razdel__kartochki, .plyusy__spisok { grid-template-columns: repeat(1, 1fr); }
   }
+
+  .verh { grid-template-columns: minmax(0, 37.1fr) minmax(0, 36.5fr) minmax(0, 24.5fr); }
+  .verh__panel { background: #fff; }
+  .verh__panel--tyomnaya { background: var(--temnaya); color: #fff; }
+  .verh__chislo { font-size: 80px; margin-top: auto; }
+  .verh__chislo-podpis { font-size: clamp(24px, 2.5vw, 40px); }
+  .verh__zagolovok { font-size: clamp(32px, 3.5vw, 56px); }
+  .razdel__kartochki { grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
+  .tovar__kartinka { height: 190px; }
+  .tovar__ssylka:hover { transform: none; background: var(--fon-gero); }
+  .tovar__zagolovok { font-size: 17px; }
+  .plyus { background: #fff; border-radius: 32px; }
+  @media (max-width: 1280px) { .verh { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
+  @media (max-width: 768px) { .verh { grid-template-columns: 1fr; } .verh__panel { grid-column: auto; } .verh__zagolovok { font-size: clamp(30px, 6vw, 48px); } }
+
 </style>

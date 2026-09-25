@@ -5,7 +5,7 @@
     "Всепогодные автоматизированные системы налива нефтепродуктов светлых и тёмных, для авто- и ж/д эстакад. Коммерческий учёт, автоматизация, дистанционное управление, мониторинг параметров процесса, ручной режим, противоаварийная защита и пожарная безопасность."
   ],
   "knopka": "Получить консультацию",
-  "kartinka": "/images/auto-hero.webp",
+  "kartinka": "/images/auto-hero.png",
   "plashka": "Надёжные решения для ваших проектов",
   "chislo": "10",
   "chislo_podpis": "решений",
@@ -20,33 +20,33 @@
     {
       "zagolovok": "Комплекс верхнего налива",
       "opisanie": "Автоцистерны • Автоматизация",
-      "kartinka": "/images/auto-1.webp",
+      "kartinka": "/images/auto-1.png",
       "vedyot_na": "ank"
     },
     {
       "zagolovok": "Комплекс нижнего налива",
       "opisanie": "Автоцистерны • Герметичные соединения",
-      "kartinka": "/images/auto-2.webp"
+      "kartinka": "/images/auto-2.png"
     },
     {
       "zagolovok": "Налив для ж/д цистерн",
       "opisanie": "Ж/д эстакады • Автоматизация",
-      "kartinka": "/images/auto-3.webp"
+      "kartinka": "/images/auto-3.png"
     },
     {
       "zagolovok": "Узел коммерческого учёта",
       "opisanie": "Расходомеры • Измерительные линии",
-      "kartinka": "/images/auto-4.webp"
+      "kartinka": "/images/auto-4.png"
     },
     {
       "zagolovok": "Шкаф управления и автоматизация",
       "opisanie": "АСУ ТП • Дистанционный контроль",
-      "kartinka": "/images/auto-5.webp"
+      "kartinka": "/images/auto-5.png"
     },
     {
       "zagolovok": "Система защиты и блокировок",
       "opisanie": "Противоаварийные системы • Пожарная безопасность",
-      "kartinka": "/images/auto-6.webp"
+      "kartinka": "/images/auto-6.png"
     }
   ],
   "preimushchestva": [

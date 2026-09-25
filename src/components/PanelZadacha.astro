@@ -9,7 +9,7 @@ const zayavkaSsylka = `mailto:${sayt.pochta}?subject=${encodeURIComponent('За�
   <div class="zadacha__nadzagolovok">Есть задача?</div>
   <div class="zadacha__zagolovok">Обсудим ваш проект</div>
   <p class="zadacha__tekst">
-    Подберём оборудование под объект, посчитаем комплектацию и пришлём документацию.
+    Инженер профильного направления свяжется с вами, уточнит параметры объекта и подготовит техническое и коммерческое предложение.
   </p>
 
   <div class="zadacha__kontakty">
@@ -43,11 +43,11 @@ const zayavkaSsylka = `mailto:${sayt.pochta}?subject=${encodeURIComponent('За�
     margin-top: 14px;
     font-size: 32px;
     line-height: 1.05;
-    font-weight: 700;
-    letter-spacing: -.02em;
+    font-weight: 300;
+    letter-spacing: .005em;
   }
 
-  .zadacha__tekst { margin: 14px 0 0; font-size: 15px; line-height: 1.55; color: #A9B0AC; }
+  .zadacha__tekst { margin: 14px 0 0; font-size: 15px; line-height: 1.55; color: #c9c5bd; }
 
   .zadacha__kontakty { margin-top: 22px; display: flex; flex-direction: column; gap: 10px; }
 
@@ -66,4 +66,13 @@ const zayavkaSsylka = `mailto:${sayt.pochta}?subject=${encodeURIComponent('За�
   }
 
   .zadacha__knopka:hover { color: var(--akcent); }
+
+  .zadacha { padding: 28px 30px; }
+  .zadacha__nadzagolovok, .zadacha__kontakt .ms { color: #fff; }
+  .zadacha__zagolovok { font-size: 33px; }
+  .zadacha__tekst { color: #c9c5bd; }
+  .zadacha__knopka { background: var(--fon); color: var(--tekst); border-radius: 999px; padding: 16px 24px; margin-top: 28px; justify-content: space-between; }
+  .zadacha__kontakt:hover { color: #c9c5bd; }
+  .zadacha__knopka:hover { background: #fff; color: var(--tekst); }
+
 </style>

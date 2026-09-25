@@ -26,94 +26,143 @@
   "sekcii": [
     {
       "zagolovok": "Как устроен модуль",
-      "tip": "prostoy",
+      "tip": "resheniya",
       "elementy": [
-        "{'title': 'Предварительная фильтрация', 'sub': 'Удаление крупных механических примесей'}",
-        "{'title': 'Фильтрация и водоотделение', 'sub': 'Тонкая очистка и удаление свободной и эмульгированной воды'}",
-        "{'title': 'Контроль параметров', 'sub': 'Измерение перепада давления, контроль состояния фильтров'}"
+        {
+          "zagolovok": "Предварительная фильтрация",
+          "opisanie": "Удаление крупных механических примесей"
+        },
+        {
+          "zagolovok": "Фильтрация и водоотделение",
+          "opisanie": "Тонкая очистка и удаление свободной и эмульгированной воды"
+        },
+        {
+          "zagolovok": "Контроль параметров",
+          "opisanie": "Измерение перепада давления, контроль состояния фильтров"
+        }
       ]
     },
     {
       "zagolovok": "Состав модуля",
-      "tip": "prostoy",
+      "tip": "resheniya",
       "elementy": [
-        "{'img': 'assets/fmk-c1.png', 'title': 'Фильтрующие элементы и корпуса', 'sub': 'Многоступенчатая очистка топлива'}",
-        "{'img': 'assets/fmk-c2.png', 'title': 'Запорная арматура', 'sub': 'Надёжное управление потоками'}",
-        "{'img': 'assets/fmk-c3.png', 'title': 'Манометры и датчики', 'sub': 'Контроль давления и перепада'}",
-        "{'img': 'assets/fmk-c4.png', 'title': 'Трубная обвязка', 'sub': 'Из нержавеющей стали или углеродистой стали с защитным покрытием'}",
-        "{'img': 'assets/fmk-c5.png', 'title': 'КИП и шкаф управления', 'sub': 'Автоматизация и мониторинг параметров'}",
-        "{'img': 'assets/fmk-c6.png', 'title': 'Дренаж и контроль воды', 'sub': 'Удаление воды, пробоотбор, визуальный контроль'}"
+        {
+          "zagolovok": "Фильтрующие элементы и корпуса",
+          "opisanie": "Многоступенчатая очистка топлива",
+          "kartinka": "/images/fmk-c1.png"
+        },
+        {
+          "zagolovok": "Запорная арматура",
+          "opisanie": "Надёжное управление потоками",
+          "kartinka": "/images/fmk-c2.png"
+        },
+        {
+          "zagolovok": "Манометры и датчики",
+          "opisanie": "Контроль давления и перепада",
+          "kartinka": "/images/fmk-c3.png"
+        },
+        {
+          "zagolovok": "Трубная обвязка",
+          "opisanie": "Из нержавеющей стали или углеродистой стали с защитным покрытием",
+          "kartinka": "/images/fmk-c4.png"
+        },
+        {
+          "zagolovok": "КИП и шкаф управления",
+          "opisanie": "Автоматизация и мониторинг параметров",
+          "kartinka": "/images/fmk-c5.png"
+        },
+        {
+          "zagolovok": "Дренаж и контроль воды",
+          "opisanie": "Удаление воды, пробоотбор, визуальный контроль",
+          "kartinka": "/images/fmk-c6.png"
+        }
       ]
     },
     {
       "zagolovok": "Контроль качества топлива",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "water_drop",
           "zagolovok": "Перепад давления",
-          "podpis": "Постоянный мониторинг состояния фильтров"
+          "opisanie": "Постоянный мониторинг состояния фильтров",
+          "znachok": "water_drop"
         },
         {
-          "znachok": "grain",
           "zagolovok": "Наличие воды",
-          "podpis": "Эффективное удаление свободной и эмульгированной воды"
+          "opisanie": "Эффективное удаление свободной и эмульгированной воды",
+          "znachok": "grain"
         },
         {
-          "znachok": "visibility",
           "zagolovok": "Визуальный контроль",
-          "podpis": "Возможность установки смотровых окон"
+          "opisanie": "Возможность установки смотровых окон",
+          "znachok": "visibility"
         },
         {
-          "znachok": "science",
           "zagolovok": "Пробоотбор",
-          "podpis": "Интеграция точек отбора проб для лабораторного анализа"
+          "opisanie": "Интеграция точек отбора проб для лабораторного анализа",
+          "znachok": "science"
         },
         {
-          "znachok": "description",
           "zagolovok": "Документация",
-          "podpis": "Поддержка сертификации и соответствия требованиям авиационных регламентов"
+          "opisanie": "Поддержка сертификации и соответствия требованиям авиационных регламентов",
+          "znachok": "description"
         }
       ]
     },
     {
       "zagolovok": "Интеграция в объект",
-      "tip": "prostoy",
+      "tip": "resheniya",
       "elementy": [
-        "{'img': 'assets/fmk-i1.png', 'title': 'Склад ГСМ', 'sub': 'Очистка топлива перед выдачей в систему'}",
-        "{'img': 'assets/fmk-i2.png', 'title': 'Топливозаправочный комплекс', 'sub': 'Интеграция в существующие и новые объекты'}",
-        "{'img': 'assets/fmk-i3.png', 'title': 'Гидрантная система аэропорта', 'sub': 'Надёжное обеспечение качества топлива'}",
-        "{'img': 'assets/fmk-i4.png', 'title': 'Технологическая линия', 'sub': 'Решения под индивидуальные требования'}"
+        {
+          "zagolovok": "Склад ГСМ",
+          "opisanie": "Очистка топлива перед выдачей в систему",
+          "kartinka": "/images/fmk-i1.png"
+        },
+        {
+          "zagolovok": "Топливозаправочный комплекс",
+          "opisanie": "Интеграция в существующие и новые объекты",
+          "kartinka": "/images/fmk-i2.png"
+        },
+        {
+          "zagolovok": "Гидрантная система аэропорта",
+          "opisanie": "Надёжное обеспечение качества топлива",
+          "kartinka": "/images/fmk-i3.png"
+        },
+        {
+          "zagolovok": "Технологическая линия",
+          "opisanie": "Решения под индивидуальные требования",
+          "kartinka": "/images/fmk-i4.png"
+        }
       ]
     },
     {
       "zagolovok": "Основные параметры",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "bar_chart",
           "zagolovok": "Производительность",
-          "podpis": ""
+          "opisanie": "от ___ до ___ м³/ч",
+          "znachok": "bar_chart"
         },
         {
-          "znachok": "speed",
           "zagolovok": "Рабочее давление",
-          "podpis": ""
+          "opisanie": "до ___ бар",
+          "znachok": "speed"
         },
         {
-          "znachok": "blur_on",
           "zagolovok": "Тонкость фильтрации",
-          "podpis": ""
+          "opisanie": "до ___ мкм",
+          "znachok": "blur_on"
         },
         {
-          "znachok": "settings",
           "zagolovok": "Исполнение",
-          "podpis": ""
+          "opisanie": "блочное / контейнерное",
+          "znachok": "settings"
         },
         {
-          "znachok": "device_thermostat",
           "zagolovok": "Климатическое исполнение",
-          "podpis": ""
+          "opisanie": "У, УХЛ, ХЛ",
+          "znachok": "device_thermostat"
         }
       ]
     }
@@ -151,9 +200,9 @@
       }
     ]
   },
-  "kartinka": "/images/fmk-hero2.webp",
+  "kartinka": "/images/fmk-hero2.png",
   "galereya": [
-    "/images/fmk-scheme2.webp",
-    "/images/fmk-band.webp"
+    "/images/fmk-scheme2.png",
+    "/images/fmk-band.png"
   ]
 }

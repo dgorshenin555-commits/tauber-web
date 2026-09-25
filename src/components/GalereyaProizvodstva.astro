@@ -38,7 +38,7 @@ import { fotoProizvodstva } from '../lib/content.js';
 <style>
   .galereya {
     position: relative;
-    background: #9AA3A0;
+    background: #77716b;
     border-radius: var(--radius-karta);
     overflow: hidden;
     min-height: 360px;
@@ -132,6 +132,15 @@ import { fotoProizvodstva } from '../lib/content.js';
     .galereya { min-height: 200px; }
     .galereya__podpis { font-size: 12px; padding: 6px 11px; }
   }
+
+  .galereya { min-height: 430px; background: var(--fon-gero); }
+  .galereya__podpis { color: var(--tekst); background: rgba(255,255,255,.94); backdrop-filter: none; }
+  .galereya__tochka[aria-current='true'] .galereya__tochka-vid { background: #fff; }
+  .galereya__strelka--akcent { background: var(--fon); color: var(--tekst); }
+  .galereya__niz { flex-wrap: wrap; gap: 8px; }
+  @media (max-width: 768px) { .galereya { min-height: 340px; } }
+  @media (max-width: 480px) { .galereya { min-height: 300px; } .galereya__tochki { display: none; } }
+
 </style>
 
 <script>
@@ -143,6 +152,9 @@ import { fotoProizvodstva } from '../lib/content.js';
     const podpis = galereya.querySelector('[data-podpis]');
     let tekushchiy = 0;
     let taymer = null;
+    let navedenie = false;
+    let fokus = false;
+    const spokoyno = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     const pokazat = (i) => {
       tekushchiy = (i + kadry.length) % kadry.length;
@@ -153,7 +165,7 @@ import { fotoProizvodstva } from '../lib/content.js';
     };
 
     const stop = () => { if (taymer) { clearInterval(taymer); taymer = null; } };
-    const pusk = () => { stop(); taymer = setInterval(() => pokazat(tekushchiy + 1), 5000); };
+    const pusk = () => { stop(); if (!spokoyno.matches && !document.hidden && !navedenie && !fokus) taymer = setInterval(() => pokazat(tekushchiy + 1), 5000); };
 
     tochki.forEach((t, n) => t.addEventListener('click', () => { pokazat(n); pusk(); }));
 
@@ -163,17 +175,16 @@ import { fotoProizvodstva } from '../lib/content.js';
       ?.addEventListener('click', () => { pokazat(tekushchiy + 1); pusk(); });
 
     // человек читает подпись — не подменяем кадр под ним
-    galereya.addEventListener('mouseenter', stop);
-    galereya.addEventListener('mouseleave', pusk);
-    galereya.addEventListener('focusin', stop);
-    galereya.addEventListener('focusout', pusk);
+    galereya.addEventListener('mouseenter', () => { navedenie = true; stop(); });
+    galereya.addEventListener('mouseleave', () => { navedenie = false; pusk(); });
+    galereya.addEventListener('focusin', () => { fokus = true; stop(); });
+    galereya.addEventListener('focusout', (e) => { fokus = !!e?.relatedTarget && galereya.contains(e.relatedTarget); pusk(); });
 
     document.addEventListener('visibilitychange', () => (document.hidden ? stop() : pusk()));
     window.addEventListener('pagehide', stop);
 
     // при системной настройке «уменьшить движение» кадры не листаются сами
-    const spokoyno = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (!spokoyno.matches) pusk();
+    pusk();
     spokoyno.addEventListener('change', (e) => (e.matches ? stop() : pusk()));
   }
 </script>

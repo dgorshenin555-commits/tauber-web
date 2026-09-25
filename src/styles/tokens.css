@@ -1,21 +1,20 @@
-/* Значения скопированы из эталона design/Tauber.dc.html. Менять только вместе с дизайном. */
+/* Vellum: actual HTML reference in design/vellum. */
 :root {
-  --fon: #E9EFEB;
-  --fon-shapka: #EDF2EE;
-  --fon-gero: #DEE8E1;
-  --akcent: #F5761B;
-  --temnaya: #1C1F21;
-  --futer: #16191C;
-  --futer-tekst: #C9CFCB;
-  --tekst: #101214;
-  --tekst-vtoroy: #3B4247;
-  --tekst-tihiy: #5C6560;
-  --navedenie: #E31E24;
-  --tekst-menyu: #2A2F33;
-
-  --shrift: 'Golos Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-
+  --fon: #f0efe9;
+  --fon-shapka: #f0efe9;
+  --fon-gero: #e8e6de;
+  --akcent: #322d2a;
+  --temnaya: #322d2a;
+  --futer: #f0efe9;
+  --futer-tekst: #322d2a;
+  --tekst: #322d2a;
+  --tekst-vtoroy: #6a645e;
+  --tekst-tihiy: #77716b;
+  --muted: #8b8b8b;
+  --navedenie: #322d2a;
+  --tekst-menyu: #322d2a;
+  --shrift: 'Manrope', 'Helvetica Neue', Helvetica, sans-serif;
   --pole-bok: max(16px, 2.6%);
-  --radius-karta: 28px;
+  --radius-karta: 48px;
   --radius-pilyulya: 999px;
 }

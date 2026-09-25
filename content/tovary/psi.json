@@ -26,116 +26,116 @@
   "sekcii": [
     {
       "zagolovok": "Основные типы колец PSI",
-      "tip": "kartochki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "nazvanie": "PA / PE",
+          "zagolovok": "PA / PE",
           "opisanie": "Стандартные опорно-направляющие кольца из полиамида / полиэтилена для типовых условий.",
-          "kartinka": "/images/psi-1.webp",
+          "kartinka": "/images/psi-1.png",
           "vedyot_na": "pape"
         },
         {
-          "nazvanie": "AZ / AC",
+          "zagolovok": "AZ / AC",
           "opisanie": "Усиленные кольца с металлическими элементами для повышенных нагрузок.",
-          "kartinka": "/images/psi-2.webp"
+          "kartinka": "/images/psi-2.png"
         },
         {
-          "nazvanie": "GKO-mk",
+          "zagolovok": "GKO-mk",
           "opisanie": "Модульные кольца с увеличенной опорной поверхностью для сложных условий.",
-          "kartinka": "/images/psi-3.webp"
+          "kartinka": "/images/psi-3.png"
         },
         {
-          "nazvanie": "GKO-gl / GKO-gs",
+          "zagolovok": "GKO-gl / GKO-gs",
           "opisanie": "Кольца с низким коэффициентом трения для максимальной защиты покрытия.",
-          "kartinka": "/images/psi-4.webp"
+          "kartinka": "/images/psi-4.png"
         },
         {
-          "nazvanie": "MA",
+          "zagolovok": "MA",
           "opisanie": "Монолитные кольца для надёжной центровки в стандартных и сложных условиях.",
-          "kartinka": "/images/psi-5.webp"
+          "kartinka": "/images/psi-5.png"
         },
         {
-          "nazvanie": "RGV",
+          "zagolovok": "RGV",
           "opisanie": "Роликовые кольца для минимального трения при протяжке и эксплуатации.",
-          "kartinka": "/images/psi-6.webp"
+          "kartinka": "/images/psi-6.png"
         }
       ]
     },
     {
       "zagolovok": "Как работают кольца",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "filter_center_focus",
           "zagolovok": "Центровка",
-          "podpis": "удерживают трубу по оси футляра"
+          "opisanie": "удерживают трубу по оси футляра",
+          "znachok": "filter_center_focus"
         },
         {
-          "znachok": "shield",
           "zagolovok": "Защита покрытия",
-          "podpis": "исключают контакт со стенками футляра"
+          "opisanie": "исключают контакт со стенками футляра",
+          "znachok": "shield"
         },
         {
-          "znachok": "monitoring",
           "zagolovok": "Снижение трения",
-          "podpis": "обеспечивают свободное перемещение"
+          "opisanie": "обеспечивают свободное перемещение",
+          "znachok": "monitoring"
         },
         {
-          "znachok": "fit_screen",
           "zagolovok": "Компенсация допусков",
-          "podpis": "адаптируются к отклонениям и неровностям"
+          "opisanie": "адаптируются к отклонениям и неровностям",
+          "znachok": "fit_screen"
         }
       ]
     },
     {
       "zagolovok": "Где применяются",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "add_road",
           "zagolovok": "Переходы под дорогами",
-          "podpis": "Автомобильные и железные дороги"
+          "opisanie": "Автомобильные и железные дороги",
+          "znachok": "add_road"
         },
         {
-          "znachok": "plumbing",
           "zagolovok": "Подземные трубопроводы",
-          "podpis": "Инженерные сети и магистральные трубопроводы"
+          "opisanie": "Инженерные сети и магистральные трубопроводы",
+          "znachok": "plumbing"
         },
         {
-          "znachok": "propane_tank",
           "zagolovok": "Нефтебазы",
-          "podpis": "Объекты хранения и транспортировки нефти"
+          "opisanie": "Объекты хранения и транспортировки нефти",
+          "znachok": "propane_tank"
         },
         {
-          "znachok": "flight",
           "zagolovok": "Аэропортовая инфраструктура",
-          "podpis": "Взлётно-посадочные полосы и технические зоны"
+          "opisanie": "Взлётно-посадочные полосы и технические зоны",
+          "znachok": "flight"
         }
       ]
     },
     {
       "zagolovok": "Преимущества опорно-направляющих колец PSI",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "shield",
           "zagolovok": "Надёжная фиксация",
-          "podpis": "Устойчивое положение трубы в течение всего срока службы"
+          "opisanie": "Устойчивое положение трубы в течение всего срока службы",
+          "znachok": "shield"
         },
         {
-          "znachok": "layers",
           "zagolovok": "Защита изоляции",
-          "podpis": "Сохранение целостности защитного покрытия трубопровода"
+          "opisanie": "Сохранение целостности защитного покрытия трубопровода",
+          "znachok": "layers"
         },
         {
-          "znachok": "schedule",
           "zagolovok": "Быстрый монтаж",
-          "podpis": "Простая и проверенная конструкция"
+          "opisanie": "Простая и проверенная конструкция",
+          "znachok": "schedule"
         },
         {
-          "znachok": "all_inclusive",
           "zagolovok": "Долговечная эксплуатация",
-          "podpis": "Стойкие материалы в сложных условиях"
+          "opisanie": "Стойкие материалы в сложных условиях",
+          "znachok": "all_inclusive"
         }
       ]
     }
@@ -162,9 +162,9 @@
       }
     ]
   },
-  "kartinka": "/images/psi-hero.webp",
+  "kartinka": "/images/psi-hero.png",
   "galereya": [
-    "/images/psi-scheme.webp",
-    "/images/psi-seal.webp"
+    "/images/psi-scheme.png",
+    "/images/psi-seal.png"
   ]
 }

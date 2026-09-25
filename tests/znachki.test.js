@@ -8,7 +8,7 @@ import { menyu, otrasli } from '../src/lib/content.js';
 // поэтому список проверяется явно.
 const DOPUSTIMYE = new Set([
   'arrow_forward', 'arrow_back', 'arrow_downward', 'arrow_outward', 'expand_more',
-  'call', 'mail', 'search',
+  'call', 'mail', 'search', 'close',
   'filter_alt', 'deployed_code', 'science',
   'flight', 'local_gas_station', 'input', 'trolley',
   'plumbing', 'oil_barrel', 'precision_manufacturing',

@@ -5,7 +5,7 @@
     "Решения для транспортировки топлива и технологических сред. Защита внутренних поверхностей, снижение износа и надёжная работа трубопроводных систем."
   ],
   "knopka": "Получить каталог",
-  "kartinka": "/images/pipe-hero.webp",
+  "kartinka": "/images/pipe-hero.png",
   "plashka": "",
   "chislo": "4",
   "chislo_podpis": "направления",
@@ -20,23 +20,23 @@
     {
       "zagolovok": "Услуги по нанесению покрытия",
       "opisanie": "Современные технологии нанесения внутренних покрытий",
-      "kartinka": "/images/pipe-1.webp"
+      "kartinka": "/images/pipe-1.png"
     },
     {
       "zagolovok": "Опорно-направляющие кольца PSI",
       "opisanie": "Надёжная фиксация и центровка трубопроводов",
-      "kartinka": "/images/pipe-2.webp",
+      "kartinka": "/images/pipe-2.png",
       "vedyot_na": "psi"
     },
     {
       "zagolovok": "Уплотнители кольцевых пространств",
       "opisanie": "Эффективная герметизация и долгий срок службы",
-      "kartinka": "/images/pipe-3.webp"
+      "kartinka": "/images/pipe-3.png"
     },
     {
       "zagolovok": "Трубопроводы для авиационного керосина",
       "opisanie": "Решения для безопасной транспортировки авиационного топлива",
-      "kartinka": "/images/pipe-4.webp"
+      "kartinka": "/images/pipe-4.png"
     }
   ],
   "preimushchestva": [
