@@ -5,7 +5,7 @@
     "Безопасный и точный отбор проб нефтепродуктов из подземных и надземных резервуаров. Закрытые системы, соответствующие отраслевым стандартам."
   ],
   "knopka": "Получить консультацию",
-  "kartinka": "/images/probe-hero.webp",
+  "kartinka": "/images/probe-hero.png",
   "plashka": "Надёжные решения для нефтегазовой инфраструктуры",
   "chislo": "1",
   "chislo_podpis": "основное решение",
@@ -20,26 +20,26 @@
     {
       "zagolovok": "Закрытая система отбора проб нефтепродуктов",
       "opisanie": "Комплексное решение с учётом требований безопасности",
-      "kartinka": "/images/probe-1.webp",
+      "kartinka": "/images/probe-1.png",
       "vedyot_na": "prb",
       "nomer": "01"
     },
     {
       "zagolovok": "Отбор из резервуара",
       "opisanie": "Решения для наземных и подземных резервуаров",
-      "kartinka": "/images/probe-2.webp",
+      "kartinka": "/images/probe-2.png",
       "nomer": "02"
     },
     {
       "zagolovok": "Контроль пробы",
       "opisanie": "Удобный и безопасный анализ",
-      "kartinka": "/images/probe-3.webp",
+      "kartinka": "/images/probe-3.png",
       "nomer": "03"
     },
     {
       "zagolovok": "Арматура и подключение",
       "opisanie": "Надёжные узлы и соединения",
-      "kartinka": "/images/probe-4.webp",
+      "kartinka": "/images/probe-4.png",
       "nomer": "04"
     }
   ],

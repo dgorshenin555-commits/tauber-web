@@ -19,15 +19,24 @@ import KartochkaKategorii from './KartochkaKategorii.astro';
 <style>
   .setka { background: var(--fon); padding: 34px var(--pole-bok) 30px; }
   .setka__shapka { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 22px; }
-  .setka__zagolovok { margin: 0; font-size: 33px; font-weight: 700; letter-spacing: -.02em; }
+  .setka__zagolovok { margin: 0; font-size: 33px; font-weight: 300; letter-spacing: .005em; }
   .setka__podzagolovok { margin: 8px 0 0; font-size: 15px; color: var(--tekst-vtoroy); }
-  .setka__kartochki { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; }
+  .setka__kartochki { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 15px; }
 
-  @media (max-width: 1280px) { .setka__kartochki { grid-template-columns: repeat(4, 1fr); } }
-  @media (max-width: 1024px) { .setka__kartochki { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 1280px) { .setka__kartochki { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  @media (max-width: 1024px) { .setka__kartochki { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
   @media (max-width: 768px) {
-    .setka__kartochki { grid-template-columns: repeat(2, 1fr); }
+    .setka__kartochki { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .setka__zagolovok { font-size: 26px; }
   }
   @media (max-width: 480px) { .setka__kartochki { grid-template-columns: repeat(1, 1fr); } }
+
+  .setka { padding-top: 34px; }
+  .setka__shapka { padding-inline: 16px; }
+  .setka__shapka > div { display: flex; align-items: center; gap: 20px; }
+  .setka__zagolovok { font-size: clamp(26px, 2.125vw, 34px); white-space: nowrap; }
+  .setka__podzagolovok { margin: 0; font-size: 14px; }
+  .setka__kartochki { gap: 15px; }
+  @media (max-width: 768px) { .setka__shapka { padding: 0; } .setka__shapka > div { display: block; } .setka__podzagolovok { margin-top: 10px; } }
+
 </style>

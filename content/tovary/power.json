@@ -26,38 +26,58 @@
   "sekcii": [
     {
       "zagolovok": "Основные решения",
-      "tip": "prostoy",
+      "tip": "resheniya",
       "elementy": [
-        "{'img': 'assets/pwr-1.png', 'title': 'Передвижные источники питания 400 Гц', 'sub': 'Гибкие и надёжные решения для ежедневной эксплуатации'}",
-        "{'img': 'assets/pwr-2.png', 'title': 'Стационарные источники питания 400 Гц', 'sub': 'Интеграция в инфраструктуру аэропорта'}",
-        "{'img': 'assets/pwr-3.png', 'title': 'Кабели 400 Гц', 'sub': 'Высокая гибкость, износостойкость, безопасность'}",
-        "{'img': 'assets/pwr-4.png', 'title': 'Кабельные накопители 400 Гц', 'sub': 'Удобное хранение и подача кабелей на перроне', 'go': {'__perehod': 'cable'}}",
-        "{'img': 'assets/pwr-5.png', 'title': 'Металлические штекеры 400 Гц', 'sub': 'Надёжные авиационные разъёмы', 'go': {'__perehod': 'plug'}}"
+        {
+          "zagolovok": "Передвижные источники питания 400 Гц",
+          "opisanie": "Гибкие и надёжные решения для ежедневной эксплуатации",
+          "kartinka": "/images/pwr-1.png"
+        },
+        {
+          "zagolovok": "Стационарные источники питания 400 Гц",
+          "opisanie": "Интеграция в инфраструктуру аэропорта",
+          "kartinka": "/images/pwr-2.png"
+        },
+        {
+          "zagolovok": "Кабели 400 Гц",
+          "opisanie": "Высокая гибкость, износостойкость, безопасность",
+          "kartinka": "/images/pwr-3.png"
+        },
+        {
+          "zagolovok": "Кабельные накопители 400 Гц",
+          "opisanie": "Удобное хранение и подача кабелей на перроне",
+          "kartinka": "/images/pwr-4.png"
+        },
+        {
+          "zagolovok": "Металлические штекеры 400 Гц",
+          "opisanie": "Надёжные авиационные разъёмы",
+          "kartinka": "/images/pwr-5.png"
+        }
       ]
     },
     {
       "zagolovok": "Где применяется",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "flight",
           "zagolovok": "Пассажирские терминалы",
-          "podpis": ""
+          "opisanie": "",
+          "znachok": "flight"
         },
         {
-          "znachok": "build",
           "zagolovok": "Технические стоянки",
-          "podpis": ""
+          "opisanie": "",
+          "znachok": "build"
         },
         {
-          "znachok": "warehouse",
           "zagolovok": "Ангары и ТОиР",
-          "podpis": ""
+          "opisanie": "",
+          "znachok": "warehouse"
         },
         {
-          "znachok": "local_shipping",
           "zagolovok": "Сервисные зоны аэропорта",
-          "podpis": ""
+          "opisanie": "",
+          "znachok": "local_shipping"
         }
       ]
     }
@@ -101,8 +121,8 @@
       }
     ]
   },
-  "kartinka": "/images/pwr-hero.webp",
+  "kartinka": "/images/pwr-hero.png",
   "galereya": [
-    "/images/pwr-band.webp"
+    "/images/pwr-band.png"
   ]
 }

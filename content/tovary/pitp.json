@@ -4,106 +4,138 @@
   "fakty": [
     {
       "znachok": "stacks",
-      "nazvanie": "Одиночный / двойной шланг",
-      "znachenie": "Гибкие конфигурации под задачи аэропорта"
+      "zagolovok": "Одиночный / двойной шланг",
+      "podpis": "Гибкие конфигурации под задачи аэропорта"
     },
     {
       "znachok": "weight",
-      "nazvanie": "Класс нагрузки F900",
-      "znachenie": "Для интенсивной эксплуатации"
+      "zagolovok": "Класс нагрузки F900",
+      "podpis": "Для интенсивной эксплуатации"
     },
     {
       "znachok": "device_thermostat",
-      "nazvanie": "−30 °C … +50 °C",
-      "znachenie": "Надёжная работа в любых климатических условиях"
+      "zagolovok": "−30 °C … +50 °C",
+      "podpis": "Надёжная работа в любых климатических условиях"
     },
     {
       "znachok": "bolt",
-      "nazvanie": "Быстрое подключение к ВС",
-      "znachenie": "Минимальное время обслуживания"
+      "zagolovok": "Быстрое подключение к ВС",
+      "podpis": "Минимальное время обслуживания"
     }
   ],
   "sekcii": [
     {
       "zagolovok": "Ключевые преимущества",
-      "tip": "prostoy",
-      "elementy": [
-        "{'t': 'Меньшие потери холода благодаря короткой длине шланга', 'bd': 'transparent'}",
-        "{'t': 'Быстрое подключение воздушного судна и сокращение использования ВСУ', 'bd': '#EEF1EF'}",
-        "{'t': 'Удобная и эргономичная эксплуатация', 'bd': '#EEF1EF'}",
-        "{'t': 'Снижение затрат на обслуживание и увеличение срока службы шлангов', 'bd': '#EEF1EF'}"
-      ]
-    },
-    {
-      "zagolovok": "Состав системы",
-      "tip": "prostoy",
-      "elementy": [
-        "{'t': 'Лифтовой подземный блок с приводом и шкафом управления', 'img': 'assets/pitp-c1.png', 'bd': 'transparent'}",
-        "{'t': 'Направляющая система с фиксаторами', 'img': 'assets/pitp-c2.png', 'bd': '#EEF1EF'}",
-        "{'t': 'Противовесный механизм для шлангов', 'img': 'assets/pitp-c3.png', 'bd': '#EEF1EF'}",
-        "{'t': 'Противоскользящая алюминиевая крышка люка', 'img': 'assets/pitp-c4.png', 'bd': '#EEF1EF'}",
-        "{'t': 'PCA-шланг и адаптер для подключения к ВС', 'img': 'assets/pitp-c5.png', 'bd': '#EEF1EF'}"
-      ]
-    },
-    {
-      "zagolovok": "Варианты исполнения",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "",
-          "zagolovok": "Одиночный шланг",
-          "podpis": "Стандартное решение для большинства стоянок"
+          "zagolovok": "Меньшие потери холода благодаря короткой длине шланга",
+          "opisanie": ""
         },
         {
-          "znachok": "",
-          "zagolovok": "Двойной шланг",
-          "podpis": "Для одновременной подачи воздуха"
+          "zagolovok": "Быстрое подключение воздушного судна и сокращение использования ВСУ",
+          "opisanie": ""
         },
         {
-          "znachok": "shield",
-          "zagolovok": "Взрывобезопасная",
-          "podpis": "Исполнение для специальных зон"
+          "zagolovok": "Удобная и эргономичная эксплуатация",
+          "opisanie": ""
         },
         {
-          "znachok": "air",
-          "zagolovok": "Защита от песка",
-          "podpis": "Дополнительная защита для сложных климатических условий"
+          "zagolovok": "Снижение затрат на обслуживание и увеличение срока службы шлангов",
+          "opisanie": ""
         }
       ]
     },
     {
-      "zagolovok": "Технические",
-      "tip": "bloki",
+      "zagolovok": "Состав системы",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "deployed_code",
+          "zagolovok": "Лифтовой подземный блок с приводом и шкафом управления",
+          "opisanie": "",
+          "kartinka": "/images/pitp-c1.png"
+        },
+        {
+          "zagolovok": "Направляющая система с фиксаторами",
+          "opisanie": "",
+          "kartinka": "/images/pitp-c2.png"
+        },
+        {
+          "zagolovok": "Противовесный механизм для шлангов",
+          "opisanie": "",
+          "kartinka": "/images/pitp-c3.png"
+        },
+        {
+          "zagolovok": "Противоскользящая алюминиевая крышка люка",
+          "opisanie": "",
+          "kartinka": "/images/pitp-c4.png"
+        },
+        {
+          "zagolovok": "PCA-шланг и адаптер для подключения к ВС",
+          "opisanie": "",
+          "kartinka": "/images/pitp-c5.png"
+        }
+      ]
+    },
+    {
+      "zagolovok": "Варианты исполнения",
+      "tip": "resheniya",
+      "elementy": [
+        {
+          "zagolovok": "Одиночный шланг",
+          "opisanie": "Стандартное решение для большинства стоянок",
+          "kartinka": "/images/pitp-v1.png"
+        },
+        {
+          "zagolovok": "Двойной шланг",
+          "opisanie": "Для одновременной подачи воздуха",
+          "kartinka": "/images/pitp-v2.png"
+        },
+        {
+          "zagolovok": "Взрывобезопасная",
+          "opisanie": "Исполнение для специальных зон",
+          "znachok": "shield"
+        },
+        {
+          "zagolovok": "Защита от песка",
+          "opisanie": "Дополнительная защита для сложных климатических условий",
+          "znachok": "air"
+        }
+      ]
+    },
+    {
+      "zagolovok": "Технические характеристики",
+      "tip": "resheniya",
+      "elementy": [
+        {
           "zagolovok": "Минимальный размер приямка",
-          "podpis": ""
+          "opisanie": "2000 × 2600 × 2700 мм (одиночный)\n2600 × 2600 × 2700 мм (двойной)",
+          "znachok": "deployed_code"
         },
         {
-          "znachok": "weight",
           "zagolovok": "Масса системы",
-          "podpis": ""
+          "opisanie": "~1000 кг (одиночный)\n~1200 кг (двойной)",
+          "znachok": "weight"
         },
         {
-          "znachok": "height",
           "zagolovok": "Высота в открытом положении",
-          "podpis": ""
+          "opisanie": "1200 мм",
+          "znachok": "height"
         },
         {
-          "znachok": "layers",
           "zagolovok": "Материалы",
-          "podpis": ""
+          "opisanie": "Оцинкованная сталь и алюминий",
+          "znachok": "layers"
         },
         {
-          "znachok": "settings",
           "zagolovok": "Дополнительные опции",
-          "podpis": ""
+          "opisanie": "Подача питьевой воды, подогреватель, сигнализация, насос",
+          "znachok": "settings"
         }
       ]
     }
   ],
   "podbor": null,
-  "kartinka": "/images/pitp-hero.webp",
+  "kartinka": "/images/pitp-hero.png",
   "galereya": []
 }

@@ -4,110 +4,126 @@
   "fakty": [
     {
       "znachok": "local_shipping",
-      "nazvanie": "2",
-      "znachenie": "поста налива"
+      "zagolovok": "2",
+      "podpis": "поста налива"
     },
     {
       "znachok": "plumbing",
-      "nazvanie": "DN80 / DN100",
-      "znachenie": "Условный диаметр налива"
+      "zagolovok": "DN80 / DN100",
+      "podpis": "Условный диаметр налива"
     },
     {
       "znachok": "speed",
-      "nazvanie": "до 50 / 100 м³/ч",
-      "znachenie": "Производительность на пост"
+      "zagolovok": "до 50 / 100 м³/ч",
+      "podpis": "Производительность на пост"
     },
     {
       "znachok": "my_location",
-      "nazvanie": "точность ±0,15%",
-      "znachenie": "Коммерческий учёт"
+      "zagolovok": "точность ±0,15%",
+      "podpis": "Коммерческий учёт"
     }
   ],
   "sekcii": [
     {
       "zagolovok": "Состав комплекса",
-      "tip": "prostoy",
+      "tip": "resheniya",
       "elementy": [
-        "{'n': '1', 'img': 'assets/ank-p1.png', 'title': 'Эстакада', 'sub': 'Металлоконструкция, площадки обслуживания, лестницы, ограждения'}",
-        "{'n': '2', 'img': 'assets/ank-c2.png', 'title': 'Устройства верхнего налива', 'sub': 'Телескопические терминалы с системами безопасности'}",
-        "{'n': '3', 'img': 'assets/ank-p3.png', 'title': 'Измерительный модуль', 'sub': 'Коммерческий учёт, измерительные линии, запорная арматура'}",
-        "{'n': '4', 'img': 'assets/ank-p4.png', 'title': 'Насосный модуль', 'sub': 'Насосы, фильтры, трубопроводы, арматура, КИП'}"
+        {
+          "zagolovok": "Эстакада",
+          "opisanie": "Металлоконструкция, площадки обслуживания, лестницы, ограждения",
+          "kartinka": "/images/ank-p1.png"
+        },
+        {
+          "zagolovok": "Устройства верхнего налива",
+          "opisanie": "Телескопические терминалы с системами безопасности",
+          "kartinka": "/images/ank-c2.png"
+        },
+        {
+          "zagolovok": "Измерительный модуль",
+          "opisanie": "Коммерческий учёт, измерительные линии, запорная арматура",
+          "kartinka": "/images/ank-p3.png"
+        },
+        {
+          "zagolovok": "Насосный модуль",
+          "opisanie": "Насосы, фильтры, трубопроводы, арматура, КИП",
+          "kartinka": "/images/ank-p4.png"
+        }
       ]
     },
     {
       "zagolovok": "Как работает комплекс",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "propane_tank",
           "zagolovok": "Резервуар",
-          "podpis": "нефтепродукта"
+          "opisanie": "нефтепродукта",
+          "znachok": "propane_tank"
         },
         {
-          "znachok": "plumbing",
           "zagolovok": "Насосный модуль",
-          "podpis": "перекачка"
+          "opisanie": "перекачка",
+          "znachok": "plumbing"
         },
         {
-          "znachok": "filter_alt",
           "zagolovok": "Фильтрация",
-          "podpis": "100 мкм"
+          "opisanie": "100 мкм",
+          "znachok": "filter_alt"
         },
         {
-          "znachok": "speed",
           "zagolovok": "Измерительный модуль",
-          "podpis": "коммерческий учёт"
+          "opisanie": "коммерческий учёт",
+          "znachok": "speed"
         },
         {
-          "znachok": "precision_manufacturing",
           "zagolovok": "Верхний налив",
-          "podpis": "DN80 / DN100"
+          "opisanie": "DN80 / DN100",
+          "znachok": "precision_manufacturing"
         },
         {
-          "znachok": "local_shipping",
           "zagolovok": "Автоцистерна",
-          "podpis": "налив"
+          "opisanie": "налив",
+          "znachok": "local_shipping"
         }
       ]
     },
     {
       "zagolovok": "Ключевые параметры",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "schedule",
           "zagolovok": "Режим работы",
-          "podpis": ""
+          "opisanie": "круглосуточный",
+          "znachok": "schedule"
         },
         {
-          "znachok": "wb_sunny",
           "zagolovok": "Размещение",
-          "podpis": ""
+          "opisanie": "открытая площадка",
+          "znachok": "wb_sunny"
         },
         {
-          "znachok": "speed",
           "zagolovok": "Рабочее давление",
-          "podpis": ""
+          "opisanie": "до 0,5 МПа",
+          "znachok": "speed"
         },
         {
-          "znachok": "ac_unit",
           "zagolovok": "Климатическое исполнение",
-          "podpis": ""
+          "opisanie": "У1 / УХЛ1",
+          "znachok": "ac_unit"
         },
         {
-          "znachok": "local_shipping",
           "zagolovok": "Высота автоцистерн",
-          "podpis": ""
+          "opisanie": "2500 – 3900 мм",
+          "znachok": "local_shipping"
         },
         {
-          "znachok": "account_tree",
           "zagolovok": "Интерфейс",
-          "podpis": ""
+          "opisanie": "RS-485 / Modbus RTU",
+          "znachok": "account_tree"
         }
       ]
     }
   ],
   "podbor": null,
-  "kartinka": "/images/ank-hero.webp",
+  "kartinka": "/images/ank-hero.png",
   "galereya": []
 }

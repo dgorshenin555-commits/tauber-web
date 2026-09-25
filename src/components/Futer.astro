@@ -2,7 +2,7 @@
 import { put } from '../lib/put.js';
 import { sayt, kategorii, futer } from '../lib/content.js';
 
-const kategoriiFutera = kategorii.slice(0, 6);
+const kategoriiFutera = futer.kategorii.map((key) => kategorii.find((k) => k.klyuch === key)).filter(Boolean);
 const telefonSsylka = `tel:${sayt.telefon.replace(/[^\d+]/g, '')}`;
 const god = new Date().getFullYear();
 
@@ -61,30 +61,30 @@ const god = new Date().getFullYear();
   .futer__znak {
     display: inline-block;
     font-size: 24px;
-    font-weight: 800;
+    font-weight: 300;
     letter-spacing: .04em;
     color: #fff;
   }
 
-  /* знак тёмный, а футер тёмный — осветляем, как в эталоне */
-  .futer__znak img { height: 54px; width: auto; display: block; filter: brightness(0) invert(1); }
-  .futer__opisanie { margin: 14px 0 0; font-size: 14px; line-height: 1.55; color: #9AA3A0; }
+  /* В новом эталоне светлый футер и исходный цвет логотипа. */
+  .futer__znak img { height: 54px; width: auto; display: block;  }
+  .futer__opisanie { margin: 14px 0 0; font-size: 14px; line-height: 1.55; color: #77716b; }
   .futer__kolonka { display: flex; flex-direction: column; gap: 10px; min-width: 200px; }
 
   .futer__zagolovok {
     font-size: 12.5px;
     letter-spacing: .1em;
     text-transform: uppercase;
-    color: #7E8783;
+    color: #77716b;
     margin-bottom: 6px;
   }
 
   .futer__ssylka { color: var(--futer-tekst); font-size: 15px; }
   .futer__ssylka:hover { color: #fff; }
-  .futer__ssylka--net { color: #7E8783; cursor: default; }
-  .futer__kontakt { font-size: 19px; font-weight: 600; color: #fff; }
+  .futer__ssylka--net { color: #77716b; cursor: default; }
+  .futer__kontakt { font-size: 19px; font-weight: 400; color: #fff; }
 
-  .futer__politika { color: #7E8783; }
+  .futer__politika { color: #77716b; }
   .futer__politika:hover { color: #fff; }
 
   .futer__zayavka {
@@ -114,7 +114,7 @@ const god = new Date().getFullYear();
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, .1);
     font-size: 13px;
-    color: #7E8783;
+    color: #77716b;
   }
 
   @media (max-width: 1024px) { .futer__kolonki { gap: 40px; } }
@@ -123,4 +123,16 @@ const god = new Date().getFullYear();
     .futer__niz { flex-direction: column; gap: 8px; }
   }
   @media (max-width: 480px) { .futer { padding-top: 30px; } }
+
+  .futer { border-top: 1px solid #dedad1; margin-top: 30px; }
+  .futer__kolonki { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 36px; }
+  .futer__kolonka { min-width: 0; }
+  .futer__znak img { max-width: 100%; height: auto; width: 230px; }
+  .futer__kontakt { color: var(--tekst); font-size: 18px; }
+  .futer__ssylka:hover, .futer__politika:hover { color: var(--tekst); text-decoration: underline; }
+  .futer__zayavka { color: #fff; background: var(--tekst); border: 0; }
+  .futer__zayavka:hover { color: #fff; background: var(--tekst); opacity: .9; }
+  .futer__niz { border-top-color: #dedad1; }
+  @media (max-width: 1024px) { .futer__kolonki { grid-template-columns: 1fr 1fr; gap: 32px; } }
+  @media (max-width: 480px) { .futer__kolonki { grid-template-columns: 1fr; } }
 </style>

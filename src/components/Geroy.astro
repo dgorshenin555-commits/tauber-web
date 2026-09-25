@@ -70,8 +70,8 @@ const pochtaKatalog = `mailto:${sayt.pochta}?subject=${encodeURIComponent('За�
        фиксированные 78px вылезали из колонки на ноутбуках 1281-1600px */
     font-size: clamp(34px, 4.9vw, 78px);
     line-height: .98;
-    letter-spacing: -.03em;
-    font-weight: 700;
+    letter-spacing: .005em;
+    font-weight: 300;
     overflow-wrap: anywhere;
   }
 
@@ -96,7 +96,7 @@ const pochtaKatalog = `mailto:${sayt.pochta}?subject=${encodeURIComponent('За�
 
   .gero__knopka .ms { font-size: 20px; }
   .gero__knopka--tyomnaya { background: var(--tekst); color: #fff; }
-  .gero__knopka--belaya { background: #fff; box-shadow: 0 4px 14px rgba(16, 18, 20, .06); }
+  .gero__knopka--belaya { background: #fff; box-shadow: none; }
 
   .gero__panel {
     background: var(--akcent);
@@ -115,8 +115,8 @@ const pochtaKatalog = `mailto:${sayt.pochta}?subject=${encodeURIComponent('За�
 
   .gero__pokazateli { margin-top: 22px; display: flex; flex-direction: column; gap: 16px; flex: 1 1 auto; }
   .gero__pokazatel + .gero__pokazatel { border-top: 1px solid rgba(16, 18, 20, .3); padding-top: 16px; }
-  .gero__chislo { font-size: 62px; line-height: .9; font-weight: 700; letter-spacing: -.03em; }
-  .gero__pokazatel-podpis { font-size: 18px; font-weight: 600; margin-top: 4px; }
+  .gero__chislo { font-size: 62px; line-height: .9; font-weight: 300; letter-spacing: .005em; }
+  .gero__pokazatel-podpis { font-size: 18px; font-weight: 400; margin-top: 4px; }
 
   .gero__panel-knopka {
     display: inline-flex;
@@ -157,4 +157,22 @@ const pochtaKatalog = `mailto:${sayt.pochta}?subject=${encodeURIComponent('За�
     .gero__tekst { padding: 26px 20px 28px; }
     .gero__knopka { padding: 12px 18px; font-size: 15px; }
   }
+
+  .gero { grid-template-columns: minmax(0, 37.1fr) minmax(0, 35.7fr) minmax(0, 25fr); gap: 15px; padding-top: 22px; }
+  .gero__tekst { padding: 40px 40px 42px; }
+  .gero__zagolovok { font-size: clamp(34px, 4.125vw, 66px); line-height: 1.02; }
+  .gero__opisanie { font-size: 18px; line-height: 1.45; color: var(--tekst); }
+  .gero__knopka { font-size: 14px; padding: 15px 24px; }
+  .gero__panel { background: #fff; padding: 26px 28px; }
+  .gero__panel-podpis { color: var(--tekst-vtoroy); }
+  .gero__chislo { font-size: 58px; }
+  .gero__panel-knopka { background: var(--tekst); color: #fff; width: 100%; justify-content: space-between; padding: 15px 24px; margin-top: 24px; }
+  .gero__panel-knopka:hover { color: #fff; }
+  @media (max-width: 1280px) {
+    .gero { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .gero__panel { grid-column: 1 / -1; }
+  }
+  @media (max-width: 768px) { .gero { grid-template-columns: 1fr; } .gero__tekst { padding: 32px 26px; } .gero__zagolovok { font-size: clamp(32px, 7.5vw, 54px); } }
+  @media (max-width: 480px) { .gero__tekst { padding: 28px 22px; } .gero__knopki { gap: 10px; } .gero__knopka { padding: 14px 20px; } }
+
 </style>

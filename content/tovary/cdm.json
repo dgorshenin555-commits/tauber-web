@@ -2,52 +2,144 @@
   "zagolovok": "Кэдди, работающие в ручном режиме",
   "vvodnyy_tekst": "Мобильные тележки для хранения и подачи кабелей 400 Гц при наземном обслуживании воздушных судов.",
   "fakty": [
-    "{'icon': 'back_hand', 't': 'Ручное перемещение', 'bd': 'transparent'}",
-    "{'icon': 'cable', 't': 'Автоматическая намотка кабеля', 'bd': 'rgba(255,255,255,.14)'}",
-    "{'icon': 'straighten', 't': 'До 25–30 м кабеля', 'bd': 'rgba(255,255,255,.14)'}",
-    "{'icon': 'flight', 't': 'Для наземного обслуживания ВС', 'bd': 'rgba(255,255,255,.14)'}"
+    {
+      "znachok": "back_hand",
+      "zagolovok": "Ручное перемещение",
+      "podpis": ""
+    },
+    {
+      "znachok": "cable",
+      "zagolovok": "Автоматическая намотка кабеля",
+      "podpis": ""
+    },
+    {
+      "znachok": "straighten",
+      "zagolovok": "До 25–30 м кабеля",
+      "podpis": ""
+    },
+    {
+      "znachok": "flight",
+      "zagolovok": "Для наземного обслуживания ВС",
+      "podpis": ""
+    }
   ],
   "sekcii": [
     {
       "zagolovok": "1D или 2D?",
-      "tip": "prostoy",
+      "tip": "resheniya",
       "elementy": [
-        "{'code': '1D', 'title': 'Ручной кэдди 1D', 'sub': 'Один барабан, один мотор', 'img': 'assets/cdm-1d2.png', 'specs': [{'icon': 'cable', 'label': 'Кабель 400 Гц', 'val': 'до 25 м', 'bd': 'transparent'}, {'icon': 'weight', 'label': 'Масса', 'val': 'около 400 кг', 'bd': '#EEF1EF'}, {'icon': 'open_with', 'label': 'Габариты (Д×Ш×В)', 'val': '1775 × 1310 × 1375 мм', 'bd': '#EEF1EF'}]}",
-        "{'code': '2D', 'title': 'Ручной кэдди 2D', 'sub': 'Два барабана, два мотора', 'img': 'assets/cdm-2d2.png', 'specs': [{'icon': 'cable', 'label': 'Кабель 400 Гц до 25 м', 'val': '+ реактивный кабель 8 м', 'bd': 'transparent'}, {'icon': 'weight', 'label': 'Масса', 'val': 'около 550 кг', 'bd': '#EEF1EF'}, {'icon': 'open_with', 'label': 'Габариты (Д×Ш×В)', 'val': '1775 × 1430 × 1375 мм', 'bd': '#EEF1EF'}]}"
+        {
+          "zagolovok": "Ручной кэдди 1D",
+          "opisanie": "Один барабан, один мотор",
+          "kartinka": "/images/cdm-1d2.png",
+          "harakteristiki": [
+            {
+              "nazvanie": "Кабель 400 Гц",
+              "znachenie": "до 25 м"
+            },
+            {
+              "nazvanie": "Масса",
+              "znachenie": "около 400 кг"
+            },
+            {
+              "nazvanie": "Габариты (Д×Ш×В)",
+              "znachenie": "1775 × 1310 × 1375 мм"
+            }
+          ]
+        },
+        {
+          "zagolovok": "Ручной кэдди 2D",
+          "opisanie": "Два барабана, два мотора",
+          "kartinka": "/images/cdm-2d2.png",
+          "harakteristiki": [
+            {
+              "nazvanie": "Кабель 400 Гц до 25 м",
+              "znachenie": "+ реактивный кабель 8 м"
+            },
+            {
+              "nazvanie": "Масса",
+              "znachenie": "около 550 кг"
+            },
+            {
+              "nazvanie": "Габариты (Д×Ш×В)",
+              "znachenie": "1775 × 1430 × 1375 мм"
+            }
+          ]
+        }
       ]
     },
     {
       "zagolovok": "Как используется",
-      "tip": "prostoy",
+      "tip": "resheniya",
       "elementy": [
-        "{'n': '01', 'icon': 'flight', 't': 'Подкатить к воздушному судну'}",
-        "{'n': '02', 'icon': 'cable', 't': 'Вручную вытянуть кабель'}",
-        "{'n': '03', 'icon': 'power', 't': 'Подключить 400 Гц'}",
-        "{'n': '04', 'icon': 'autorenew', 't': 'После обслуживания кабель автоматически наматывается на барабан'}"
+        {
+          "zagolovok": "Подкатить к воздушному судну",
+          "opisanie": "",
+          "znachok": "flight"
+        },
+        {
+          "zagolovok": "Вручную вытянуть кабель",
+          "opisanie": "",
+          "znachok": "cable"
+        },
+        {
+          "zagolovok": "Подключить 400 Гц",
+          "opisanie": "",
+          "znachok": "power"
+        },
+        {
+          "zagolovok": "После обслуживания кабель автоматически наматывается на барабан",
+          "opisanie": "",
+          "znachok": "autorenew"
+        }
       ]
     },
     {
       "zagolovok": "Другие ручные исполнения",
-      "tip": "prostoy",
+      "tip": "resheniya",
       "elementy": [
-        "{'img': 'assets/cdm-o1.png', 'title': 'Трёхколёсная тележка', 'm': 'Масса около 300 кг', 'c': 'До 30 м кабеля 400 Гц'}",
-        "{'img': 'assets/cdm-o2.png', 'title': 'Четырёхколёсная тележка', 'm': 'Масса около 340 кг', 'c': 'До 15 м кабеля 400 Гц'}"
+        {
+          "zagolovok": "Трёхколёсная тележка",
+          "opisanie": "Масса около 300 кг · До 30 м кабеля 400 Гц",
+          "kartinka": "/images/cdm-o1.png"
+        },
+        {
+          "zagolovok": "Четырёхколёсная тележка",
+          "opisanie": "Масса около 340 кг · До 15 м кабеля 400 Гц",
+          "kartinka": "/images/cdm-o2.png"
+        }
       ]
     },
     {
       "zagolovok": "Почему выбирают ручные кэдди",
-      "tip": "prostoy",
+      "tip": "resheniya",
       "elementy": [
-        "{'icon': 'shield', 't': 'Продление срока службы кабеля'}",
-        "{'icon': 'timeline', 't': 'Нет волочения кабеля по перрону'}",
-        "{'icon': 'settings', 't': 'Простое перемещение'}",
-        "{'icon': 'bolt', 't': 'Автоматическая зарядка батареи 230 В / 50 Гц или 115 В / 400 Гц'}"
+        {
+          "zagolovok": "Продление срока службы кабеля",
+          "opisanie": "",
+          "znachok": "shield"
+        },
+        {
+          "zagolovok": "Нет волочения кабеля по перрону",
+          "opisanie": "",
+          "znachok": "timeline"
+        },
+        {
+          "zagolovok": "Простое перемещение",
+          "opisanie": "",
+          "znachok": "settings"
+        },
+        {
+          "zagolovok": "Автоматическая зарядка батареи 230 В / 50 Гц или 115 В / 400 Гц",
+          "opisanie": "",
+          "znachok": "bolt"
+        }
       ]
     }
   ],
   "podbor": null,
-  "kartinka": "/images/cdm-hero.webp",
+  "kartinka": "/images/cdm-hero.png",
   "galereya": [
-    "/images/pwr-band.webp"
+    "/images/pwr-band.png"
   ]
 }

@@ -50,7 +50,7 @@ const korotkie = new Map(kategorii.map((k) => [k.klyuch, k.korotko]));
 <style>
   .otrasli { background: var(--fon); padding: 0 var(--pole-bok) 34px; }
   .otrasli__shapka { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 22px; }
-  .otrasli__zagolovok { margin: 0; font-size: 33px; font-weight: 700; letter-spacing: -.02em; }
+  .otrasli__zagolovok { margin: 0; font-size: 33px; font-weight: 300; letter-spacing: .005em; }
   .otrasli__podzagolovok { margin: 8px 0 0; font-size: 15px; color: var(--tekst-vtoroy); }
 
   .otrasli__telo { display: grid; grid-template-columns: 1fr 32%; gap: 15px; align-items: start; }
@@ -59,12 +59,12 @@ const korotkie = new Map(kategorii.map((k) => [k.klyuch, k.korotko]));
 
   .otrasl {
     background: transparent;
-    border-radius: 18px;
+    border-radius: 24px;
     border-left: 3px solid transparent;
     transition: background .25s, border-color .25s;
   }
 
-  .otrasl:has([aria-expanded='true']) { background: #F6F8F7; border-left-color: var(--akcent); }
+  .otrasl:has([aria-expanded='true']) { background: #ffffff; border-left-color: var(--akcent); }
 
   .otrasl__knopka {
     width: 100%;
@@ -80,7 +80,7 @@ const korotkie = new Map(kategorii.map((k) => [k.klyuch, k.korotko]));
     color: var(--tekst);
   }
 
-  .otrasl__nomer { font-size: 13px; font-weight: 600; letter-spacing: .08em; color: #B5BBB8; }
+  .otrasl__nomer { font-size: 13px; font-weight: 400; letter-spacing: .08em; color: #8b8b8b; }
   .otrasl__knopka[aria-expanded='true'] .otrasl__nomer { color: var(--akcent); }
 
   .otrasl__znachok { font-size: 24px; color: var(--tekst-tihiy); transition: font-size .25s; }
@@ -89,9 +89,9 @@ const korotkie = new Map(kategorii.map((k) => [k.klyuch, k.korotko]));
   .otrasl__nazvanie {
     font-size: 28px;
     line-height: 1.1;
-    font-weight: 700;
-    letter-spacing: -.02em;
-    color: #A3AAA6;
+    font-weight: 300;
+    letter-spacing: .005em;
+    color: #8b8b8b;
     transition: color .25s, font-size .25s;
   }
 
@@ -104,7 +104,7 @@ const korotkie = new Map(kategorii.map((k) => [k.klyuch, k.korotko]));
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: #F2F5F3;
+    background: #f0efe9;
     color: var(--tekst);
     transition: background .25s, color .25s, transform .25s;
   }
@@ -150,6 +150,17 @@ const korotkie = new Map(kategorii.map((k) => [k.klyuch, k.korotko]));
   @media (max-width: 480px) {
     .otrasl__raskrytie { padding: 0 14px 18px 14px; }
   }
+
+  .otrasli__zagolovok { font-size: 34px; }
+  .otrasli__telo { grid-template-columns: minmax(0, 1fr) minmax(0, 32%); gap: 24px; }
+  .otrasl { border-radius: 24px; }
+  .otrasl__nazvanie, .otrasl__knopka[aria-expanded='true'] .otrasl__nazvanie { font-size: clamp(24px, 2.25vw, 36px); }
+  .otrasl__nazvanie { color: var(--tekst); }
+  .otrasl__knopka { gap: 14px; padding: 16px 18px; }
+  .otrasl__napravlenie { border: 1px solid #dedad1; }
+  @media (max-width: 1024px) { .otrasli__telo { grid-template-columns: 1fr; } }
+  @media (max-width: 480px) { .otrasl__knopka { grid-template-columns: 22px minmax(0,1fr) 36px; gap: 8px; padding: 16px 10px; } .otrasl__znachok { display: none; } .otrasl__krug { width: 36px; height: 36px; } .otrasl__raskrytie { padding-left: 40px; } }
+
 </style>
 
 <script>

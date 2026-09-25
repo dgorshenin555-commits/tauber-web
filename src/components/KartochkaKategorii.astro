@@ -39,20 +39,20 @@ const { kategoriya } = Astro.props;
     flex-direction: column;
     gap: 10px;
     background: #fff;
-    border-radius: 24px;
+    border-radius: 36px;
     padding: 10px;
-    box-shadow: 0 6px 22px rgba(16, 18, 20, .06);
+    box-shadow: none;
     height: 100%;
     transition: transform .25s, box-shadow .25s;
   }
 
-  .kartochka__ssylka:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(16, 18, 20, .12); }
+  .kartochka__ssylka:hover { transform: translateY(-3px); box-shadow: none; }
 
   .kartochka__kartinka {
     position: relative;
-    border-radius: 18px;
+    border-radius: 24px;
     overflow: hidden;
-    background: #DCE3DF;
+    background: #e8e6de;
     height: 150px;
   }
 
@@ -70,7 +70,7 @@ const { kategoriya } = Astro.props;
     border-radius: var(--radius-pilyulya);
     padding: 4px 10px 4px 8px;
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--tekst-vtoroy);
     white-space: nowrap;
   }
@@ -85,11 +85,11 @@ const { kategoriya } = Astro.props;
     padding: 2px 6px 8px;
   }
 
-  .kartochka__nazvanie { margin: 0 0 8px; font-size: 16px; font-weight: 600; line-height: 1.25; }
+  .kartochka__nazvanie { margin: 0 0 8px; font-size: 16px; font-weight: 400; line-height: 1.25; }
 
   .kartochka__kolichestvo {
     display: inline-block;
-    background: #EFF3F0;
+    background: #f0efe9;
     border-radius: var(--radius-pilyulya);
     padding: 5px 12px;
     font-size: 13px;
@@ -104,10 +104,22 @@ const { kategoriya } = Astro.props;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: #F2F5F3;
+    background: #f0efe9;
     color: var(--tekst);
   }
 
   .kartochka__strelka .ms { font-size: 18px; }
   .kartochka__ssylka:hover .kartochka__strelka { background: var(--akcent); color: #fff; }
+
+  .kartochka { min-width: 0; }
+  .kartochka__ssylka { border-radius: 36px; padding: 10px; transition: background .2s; }
+  .kartochka__ssylka:hover { transform: none; background: var(--fon-gero); }
+  .kartochka__kartinka { border-radius: 24px; }
+  .kartochka__niz { flex: 1; align-items: flex-end; padding-top: 4px; }
+  .kartochka__nazvanie { min-height: 42px; margin-bottom: 16px; }
+  .kartochka__tochka { width: 4px; height: 4px; border-radius: 0; }
+  .kartochka__plashka { white-space: normal; font-size: 10px; padding: 4px 7px; }
+  .kartochka__kolichestvo { font-size: 12px; padding: 6px 10px; }
+  .kartochka__strelka { width: 32px; height: 32px; }
+
 </style>

@@ -4,24 +4,28 @@
   "fakty": [
     {
       "znachok": "thermostat",
+      "zagolovok": "от −60 до +50 °C",
       "podpis": "Рабочая температура"
     },
     {
       "znachok": "filter_alt",
+      "zagolovok": "после фильтров ≤ 15 мкм",
       "podpis": "Рекомендуемая предварительная очистка"
     },
     {
       "znachok": "speed",
+      "zagolovok": "0.3 – 1.6 МПа",
       "podpis": "Рабочее давление"
     },
     {
       "znachok": "verified_user",
+      "zagolovok": "до 20 лет",
       "podpis": "Срок службы"
     }
   ],
   "sekcii": [
     {
-      "zagolovok": "",
+      "zagolovok": "Номенклатура ФТВ",
       "tip": "tablica",
       "elementy": [
         {
@@ -29,82 +33,82 @@
           "harakteristika": "4,5 м³/ч   DN 25",
           "metka1": "Горизонтальный",
           "metka2": "Дизель",
-          "kartinka": "/images/ftv-p1.webp"
+          "kartinka": "/images/ftv-p1.png"
         },
         {
           "nazvanie": "ФТВв-1-10/250/40-40",
           "harakteristika": "10 м³/ч   DN 40",
           "metka1": "Вертикальный",
           "metka2": "Авиа",
-          "kartinka": "/images/ftv-p2.webp"
+          "kartinka": "/images/ftv-p2.png"
         },
         {
           "nazvanie": "ФТВг-1-21/250/50-50",
           "harakteristika": "21 м³/ч   DN 50",
           "metka1": "Горизонтальный",
           "metka2": "Керосин",
-          "kartinka": "/images/ftv-p3.webp"
+          "kartinka": "/images/ftv-p3.png"
         },
         {
           "nazvanie": "ФТВв-1-30/400/65-65",
           "harakteristika": "30 м³/ч   DN 65",
           "metka1": "Вертикальный",
           "metka2": "Дизель",
-          "kartinka": "/images/ftv-p4.webp"
+          "kartinka": "/images/ftv-p4.png"
         },
         {
           "nazvanie": "ФТВг-1-21/250/50-60",
           "harakteristika": "30 м³/ч   DN 65",
           "metka1": "Горизонтальный",
           "metka2": "Дизель",
-          "kartinka": "/images/ftv-p5.webp"
+          "kartinka": "/images/ftv-p5.png"
         },
         {
           "nazvanie": "ФТВг-1-40/400/65-65",
           "harakteristika": "40 м³/ч   DN 65",
           "metka1": "Горизонтальный",
           "metka2": "СУГ",
-          "kartinka": "/images/ftv-p6.webp"
+          "kartinka": "/images/ftv-p6.png"
         },
         {
           "nazvanie": "ФТВ-100",
           "harakteristika": "до 100 м³/ч   DN 100",
           "metka1": "Вертикальный",
           "metka2": "Дизель",
-          "kartinka": "/images/ftv-p7.webp"
+          "kartinka": "/images/ftv-p7.png"
         },
         {
           "nazvanie": "ФТВ-200",
           "harakteristika": "до 200 м³/ч   DN 200",
           "metka1": "Вертикальный",
           "metka2": "Керосин",
-          "kartinka": "/images/ftv-p8.webp"
+          "kartinka": "/images/ftv-p8.png"
         },
         {
           "nazvanie": "ФТВ-300",
           "harakteristika": "до 300 м³/ч   DN 300",
           "metka1": "Вертикальный",
           "metka2": "СУГ",
-          "kartinka": "/images/ftv-p9.webp"
+          "kartinka": "/images/ftv-p9.png"
         },
         {
           "nazvanie": "ФТВ-500",
           "harakteristika": "до 500 м³/ч   DN 500",
           "metka1": "Горизонтальный",
           "metka2": "Дизель",
-          "kartinka": "/images/ftv-p10.webp"
+          "kartinka": "/images/ftv-p10.png"
         },
         {
           "nazvanie": "ФТВ-1000",
           "harakteristika": "до 1000 м³/ч   DN 600",
           "metka1": "Блочное исп.",
           "metka2": "Керосин",
-          "kartinka": "/images/ftv-p1.webp"
+          "kartinka": "/images/ftv-p1.png"
         }
       ]
     }
   ],
   "podbor": null,
-  "kartinka": "/images/ftv-hero.webp",
+  "kartinka": "/images/ftv-hero.png",
   "galereya": []
 }

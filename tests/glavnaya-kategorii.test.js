@@ -40,13 +40,13 @@ describe('категории на главной', () => {
     });
   });
 
-  it('карточка — белая плитка с тенью, как в эталоне, а не текст на фоне', () => {
+  it('карточка — белая плитка без тени, как в эталоне, а не текст на фоне', () => {
     const css = readdirSync('dist/_astro').filter((f) => f.endsWith('.css'))
       .map((f) => readFileSync(`dist/_astro/${f}`, 'utf8')).join('\n');
     const pravilo = css.match(/\.kartochka__ssylka[^{]*\{[^}]*\}/);
     expect(pravilo, 'нет правила для карточки').toBeTruthy();
     expect(pravilo[0]).toMatch(/background:\s*#fff/i);
-    expect(css).toMatch(/\.kartochka__ssylka[^{]*\{[^}]*box-shadow/);
+    expect(pravilo[0]).not.toMatch(/box-shadow:\s*(?!none)[^;}]+/);
   });
 
   it('количество товаров показано пилюлей, а не простым текстом', () => {

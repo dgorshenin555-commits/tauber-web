@@ -26,88 +26,100 @@
   "sekcii": [
     {
       "zagolovok": "Ключевые конфигурации",
-      "tip": "prostoy",
+      "tip": "resheniya",
       "elementy": [
-        "{'img': 'assets/pan-1.png', 'title': 'Мобильный пантограф', 'sub': 'Гибкое решение для оперативного обслуживания воздушных судов на различных типах стоянок.'}",
-        "{'img': 'assets/pan-2.png', 'title': 'Пантограф с барабаном рукава', 'sub': 'Удобное хранение и быстрый ввод в работу. Оптимален для интенсивной эксплуатации.'}",
-        "{'img': 'assets/pan-3.png', 'title': 'Интеграция в гидрантную систему', 'sub': 'Стационарные решения для терминалов с высокой интенсивностью полётов.'}"
+        {
+          "zagolovok": "Мобильный пантограф",
+          "opisanie": "Гибкое решение для оперативного обслуживания воздушных судов на различных типах стоянок.",
+          "kartinka": "/images/pan-1.png"
+        },
+        {
+          "zagolovok": "Пантограф с барабаном рукава",
+          "opisanie": "Удобное хранение и быстрый ввод в работу. Оптимален для интенсивной эксплуатации.",
+          "kartinka": "/images/pan-2.png"
+        },
+        {
+          "zagolovok": "Интеграция в гидрантную систему",
+          "opisanie": "Стационарные решения для терминалов с высокой интенсивностью полётов.",
+          "kartinka": "/images/pan-3.png"
+        }
       ]
     },
     {
       "zagolovok": "Как работает",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "device_thermostat",
           "zagolovok": "Подключение к гидрантной точке",
-          "podpis": "Соединение с подземной гидрантной системой аэропорта"
+          "opisanie": "Соединение с подземной гидрантной системой аэропорта",
+          "znachok": "device_thermostat"
         },
         {
-          "znachok": "local_gas_station",
           "zagolovok": "Подача топлива",
-          "podpis": "Стабильная подача топлива по рукаву пантографа"
+          "opisanie": "Стабильная подача топлива по рукаву пантографа",
+          "znachok": "local_gas_station"
         },
         {
-          "znachok": "flight",
           "zagolovok": "Заправка под крылом",
-          "podpis": "Удобное и безопасное подключение к самолёту"
+          "opisanie": "Удобное и безопасное подключение к самолёту",
+          "znachok": "flight"
         },
         {
-          "znachok": "fact_check",
           "zagolovok": "Контроль и завершение",
-          "podpis": "Мониторинг параметров и безопасное отключение"
+          "opisanie": "Мониторинг параметров и безопасное отключение",
+          "znachok": "fact_check"
         }
       ]
     },
     {
       "zagolovok": "Где применяется",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "flight",
           "zagolovok": "Пассажирские терминалы",
-          "podpis": "Регулярные и чартерные рейсы"
+          "opisanie": "Регулярные и чартерные рейсы",
+          "znachok": "flight"
         },
         {
-          "znachok": "build",
           "zagolovok": "Технические стоянки",
-          "podpis": "Плановое обслуживание и межрейсовые работы"
+          "opisanie": "Плановое обслуживание и межрейсовые работы",
+          "znachok": "build"
         },
         {
-          "znachok": "verified_user",
           "zagolovok": "Военные аэродромы",
-          "podpis": "Надёжные решения для специальных задач"
+          "opisanie": "Надёжные решения для специальных задач",
+          "znachok": "verified_user"
         },
         {
-          "znachok": "warehouse",
           "zagolovok": "Ангары и сервисные зоны",
-          "podpis": "Техническое обслуживание и подготовка к вылету"
+          "opisanie": "Техническое обслуживание и подготовка к вылету",
+          "znachok": "warehouse"
         }
       ]
     },
     {
       "zagolovok": "Почему выбирают TAUBER",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "verified_user",
           "zagolovok": "Надёжность",
-          "podpis": "Проверенные технические решения"
+          "opisanie": "Проверенные технические решения",
+          "znachok": "verified_user"
         },
         {
-          "znachok": "settings",
           "zagolovok": "Комплексная поставка",
-          "podpis": "Оборудование и интеграция"
+          "opisanie": "Оборудование и интеграция",
+          "znachok": "settings"
         },
         {
-          "znachok": "groups",
           "zagolovok": "Опыт в авиации",
-          "podpis": "Реализованные проекты по всему миру"
+          "opisanie": "Реализованные проекты по всему миру",
+          "znachok": "groups"
         },
         {
-          "znachok": "headset_mic",
           "zagolovok": "Техническая поддержка",
-          "podpis": "Сервис и консультации экспертов"
+          "opisanie": "Сервис и консультации экспертов",
+          "znachok": "headset_mic"
         }
       ]
     }
@@ -152,6 +164,6 @@
       }
     ]
   },
-  "kartinka": "/images/pan-hero.webp",
+  "kartinka": "/images/pan-hero.png",
   "galereya": []
 }

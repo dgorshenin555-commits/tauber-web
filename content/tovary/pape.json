@@ -26,60 +26,142 @@
   "sekcii": [
     {
       "zagolovok": "Конструкция PA / PE",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "layers",
           "zagolovok": "Исполнение из полиамида / полиэтилена",
-          "podpis": "Прочный материал, устойчивый к внешним воздействиям"
+          "opisanie": "Прочный материал, устойчивый к внешним воздействиям",
+          "znachok": "layers"
         },
         {
-          "znachok": "deployed_code",
           "zagolovok": "Модульная секционная конструкция",
-          "podpis": "Обеспечивает оптимальную жёсткость и надёжную фиксацию"
+          "opisanie": "Обеспечивает оптимальную жёсткость и надёжную фиксацию",
+          "znachok": "deployed_code"
         },
         {
-          "znachok": "science",
           "zagolovok": "Химическая стойкость",
-          "podpis": "Устойчива к агрессивным средам, влаге и длительной эксплуатации"
+          "opisanie": "Устойчива к агрессивным средам, влаге и длительной эксплуатации",
+          "znachok": "science"
         },
         {
-          "znachok": "all_inclusive",
           "zagolovok": "Низкий коэффициент трения",
-          "podpis": "Обеспечивает свободное протаскивание трубопровода"
+          "opisanie": "Обеспечивает свободное протаскивание трубопровода",
+          "znachok": "all_inclusive"
         }
       ]
     },
     {
       "zagolovok": "Как работает кольцо",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "filter_center_focus",
           "zagolovok": "Центровка трубопровода",
-          "podpis": "Равномерное положение внутри футляра"
+          "opisanie": "Равномерное положение внутри футляра",
+          "znachok": "filter_center_focus"
         },
         {
-          "znachok": "shield",
           "zagolovok": "Защита покрытия",
-          "podpis": "Исключает контакт со стенками футляра"
+          "opisanie": "Исключает контакт со стенками футляра",
+          "znachok": "shield"
         },
         {
-          "znachok": "monitoring",
           "zagolovok": "Компенсация допусков",
-          "podpis": "Допускает отклонения и неровности футляра"
+          "opisanie": "Допускает отклонения и неровности футляра",
+          "znachok": "monitoring"
         },
         {
-          "znachok": "swap_horiz",
           "zagolovok": "Свободное протаскивание",
-          "podpis": "Минимальное сопротивление при монтаже"
+          "opisanie": "Минимальное сопротивление при монтаже",
+          "znachok": "swap_horiz"
         }
       ]
     },
     {
       "zagolovok": "Основные типоразмеры PA / PE",
-      "tip": "prostoy",
+      "tip": "tablitsa-dannyh",
       "elementy": [
+        {
+          "yacheyki": [
+            110,
+            200,
+            40,
+            6,
+            "PA / PE",
+            "Стандартное"
+          ]
+        },
+        {
+          "yacheyki": [
+            160,
+            250,
+            50,
+            6,
+            "PA / PE",
+            "Стандартное"
+          ]
+        },
+        {
+          "yacheyki": [
+            225,
+            315,
+            50,
+            8,
+            "PA / PE",
+            "Стандартное"
+          ]
+        },
+        {
+          "yacheyki": [
+            273,
+            400,
+            60,
+            8,
+            "PA / PE",
+            "Стандартное"
+          ]
+        },
+        {
+          "yacheyki": [
+            315,
+            450,
+            60,
+            8,
+            "PA / PE",
+            "Стандартное"
+          ]
+        },
+        {
+          "yacheyki": [
+            426,
+            560,
+            70,
+            10,
+            "PA / PE",
+            "Усиленное"
+          ]
+        },
+        {
+          "yacheyki": [
+            530,
+            710,
+            80,
+            12,
+            "PA / PE",
+            "Усиленное"
+          ]
+        },
+        {
+          "yacheyki": [
+            630,
+            820,
+            90,
+            14,
+            "PA / PE",
+            "Усиленное"
+          ]
+        }
+      ],
+      "zagolovki": [
         "Наружный диаметр трубы, мм",
         "Внутренний диаметр футляра, мм",
         "Высота опоры, мм",
@@ -139,11 +221,11 @@
       }
     ]
   },
-  "kartinka": "/images/pape-hero.webp",
+  "kartinka": "/images/pape-hero.png",
   "galereya": [
-    "/images/pape-ring.webp",
-    "/images/pape-scheme.webp",
-    "/images/pape-cat.webp",
-    "/images/logo2.webp"
+    "/images/pape-ring.png",
+    "/images/pape-scheme.png",
+    "/images/pape-cat.png",
+    "/images/logo2.png"
   ]
 }

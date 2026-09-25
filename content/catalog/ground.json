@@ -5,7 +5,7 @@
     "Комплексные решения для более быстрого, безопасного и эффективного наземного обслуживания воздушных судов."
   ],
   "knopka": "Получить консультацию",
-  "kartinka": "/images/ground-hero.webp",
+  "kartinka": "/images/ground-hero.png",
   "plashka": "Надёжные решения для авиации",
   "chislo": "",
   "chislo_podpis": "Наземное обслуживание",
@@ -20,25 +20,25 @@
     {
       "zagolovok": "Кабельные накопители",
       "opisanie": "",
-      "kartinka": "/images/ground-1.webp",
+      "kartinka": "/images/ground-1.png",
       "vedyot_na": "cable"
     },
     {
       "zagolovok": "Металлические штекеры 400 Гц",
       "opisanie": "",
-      "kartinka": "/images/ground-2.webp",
+      "kartinka": "/images/ground-2.png",
       "vedyot_na": "plug"
     },
     {
       "zagolovok": "Наземное электропитание 400 Гц",
       "opisanie": "",
-      "kartinka": "/images/ground-3.webp",
+      "kartinka": "/images/ground-3.png",
       "vedyot_na": "power"
     },
     {
       "zagolovok": "PCA / кондиционирование воздуха",
       "opisanie": "",
-      "kartinka": "/images/ground-4.webp",
+      "kartinka": "/images/ground-4.png",
       "vedyot_na": "pca"
     }
   ],

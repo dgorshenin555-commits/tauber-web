@@ -5,7 +5,7 @@
     "Мобильные системы для обслуживания воздушных судов на перроне. Удобны для транспортировки и организации сервисных подключений и наземных операций."
   ],
   "knopka": "Получить консультацию",
-  "kartinka": "/images/caddy-hero.webp",
+  "kartinka": "/images/caddy-hero.png",
   "plashka": "Мобильные решения для аэропортов",
   "chislo": "2",
   "chislo_podpis": "решения",
@@ -20,13 +20,13 @@
     {
       "zagolovok": "Кэдди, работающие в ручном режиме",
       "opisanie": "Удобное и надёжное решение для мобильного обслуживания воздушных судов.",
-      "kartinka": "/images/caddy-1.webp",
+      "kartinka": "/images/caddy-1.png",
       "vedyot_na": "cdm"
     },
     {
       "zagolovok": "Кэдди, работающие от батареи",
       "opisanie": "Автономное питание для максимальной мобильности и удобства эксплуатации.",
-      "kartinka": "/images/caddy-2.webp"
+      "kartinka": "/images/caddy-2.png"
     }
   ],
   "preimushchestva": [

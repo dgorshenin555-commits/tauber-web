@@ -5,7 +5,7 @@
     "Комплексные решения для заправки воздушных судов. Проектирование, поставка оборудования и сервис гидрантных систем с акцентом на надёжность, безопасность и эффективность эксплуатации аэропортов."
   ],
   "knopka": "Получить консультацию",
-  "kartinka": "/images/hydrant-hero.webp",
+  "kartinka": "/images/hydrant-hero.png",
   "plashka": "",
   "chislo": "9",
   "chislo_podpis": "решений",
@@ -20,29 +20,29 @@
     {
       "zagolovok": "Пантографы для непосредственной дозаправки воздушных судов",
       "opisanie": "Надёжные решения для интенсивной эксплуатации в аэропортах",
-      "kartinka": "/images/hydrant-1.webp",
+      "kartinka": "/images/hydrant-1.png",
       "vedyot_na": "panto"
     },
     {
       "zagolovok": "Пантограф для заправки/откачки топлива Claval 850AF",
       "opisanie": "Многофункциональное решение для современных аэропортов",
-      "kartinka": "/images/hydrant-2.webp"
+      "kartinka": "/images/hydrant-2.png"
     },
     {
       "zagolovok": "Пантограф для нижней заправки топливом",
       "opisanie": "Эффективная и безопасная заправка воздушных судов",
-      "kartinka": "/images/hydrant-3.webp"
+      "kartinka": "/images/hydrant-3.png"
     },
     {
       "zagolovok": "Серия заправочных колодцев DAB-24",
       "opisanie": "Надёжный доступ к гидрантной системе аэропорта",
-      "kartinka": "/images/hydrant-4.webp",
+      "kartinka": "/images/hydrant-4.png",
       "vedyot_na": "dab"
     },
     {
       "zagolovok": "Гидрантный клапан Carter модель 60554",
       "opisanie": "Проверенная надёжность в мировой авиации",
-      "kartinka": "/images/hydrant-5.webp"
+      "kartinka": "/images/hydrant-5.png"
     }
   ],
   "preimushchestva": [

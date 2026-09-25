@@ -41,6 +41,32 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
   <section class="sekciya" data-sekciya>
     {s.zagolovok && <h2 class="sekciya__zagolovok">{s.zagolovok}</h2>}
 
+    {s.tip === 'resheniya' && (
+      <div class="sekciya__kartochki">
+        {s.elementy.map((e) => (
+          <article class="reshenie">
+            <div class="reshenie__telo">
+              {e.kartinka && <div class="reshenie__kartinka"><img src={put(e.kartinka)} alt={e.zagolovok} loading="lazy" /></div>}
+              {e.znachok && <span class="ms blok__znachok" aria-hidden="true">{e.znachok}</span>}
+              <h3 class="reshenie__nazvanie">{e.vedyot_na ? <a href={put(`/catalog/${e.vedyot_na}/`)}>{e.zagolovok} <span aria-hidden="true">→</span></a> : e.zagolovok}</h3>
+              {e.opisanie && <p class="reshenie__opisanie">{e.opisanie}</p>}
+              {e.harakteristiki?.length > 0 && <dl class="reshenie__specs">{e.harakteristiki.map((x) => <div><dt>{x.nazvanie}</dt><dd>{x.znachenie}</dd></div>)}</dl>}
+            </div>
+          </article>
+        ))}
+      </div>
+    )}
+
+    {s.tip === 'tablitsa-dannyh' && (
+      <div class="tablitsa-scroll" tabindex="0" role="region" aria-label={s.zagolovok}>
+        <table>
+          <caption>{s.zagolovok}</caption>
+          <thead><tr>{s.zagolovki.map((h) => <th scope="col">{h}</th>)}</tr></thead>
+          <tbody>{s.elementy.map((r) => <tr>{r.yacheyki.map((v) => <td>{v}</td>)}</tr>)}</tbody>
+        </table>
+      </div>
+    )}
+
     {s.tip === 'kartochki' && (
       <div class="sekciya__kartochki">
         {s.elementy.map((e) => (
@@ -169,8 +195,8 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
     margin: 0;
     font-size: clamp(28px, 3.4vw, 52px);
     line-height: 1.03;
-    letter-spacing: -.03em;
-    font-weight: 700;
+    letter-spacing: .005em;
+    font-weight: 300;
     overflow-wrap: anywhere;
   }
 
@@ -190,62 +216,62 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
   }
 
   .tovar-verh__knopka:hover { color: #fff; opacity: .9; }
-  .tovar-verh__kartinka { border-radius: var(--radius-karta); overflow: hidden; background: #DCE3DF; min-height: 340px; }
+  .tovar-verh__kartinka { border-radius: var(--radius-karta); overflow: hidden; background: #e8e6de; min-height: 340px; }
   .tovar-verh__kartinka img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  .fakty { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 16px var(--pole-bok) 0; }
-  .fakt { background: #F6F8F7; border-radius: var(--radius-karta); padding: 22px 24px 24px; }
+  .fakty { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; padding: 16px var(--pole-bok) 0; }
+  .fakt { background: #ffffff; border-radius: var(--radius-karta); padding: 22px 24px 24px; }
   .fakt__znachok { font-size: 26px; color: var(--akcent); }
-  .fakt__zagolovok { margin-top: 12px; font-size: 19px; font-weight: 700; line-height: 1.2; }
+  .fakt__zagolovok { margin-top: 12px; font-size: 19px; font-weight: 300; line-height: 1.2; }
   .fakt__podpis { margin-top: 6px; font-size: 14px; line-height: 1.45; color: var(--tekst-vtoroy); }
 
   .sekciya { padding: 34px var(--pole-bok) 0; }
-  .sekciya__zagolovok { margin: 0 0 20px; font-size: 30px; font-weight: 700; letter-spacing: -.02em; }
+  .sekciya__zagolovok { margin: 0 0 20px; font-size: 30px; font-weight: 300; letter-spacing: .005em; }
 
-  .sekciya__kartochki { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-  .sekciya__bloki { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+  .sekciya__kartochki { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
+  .sekciya__bloki { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
 
   .reshenie__telo {
     display: flex;
     flex-direction: column;
     gap: 10px;
     background: #fff;
-    border-radius: 24px;
+    border-radius: 36px;
     padding: 10px;
-    box-shadow: 0 6px 22px rgba(16, 18, 20, .06);
+    box-shadow: none;
     height: 100%;
   }
 
-  a.reshenie__telo:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(16, 18, 20, .12); }
+  a.reshenie__telo:hover { transform: translateY(-3px); box-shadow: none; }
   .reshenie__telo { transition: transform .25s, box-shadow .25s; }
-  .reshenie__kartinka { border-radius: 18px; overflow: hidden; background: #DCE3DF; height: 152px; }
+  .reshenie__kartinka { border-radius: 24px; overflow: hidden; background: #e8e6de; height: 152px; }
   .reshenie__kartinka img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .reshenie__nazvanie { margin: 4px 6px 0; font-size: 16px; font-weight: 600; line-height: 1.25; }
+  .reshenie__nazvanie { margin: 4px 6px 0; font-size: 16px; font-weight: 400; line-height: 1.25; }
   .reshenie__opisanie { margin: 0 6px 10px; font-size: 13px; line-height: 1.45; color: var(--tekst-tihiy); }
   .reshenie__metki { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 6px 10px; }
 
-  .metka { background: #EFF3F0; border-radius: var(--radius-pilyulya); padding: 4px 10px; font-size: 12px; color: var(--tekst-vtoroy); }
+  .metka { background: #f0efe9; border-radius: var(--radius-pilyulya); padding: 4px 10px; font-size: 12px; color: var(--tekst-vtoroy); }
 
-  .blok { background: #F6F8F7; border-radius: var(--radius-karta); padding: 24px 24px 26px; }
+  .blok { background: #ffffff; border-radius: var(--radius-karta); padding: 24px 24px 26px; }
   .blok__znachok { font-size: 28px; color: var(--akcent); }
-  .blok__zagolovok { margin: 12px 0 0; font-size: 17px; font-weight: 600; line-height: 1.3; }
+  .blok__zagolovok { margin: 12px 0 0; font-size: 17px; font-weight: 400; line-height: 1.3; }
   .blok__podpis { margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: var(--tekst-vtoroy); }
 
   .harakteristiki { margin: 0; background: #fff; border-radius: var(--radius-karta); padding: 8px 24px; }
-  .harakteristika { display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid #EFF3F0; }
+  .harakteristika { display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid #f0efe9; }
   .harakteristika:last-child { border-bottom: 0; }
   .harakteristika__nazvanie { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 15px; color: var(--tekst-vtoroy); }
   .harakteristika__nazvanie .ms { font-size: 20px; color: var(--akcent); }
-  .harakteristika__znachenie { margin: 0; font-size: 15px; font-weight: 600; text-align: right; }
+  .harakteristika__znachenie { margin: 0; font-size: 15px; font-weight: 400; text-align: right; }
 
-  .galereya-tovara { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+  .galereya-tovara { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
   .galereya-tovara img { width: 100%; border-radius: var(--radius-karta); display: block; }
 
   .podbor { padding: 34px var(--pole-bok) 44px; }
-  .podbor__zagolovok { margin: 0 0 20px; font-size: 30px; font-weight: 700; letter-spacing: -.02em; }
+  .podbor__zagolovok { margin: 0 0 20px; font-size: 30px; font-weight: 300; letter-spacing: .005em; }
 
   .podbor__forma, .podbor__spisok {
-    background: #F6F8F7;
+    background: #ffffff;
     border-radius: var(--radius-karta);
     padding: 26px 28px 28px;
     display: grid;
@@ -289,7 +315,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
   .podbor__knopka:hover { color: #fff; opacity: .9; }
 
   @media (max-width: 1280px) {
-    .fakty, .sekciya__kartochki, .sekciya__bloki, .galereya-tovara { grid-template-columns: repeat(3, 1fr); }
+    .fakty, .sekciya__kartochki, .sekciya__bloki, .galereya-tovara { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
 
   @media (max-width: 1024px) {
@@ -298,7 +324,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
   }
 
   @media (max-width: 768px) {
-    .fakty, .sekciya__kartochki, .sekciya__bloki, .galereya-tovara { grid-template-columns: repeat(2, 1fr); }
+    .fakty, .sekciya__kartochki, .sekciya__bloki, .galereya-tovara { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .podbor__forma, .podbor__spisok { grid-template-columns: 1fr; }
     .sekciya__zagolovok, .podbor__zagolovok { font-size: 24px; }
     .tovar-verh__tekst { padding: 28px 22px 30px; }
@@ -309,6 +335,32 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
   @media (max-width: 480px) {
     .fakty, .sekciya__kartochki, .sekciya__bloki, .galereya-tovara { grid-template-columns: 1fr; }
   }
+
+  .tovar-verh { grid-template-columns: minmax(0,45fr) minmax(0,55fr); }
+  .tovar-verh__zagolovok { font-size: clamp(30px, 3.5vw, 56px); }
+  .sekciya__kartochki, .sekciya__bloki { grid-template-columns: repeat(auto-fit, minmax(min(100%,250px),1fr)); }
+  .sekciya__zagolovok, .podbor__zagolovok { font-weight: 300; }
+  .reshenie__kartinka { height: 200px; }
+  a.reshenie__telo:hover { transform: none; background: var(--fon-gero); }
+  .fakt, .blok { background: #fff; border-radius: 32px; }
+  .podbor { background: #fff; }
+  .podbor select { background: var(--fon); color: var(--tekst); border-radius: 999px; max-width: 100%; }
+  .podbor__knopka { background: var(--tekst); color: #fff; }
+  @media (max-width: 768px) { .tovar-verh { grid-template-columns: 1fr; } .tovar-verh__zagolovok { font-size: clamp(30px, 6vw, 48px); } }
+  @media (max-width: 480px) { .harakteristika { flex-direction: column; gap: 8px; } .harakteristika__znachenie { text-align: left; } }
+
+
+  .reshenie__specs { margin: 0 6px 12px; font-size: 14px; }
+  .reshenie__specs > div { padding: 12px 0; border-top: 1px solid #dedad1; }
+  .reshenie__specs dt { color: var(--tekst-vtoroy); }
+  .reshenie__specs dd { margin: 6px 0 0; }
+  .reshenie__telo > .ms { margin: 14px 6px 0; }
+  .reshenie__opisanie { white-space: pre-line; }
+  .tablitsa-scroll { overflow-x: auto; border-radius: 24px; background: #fff; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  caption { text-align: left; padding: 20px; font-size: 18px; }
+  th, td { padding: 14px 18px; border-bottom: 1px solid #dedad1; text-align: left; }
+  th { font-weight: 400; color: var(--tekst-vtoroy); background: var(--fon-gero); }
 </style>
 
 <script>

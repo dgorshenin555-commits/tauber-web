@@ -26,92 +26,124 @@
   "sekcii": [
     {
       "zagolovok": "Варианты эксплуатации",
-      "tip": "prostoy",
+      "tip": "resheniya",
       "elementy": [
-        "{'img': 'assets/s1201-v1.png', 'title': 'Автоцистерны'}",
-        "{'img': 'assets/s1201-v2.png', 'title': 'Железнодорожные цистерны'}",
-        "{'img': 'assets/s1201-v3.png', 'title': 'Танк-контейнеры'}"
+        {
+          "zagolovok": "Автоцистерны",
+          "opisanie": "",
+          "kartinka": "/images/s1201-v1.png"
+        },
+        {
+          "zagolovok": "Железнодорожные цистерны",
+          "opisanie": "",
+          "kartinka": "/images/s1201-v2.png"
+        },
+        {
+          "zagolovok": "Танк-контейнеры",
+          "opisanie": "",
+          "kartinka": "/images/s1201-v3.png"
+        }
       ]
     },
     {
       "zagolovok": "Конфигурация под среду",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "water_drop",
           "zagolovok": "Нефтепродукты",
-          "podpis": "бензин, дизель, керосин"
+          "opisanie": "бензин, дизель, керосин",
+          "znachok": "water_drop"
         },
         {
-          "znachok": "hub",
           "zagolovok": "Растворители",
-          "podpis": "и ароматические углеводороды"
+          "opisanie": "и ароматические углеводороды",
+          "znachok": "hub"
         },
         {
-          "znachok": "science",
           "zagolovok": "Кислоты",
-          "podpis": "и щёлочи"
+          "opisanie": "и щёлочи",
+          "znachok": "science"
         },
         {
-          "znachok": "waves",
           "zagolovok": "Вязкие продукты",
-          "podpis": "масла, битумы и др."
+          "opisanie": "масла, битумы и др.",
+          "znachok": "waves"
         }
       ]
     },
     {
       "zagolovok": "Автоматизация и опции",
-      "tip": "prostoy",
+      "tip": "resheniya",
       "elementy": [
-        "{'img': 'assets/s1201-o1.png', 'title': 'Пневмоприводы', 'sub': 'для перемещения в 1–3 плоскостях'}",
-        "{'img': 'assets/s1201-o2.png', 'title': 'Пульт управления', 'sub': 'Автоматизация процесса'}",
-        "{'img': 'assets/s1201-o3.png', 'title': 'Датчик предельного уровня', 'sub': 'Защита от перелива'}",
-        "{'img': 'assets/s1201-o4.png', 'title': 'Клапан-отсекатель', 'sub': 'Автоматическое перекрытие'}",
-        "{'img': 'assets/s1201-o5.png', 'title': 'Обогрев и изоляция', 'sub': 'Для низких температур и вязких сред'}"
+        {
+          "zagolovok": "Пневмоприводы",
+          "opisanie": "для перемещения в 1–3 плоскостях",
+          "kartinka": "/images/s1201-o1.png"
+        },
+        {
+          "zagolovok": "Пульт управления",
+          "opisanie": "Автоматизация процесса",
+          "kartinka": "/images/s1201-o2.png"
+        },
+        {
+          "zagolovok": "Датчик предельного уровня",
+          "opisanie": "Защита от перелива",
+          "kartinka": "/images/s1201-o3.png"
+        },
+        {
+          "zagolovok": "Клапан-отсекатель",
+          "opisanie": "Автоматическое перекрытие",
+          "kartinka": "/images/s1201-o4.png"
+        },
+        {
+          "zagolovok": "Обогрев и изоляция",
+          "opisanie": "Для низких температур и вязких сред",
+          "kartinka": "/images/s1201-o5.png"
+        }
       ]
     },
     {
       "zagolovok": "Ключевые характеристики",
-      "tip": "bloki",
+      "tip": "resheniya",
       "elementy": [
         {
-          "znachok": "radio_button_unchecked",
           "zagolovok": "ДУ",
-          "podpis": ""
+          "opisanie": "50 / 80 / 100 / 150 мм",
+          "znachok": "radio_button_unchecked"
         },
         {
-          "znachok": "speed",
           "zagolovok": "Рабочее давление",
-          "podpis": ""
+          "opisanie": "до 2,5 МПа",
+          "znachok": "speed"
         },
         {
-          "znachok": "layers",
           "zagolovok": "Материалы корпуса",
-          "podpis": ""
+          "opisanie": "C.S, KCS, AISI 304, AISI 316L",
+          "znachok": "layers"
         },
         {
-          "znachok": "device_thermostat",
           "zagolovok": "Климатическое исполнение",
-          "podpis": ""
+          "opisanie": "−60 … +50 °C",
+          "znachok": "device_thermostat"
         },
         {
-          "znachok": "local_shipping",
           "zagolovok": "Высота обслуживаемых цистерн",
-          "podpis": ""
+          "opisanie": "2500 – 3900 мм",
+          "znachok": "local_shipping"
         },
         {
-          "znachok": "weight",
           "zagolovok": "Масса и исполнение",
-          "podpis": ""
+          "opisanie": "Индивидуально под проект",
+          "znachok": "weight"
         }
       ]
     }
   ],
   "podbor": null,
-  "kartinka": "/images/s1201-hero.webp",
+  "kartinka": "/images/s1201-hero.png",
   "galereya": [
-    "/images/s1201-scheme.webp",
-    "/images/s1201-big.webp",
-    "/images/s1201-band.webp"
+    "/images/s1201-scheme.png",
+    "/images/s1201-big.png",
+    "/images/s1201-band.png"
   ]
 }
