@@ -59,7 +59,7 @@ Interfaces: existing navigation JSON, data-burger, logo and shared variables.
 - [x] Run `npm run build && npm test`, fix actual regressions.
 - [x] Open local preview; inspect home, category, product at 1280/768/390px and check interactions.
 - [x] Review diff, run independent review, document results/limitations.
-- [ ] Commit, push feature branch, create PR and attach it to the task. Keep local preview available.
+- [x] Commit, push feature branch, create PR and attach it to the task. Keep local preview available. PR: https://github.com/dgorshenin555-commits/tauber-web/pull/8
 
 ## Validation and scope
 - Baseline: 28 generated pages and 122 passing tests. Final: 28 pages, 127 passing tests in 17 files; `git diff --check` clean.
