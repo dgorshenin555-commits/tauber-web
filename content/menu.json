@@ -13,8 +13,8 @@
             "adres": "/catalog/filters/"
           },
           {
-            "podpis": "Фильтрационные модули",
-            "poyasnenie": "Модульная очистка сред",
+            "podpis": "Агрегаты фильтрации топлива (АФТ)",
+            "poyasnenie": "Технологические задачи авиатопливообеспечения",
             "znachok": "deployed_code",
             "adres": "/catalog/fmod/"
           },

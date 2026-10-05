@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-labelledby="title">
+  <title id="title">Место для фото или 3D-рендера агрегата</title>
+  <rect width="600" height="420" fill="#e8e6de"/>
+  <g fill="none" stroke="#8b857e" stroke-width="2">
+    <rect x="260" y="146" width="80" height="66" rx="12"/>
+    <circle cx="283" cy="166" r="7"/>
+    <path d="m270 199 21-19 12 11 13-16 14 24"/>
+  </g>
+  <text x="300" y="260" text-anchor="middle" fill="#655f59" font-family="Arial,sans-serif" font-size="22">Фото / 3D-рендер</text>
+</svg>

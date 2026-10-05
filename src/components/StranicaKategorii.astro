@@ -1,6 +1,10 @@
 ---
+// Оглавление: данные категории → первый экран → карточки → пояснения → преимущества → стили.
+// ── Данные и обращение ──────────────────────────────────────────────
+// Категория приходит из content/catalog через [klyuch].astro; put() учитывает Pages.
 import { sayt } from '../lib/content.js';
 import { put } from '../lib/put.js';
+import MaterialyAft from './MaterialyAft.astro';
 
 interface Props {
   d: any;
@@ -10,6 +14,7 @@ const { d } = Astro.props;
 const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}: ${d.hlebnaya_kroshka}`)}`;
 ---
 
+  <!-- ── Первый экран: описание и фото либо подписанное место ────── -->
   <section class="verh">
     <div class="verh__tekst">
       {d.plashka && <div class="verh__plashka">{d.plashka}</div>}
@@ -23,6 +28,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
         <img src={put(d.kartinka)} alt={d.hlebnaya_kroshka} />
       </div>
     )}
+    {d.media_placeholder && <MaterialyAft vid="foto" zagolovok={d.hlebnaya_kroshka} />}
 
     <div class:list={['verh__panel', { 'verh__panel--tyomnaya': d.tyomnaya_panel }]}>
       <div class="verh__chislo">{d.chislo}</div>
@@ -31,6 +37,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
     </div>
   </section>
 
+  <!-- ── Карточки: ссылки на отдельные товарные JSON ─────────────── -->
   <section class="razdel">
     <div class="razdel__shapka">
       <div>
@@ -49,6 +56,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
                 {c.nomer && <span class="tovar__nomer">{c.nomer}</span>}
               </div>
             )}
+            {c.media_placeholder && <div class="tovar__material"><span class="tovar__istochnik">{c.nomer}</span><span>Фото / 3D-рендер</span></div>}
             <h3 class="tovar__zagolovok">{c.zagolovok}</h3>
             {c.opisanie && <p class="tovar__opisanie">{c.opisanie}</p>}
           </a>
@@ -56,6 +64,18 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
       ))}
     </div>
   </section>
+
+  <!-- ── Пояснения АФТ: варианты и нормативная область применения ──
+       Необязательные поля не меняют страницы остальных категорий. -->
+  {d.poyasneniya?.map((s) => (
+    <section class="razdel">
+      <h2 class="razdel__zagolovok">{s.zagolovok}</h2>
+      <div class="poyasneniya">
+        {s.elementy.map((e) => <article class="poyasnenie"><h3>{e.zagolovok}</h3><p>{e.opisanie}</p></article>)}
+      </div>
+    </section>
+  ))}
+  {d.normativ && <section class="razdel normativ"><h2 class="razdel__zagolovok">Нормативная основа</h2><p>{d.normativ.opisanie}</p><a href={d.normativ.ssylka}>{d.normativ.nazvanie} <span aria-hidden="true">↗</span></a></section>}
 
   {d.preimushchestva.length > 0 && (
     <section class="plyusy">
@@ -73,11 +93,16 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
 
 
 <style>
-
-
-
-
-
+  /* ── Vellum: первый экран, карточки и пояснения ──────────────────
+     Существующие категории сохраняют сетку; АФТ добавляет текстовые места. */
+  .tovar__material { min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; background: var(--fon-gero); border-radius: 24px; padding: 20px; color: var(--tekst-tihiy); font-size: 14px; }
+  .tovar__istochnik { align-self: flex-start; padding: 6px 12px; background: #fff; border-radius: 999px; color: var(--tekst); font-size: 12px; }
+  .poyasneniya { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 15px; margin-top: 20px; }
+  .poyasnenie { padding: 26px; background: #fff; border-radius: var(--radius-karta); }
+  .poyasnenie h3 { margin: 0; font-size: 18px; line-height: 1.35; font-weight: 400; }
+  .poyasnenie p, .normativ p { font-size: 15px; line-height: 1.6; color: var(--tekst-vtoroy); }
+  .normativ { padding-bottom: 32px; }
+  .normativ a { text-decoration: underline; text-underline-offset: 4px; }
   .verh {
     display: grid;
     grid-template-columns: 37.1% 1fr 25%;

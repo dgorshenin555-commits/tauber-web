@@ -1,0 +1,17 @@
+---
+// ── Старый адрес модуля → актуальный раздел АФТ ──────────────────────
+// Статическая страница учитывает BASE_URL через put(), в том числе на GitHub Pages.
+import { put } from '../../lib/put.js';
+const adres = put('/catalog/fmod/');
+---
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0;url=${adres}`} />
+    <meta name="robots" content="noindex" />
+    <title>Агрегаты фильтрации топлива — TAUBER</title>
+  </head>
+  <body><p>Раздел обновлён. <a href={adres}>Перейти к агрегатам фильтрации топлива</a>.</p></body>
+</html>
