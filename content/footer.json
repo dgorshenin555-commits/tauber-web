@@ -28,6 +28,10 @@
     "pipelines",
     "ground",
     "hydrant",
+    "fmod",
+    "load",
+    "auto",
+    "probe",
     "pit",
     "caddy"
   ]

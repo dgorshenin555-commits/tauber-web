@@ -11,9 +11,9 @@ describe('футер', () => {
     expect($('footer').length).toBe(1);
   });
 
-  it('в футере шесть категорий из актуального эталона', () => {
+  it('в футере представлен весь каталог продукции', () => {
     const ssylki = $('footer a[href^="/tauber-web/catalog/"]');
-    expect(ssylki.length).toBe(6);
+    expect(ssylki.length).toBe(kategorii.length);
     expect(ssylki.map((_, a) => $(a).attr('href')).get()).toEqual(futer.kategorii.map((key) => `/tauber-web/catalog/${key}/`));
   });
 

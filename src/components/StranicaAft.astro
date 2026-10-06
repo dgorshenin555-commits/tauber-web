@@ -1,0 +1,215 @@
+---
+// Оглавление: данные → первый экран → вкладки → обращение → оформление → переключение.
+// ── Содержание АФТ и общие контакты ────────────────────────────────
+// Каждый агрегат хранит собственную нормативную матрицу в content/tovary.
+import { sayt } from '../lib/content.js';
+import { put } from '../lib/put.js';
+import MaterialyAft from './MaterialyAft.astro';
+const { d } = Astro.props;
+const a = d.aft;
+const tabs = [
+  { id: 'opisanie', title: 'Общее описание' },
+  { id: 'sostav', title: 'Состав оборудования' },
+  { id: 'dannye', title: 'Технические данные' },
+  { id: 'dokumenty', title: 'Нормативы и документы' },
+];
+---
+
+<!-- ── Первый экран: назначение и обращение ─────────────────────── -->
+<section class="aft-hero">
+  <div class="aft-hero__text">
+    <a class="aft-back" href={put('/catalog/fmod/')}>← Агрегаты фильтрации топлива (АФТ)</a>
+    <h1>{d.zagolovok}</h1>
+    <p>{d.vvodnyy_tekst}</p>
+    <a class="aft-button" href="#obratnaya-svyaz">Обсудить комплектацию <span aria-hidden="true">→</span></a>
+  </div>
+  <MaterialyAft vid="foto" zagolovok={d.zagolovok} />
+</section>
+
+<!-- ── Вкладки: без JavaScript работают как якоря ко всем разделам ── -->
+<div class="aft-details" data-aft-tabs>
+  <nav class="aft-tabs" aria-label="Информация об агрегате" data-aft-tablist>
+    {tabs.map((tab) => <a id={`tab-${tab.id}`} href={`#aft-${tab.id}`} data-aft-tab>{tab.title}</a>)}
+  </nav>
+
+  <section class="aft-panel" id="aft-opisanie" aria-labelledby="tab-opisanie" data-aft-panel>
+    <h2>Назначение агрегата</h2>
+    <p class="aft-lead">{a.naznachenie}</p>
+    <p class="aft-source">{a.osnovanie}</p>
+    <div class="aft-description">
+      <div><h3>Технологические операции</h3><ul>{a.funkcii.map((f) => <li>{f}</li>)}</ul></div>
+      <div><h3>Вход и выход</h3><p>{a.mesto}</p></div>
+    </div>
+    <MaterialyAft vid="skhema" skhema={d.skhema} />
+    <h3 class="aft-subtitle">Примеры исполнения</h3>
+    <div class="aft-media"><MaterialyAft vid="foto" /><MaterialyAft vid="render" /></div>
+  </section>
+
+  <section class="aft-panel" id="aft-sostav" aria-labelledby="tab-sostav" data-aft-panel>
+    <h2>Состав оборудования</h2>
+    <p class="aft-lead">По требованиям {a.standart} необходимо предусмотреть оборудование и средства контроля, приведённые ниже. Условия применения отдельных узлов указаны в таблицах.</p>
+    <p>Состав относится к технологической системе. Границы поставки агрегата определяются требованиями Заказчика.</p>
+    {[
+      { key: 'oborudovanie', title: 'Механическое оборудование', rows: a.oborudovanie },
+      { key: 'kip', title: 'КИП, управление и защита', rows: a.kip },
+    ].map((group) => <div class="aft-table-wrap" tabindex="0" role="region" aria-label={group.title}>
+      <table data-aft-table={group.key}>
+        <caption>{group.title}</caption>
+        <thead><tr><th scope="col">Оборудование / функция</th><th scope="col">Требование и применение</th><th scope="col">Основание</th></tr></thead>
+        <tbody>{group.rows.map((r) => <tr><th scope="row">{r.nazvanie}</th><td>{r.trebovanie}</td><td class="aft-table-source">{r.osnovanie}</td></tr>)}</tbody>
+      </table>
+    </div>)}
+  </section>
+
+  <section class="aft-panel" id="aft-dannye" aria-labelledby="tab-dannye" data-aft-panel>
+    <h2>Технические данные</h2>
+    <p class="aft-lead">Параметры исполнения определяются по требованиям Заказчика. Нормативные значения ниже относятся к указанной операции или узлу.</p>
+    <div class="aft-table-wrap" tabindex="0" role="region" aria-label="Параметры агрегата">
+      <table><caption>Параметры исполнения</caption><thead><tr><th scope="col">Параметр</th><th scope="col">Исполнение</th></tr></thead><tbody>{a.parametry.map((r) => <tr><th scope="row">{r.parametr}</th><td>{r.znachenie}</td></tr>)}</tbody></table>
+    </div>
+    {a.normy.length > 0 && <div class="aft-table-wrap" tabindex="0" role="region" aria-label="Требования стандарта">
+      <table><caption>Требования стандарта к операции и оборудованию</caption><thead><tr><th scope="col">Параметр</th><th scope="col">Требование</th><th scope="col">Основание</th></tr></thead><tbody>{a.normy.map((r) => <tr><th scope="row">{r.parametr}</th><td>{r.znachenie}</td><td class="aft-table-source">{r.osnovanie}</td></tr>)}</tbody></table>
+    </div>}
+    <h3 class="aft-subtitle">Варианты по требованиям Заказчика</h3>
+    <p>В комплектации могут быть учтены следующие исполнения и дополнительные функции с сохранением обязательных требований применимой схемы.</p>
+    <dl class="aft-options">{a.varianty.map((v) => <div><dt>{v.zagolovok}</dt><dd>{v.opisanie}</dd></div>)}</dl>
+  </section>
+
+  <section class="aft-panel" id="aft-dokumenty" aria-labelledby="tab-dokumenty" data-aft-panel>
+    <h2>Нормативы и документы</h2>
+    <div class="aft-norms">{a.normativy.map((n) => <article><h3><a href={n.ssylka}>{n.nazvanie} <span aria-hidden="true">↗</span></a></h3><p>{n.opisanie}</p></article>)}</div>
+    <h3 class="aft-subtitle">Документация в комплекте поставки</h3>
+    <p>Стандартный обязательный комплект документов с поставкой включает:</p>
+    <ul>{a.postavka.map((p) => <li>{p}</li>)}</ul>
+  </section>
+</div>
+
+<!-- ── Обращение: отправка через почтовую программу посетителя ───── -->
+<section class="aft-contact" id="obratnaya-svyaz">
+  <div><h2>Обсудить комплектацию</h2><p>Расскажите о задаче или направьте заполненный опросный лист на оборудование.</p><a href={`mailto:${sayt.pochta}`}>{sayt.pochta}</a><p class="aft-contact__note">Опросный лист прикрепите к письму в своей почтовой программе.</p></div>
+  <form data-aft-contact data-email={sayt.pochta} data-subject={`Запрос: ${d.zagolovok}`}>
+    <label>Ваше имя / компания<input name="name" autocomplete="organization" maxlength="150" /></label>
+    <label>Контактный email<input name="email" type="email" autocomplete="email" required maxlength="200" /></label>
+    <label class="aft-message">Сообщение<textarea name="message" rows="4" required maxlength="2000"></textarea></label>
+    <p class="aft-contact__note aft-message">Кнопка откроет письмо с вашим сообщением. Добавьте опросный лист вложением и отправьте письмо.</p>
+    <button class="aft-button" type="submit">Открыть письмо <span aria-hidden="true">→</span></button>
+  </form>
+</section>
+
+<style>
+  /* ── Первый экран и общая типографика Vellum ──────────────────── */
+  .aft-hero, .aft-details, .aft-contact { margin: 20px var(--pole-bok) 48px; }
+  .aft-hero { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: 16px; }
+  .aft-hero__text { background: var(--fon-gero); border-radius: 40px; padding: 36px; }
+  .aft-back { display: inline-block; font-size: 14px; margin-bottom: 26px; }
+  h1 { margin: 0; font-size: clamp(30px,3.3vw,50px); font-weight: 300; line-height: 1.12; }
+  h2 { font-size: clamp(26px,2.3vw,36px); font-weight: 300; margin: 0 0 20px; line-height: 1.25; }
+  h3 { font-weight: 400; font-size: 21px; line-height: 1.4; margin: 0 0 14px; }
+  p, li, dd { line-height: 1.65; }
+  p { margin: 0 0 20px; }
+  .aft-hero p { margin: 22px 0 28px; }
+  .aft-button { display: inline-flex; align-items: center; justify-content: center; gap: 22px; background: var(--tekst); color: #fff; border: 0; border-radius: 999px; padding: 16px 24px; font: inherit; cursor: pointer; }
+  .aft-button:hover { background: #4a4440; }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--tekst); outline-offset: 4px; }
+  /* ── Переключатель и содержательные панели ───────────────────── */
+  .aft-tabs { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px; background: #e7e5dd; border-radius: 26px; margin-bottom: 20px; }
+  .aft-tabs a { flex: 1 1 190px; padding: 16px 20px; text-align: center; border-radius: 20px; color: var(--tekst); line-height: 1.35; }
+  .aft-tabs a:hover { background: #f8f7f3; }
+  .aft-tabs a[aria-selected='true'] { background: var(--tekst); color: #fff; }
+  .aft-panel { background: #fff; padding: clamp(22px,3vw,42px); border-radius: 36px; margin-bottom: 20px; scroll-margin-top: 24px; }
+  .aft-panel[hidden] { display: none; }
+  .aft-lead { font-size: 18px; max-width: 88ch; }
+  .aft-source { font-size: 14px; color: var(--tekst-vtoroy); }
+  .aft-description, .aft-media, .aft-norms { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 26px; }
+  ul { margin: 0 0 24px; padding-left: 22px; }
+  li { margin-bottom: 10px; }
+  .aft-subtitle { margin-top: 36px; }
+  .aft-norms article { padding: 24px; background: var(--fon); border-radius: 24px; }
+  .aft-norms a, .aft-contact a:not(.aft-button) { text-decoration: underline; text-underline-offset: 4px; }
+  /* ── Таблицы: контрастные заголовки и явные нормативные основания ─ */
+  .aft-table-wrap { overflow-x: auto; margin: 28px 0; border: 1px solid #d6d2c9; border-radius: 24px; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  caption { padding: 22px; text-align: left; font-size: 22px; background: var(--fon); }
+  th, td { padding: 17px 20px; text-align: left; vertical-align: top; border-top: 1px solid #d6d2c9; line-height: 1.55; }
+  thead th { color: #fff; background: var(--tekst); font-weight: 400; }
+  tbody th { width: 27%; font-weight: 400; background: #f7f6f2; }
+  .aft-table-source { width: 22%; font-size: 14px; }
+  .aft-options { margin: 24px 0 0; }
+  .aft-options > div { display: grid; grid-template-columns: minmax(180px,1fr) 2fr; gap: 24px; padding: 22px 0; border-top: 1px solid #d6d2c9; }
+  dt { font-size: 18px; line-height: 1.5; } dd { margin: 0; }
+  /* ── Обращение и мобильное представление ──────────────────────── */
+  .aft-contact { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.5fr); gap: 44px; padding: 36px; border-radius: 36px; background: var(--fon-gero); }
+  form { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+  label { display: flex; flex-direction: column; gap: 9px; font-size: 15px; }
+  input, textarea { width: 100%; min-width: 0; padding: 14px 16px; border: 1px solid #cecac0; border-radius: 16px; background: #fff; color: var(--tekst); font: inherit; }
+  textarea { resize: vertical; }
+  .aft-message { grid-column: 1/-1; }
+  .aft-contact__note { font-size: 14px; margin: 18px 0 0; }
+  form .aft-contact__note { margin: 0; }
+  @media (max-width: 768px) {
+    .aft-hero, .aft-description, .aft-media, .aft-norms, .aft-contact { grid-template-columns: 1fr; }
+    .aft-hero__text, .aft-contact { padding: 26px; }
+    .aft-tabs a { flex-basis: calc(50% - 8px); padding: 13px 10px; font-size: 14px; }
+    .aft-options > div { grid-template-columns: 1fr; gap: 8px; }
+    th, td { padding: 14px; }
+  }
+  @media (max-width: 600px) {
+    table, caption, tbody, tr, th, td { display: block; }
+    thead { display: none; }
+    tbody th, .aft-table-source { width: auto; }
+    tbody th { background: var(--tekst); color: #fff; }
+    td { border-top: 0; }
+    .aft-table-source { padding-top: 0; color: var(--tekst-vtoroy); }
+    .aft-table-source::before { content: 'Основание: '; }
+  }
+  @media (max-width: 480px) { form { grid-template-columns: 1fr; } .aft-panel { border-radius: 26px; } }
+</style>
+
+<script>
+  // ── Доступные вкладки: клавиатура, глубокие ссылки, режим без JS ──
+  document.querySelectorAll<HTMLElement>('[data-aft-tabs]').forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLAnchorElement>('[data-aft-tab]'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-aft-panel]'));
+    root.querySelector('[data-aft-tablist]')?.setAttribute('role', 'tablist');
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-controls', panels[i].id);
+      panels[i].setAttribute('role', 'tabpanel');
+      panels[i].tabIndex = 0;
+    });
+    const activate = (index: number, updateHash = false) => {
+      tabs.forEach((tab, i) => {
+        tab.setAttribute('aria-selected', String(i === index));
+        tab.tabIndex = i === index ? 0 : -1;
+        panels[i].hidden = i !== index;
+      });
+      if (updateHash) history.replaceState(null, '', tabs[index].hash);
+    };
+    const fromHash = () => activate(Math.max(0, tabs.findIndex((tab) => tab.hash === location.hash)));
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', (event) => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+        event.preventDefault(); activate(i, true);
+      });
+      tab.addEventListener('keydown', (event) => {
+        const index = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : event.key === 'ArrowRight' ? (i + 1) % tabs.length : event.key === 'ArrowLeft' ? (i + tabs.length - 1) % tabs.length : -1;
+        if (index < 0) return;
+        event.preventDefault(); activate(index, true); tabs[index].focus();
+      });
+    });
+    fromHash();
+    window.addEventListener('hashchange', () => {
+      if (tabs.some((tab) => tab.hash === location.hash)) fromHash();
+    });
+  });
+  // ── Письмо: локальная проверка полей и кодирование введённого текста ─
+  document.querySelectorAll<HTMLFormElement>('[data-aft-contact]').forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      const body = `Имя / компания: ${String(data.get('name') ?? '').trim()}\nEmail: ${String(data.get('email') ?? '').trim()}\n\n${String(data.get('message') ?? '').trim()}`;
+      location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(form.dataset.subject ?? '')}&body=${encodeURIComponent(body)}`;
+    });
+  });
+</script>

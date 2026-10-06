@@ -27,7 +27,7 @@ describe('стационарные решения АФТ', () => {
       expect($('[data-media-placeholder="foto"]').length).toBeGreaterThan(0);
       expect($('[data-media-placeholder="render"]').length).toBeGreaterThan(0);
       expect($('a[href="/tauber-web/catalog/fmod/"]').length).toBeGreaterThan(0);
-      expect($('[data-forma-podbora] textarea').length).toBeGreaterThan(0);
+      expect($('[data-aft-contact] textarea').length).toBeGreaterThan(0);
       expect($('main').text()).not.toMatch(/АФТ-С|АФТ-П|компоновоч|Smith Meter|___/i);
     }
   });
@@ -37,18 +37,18 @@ describe('стационарные решения АФТ', () => {
     expect(vozvrat).toContain('после проверки качества');
     const pvkzh = page('aft-pvkzh');
     expect(pvkzh('main').text()).toContain('Приём, хранение и выдача ПВКЖ');
-    expect(pvkzh('[data-forma-podbora]').text()).toContain('Марка ПВКЖ');
-    expect(pvkzh('[data-forma-podbora]').text()).not.toContain('Марка авиатоплива');
+    expect(pvkzh('#aft-dannye').text()).toContain('ПВКЖ');
+    expect(pvkzh('[data-aft-contact]').text()).not.toContain('Марка авиатоплива');
   });
 
   it('техническая комплектация отделяет проектные варианты от состава схемы, документация не скачивается', () => {
     for (const c of kategoriya.kartochki) {
       const $ = page(c.vedyot_na);
-      expect($('h2').text()).toContain('Технические характеристики и комплектация');
-      expect($('[data-gruppa-komplektacii="skhema"]').length).toBe(1);
-      expect($('[data-gruppa-komplektacii="varianty"]').text()).toContain('Массовый или объёмный учёт');
+      expect($('h2').text()).toContain('Технические данные');
+      expect($('[data-aft-table="oborudovanie"]').length).toBe(1);
+      expect($('#aft-dannye').text()).toContain('Массовый или объёмный учёт');
       expect($('main a[download], main a[href$=".pdf"], main a[href$=".doc"], main a[href$=".docx"]').length).toBe(0);
-      expect($('main').text()).toContain('Перечень документации поставки');
+      expect($('main').text()).toContain('Документация в комплекте поставки');
     }
   });
 
@@ -61,7 +61,7 @@ describe('стационарные решения АФТ', () => {
       expect(existsSync(`dist/catalog/${key}/index.html`)).toBe(true);
       expect($(`a[href="/tauber-web/catalog/${key}/"]`).length).toBe(1);
       const product = page(key);
-      expect(product('main').text()).toContain(`Рисунок ${json(`content/tovary/${key}.json`).normativ.risunok}`);
+      expect(product('main').text().toLowerCase()).toContain(`рисунок ${json(`content/tovary/${key}.json`).normativ.risunok}`.toLowerCase());
       expect(product('main a[href^="https://protect.gost.ru/"]').length).toBeGreaterThan(0);
     }
   });

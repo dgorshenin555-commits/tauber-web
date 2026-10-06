@@ -8,7 +8,7 @@ interface Props {
   skhema?: {
     shagi?: string[];
     vetki?: { zagolovok: string; shagi: string[] }[];
-    primechanie: string;
+    primechanie?: string;
   };
 }
 const { vid, zagolovok, skhema } = Astro.props;
@@ -27,7 +27,7 @@ const vetki = skhema?.vetki ?? (skhema ? [{ zagolovok: '', shagi: skhema.shagi ?
         <ol>{v.shagi.map((shag) => <li>{shag}</li>)}</ol>
       </div>
     ))}
-    <p class="material__primechanie">{skhema.primechanie}</p>
+    {skhema.primechanie && <p class="material__primechanie">{skhema.primechanie}</p>}
   </figure>
 ) : (
   <figure class="material material--placeholder" data-media-placeholder={vid}>
