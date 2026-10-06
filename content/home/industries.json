@@ -4,7 +4,7 @@
     "nazvanie": "Аэропорты",
     "opisanie": "Заправка, электропитание и кондиционирование воздушных судов на стоянке",
     "glavnaya": "ground",
-    "kategorii": ["ground", "hydrant", "pit", "caddy"]
+    "kategorii": ["ground", "hydrant", "pit", "caddy", "fmod"]
   },
   {
     "znachok": "propane_tank",

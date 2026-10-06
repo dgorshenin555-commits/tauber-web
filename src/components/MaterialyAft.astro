@@ -1,0 +1,65 @@
+---
+// ── Данные публичного визуального материала ─────────────────────────
+// Используется в страницах категории/товара. Схема описывает операцию,
+// а не компоновку: размеры и конструктивные сведения сюда не передаются.
+interface Props {
+  vid: 'foto' | 'render' | 'skhema';
+  zagolovok?: string;
+  skhema?: {
+    shagi?: string[];
+    vetki?: { zagolovok: string; shagi: string[] }[];
+    primechanie?: string;
+  };
+}
+const { vid, zagolovok, skhema } = Astro.props;
+const vetki = skhema?.vetki ?? (skhema ? [{ zagolovok: '', shagi: skhema.shagi ?? [] }] : []);
+---
+
+<!-- ── Последовательность операции или место для фото/рендера ───────
+     Раздельные ветви нужны для возвратного топлива и ОНП.
+     Подпись заглушки отличает её от поставленного изделия. -->
+{vid === 'skhema' && skhema ? (
+  <figure class="material material--skhema" data-tekhnologicheskaya-skhema>
+    <figcaption>Упрощённая технологическая схема</figcaption>
+    {vetki.map((v) => (
+      <div class="material__vetka">
+        {v.zagolovok && <h3>{v.zagolovok}</h3>}
+        <ol>{v.shagi.map((shag) => <li>{shag}</li>)}</ol>
+      </div>
+    ))}
+    {skhema.primechanie && <p class="material__primechanie">{skhema.primechanie}</p>}
+  </figure>
+) : (
+  <figure class="material material--placeholder" data-media-placeholder={vid}>
+    <svg viewBox="0 0 64 64" aria-hidden="true" width="64" height="64">
+      <rect x="6" y="10" width="52" height="44" rx="8" />
+      <circle cx="22" cy="24" r="4" />
+      <path d="m12 46 14-13 9 8 8-10 9 15" />
+    </svg>
+    <figcaption>{vid === 'render' ? '3D-рендер агрегата' : 'Фото агрегата'}</figcaption>
+    {zagolovok && <p class="material__nazvanie">{zagolovok}</p>}
+    <p class="material__primechanie">{vid === 'render' ? 'Место для рендера конкретного исполнения' : 'Место для фотографии конкретного исполнения'}</p>
+  </figure>
+)}
+
+<!-- ── Адаптивная схема и визуальные места ───────────────────────────
+     Связи: Vellum tokens.css; на телефоне этапы читаются сверху вниз. -->
+<style>
+  .material { margin: 0; min-width: 0; border-radius: var(--radius-karta); background: var(--fon-gero); padding: 28px; }
+  .material figcaption { font-size: 20px; font-weight: 400; line-height: 1.3; }
+  .material--placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; min-height: 230px; text-align: center; }
+  .material--placeholder svg { fill: none; stroke: var(--tekst-tihiy); stroke-width: 1.2; }
+  .material__nazvanie { margin: 0; max-width: 34ch; font-size: 15px; line-height: 1.5; color: var(--tekst-vtoroy); }
+  .material__primechanie { margin: 16px 0 0; font-size: 14px; line-height: 1.55; color: var(--tekst-vtoroy); }
+  .material--placeholder .material__primechanie { margin: 0; }
+  .material__vetka { margin-top: 22px; }
+  .material__vetka h3 { font-size: 16px; font-weight: 400; margin: 0 0 14px; }
+  .material ol { list-style: none; padding: 0; margin: 0; display: flex; gap: 28px; }
+  .material li { position: relative; flex: 1; min-width: 0; padding: 18px; background: #fff; border-radius: 20px; font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; }
+  .material li:not(:last-child)::after { content: '→'; position: absolute; right: -22px; top: 50%; transform: translateY(-50%); color: var(--tekst-tihiy); }
+  @media (max-width: 768px) {
+    .material { padding: 22px; }
+    .material ol { flex-direction: column; }
+    .material li:not(:last-child)::after { content: '↓'; right: 50%; top: auto; bottom: -24px; transform: translateX(50%); }
+  }
+</style>

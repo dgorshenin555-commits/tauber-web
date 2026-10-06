@@ -1,13 +1,17 @@
 ---
+// ── Источники и шаблоны каталога ──────────────────────────────────
+// АФТ используют вкладки; остальные товары сохраняют общий шаблон.
 import Base from '../../layouts/Base.astro';
 import StranicaKategorii from '../../components/StranicaKategorii.astro';
 import StranicaTovara from '../../components/StranicaTovara.astro';
+import StranicaAft from '../../components/StranicaAft.astro';
 import { sayt } from '../../lib/content.js';
 import { put } from '../../lib/put.js';
 
 const kategoriiFayly = import.meta.glob('../../../content/catalog/*.json', { eager: true });
 const tovaryFayly = import.meta.glob('../../../content/tovary/*.json', { eager: true });
 
+// ── Статические адреса из отдельных JSON ───────────────────────────
 export async function getStaticPaths() {
   const { kategorii } = await import('../../lib/content.js');
   const tovary = Object.keys(import.meta.glob('../../../content/tovary/*.json'))
@@ -18,6 +22,7 @@ export async function getStaticPaths() {
   ];
 }
 
+// ── Выбор содержания и метаданных текущей страницы ─────────────────
 const { klyuch } = Astro.params;
 const { vid } = Astro.props;
 
@@ -33,6 +38,7 @@ const zagolovok = vid === 'tovar' ? d.zagolovok : d.hlebnaya_kroshka;
 const opisanie = vid === 'tovar' ? d.vvodnyy_tekst : d.vvodnyy_tekst?.[0];
 ---
 
+<!-- ── Хлебные крошки и выбор представления ─────────────────────── -->
 <Base title={`${zagolovok} — ${sayt.nazvanie}`} description={opisanie}>
   <nav class="kroshki" aria-label="Вы здесь">
     <a href={put('/')}>Главная</a>
@@ -40,10 +46,11 @@ const opisanie = vid === 'tovar' ? d.vvodnyy_tekst : d.vvodnyy_tekst?.[0];
     <span class="kroshki__tekushchaya">{zagolovok}</span>
   </nav>
 
-  {vid === 'tovar' ? <StranicaTovara d={d} klyuch={klyuch} /> : <StranicaKategorii d={d} />}
+  {vid === 'tovar' ? (d.aft ? <StranicaAft d={d} /> : <StranicaTovara d={d} klyuch={klyuch} />) : <StranicaKategorii d={d} />}
 </Base>
 
 <style>
+  /* ── Компактная навигация по пути страницы ────────────────────── */
   .kroshki {
     display: flex;
     flex-wrap: wrap;

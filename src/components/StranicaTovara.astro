@@ -1,6 +1,10 @@
 ---
+// Оглавление: данные → первый экран → факты/секции → материалы → подбор → стили → письмо.
+// ── Данные товара и адрес обращения ─────────────────────────────────
+// Связи: content/tovary, [klyuch].astro, put() для подпапки GitHub Pages.
 import { sayt } from '../lib/content.js';
 import { put } from '../lib/put.js';
+import MaterialyAft from './MaterialyAft.astro';
 
 interface Props {
   d: any;
@@ -8,14 +12,16 @@ interface Props {
 }
 
 const { d, klyuch } = Astro.props;
-const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запрос: ${d.zagolovok}`)}`;
+const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запрос: ${d.zagolovok}`)}${d.proizvodnyy_razdel ? `&body=${encodeURIComponent('Прошу подготовить предложение по стационарному агрегату. Исходные данные объекта:')}` : ''}`;
 ---
 
+<!-- ── Первый экран и возвращение в родительский раздел ──────────── -->
 <section class="tovar-verh">
   <div class="tovar-verh__tekst">
+    {d.proizvodnyy_razdel && <a class="tovar-verh__nazad" href={put(`/catalog/${d.proizvodnyy_razdel.klyuch}/`)}>← {d.proizvodnyy_razdel.nazvanie}</a>}
     <h1 class="tovar-verh__zagolovok">{d.zagolovok}</h1>
     {d.vvodnyy_tekst && <p class="tovar-verh__lead">{d.vvodnyy_tekst}</p>}
-    <a class="tovar-verh__knopka" href={zayavka}>Запросить документацию <span class="ms">arrow_forward</span></a>
+    <a class="tovar-verh__knopka" href={d.podbor?.tip === 'dannye' ? '#podbor' : zayavka}>{d.knopka ?? 'Запросить документацию'} <span class="ms">arrow_forward</span></a>
   </div>
 
   {d.kartinka && (
@@ -23,8 +29,10 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
       <img src={put(d.kartinka)} alt={d.zagolovok} />
     </div>
   )}
+  {d.media_placeholder && <MaterialyAft vid="foto" zagolovok={d.zagolovok} />}
 </section>
 
+<!-- ── Факты и содержательные секции: старые JSON и новые АФТ ──────── -->
 {d.fakty.length > 0 && (
   <section class="fakty">
     {d.fakty.map((f) => (
@@ -40,6 +48,20 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
 {d.sekcii.map((s) => (
   <section class="sekciya" data-sekciya>
     {s.zagolovok && <h2 class="sekciya__zagolovok">{s.zagolovok}</h2>}
+
+    {s.tip === 'tekst' && <div class="sekciya__tekst">{s.abzacy.map((p) => <p>{p}</p>)}</div>}
+
+    <!-- Комплектация отделяет состав схемы от проектных вариантов;
+         поле gruppy приходит из отдельных content/tovary/aft-*.json. -->
+    {s.tip === 'komplektaciya' && s.gruppy.map((g) => (
+      <div class="komplektaciya" data-gruppa-komplektacii={g.vid}>
+        <h3 class="komplektaciya__zagolovok">{g.zagolovok}</h3>
+        <p class="komplektaciya__opisanie">{g.opisanie}</p>
+        <div class="sekciya__kartochki">
+          {g.elementy.map((e) => <article class="reshenie"><div class="reshenie__telo"><h4 class="reshenie__nazvanie">{e.zagolovok}</h4><p class="reshenie__opisanie">{e.opisanie}</p></div></article>)}
+        </div>
+      </div>
+    ))}
 
     {s.tip === 'resheniya' && (
       <div class="sekciya__kartochki">
@@ -134,6 +156,11 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
   </section>
 ))}
 
+<!-- ── Публичная схема операции и места под фото/3D ─────────────────
+     Состав схемы — функциональный; компоновочных данных здесь нет. -->
+{d.skhema && <section class="sekciya"><MaterialyAft vid="skhema" skhema={d.skhema} /></section>}
+{d.materialy && <section class="sekciya"><h2 class="sekciya__zagolovok">Примеры исполнений</h2><div class="materialy-tovara"><MaterialyAft vid="foto" /><MaterialyAft vid="render" /></div></section>}
+{d.normativ && <section class="sekciya"><h2 class="sekciya__zagolovok">Технологическая задача по ГОСТ</h2><div class="sekciya__tekst"><p>{d.normativ.nazvanie}. Рисунок {d.normativ.risunok}, {d.normativ.punkt}.</p><p>{d.normativ.opisanie}</p><a href={d.normativ.ssylka}>Карточка стандарта Росстандарта <span aria-hidden="true">↗</span></a></div></section>}
 {d.galereya?.length > 0 && (
   <section class="sekciya">
     <div class="galereya-tovara">
@@ -142,11 +169,24 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
   </section>
 )}
 
+<!-- ── Подбор: перечень, прежние варианты или исходные данные ──────── -->
 {d.podbor && (
-  <section class="podbor" data-podbor>
+  <section class="podbor" id="podbor" data-podbor>
     <h2 class="podbor__zagolovok">{d.podbor.zagolovok}</h2>
+    {d.podbor.opisanie && <p class="podbor__opisanie">{d.podbor.opisanie}</p>}
 
-    {d.podbor.tip === 'vybor' ? (
+    {d.podbor.tip === 'dannye' ? (
+      <form class="podbor__forma" data-forma-podbora onsubmit="return false">
+        {d.podbor.parametry.map((p, i) => (
+          <label class="podbor__pole">
+            <span class="podbor__podpis">{p.podpis}</span>
+            {p.mnogostrochnyy ? <textarea name={`param-${i}`} data-parametr={p.podpis} rows="3" placeholder={p.podskazka}></textarea> : <input type="text" name={`param-${i}`} data-parametr={p.podpis} placeholder={p.podskazka} />}
+          </label>
+        ))}
+        <p class="podbor__primechanie">Заполните известные параметры. Кнопка откроет вашу почтовую программу с текстом запроса — письмо отправляете вы.</p>
+        <button type="button" class="podbor__knopka" data-otpravit data-pochta={sayt.pochta} data-tema={`Подбор: ${d.zagolovok}`}>Подготовить запрос <span class="ms">arrow_forward</span></button>
+      </form>
+    ) : d.podbor.tip === 'vybor' ? (
       <form class="podbor__forma" data-forma-podbora>
         {d.podbor.parametry.map((p, i) => (
           <label class="podbor__pole">
@@ -175,6 +215,23 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
 )}
 
 <style>
+  /* ── Стили общих товарных блоков и расширений АФТ ──────────────── */
+  .tovar-verh__nazad { margin-bottom: 24px; font-size: 14px; line-height: 1.5; color: var(--tekst-vtoroy); }
+  .sekciya__tekst { background: #fff; border-radius: var(--radius-karta); padding: 26px 30px; }
+  .sekciya__tekst p { margin: 0 0 16px; max-width: 85ch; font-size: 16px; line-height: 1.7; }
+  .sekciya__tekst p:last-child { margin-bottom: 0; }
+  .sekciya__tekst a { text-decoration: underline; text-underline-offset: 4px; }
+  .materialy-tovara { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+  .komplektaciya { margin-bottom: 28px; }
+  .komplektaciya:last-child { margin-bottom: 0; }
+  .komplektaciya__zagolovok { margin: 0 0 8px; font-size: 21px; line-height: 1.35; font-weight: 400; }
+  .komplektaciya__opisanie { margin: 0 0 18px; font-size: 15px; line-height: 1.6; color: var(--tekst-vtoroy); max-width: 85ch; }
+  .komplektaciya .reshenie__telo { padding: 20px; }
+  .podbor__opisanie { font-size: 16px; line-height: 1.6; max-width: 85ch; color: var(--tekst-vtoroy); }
+  .podbor__primechanie { grid-column: 1 / -1; margin: 0; font-size: 14px; line-height: 1.5; color: var(--tekst-vtoroy); }
+  .podbor__pole input, .podbor__pole textarea { width: 100%; min-width: 0; box-sizing: border-box; padding: 14px 18px; border: 1px solid #dedad1; border-radius: 18px; font: inherit; color: var(--tekst); background: var(--fon); }
+  .podbor__pole textarea { resize: vertical; }
+  @media (max-width: 768px) { .materialy-tovara { grid-template-columns: 1fr; } .sekciya__tekst { padding: 22px; } }
   .tovar-verh {
     display: grid;
     grid-template-columns: 45% 1fr;
@@ -364,12 +421,14 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
 </style>
 
 <script>
+  // ── Письмо с исходными данными ─────────────────────────────────────
+  // Ничего не передаётся серверу. Кодирует текст в mailto для клиента пользователя.
   document.querySelectorAll('[data-otpravit]').forEach((knopka) => {
     knopka.addEventListener('click', () => {
       const forma = knopka.closest('[data-forma-podbora]');
       const stroki = [];
-      forma?.querySelectorAll('select').forEach((pole) => {
-        if (pole.value) stroki.push(`${pole.dataset.parametr}: ${pole.value}`);
+      forma?.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>('[data-parametr]').forEach((pole) => {
+        if (pole.value.trim()) stroki.push(`${pole.dataset.parametr}: ${pole.value.trim()}`);
       });
       const telo = stroki.length
         ? `Прошу подобрать решение по параметрам:\n\n${stroki.join('\n')}`
