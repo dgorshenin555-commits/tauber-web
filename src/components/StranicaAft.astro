@@ -49,6 +49,7 @@ const tabs = [
     <h2>Состав оборудования</h2>
     <p class="aft-lead">По требованиям {a.standart} необходимо предусмотреть оборудование и средства контроля, приведённые ниже. Условия применения отдельных узлов указаны в таблицах.</p>
     <p>Состав относится к технологической системе. Границы поставки агрегата определяются требованиями Заказчика.</p>
+    {a.filtraciya_primechanie && <p>{a.filtraciya_primechanie}</p>}
     {[
       { key: 'oborudovanie', title: 'Механическое оборудование', rows: a.oborudovanie },
       { key: 'kip', title: 'КИП, управление и защита', rows: a.kip },
@@ -56,7 +57,7 @@ const tabs = [
       <table data-aft-table={group.key}>
         <caption>{group.title}</caption>
         <thead><tr><th scope="col">Оборудование / функция</th><th scope="col">Требование и применение</th><th scope="col">Основание</th></tr></thead>
-        <tbody>{group.rows.map((r) => <tr><th scope="row">{r.nazvanie}</th><td>{r.trebovanie}</td><td class="aft-table-source">{r.osnovanie}</td></tr>)}</tbody>
+        <tbody>{group.rows.map((r) => <tr><th scope="row">{r.nazvanie}</th><td>{r.trebovanie}{r.tonkost && <p class="aft-rating" data-aft-tonkost><strong>Тонкость фильтрации: </strong>{r.tonkost}</p>}</td><td class="aft-table-source">{r.osnovanie}</td></tr>)}</tbody>
       </table>
     </div>)}
   </section>
@@ -134,6 +135,8 @@ const tabs = [
   thead th { color: #fff; background: var(--tekst); font-weight: 400; }
   tbody th { width: 27%; font-weight: 400; background: #f7f6f2; }
   .aft-table-source { width: 22%; font-size: 14px; }
+  /* Нормативная тонкость хранится у фильтра в JSON и видна рядом с комплектацией. */
+  .aft-rating { margin: 14px 0 0; } .aft-rating strong { font-weight: 400; }
   .aft-options { margin: 24px 0 0; }
   .aft-options > div { display: grid; grid-template-columns: minmax(180px,1fr) 2fr; gap: 24px; padding: 22px 0; border-top: 1px solid #d6d2c9; }
   dt { font-size: 18px; line-height: 1.5; } dd { margin: 0; }
