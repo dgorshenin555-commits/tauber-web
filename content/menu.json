@@ -19,7 +19,7 @@
             "adres": "/catalog/fmod/"
           },
           {
-            "podpis": "Пробоотборники",
+            "podpis": "Система визуального контроля топлива (СВКТ)",
             "poyasnenie": "Закрытый отбор проб",
             "znachok": "science",
             "adres": "/catalog/probe/"
@@ -65,13 +65,13 @@
             "adres": "/catalog/pipelines/"
           },
           {
-            "podpis": "Слив/налив",
+            "podpis": "Устройства слива-налива",
             "poyasnenie": "Устройства верхнего и нижнего налива",
             "znachok": "oil_barrel",
             "adres": "/catalog/load/"
           },
           {
-            "podpis": "Наливные комплексы",
+            "podpis": "Сливо-наливные эстакады и комплексы",
             "poyasnenie": "Автоматизированные АНК",
             "znachok": "precision_manufacturing",
             "adres": "/catalog/auto/"

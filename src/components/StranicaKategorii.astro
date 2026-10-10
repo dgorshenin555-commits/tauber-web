@@ -30,10 +30,12 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
     )}
     {d.media_placeholder && <MaterialyAft vid="foto" zagolovok={d.hlebnaya_kroshka} />}
 
-    <div class:list={['verh__panel', { 'verh__panel--tyomnaya': d.tyomnaya_panel }]}>
+    <div class:list={['verh__panel', { 'verh__panel--tyomnaya': d.tyomnaya_panel, 'verh__panel--napravleniya': d.napravleniya }]}>
       <div class="verh__chislo">{d.chislo}</div>
       <div class="verh__chislo-podpis">{d.chislo_podpis}</div>
-      {d.perechislenie && <p class="verh__perechislenie">{d.perechislenie}</p>}
+      {d.napravleniya
+        ? <ol class="verh__napravleniya" data-napravleniya>{d.napravleniya.map((punkt) => <li>{punkt}</li>)}</ol>
+        : d.perechislenie && <p class="verh__perechislenie">{d.perechislenie}</p>}
     </div>
   </section>
 
@@ -75,7 +77,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
       </div>
     </section>
   ))}
-  {d.normativ && <section class="razdel normativ"><h2 class="razdel__zagolovok">Нормативная основа</h2><p>{d.normativ.opisanie}</p><a href={d.normativ.ssylka}>{d.normativ.nazvanie} <span aria-hidden="true">↗</span></a></section>}
+  {d.normativ && <section class="razdel normativ"><h2 class="razdel__zagolovok">Нормативная основа</h2><p>{d.normativ.opisanie}</p><a href={d.normativ.ssylka} target="_blank" rel="noopener noreferrer">{d.normativ.nazvanie} <span aria-hidden="true">↗</span></a></section>}
 
   {d.preimushchestva.length > 0 && (
     <section class="plyusy">
@@ -172,6 +174,9 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
   .verh__chislo { font-size: 62px; line-height: .9; font-weight: 300; letter-spacing: .005em; }
   .verh__chislo-podpis { font-size: 18px; font-weight: 400; margin-top: 4px; }
   .verh__perechislenie { margin: 18px 0 0; font-size: 14px; line-height: 1.5; opacity: .85; }
+  /* ── Десять направлений: число и список описывают один набор карточек ── */
+  .verh__napravleniya { margin: 14px 0 0; padding-left: 19px; font-size: 13px; line-height: 1.45; }
+  .verh__napravleniya li { margin: 0 0 5px; }
 
   .razdel { padding: 34px var(--pole-bok) 10px; }
   .razdel__shapka { margin-bottom: 22px; }
@@ -245,6 +250,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
   .verh__panel { background: #fff; }
   .verh__panel--tyomnaya { background: var(--temnaya); color: #fff; }
   .verh__chislo { font-size: 80px; margin-top: auto; }
+  .verh__panel--napravleniya .verh__chislo { margin-top: 0; }
   .verh__chislo-podpis { font-size: clamp(24px, 2.5vw, 40px); }
   .verh__zagolovok { font-size: clamp(32px, 3.5vw, 56px); }
   .razdel__kartochki { grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
