@@ -1,6 +1,6 @@
 # Карта кода TAUBER
 
-Актуализирована 06.10.2026. Сайт собирается Astro в статические страницы. Содержание хранится в отдельных JSON, изображения — в public/images. АФТ используют отдельный шаблон по наличию поля aft.
+Актуализирована 10.10.2026. Сайт собирается Astro в статические страницы. Содержание хранится в отдельных JSON, изображения — в public/images. АФТ используют отдельный шаблон по наличию поля aft.
 
 ```mermaid
 flowchart TD
@@ -33,9 +33,9 @@ flowchart TD
 | src/pages/catalog/fmk.astro | Сохранение старой ссылки | put('/catalog/fmod/') |
 | src/lib/content.js | Общие данные сайта | Меню, главная, каркас |
 | src/lib/put.js | Адреса с базой /tauber-web/ | Компоненты и страницы |
-| src/components/StranicaKategorii.astro | Первый экран, карточки, пояснения | content/catalog/*.json |
+| src/components/StranicaKategorii.astro | Первый экран, карточки, пояснения; для АФТ список десяти направлений | content/catalog/*.json |
 | src/components/StranicaTovara.astro | Секции товара, материалы, запрос | content/tovary/*.json |
-| src/components/StranicaAft.astro | Вкладки, таблицы оборудования и КИП, нормативы, письмо | content/tovary/aft-*.json, поле aft |
+| src/components/StranicaAft.astro | Вкладки, таблицы оборудования и КИП, нормативы, листание других АФТ, письмо | content/tovary/aft-*.json, поле aft; content/catalog/fmod.json для соседних карточек |
 | src/components/MaterialyAft.astro | Упрощённые этапы; подписанные фото/рендеры | Не содержит производственных чертежей |
 | tests/aft.test.js | Полнота десяти направлений, приватность документов, ссылки | Собранные HTML и исходные JSON |
 | tests/aft-vkladki.test.js | Четыре панели, таблицы с основаниями, отсутствие старых плашек | Собранные HTML |
@@ -43,6 +43,8 @@ flowchart TD
 ## Модель содержания АФТ
 
 Категория fmod содержит kartochki; поле vedyot_na — ключ товарной страницы. Товар ссылается назад через proizvodnyy_razdel. Поле aft содержит назначение и функции, oborudovanie и kip с требованием и основанием, parametry, normy, varianty, normativy и postavka. normativ связывает задачу с рисунком и разделом ГОСТ. skhema задаёт shagi либо раздельные vetki. Фото/рендеры пока выводятся подписанными местами. Старые товары используют StranicaTovara и собственный формат подбора.
+
+Поле `napravleniya` категории fmod содержит десять коротких пунктов для числовой панели. Карточки листания на страницах АФТ берутся из `fmod.kartochki`; текущий ключ передаёт маршрут `[klyuch].astro`. Внешние страницы стандартов открываются в новой вкладке.
 
 ## Сквозные процессы и инварианты
 

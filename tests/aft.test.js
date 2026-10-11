@@ -62,7 +62,7 @@ describe('стационарные решения АФТ', () => {
       expect($(`a[href="/tauber-web/catalog/${key}/"]`).length).toBe(1);
       const product = page(key);
       expect(product('main').text().toLowerCase()).toContain(`рисунок ${json(`content/tovary/${key}.json`).normativ.risunok}`.toLowerCase());
-      expect(product('main a[href^="https://protect.gost.ru/"]').length).toBeGreaterThan(0);
+      expect(product('#aft-dokumenty a[href^="https://base.garant.ru/"]').length).toBeGreaterThan(0);
     }
   });
 

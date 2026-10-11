@@ -31,6 +31,7 @@ describe('страницы категорий', () => {
         expect($('body').text(), `в ${k.klyuch} нет вводного абзаца`).toContain(abzac);
       }
       if (d.perechislenie) expect($('body').text()).toContain(d.perechislenie);
+      if (d.napravleniya) expect($('[data-napravleniya] li').length).toBe(d.napravleniya.length);
     }
   });
 

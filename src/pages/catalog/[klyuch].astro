@@ -46,7 +46,7 @@ const opisanie = vid === 'tovar' ? d.vvodnyy_tekst : d.vvodnyy_tekst?.[0];
     <span class="kroshki__tekushchaya">{zagolovok}</span>
   </nav>
 
-  {vid === 'tovar' ? (d.aft ? <StranicaAft d={d} /> : <StranicaTovara d={d} klyuch={klyuch} />) : <StranicaKategorii d={d} />}
+  {vid === 'tovar' ? (d.aft ? <StranicaAft d={d} klyuch={klyuch} /> : <StranicaTovara d={d} klyuch={klyuch} />) : <StranicaKategorii d={d} />}
 </Base>
 
 <style>

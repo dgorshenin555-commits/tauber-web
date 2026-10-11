@@ -4,9 +4,11 @@
 // Каждый агрегат хранит собственную нормативную матрицу в content/tovary.
 import { sayt } from '../lib/content.js';
 import { put } from '../lib/put.js';
+import kategoriyaAft from '../../content/catalog/fmod.json';
 import MaterialyAft from './MaterialyAft.astro';
-const { d } = Astro.props;
+const { d, klyuch } = Astro.props;
 const a = d.aft;
+const drugieAft = kategoriyaAft.kartochki.filter((c) => c.vedyot_na !== klyuch);
 const tabs = [
   { id: 'opisanie', title: 'Общее описание' },
   { id: 'sostav', title: 'Состав оборудования' },
@@ -21,7 +23,7 @@ const tabs = [
     <a class="aft-back" href={put('/catalog/fmod/')}>← Агрегаты фильтрации топлива (АФТ)</a>
     <h1>{d.zagolovok}</h1>
     <p>{d.vvodnyy_tekst}</p>
-    <a class="aft-button" href="#obratnaya-svyaz">Обсудить комплектацию <span aria-hidden="true">→</span></a>
+    <a class="aft-button" href="#obratnaya-svyaz">Отправить заявку на расчёт <span aria-hidden="true">→</span></a>
   </div>
   <MaterialyAft vid="foto" zagolovok={d.zagolovok} />
 </section>
@@ -78,12 +80,32 @@ const tabs = [
 
   <section class="aft-panel" id="aft-dokumenty" aria-labelledby="tab-dokumenty" data-aft-panel>
     <h2>Нормативы и документы</h2>
-    <div class="aft-norms">{a.normativy.map((n) => <article><h3><a href={n.ssylka}>{n.nazvanie} <span aria-hidden="true">↗</span></a></h3><p>{n.opisanie}</p></article>)}</div>
+    <div class="aft-norms">{a.normativy.map((n) => <article><h3><a href={n.ssylka} target="_blank" rel="noopener noreferrer">{n.nazvanie} <span aria-hidden="true">↗</span></a></h3><p>{n.opisanie}</p></article>)}</div>
     <h3 class="aft-subtitle">Документация в комплекте поставки</h3>
     <p>Стандартный обязательный комплект документов с поставкой включает:</p>
     <ul>{a.postavka.map((p) => <li>{p}</li>)}</ul>
   </section>
 </div>
+
+<!-- ── Навигация внутри раздела: соседние агрегаты без возврата в каталог ── -->
+<section class="aft-drugie" data-aft-drugie>
+  <div class="aft-drugie__shapka">
+    <h2>Другие агрегаты фильтрации топлива</h2>
+    <div class="aft-drugie__upravlenie">
+      <button type="button" data-aft-prev aria-label="Предыдущие агрегаты">←</button>
+      <button type="button" data-aft-next aria-label="Следующие агрегаты">→</button>
+    </div>
+  </div>
+  <div class="aft-drugie__spisok" data-aft-track tabindex="0" aria-label="Другие агрегаты фильтрации топлива">
+    {drugieAft.map((c) => <a class="aft-drugie__kartochka" href={put(`/catalog/${c.vedyot_na}/`)}>
+      <div class="aft-drugie__media">
+        {c.kartinka ? <img src={put(c.kartinka)} alt="" loading="lazy" /> : <span>Фото / 3D-рендер</span>}
+        <span class="aft-drugie__nomer">{c.nomer}</span>
+      </div>
+      <h3>{c.zagolovok}</h3>
+    </a>)}
+  </div>
+</section>
 
 <!-- ── Обращение: отправка через почтовую программу посетителя ───── -->
 <section class="aft-contact" id="obratnaya-svyaz">
@@ -99,7 +121,7 @@ const tabs = [
 
 <style>
   /* ── Первый экран и общая типографика Vellum ──────────────────── */
-  .aft-hero, .aft-details, .aft-contact { margin: 20px var(--pole-bok) 48px; }
+  .aft-hero, .aft-details, .aft-drugie, .aft-contact { margin: 20px var(--pole-bok) 48px; }
   .aft-hero { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: 16px; }
   .aft-hero__text { background: var(--fon-gero); border-radius: 40px; padding: 36px; }
   .aft-back { display: inline-block; font-size: 14px; margin-bottom: 26px; }
@@ -140,6 +162,16 @@ const tabs = [
   .aft-options { margin: 24px 0 0; }
   .aft-options > div { display: grid; grid-template-columns: minmax(180px,1fr) 2fr; gap: 24px; padding: 22px 0; border-top: 1px solid #d6d2c9; }
   dt { font-size: 18px; line-height: 1.5; } dd { margin: 0; }
+  /* ── Горизонтальная прокрутка карточек, доступная мышью и с клавиатуры ── */
+  .aft-drugie__shapka { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .aft-drugie__upravlenie { display: flex; gap: 8px; }
+  .aft-drugie__upravlenie button { border: 1px solid #d6d2c9; border-radius: 50%; background: #fff; color: var(--tekst); width: 44px; height: 44px; cursor: pointer; font: inherit; }
+  .aft-drugie__spisok { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 0 12px; }
+  .aft-drugie__kartochka { flex: 0 0 clamp(230px, 23vw, 320px); scroll-snap-align: start; background: #fff; padding: 10px 10px 20px; border-radius: 32px; color: var(--tekst); }
+  .aft-drugie__media { position: relative; display: flex; align-items: flex-end; min-height: 160px; padding: 20px; border-radius: 23px; background: var(--fon-gero); color: var(--tekst-vtoroy); font-size: 14px; overflow: hidden; }
+  .aft-drugie__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .aft-drugie__nomer { position: absolute; top: 12px; left: 12px; padding: 5px 10px; border-radius: 99px; background: #fff; color: var(--tekst); font-size: 12px; }
+  .aft-drugie__kartochka h3 { margin: 14px 10px 0; font-size: 17px; }
   /* ── Обращение и мобильное представление ──────────────────────── */
   .aft-contact { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.5fr); gap: 44px; padding: 36px; border-radius: 36px; background: var(--fon-gero); }
   form { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
@@ -214,5 +246,14 @@ const tabs = [
       const body = `Имя / компания: ${String(data.get('name') ?? '').trim()}\nEmail: ${String(data.get('email') ?? '').trim()}\n\n${String(data.get('message') ?? '').trim()}`;
       location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(form.dataset.subject ?? '')}&body=${encodeURIComponent(body)}`;
     });
+  });
+  // ── Листание карточек: кнопки дополняют обычную прокрутку списка ──
+  document.querySelectorAll<HTMLElement>('[data-aft-drugie]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('[data-aft-track]');
+    const card = track?.querySelector<HTMLElement>('a');
+    if (!track || !card) return;
+    const step = () => card.getBoundingClientRect().width + 16;
+    root.querySelector('[data-aft-prev]')?.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    root.querySelector('[data-aft-next]')?.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
   });
 </script>
