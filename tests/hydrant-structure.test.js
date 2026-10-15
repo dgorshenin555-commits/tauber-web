@@ -17,6 +17,12 @@ describe('гидрантная система по согласованной с
     ]);
   });
 
+  it('не показывает на сайте внутреннюю нумерацию из документа', () => {
+    const $ = page('catalog/hydrant');
+    const cards = $('[data-kartochka-razdela]').map((_, item) => $(item).text().trim()).get();
+    for (const card of cards) expect(card).not.toMatch(/2\.[123]\./);
+  });
+
   it('убирает старые изделия и не выдаёт карточки без страницы за ссылки', () => {
     const $ = page('catalog/hydrant');
     const content = $('main').text();

@@ -63,7 +63,6 @@ const estPanel = Boolean(d.chislo || d.perechislenie || d.napravleniya?.length);
               </div>
             )}
             {c.media_placeholder && <div class="tovar__material"><span class="tovar__istochnik">{c.nomer}</span><span>Фото / 3D-рендер</span></div>}
-            {c.nomer && !c.kartinka && !c.media_placeholder && <span class="tovar__nomer-tekst">{c.nomer}.</span>}
             <h3 class="tovar__zagolovok">{c.zagolovok}</h3>
             {c.opisanie && <p class="tovar__opisanie">{c.opisanie}</p>}
             {c.modeli?.length > 0 && <ul class="tovar__modeli">{c.modeli.map((model) => <li>{model}</li>)}</ul>}
@@ -221,7 +220,6 @@ const estPanel = Boolean(d.chislo || d.perechislenie || d.napravleniya?.length);
 
   .tovar__zagolovok { margin: 4px 6px 0; font-size: 16px; font-weight: 400; line-height: 1.25; }
   .tovar__opisanie { margin: 0 6px 10px; font-size: 13px; line-height: 1.45; color: var(--tekst-tihiy); }
-  .tovar__nomer-tekst { margin: 8px 6px 0; color: var(--tekst-tihiy); font-size: 14px; }
   .tovar__modeli { margin: 4px 6px 10px; padding-left: 22px; color: var(--tekst); font-size: 15px; line-height: 1.7; }
 
   .plyusy { padding: 24px var(--pole-bok) 40px; }

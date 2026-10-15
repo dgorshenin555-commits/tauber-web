@@ -14,12 +14,10 @@
   },
   "kartochki": [
     {
-      "nomer": "2.1",
       "zagolovok": "DJ400-E600",
       "vedyot_na": "dj400-e600"
     },
     {
-      "nomer": "2.2",
       "zagolovok": "Люки доступа в технологическую камеру",
       "bez_ssylki": true,
       "modeli": [
@@ -29,7 +27,6 @@
       ]
     },
     {
-      "nomer": "2.3",
       "zagolovok": "Гидрантный клапан Carter",
       "bez_ssylki": true
     }
