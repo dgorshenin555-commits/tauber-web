@@ -3,8 +3,8 @@ import { existsSync } from 'node:fs';
 import { sayt, kategorii, otrasli, fotoProizvodstva, menyu, futer } from '../src/lib/content.js';
 
 describe('содержание', () => {
-  it('десять категорий, как на главной эталона', () => {
-    expect(kategorii).toHaveLength(10);
+  it('двенадцать категорий после добавления портового питания и барабанов', () => {
+    expect(kategorii).toHaveLength(12);
   });
 
   it('названия и количества совпадают с эталоном дословно', () => {
@@ -16,7 +16,7 @@ describe('содержание', () => {
 
   it('плашка «Собственное производство» стоит там, где в эталоне', () => {
     const nesvoi = kategorii.filter((k) => !k.svoye).map((k) => k.klyuch).sort();
-    expect(nesvoi).toEqual(['ground', 'mobile-power', 'pit']);
+    expect(nesvoi).toEqual(['drums', 'ground', 'mobile-power', 'pit', 'shore-power']);
   });
 
   it('у каждой категории указана существующая картинка', () => {

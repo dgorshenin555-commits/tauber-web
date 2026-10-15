@@ -25,13 +25,11 @@ describe('шапка', () => {
     expect(punkty.slice(0, 5)).toEqual(['Продукция', 'Проекты', 'Компания', 'Пресс-центр', 'Контакты']);
   });
 
-  it('пункты без готовой страницы не являются ссылками — иначе они ведут в пустоту', () => {
-    const bezStranicy = $('header nav [data-punkt]').filter((_, el) =>
-      ['Проекты', 'Компания', 'Пресс-центр', 'Контакты'].includes($(el).contents().first().text().trim()));
-    expect(bezStranicy.length).toBe(4);
-    bezStranicy.each((_, el) => {
-      expect($(el).prop('tagName').toLowerCase()).not.toBe('a');
-    });
+  it('четыре информационных раздела ведут на готовые маршруты', () => {
+    const routes = ['projects', 'company', 'press', 'contacts'];
+    for (const route of routes) {
+      expect($(`header nav [data-punkt][href="/tauber-web/${route}/"]`).length).toBe(1);
+    }
   });
 
   it('подменю открывается не только наведением: у «Продукции» есть кнопка с aria-expanded', () => {
@@ -69,15 +67,15 @@ describe('шапка', () => {
   });
 
   it('пункты подменю присутствуют в разметке, а не подгружаются скриптом', () => {
-    // 10 ссылок подменю плюс сама «Продукция» — в разметке, а не из скрипта
+    // Все ссылки подменю присутствуют в разметке, а не подгружаются скриптом.
     const ssylki = $('header nav a[href^="/tauber-web/catalog/"]');
-    expect(ssylki.length).toBeGreaterThanOrEqual(10);
+    expect(ssylki.length).toBeGreaterThanOrEqual(12);
   });
 
   it('у пунктов подменю есть пояснения и иконки, как в эталоне', () => {
     const podmenyu = $('header [data-kolonka] a');
-    expect(podmenyu.length).toBe(10);
+    expect(podmenyu.length).toBe(12);
     expect(podmenyu.first().find('.ms').length).toBe(1);
-    expect($('header [data-kolonka]').length).toBe(3);
+    expect($('header [data-kolonka]').length).toBe(4);
   });
 });

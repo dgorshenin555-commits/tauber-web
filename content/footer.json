@@ -27,6 +27,8 @@
     "filters",
     "pipelines",
     "ground",
+    "shore-power",
+    "drums",
     "hydrant",
     "fmod",
     "load",

@@ -11,7 +11,7 @@
     "nazvanie": "Нефтебазы и терминалы",
     "opisanie": "Устройства слива-налива, сливо-наливные эстакады и комплексы",
     "glavnaya": "load",
-    "kategorii": ["load", "auto", "probe"]
+    "kategorii": ["load", "auto", "probe", "shore-power", "drums"]
   },
   {
     "znachok": "local_gas_station",

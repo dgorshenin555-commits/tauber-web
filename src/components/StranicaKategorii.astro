@@ -16,7 +16,7 @@ const estPanel = Boolean(d.chislo || d.perechislenie || d.napravleniya?.length);
 ---
 
   <!-- ── Первый экран: описание и фото либо подписанное место ────── -->
-  <section class:list={['verh', { 'verh--bez-paneli': !estPanel }]}>
+  <section class:list={['verh', { 'verh--bez-paneli': !estPanel, 'verh--tolko-tekst': !d.kartinka && !d.media_placeholder && !estPanel }]}>
     <div class="verh__tekst">
       {d.plashka && <div class="verh__plashka">{d.plashka}</div>}
       <h1 class="verh__zagolovok">{d.zagolovok}</h1>
@@ -268,6 +268,7 @@ const estPanel = Boolean(d.chislo || d.perechislenie || d.napravleniya?.length);
   @media (max-width: 1280px) { .verh { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
   @media (max-width: 768px) { .verh { grid-template-columns: 1fr; } .verh__panel { grid-column: auto; } .verh__zagolovok { font-size: clamp(30px, 6vw, 48px); } }
   .verh--bez-paneli { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .verh--tolko-tekst { grid-template-columns: minmax(0, 1fr); }
   @media (max-width: 768px) { .verh--bez-paneli { grid-template-columns: 1fr; } }
   @media (max-width: 900px) { .razdel__kartochki--tri { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 550px) { .razdel__kartochki--tri { grid-template-columns: 1fr; } }

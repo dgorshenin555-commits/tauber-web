@@ -21,8 +21,8 @@ describe('мобильное меню', () => {
     expect($('#mobilnoe-menyu').attr('open')).toBeUndefined();
   });
 
-  it('в меню перечислены все десять категорий короткими названиями', () => {
-    const punkty = $('#mobilnoe-menyu nav a').map((_, a) => $(a).find('span:not(.ms)').text().trim()).get();
+  it('в меню перечислены все категории короткими названиями', () => {
+    const punkty = $('#mobilnoe-menyu .mobmenyu__katalog a').map((_, a) => $(a).find('span:not(.ms)').text().trim()).get();
     for (const k of kategorii) {
       expect(punkty, `в мобильном меню нет категории «${k.korotko}»`).toContain(k.korotko);
     }
@@ -40,7 +40,7 @@ describe('мобильное меню', () => {
   });
 
   it('ссылки мобильного меню ведут на страницы категорий', () => {
-    $('#mobilnoe-menyu nav a').each((_, a) => {
+    $('#mobilnoe-menyu .mobmenyu__katalog a').each((_, a) => {
       expect($(a).attr('href')).toMatch(/^\/tauber-web\/catalog\/[a-z0-9-]+\/$/);
     });
   });
