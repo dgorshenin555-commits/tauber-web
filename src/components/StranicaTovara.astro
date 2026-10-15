@@ -12,11 +12,11 @@ interface Props {
 }
 
 const { d, klyuch } = Astro.props;
-const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запрос: ${d.zagolovok}`)}${d.proizvodnyy_razdel ? `&body=${encodeURIComponent('Прошу подготовить предложение по стационарному агрегату. Исходные данные объекта:')}` : ''}`;
+const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запрос: ${d.zagolovok}`)}`;
 ---
 
 <!-- ── Первый экран и возвращение в родительский раздел ──────────── -->
-<section class="tovar-verh">
+<section class:list={['tovar-verh', { 'tovar-verh--bez-media': !d.kartinka && !d.media_placeholder }]}>
   <div class="tovar-verh__tekst">
     {d.proizvodnyy_razdel && <a class="tovar-verh__nazad" href={put(`/catalog/${d.proizvodnyy_razdel.klyuch}/`)}>← {d.proizvodnyy_razdel.nazvanie}</a>}
     <h1 class="tovar-verh__zagolovok">{d.zagolovok}</h1>
@@ -405,6 +405,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
   .podbor__knopka { background: var(--tekst); color: #fff; }
   @media (max-width: 768px) { .tovar-verh { grid-template-columns: 1fr; } .tovar-verh__zagolovok { font-size: clamp(30px, 6vw, 48px); } }
   @media (max-width: 480px) { .harakteristika { flex-direction: column; gap: 8px; } .harakteristika__znachenie { text-align: left; } }
+  .tovar-verh--bez-media { grid-template-columns: 1fr; }
 
 
   .reshenie__specs { margin: 0 6px 12px; font-size: 14px; }
