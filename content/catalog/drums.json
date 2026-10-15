@@ -1,0 +1,15 @@
+{
+  "hlebnaya_kroshka": "Барабаны",
+  "zagolovok": "Барабаны",
+  "vvodnyy_tekst": [],
+  "knopka": "Получить консультацию",
+  "plashka": "",
+  "perechislenie": "",
+  "tyomnaya_panel": false,
+  "razdel": { "zagolovok": "", "podzagolovok": "", "ssylka": "" },
+  "kartochki": [
+    { "zagolovok": "Кабельный пружинный барабан", "bez_ssylki": true },
+    { "zagolovok": "Кабельный приводной барабан", "bez_ssylki": true }
+  ],
+  "preimushchestva": []
+}

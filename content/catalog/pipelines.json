@@ -7,7 +7,7 @@
   "knopka": "Получить каталог",
   "kartinka": "/images/pipe-hero.png",
   "plashka": "",
-  "chislo": "4",
+  "chislo": "3",
   "chislo_podpis": "направления",
   "perechislenie": "Покрытие, комплектующие и решения для нефтепродуктов и авиационного топлива",
   "tyomnaya_panel": false,
@@ -21,12 +21,6 @@
       "zagolovok": "Услуги по нанесению покрытия",
       "opisanie": "Современные технологии нанесения внутренних покрытий",
       "kartinka": "/images/pipe-1.png"
-    },
-    {
-      "zagolovok": "Опорно-направляющие кольца PSI",
-      "opisanie": "Надёжная фиксация и центровка трубопроводов",
-      "kartinka": "/images/pipe-2.png",
-      "vedyot_na": "psi"
     },
     {
       "zagolovok": "Уплотнители кольцевых пространств",

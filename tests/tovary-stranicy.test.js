@@ -3,6 +3,7 @@
 import { describe, it, expect } from 'vitest';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { load } from 'cheerio';
+import { kategorii } from '../src/lib/content.js';
 
 const BAZA = '/tauber-web/';
 const TOVARY = readdirSync('content/tovary').filter((f) => f.endsWith('.json')).map((f) => f.replace('.json', ''));
@@ -80,10 +81,11 @@ describe('страницы товаров', () => {
   });
 
   it('карточки категорий ведут на настоящие страницы товаров, а не в пустоту', () => {
-    const $ = load(readFileSync('dist/catalog/pipelines/index.html', 'utf8'));
-    const ssylki = $('[data-kartochka-razdela] a[href*="/catalog/"]')
-      .map((_, a) => $(a).attr('href')).get()
-      .filter((h) => !h.endsWith('/pipelines/'));
+    const ssylki = kategorii.flatMap((k) => {
+      const $ = load(readFileSync(`dist/catalog/${k.klyuch}/index.html`, 'utf8'));
+      return $('[data-kartochka-razdela] a[href*="/catalog/"]')
+        .map((_, a) => $(a).attr('href')).get();
+    });
     expect(ssylki.length).toBeGreaterThan(0);
     for (const h of ssylki) {
       const klyuch = h.replace(/^\/tauber-web\/catalog\/|\/$/g, '');

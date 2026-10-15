@@ -12,8 +12,8 @@ describe('категории на главной', () => {
     expect(zagolovki).toContain('Основные категории');
   });
 
-  it('ровно десять карточек — вариант «5 × 2»', () => {
-    expect($('[data-kartochka]').length).toBe(10);
+  it('двенадцать карточек новых направлений', () => {
+    expect($('[data-kartochka]').length).toBe(12);
   });
 
   it('порядок и названия карточек совпадают с содержанием', () => {
@@ -58,7 +58,7 @@ describe('категории на главной', () => {
   });
 
   it('у каждой карточки есть кнопка-стрелка, как в эталоне', () => {
-    expect($('[data-kartochka] [data-strelka]').length).toBe(10);
+    expect($('[data-kartochka] [data-strelka]').length).toBe(12);
   });
 
   it('у секции есть подзаголовок из эталона', () => {
@@ -67,7 +67,7 @@ describe('категории на главной', () => {
 
   it('все картинки карточек реально существуют в сборке', () => {
     const kartinki = $('[data-kartochka] img');
-    expect(kartinki.length).toBe(10);
+    expect(kartinki.length).toBe(12);
     kartinki.each((_, img) => {
       const src = $(img).attr('src').replace(/^\/tauber-web/, '');
       expect(existsSync(`dist${src}`), `нет файла ${src}`).toBe(true);

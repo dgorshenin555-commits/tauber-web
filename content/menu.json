@@ -56,6 +56,23 @@
         ]
       },
       {
+        "zagolovok": "Порт и кабельная инфраструктура",
+        "punkty": [
+          {
+            "podpis": "Береговые колонки питания в порту от 1кВ",
+            "poyasnenie": "Береговое электропитание",
+            "znachok": "input",
+            "adres": "/catalog/shore-power/"
+          },
+          {
+            "podpis": "Барабаны",
+            "poyasnenie": "Пружинные и приводные",
+            "znachok": "precision_manufacturing",
+            "adres": "/catalog/drums/"
+          }
+        ]
+      },
+      {
         "zagolovok": "Нефтебазы и трубопроводы",
         "punkty": [
           {
@@ -82,18 +99,18 @@
   },
   {
     "podpis": "Проекты",
-    "adres": null
+    "adres": "/projects/"
   },
   {
     "podpis": "Компания",
-    "adres": null
+    "adres": "/company/"
   },
   {
     "podpis": "Пресс-центр",
-    "adres": null
+    "adres": "/press/"
   },
   {
     "podpis": "Контакты",
-    "adres": null
+    "adres": "/contacts/"
   }
 ]

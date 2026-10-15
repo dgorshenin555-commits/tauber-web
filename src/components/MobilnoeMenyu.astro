@@ -23,6 +23,9 @@ const korotko = new Map(kategorii.map((k) => [`/catalog/${k.klyuch}/`, k.korotko
     ))}
   </nav>
   <a class="mobmenyu__glavnaya" href={put('/')}>Главная <span aria-hidden="true">→</span></a>
+  <nav class="mobmenyu__razdely" aria-label="Разделы сайта">
+    {menyu.slice(1).map((punkt) => <a href={put(punkt.adres)}>{punkt.podpis}<span aria-hidden="true">→</span></a>)}
+  </nav>
   <div class="mobmenyu__kontakty">
     <a href={`tel:${sayt.telefon.replace(/[^\d+]/g, '')}`}>{sayt.telefon}</a>
     <span>Пн–Пт, 9:00–18:00 · Москва</span>
@@ -44,6 +47,9 @@ const korotko = new Map(kategorii.map((k) => [`/catalog/${k.klyuch}/`, k.korotko
   .mobmenyu__spisok a:hover { background: var(--fon); }
   .mobmenyu__spisok .ms { width: 36px; height: 36px; flex: none; background: var(--fon); border-radius: 50%; display: grid; place-items: center; font-size: 18px; }
   .mobmenyu__glavnaya { margin-top: 8px; padding: 20px 24px; background: #fff; border-radius: 32px; display: flex; justify-content: space-between; }
+  .mobmenyu__razdely { margin-top: 8px; padding: 12px; background: #fff; border-radius: 32px; }
+  .mobmenyu__razdely a { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border-radius: 18px; font-size: 15px; }
+  .mobmenyu__razdely a:hover { background: var(--fon); }
   .mobmenyu__kontakty { margin-top: 8px; padding: 24px; background: var(--tekst); color: #fff; border-radius: 32px; display: flex; flex-direction: column; gap: 14px; }
   .mobmenyu__kontakty a { color: #fff; font-size: 20px; }
   .mobmenyu__kontakty span { font-size: 13px; color: #c9c5bd; }
