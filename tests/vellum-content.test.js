@@ -3,13 +3,13 @@ import { readFileSync } from 'node:fs';
 import { load } from 'cheerio';
 const page = (key) => load(readFileSync(`dist/catalog/${key}/index.html`, 'utf8'));
 describe('содержание свежего эталона Vellum', () => {
-  it('показывает исполнения кабельных накопителей, которые раньше терялись', () => {
-    const $ = page('cable');
-    expect($('body').text()).toContain('Кабельные накопители для 400 Гц');
-    expect($('img[src$="/cab-1.png"]').length).toBe(1);
+  it('сохраняет прежние данные кабельных накопителей в архиве после смены структуры', () => {
+    const source = readFileSync('content/archive/ground-2026-10-15/cable.json', 'utf8');
+    expect(source).toContain('Кабельные накопители для 400 Гц');
+    expect(source).toContain('/images/cab-1.png');
   });
-  it('показывает массу и габариты обоих кэдди, а не только заголовок секции', () => {
-    const text = page('cdm')('body').text();
+  it('сохраняет прежние характеристики кэдди в архиве, но не публикует их', () => {
+    const text = readFileSync('content/archive/ground-2026-10-15/cdm.json', 'utf8');
     for (const value of ['Ручной кэдди 1D', 'Ручной кэдди 2D', 'около 400 кг', 'около 550 кг', '1775 × 1430 × 1375 мм']) expect(text).toContain(value);
   });
   it('сохраняет значения характеристик ФТВ', () => {

@@ -16,7 +16,7 @@ describe('содержание', () => {
 
   it('плашка «Собственное производство» стоит там, где в эталоне', () => {
     const nesvoi = kategorii.filter((k) => !k.svoye).map((k) => k.klyuch).sort();
-    expect(nesvoi).toEqual(['caddy', 'ground', 'pit']);
+    expect(nesvoi).toEqual(['ground', 'mobile-power', 'pit']);
   });
 
   it('у каждой категории указана существующая картинка', () => {
