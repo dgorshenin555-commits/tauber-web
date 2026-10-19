@@ -12,10 +12,11 @@ interface Props {
 
 const { d } = Astro.props;
 const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}: ${d.hlebnaya_kroshka}`)}`;
+const estPanel = Boolean(d.chislo || d.perechislenie || d.napravleniya?.length);
 ---
 
   <!-- ── Первый экран: описание и фото либо подписанное место ────── -->
-  <section class="verh">
+  <section class:list={['verh', { 'verh--bez-paneli': !estPanel, 'verh--tolko-tekst': !d.kartinka && !d.media_placeholder && !estPanel }]}>
     <div class="verh__tekst">
       {d.plashka && <div class="verh__plashka">{d.plashka}</div>}
       <h1 class="verh__zagolovok">{d.zagolovok}</h1>
@@ -30,28 +31,31 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
     )}
     {d.media_placeholder && <MaterialyAft vid="foto" zagolovok={d.hlebnaya_kroshka} />}
 
-    <div class:list={['verh__panel', { 'verh__panel--tyomnaya': d.tyomnaya_panel, 'verh__panel--napravleniya': d.napravleniya }]}>
+    {estPanel && <div class:list={['verh__panel', { 'verh__panel--tyomnaya': d.tyomnaya_panel, 'verh__panel--napravleniya': d.napravleniya }]}>
       <div class="verh__chislo">{d.chislo}</div>
       <div class="verh__chislo-podpis">{d.chislo_podpis}</div>
       {d.napravleniya
         ? <ol class="verh__napravleniya" data-napravleniya>{d.napravleniya.map((punkt) => <li>{punkt}</li>)}</ol>
         : d.perechislenie && <p class="verh__perechislenie">{d.perechislenie}</p>}
-    </div>
+    </div>}
   </section>
 
   <!-- ── Карточки: ссылки на отдельные товарные JSON ─────────────── -->
-  <section class="razdel">
-    <div class="razdel__shapka">
+  {d.kartochki.length > 0 && <section class="razdel">
+    {(d.razdel.zagolovok || d.razdel.podzagolovok) && <div class="razdel__shapka">
       <div>
-        <h2 class="razdel__zagolovok">{d.razdel.zagolovok}</h2>
+        {d.razdel.zagolovok && <h2 class="razdel__zagolovok">{d.razdel.zagolovok}</h2>}
         {d.razdel.podzagolovok && <p class="razdel__podzagolovok">{d.razdel.podzagolovok}</p>}
       </div>
-    </div>
+    </div>}
 
-    <div class="razdel__kartochki">
-      {d.kartochki.map((c) => (
+    <div class:list={['razdel__kartochki', { 'razdel__kartochki--tri': d.kolonki === 3 }]}>
+      {d.kartochki.map((c) => {
+        const adres = c.vedyot_na ? put(`/catalog/${c.vedyot_na}/`) : c.bez_ssylki ? undefined : zayavka;
+        const KartochkaTag = adres ? 'a' : 'div';
+        return (
         <article class="tovar" data-kartochka-razdela>
-          <a class="tovar__ssylka" href={c.vedyot_na ? put(`/catalog/${c.vedyot_na}/`) : zayavka}>
+          <KartochkaTag class="tovar__ssylka" href={adres}>
             {c.kartinka && (
               <div class="tovar__kartinka">
                 <img src={put(c.kartinka)} alt={c.zagolovok} loading="lazy" />
@@ -61,11 +65,12 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
             {c.media_placeholder && <div class="tovar__material"><span class="tovar__istochnik">{c.nomer}</span><span>Фото / 3D-рендер</span></div>}
             <h3 class="tovar__zagolovok">{c.zagolovok}</h3>
             {c.opisanie && <p class="tovar__opisanie">{c.opisanie}</p>}
-          </a>
+            {c.modeli?.length > 0 && <ul class="tovar__modeli">{c.modeli.map((model) => <li>{model}</li>)}</ul>}
+          </KartochkaTag>
         </article>
-      ))}
+      )})}
     </div>
-  </section>
+  </section>}
 
   <!-- ── Пояснения АФТ: варианты и нормативная область применения ──
        Необязательные поля не меняют страницы остальных категорий. -->
@@ -197,7 +202,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
     transition: transform .25s, box-shadow .25s;
   }
 
-  .tovar__ssylka:hover { transform: translateY(-3px); box-shadow: none; }
+  a.tovar__ssylka:hover { transform: translateY(-3px); box-shadow: none; }
 
   .tovar__kartinka { position: relative; border-radius: 24px; overflow: hidden; background: #e8e6de; height: 152px; }
   .tovar__kartinka img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -215,6 +220,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
 
   .tovar__zagolovok { margin: 4px 6px 0; font-size: 16px; font-weight: 400; line-height: 1.25; }
   .tovar__opisanie { margin: 0 6px 10px; font-size: 13px; line-height: 1.45; color: var(--tekst-tihiy); }
+  .tovar__modeli { margin: 4px 6px 10px; padding-left: 22px; color: var(--tekst); font-size: 15px; line-height: 1.7; }
 
   .plyusy { padding: 24px var(--pole-bok) 40px; }
   .plyusy__spisok { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
@@ -254,11 +260,17 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`${d.knopka}
   .verh__chislo-podpis { font-size: clamp(24px, 2.5vw, 40px); }
   .verh__zagolovok { font-size: clamp(32px, 3.5vw, 56px); }
   .razdel__kartochki { grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
+  .razdel__kartochki--tri { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .tovar__kartinka { height: 190px; }
-  .tovar__ssylka:hover { transform: none; background: var(--fon-gero); }
+  a.tovar__ssylka:hover { transform: none; background: var(--fon-gero); }
   .tovar__zagolovok { font-size: 17px; }
   .plyus { background: #fff; border-radius: 32px; }
   @media (max-width: 1280px) { .verh { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
   @media (max-width: 768px) { .verh { grid-template-columns: 1fr; } .verh__panel { grid-column: auto; } .verh__zagolovok { font-size: clamp(30px, 6vw, 48px); } }
+  .verh--bez-paneli { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .verh--tolko-tekst { grid-template-columns: minmax(0, 1fr); }
+  @media (max-width: 768px) { .verh--bez-paneli { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .razdel__kartochki--tri { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 550px) { .razdel__kartochki--tri { grid-template-columns: 1fr; } }
 
 </style>

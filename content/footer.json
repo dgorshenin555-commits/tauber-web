@@ -27,12 +27,14 @@
     "filters",
     "pipelines",
     "ground",
+    "shore-power",
+    "drums",
     "hydrant",
     "fmod",
     "load",
     "auto",
     "probe",
     "pit",
-    "caddy"
+    "mobile-power"
   ]
 }

@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import { sayt } from '../lib/content.js';
+import { put } from '../lib/put.js';
+
+export function getStaticPaths() {
+  const fayly = import.meta.glob('../../content/pages/*.json', { eager: true });
+  return Object.entries(fayly).map(([putFayla, modul]) => ({
+    params: { razdel: putFayla.split('/').pop().replace('.json', '') },
+    props: { d: modul.default },
+  }));
+}
+
+const { d } = Astro.props;
+const telefonSsylka = `tel:${sayt.telefon.replace(/[^\d+]/g, '')}`;
+---
+
+<Base title={`${d.zagolovok} — ${sayt.nazvanie}`} description={d.abzacy[0]}>
+  <nav class="kroshki" aria-label="Вы здесь">
+    <a href={put('/')}>Главная</a><span aria-hidden="true">›</span><span>{d.zagolovok}</span>
+  </nav>
+  <section class="informaciya">
+    <div class="informaciya__tekst">
+      <h1>{d.zagolovok}</h1>
+      {d.abzacy.map((abzac) => <p>{abzac}</p>)}
+    </div>
+    <aside class="informaciya__svyaz">
+      <h2>Связаться с нами</h2>
+      <a href={telefonSsylka}>{sayt.telefon}</a>
+      <a href={`mailto:${sayt.pochta}`}>{sayt.pochta}</a>
+    </aside>
+  </section>
+</Base>
+
+<style>
+  .kroshki { display: flex; align-items: center; gap: 10px; padding: 22px var(--pole-bok) 0; color: var(--tekst-vtoroy); font-size: 13px; }
+  .kroshki a { color: inherit; }
+  .informaciya { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(260px, .8fr); gap: 16px; padding: 16px var(--pole-bok) 48px; }
+  .informaciya__tekst, .informaciya__svyaz { border-radius: var(--radius-karta); padding: clamp(28px, 4vw, 56px); }
+  .informaciya__tekst { background: var(--fon-gero); min-height: 400px; }
+  .informaciya__tekst h1 { font-size: clamp(38px, 4vw, 62px); font-weight: 300; line-height: 1.05; margin: 0 0 28px; }
+  .informaciya__tekst p { max-width: 680px; color: var(--tekst-vtoroy); font-size: 18px; line-height: 1.6; margin: 0 0 16px; }
+  .informaciya__svyaz { background: #fff; display: flex; flex-direction: column; gap: 18px; }
+  .informaciya__svyaz h2 { font-size: 22px; font-weight: 300; margin: 0 0 8px; }
+  .informaciya__svyaz a { font-size: 18px; overflow-wrap: anywhere; }
+  @media (max-width: 768px) { .informaciya { grid-template-columns: 1fr; } .informaciya__tekst { min-height: 0; } }
+</style>

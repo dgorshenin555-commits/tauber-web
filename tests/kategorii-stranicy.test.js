@@ -8,7 +8,7 @@ const stranica = (k) => load(readFileSync(`dist/catalog/${k}/index.html`, 'utf8'
 const dannye = (k) => JSON.parse(readFileSync(`content/catalog/${k}.json`, 'utf8'));
 
 describe('страницы категорий', () => {
-  it('собраны все десять — по одной на категорию каталога', () => {
+  it('собраны все категории — по одной странице на каждую', () => {
     for (const k of kategorii) {
       expect(existsSync(`dist/catalog/${k.klyuch}/index.html`), `нет страницы ${k.klyuch}`).toBe(true);
     }

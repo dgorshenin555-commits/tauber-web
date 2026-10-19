@@ -31,13 +31,13 @@
         "punkty": [
           {
             "podpis": "Обслуживание на стоянке",
-            "poyasnenie": "Питание 400 Гц, PCA, кабели",
+            "poyasnenie": "Разъемы, ПИТ-системы, электропитание",
             "znachok": "flight",
             "adres": "/catalog/ground/"
           },
           {
             "podpis": "Гидрантная система",
-            "poyasnenie": "Пантографы, колодцы, клапаны",
+            "poyasnenie": "DJ400-E600, люки доступа, клапан Carter",
             "znachok": "local_gas_station",
             "adres": "/catalog/hydrant/"
           },
@@ -48,10 +48,27 @@
             "adres": "/catalog/pit/"
           },
           {
-            "podpis": "Кэдди",
-            "poyasnenie": "Мобильные кабельные тележки",
-            "znachok": "trolley",
-            "adres": "/catalog/caddy/"
+            "podpis": "Аэродромные мобильные источники питания",
+            "poyasnenie": "Питание воздушных судов на стоянке",
+            "znachok": "flight",
+            "adres": "/catalog/mobile-power/"
+          }
+        ]
+      },
+      {
+        "zagolovok": "Порт и кабельная инфраструктура",
+        "punkty": [
+          {
+            "podpis": "Береговые колонки питания в порту от 1кВ",
+            "poyasnenie": "Береговое электропитание",
+            "znachok": "input",
+            "adres": "/catalog/shore-power/"
+          },
+          {
+            "podpis": "Барабаны",
+            "poyasnenie": "Пружинные и приводные",
+            "znachok": "precision_manufacturing",
+            "adres": "/catalog/drums/"
           }
         ]
       },
@@ -82,18 +99,18 @@
   },
   {
     "podpis": "Проекты",
-    "adres": null
+    "adres": "/projects/"
   },
   {
     "podpis": "Компания",
-    "adres": null
+    "adres": "/company/"
   },
   {
     "podpis": "Пресс-центр",
-    "adres": null
+    "adres": "/press/"
   },
   {
     "podpis": "Контакты",
-    "adres": null
+    "adres": "/contacts/"
   }
 ]
