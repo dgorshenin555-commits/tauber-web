@@ -26,7 +26,7 @@ const estPanel = Boolean(d.chislo || d.perechislenie || d.napravleniya?.length);
 
     {d.kartinka && (
       <div class="verh__kartinka">
-        <img src={put(d.kartinka)} alt={d.hlebnaya_kroshka} />
+        <img src={put(d.kartinka)} alt={d.kartinka_alt ?? d.hlebnaya_kroshka} />
       </div>
     )}
     {d.media_placeholder && <MaterialyAft vid="foto" zagolovok={d.hlebnaya_kroshka} />}
