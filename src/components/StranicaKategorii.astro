@@ -57,7 +57,7 @@ const estPanel = Boolean(d.chislo || d.perechislenie || d.napravleniya?.length);
         <article class="tovar" data-kartochka-razdela>
           <KartochkaTag class="tovar__ssylka" href={adres}>
             {c.kartinka && (
-              <div class="tovar__kartinka">
+              <div class:list={['tovar__kartinka', { 'tovar__kartinka--celikom': c.illyustraciya_celikom }]}>
                 <img src={put(c.kartinka)} alt={c.zagolovok} loading="lazy" />
                 {c.nomer && <span class="tovar__nomer">{c.nomer}</span>}
               </div>
@@ -104,6 +104,9 @@ const estPanel = Boolean(d.chislo || d.perechislenie || d.napravleniya?.length);
      Существующие категории сохраняют сетку; АФТ добавляет текстовые места. */
   .tovar__material { min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; background: var(--fon-gero); border-radius: 24px; padding: 20px; color: var(--tekst-tihiy); font-size: 14px; }
   .tovar__istochnik { align-self: flex-start; padding: 6px 12px; background: #fff; border-radius: 999px; color: var(--tekst); font-size: 12px; }
+  /* Рендер изделия показываем целиком, без обрезки трубопровода. */
+  .tovar__kartinka.tovar__kartinka--celikom { background: #fff; }
+  .tovar__kartinka.tovar__kartinka--celikom img { object-fit: contain; }
   .poyasneniya { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 15px; margin-top: 20px; }
   .poyasnenie { padding: 26px; background: #fff; border-radius: var(--radius-karta); }
   .poyasnenie h3 { margin: 0; font-size: 18px; line-height: 1.35; font-weight: 400; }

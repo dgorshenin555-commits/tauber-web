@@ -5,6 +5,7 @@ import Base from '../../layouts/Base.astro';
 import StranicaKategorii from '../../components/StranicaKategorii.astro';
 import StranicaTovara from '../../components/StranicaTovara.astro';
 import StranicaAft from '../../components/StranicaAft.astro';
+import StranicaUstroystva from '../../components/StranicaUstroystva.astro';
 import { sayt } from '../../lib/content.js';
 import { put } from '../../lib/put.js';
 
@@ -46,7 +47,7 @@ const opisanie = vid === 'tovar' ? d.vvodnyy_tekst : d.vvodnyy_tekst?.[0];
     <span class="kroshki__tekushchaya">{zagolovok}</span>
   </nav>
 
-  {vid === 'tovar' ? (d.aft ? <StranicaAft d={d} klyuch={klyuch} /> : <StranicaTovara d={d} klyuch={klyuch} />) : <StranicaKategorii d={d} />}
+  {vid === 'tovar' ? (d.ustroystvo ? <StranicaUstroystva d={d} klyuch={klyuch} /> : d.aft ? <StranicaAft d={d} klyuch={klyuch} /> : <StranicaTovara d={d} klyuch={klyuch} />) : <StranicaKategorii d={d} />}
 </Base>
 
 <style>
