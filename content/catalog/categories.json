@@ -6,7 +6,7 @@
   { "klyuch": "drums", "nazvanie": "Барабаны", "korotko": "Барабаны", "kolichestvo": "2 исполнения", "kartinka": "/images/catalog-placeholder.svg", "svoye": false },
   { "klyuch": "hydrant",   "nazvanie": "Гидрантная система",                   "korotko": "Гидрантная система",      "kolichestvo": "3 направления",  "kartinka": "/images/cat-c4.png",     "svoye": true },
   { "klyuch": "fmod",      "nazvanie": "Агрегаты фильтрации топлива (АФТ)",       "korotko": "Агрегаты фильтрации топлива (АФТ)", "kolichestvo": "10 направлений", "kartinka": "/images/aft-placeholder.svg", "svoye": true },
-  { "klyuch": "load",      "nazvanie": "Устройства слива-налива",                           "korotko": "Устройства слива-налива",              "kolichestvo": "7 товаров",  "kartinka": "/images/cat-c6.png",     "svoye": true },
+  { "klyuch": "load",      "nazvanie": "Устройства слива-налива",                           "korotko": "Устройства слива-налива",              "kolichestvo": "6 серий",  "kartinka": "/images/cat-c6.png",     "svoye": true },
   { "klyuch": "auto",      "nazvanie": "Сливо-наливные эстакады и комплексы","korotko": "Сливо-наливные эстакады и комплексы",      "kolichestvo": "10 товаров", "kartinka": "/images/auto-hero.png",  "svoye": true },
   { "klyuch": "probe",     "nazvanie": "Система визуального контроля топлива (СВКТ)",                       "korotko": "Система визуального контроля топлива (СВКТ)",          "kolichestvo": "3 модели",    "kartinka": "/images/svkt-placeholder.svg", "svoye": true },
   { "klyuch": "pit",       "nazvanie": "ПИТ-системы",                          "korotko": "ПИТ-системы",             "kolichestvo": "2 исполнения",   "kartinka": "/images/pit-hero.png",   "svoye": false },

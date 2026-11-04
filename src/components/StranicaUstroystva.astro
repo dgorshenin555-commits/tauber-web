@@ -1,0 +1,289 @@
+---
+// ── Данные страницы: отдельный JSON серии и соседние устройства ───
+// Маршрут выбирает этот шаблон по ustroystvo; ссылки используют базовый put().
+import { sayt } from '../lib/content.js';
+import { put } from '../lib/put.js';
+import kategoriya from '../../content/catalog/load.json';
+const { d, klyuch } = Astro.props;
+const u = d.ustroystvo;
+const tabs = [
+  ['opisanie', 'Описание'], ['ispolneniya', 'Исполнения и оснащение'],
+  ['dannye', 'Технические данные'], ['dokumenty', 'Документация'],
+];
+const drugie = kategoriya.kartochki.filter((c) => c.vedyot_na !== klyuch);
+const tehnicheskieAkcenty = [
+  ['Продуктовая линия', 'plumbing'], ['Рабочее давление', 'speed'], ['Усилие при перемещении', 'trolley'],
+].map(([name, icon]) => ({ name, icon, value: u.parametry.find((p) => p.parametr === name)?.znachenie }));
+const subject = `Подбор устройства серии ${u.seriya}`;
+const mailto = `mailto:${sayt.pochta}?subject=${encodeURIComponent(subject)}`;
+---
+
+<!-- ── Первый экран: назначение, подтверждённые признаки и иллюстрация ── -->
+<section class="device-hero device-space">
+  <div class="device-hero__text">
+    <a class="device-back" href={put('/catalog/load/')}>← Устройства слива-налива</a>
+    <span class="device-label">Серия {u.seriya}</span>
+    <h1>{d.zagolovok}</h1>
+    <p class="device-lead">{d.vvodnyy_tekst}</p>
+    <a class="device-button" href="#device-zapros">Подобрать исполнение <span aria-hidden="true">→</span></a>
+  </div>
+  <figure class="device-hero__media">
+    <img src={put(u.illyustraciya.put)} alt={u.illyustraciya.alt} width={u.illyustraciya.shirina} height={u.illyustraciya.vysota} />
+    <figcaption>{u.illyustraciya.podpis}</figcaption>
+  </figure>
+</section>
+
+<!-- ── Навигация вкладок: якоря и все разделы доступны без JavaScript ── -->
+<div class="device-details device-space" data-device-tabs>
+  <nav class="device-tabs" aria-label="Информация об устройстве" data-device-tablist>
+    {tabs.map(([id, title]) => <a id={`device-tab-${id}`} href={`#device-${id}`} data-device-tab>{title}</a>)}
+  </nav>
+
+  <section id="device-opisanie" class="device-panel" aria-labelledby="device-tab-opisanie" data-device-panel>
+    <span class="device-label">Назначение и работа</span>
+    <h2>Назначение и принцип работы</h2>
+    {u.opisanie.filter((b) => b.vid === 'vvod').map((b) => b.abzacy.map((p) => <p class="device-intro">{p}</p>))}
+    <dl class="device-summary">
+      <div><dt><span class="ms" aria-hidden="true">input</span>Подключение</dt><dd>{u.podklyuchenie}</dd></div>
+      <div><dt><span class="ms" aria-hidden="true">air</span>Пароотвод</dt><dd>{u.parootvod}</dd></div>
+      <div><dt><span class="ms" aria-hidden="true">local_shipping</span>Применение</dt><dd>{u.transport}</dd></div>
+    </dl>
+    <dl class="device-technical" data-device-technical>
+      {tehnicheskieAkcenty.map((p) => <div><dt><span class="ms" aria-hidden="true">{p.icon}</span>{p.name}</dt><dd>{p.value}</dd></div>)}
+    </dl>
+    <div class="device-description">
+      {u.opisanie.filter((b) => b.vid === 'tekst').map((b) => <section class="device-description__row">
+        <h3><span class="ms" aria-hidden="true">{b.znachok}</span>{b.zagolovok}</h3>
+        <div>{b.abzacy.map((p) => <p>{p}</p>)}</div>
+      </section>)}
+    </div>
+    <div class="device-description__cards">
+      {u.opisanie.filter((b) => b.vid === 'kartochka').map((b) => <section data-device-description-card>
+        <h3><span class="ms" aria-hidden="true">{b.znachok}</span>{b.zagolovok}</h3>
+        {b.abzacy.map((p) => <p>{p}</p>)}
+      </section>)}
+    </div>
+    <!-- Рабочие среды видны в тексте, а не только в поисковых метаданных. -->
+    <section data-device-products>
+      <h3>Рабочие продукты</h3>
+      <table class="device-products-table" aria-label="Рабочие продукты и условия применения">
+        <thead><tr><th scope="col">Продукт / группа сред</th><th scope="col">Применение и особенности исполнения</th></tr></thead>
+        <tbody>{u.produkty.map((p) => <tr><th scope="row"><span class="device-product-name"><span class="ms" aria-hidden="true">{p.znachok}</span>{p.nazvanie}</span></th><td>{p.opisanie}</td></tr>)}</tbody>
+      </table>
+      <p class="device-note">{u.produkty_primechanie}</p>
+    </section>
+    <section data-device-features>
+      <h3>Особенности эксплуатации</h3>
+      <ul class="device-features">{u.osobennosti.map((p) => <li>{p}</li>)}</ul>
+    </section>
+    <h3>Отдельно или в составе комплекса</h3>
+    <p>Устройство поставляется самостоятельно или в составе измерительного комплекса. Насос, измерение количества продукта и управление определяются составом выбранного решения.</p>
+    <a class="device-link" href={put('/catalog/auto/')}>Сливо-наливные эстакады и комплексы <span aria-hidden="true">↗</span></a>
+  </section>
+
+  <!-- ── Исполнения не генерируют неподтверждённые заказные сочетания ── -->
+  <section id="device-ispolneniya" class="device-panel" aria-labelledby="device-tab-ispolneniya" data-device-panel>
+    <span class="device-label">Конструкция и выбор</span>
+    <h2>Исполнения и оснащение</h2>
+    <p>Выбор терминала, балансировки и дополнительных узлов зависит от присоединения цистерны, продукта и условий эксплуатации.</p>
+    <table><caption>Варианты исполнения серии {u.seriya}</caption>
+      <thead><tr><th scope="col">Вариант</th><th scope="col">Назначение и условия</th></tr></thead>
+      <tbody>{u.varianty.map((r) => <tr><th scope="row">{r.nazvanie}</th><td>{r.opisanie}</td></tr>)}</tbody>
+    </table>
+    <table><caption>Дополнительное оснащение</caption>
+      <thead><tr><th scope="col">Узел</th><th scope="col">Применение</th></tr></thead>
+      <tbody>{u.osnashchenie.map((r) => <tr><th scope="row">{r.nazvanie}</th><td>{r.opisanie}</td></tr>)}</tbody>
+    </table>
+    <p class="device-note">Перечисленные узлы не означают их одновременное наличие в каждом исполнении. Итоговая комплектация определяется при подборе устройства.</p>
+  </section>
+
+  <!-- ── Характеристики: только согласованные значения, раздельно по каналам ── -->
+  <section id="device-dannye" class="device-panel" aria-labelledby="device-tab-dannye" data-device-panel>
+    <span class="device-label">Параметры исполнения</span>
+    <h2>Технические данные</h2>
+    <table><caption>Серия {u.seriya}</caption>
+      <thead><tr><th scope="col">Параметр</th><th scope="col">Значение / исполнение</th></tr></thead>
+      <tbody>{u.parametry.map((r) => <tr><th scope="row">{r.parametr}</th><td>{r.znachenie}</td></tr>)}</tbody>
+    </table>
+    <p>Условия работы и присоединения согласуются при подборе конкретного исполнения.</p>
+    <a class="device-button" href="#device-zapros">Обсудить параметры <span aria-hidden="true">→</span></a>
+  </section>
+
+  <!-- ── Документы: названия поставки, без доступа к частным исходникам ── -->
+  <section id="device-dokumenty" class="device-panel" aria-labelledby="device-tab-dokumenty" data-device-panel>
+    <span class="device-label">Сопровождение поставки</span>
+    <h2>Документация</h2>
+    <p>Состав документации определяется комплектацией и условиями поставки.</p>
+    <ul class="device-docs">{u.dokumenty.map((name) => <li>{name}</li>)}</ul>
+    <h3>Чертежи и техническая информация</h3>
+    <p>Габаритная и присоединительная информация конкретного исполнения предоставляется по запросу.</p>
+    <a class="device-link" href={mailto}>Запросить техническую информацию <span aria-hidden="true">→</span></a>
+  </section>
+</div>
+
+<!-- ── Другие серии: обычные ссылки остаются доступными без скриптов ── -->
+<section class="device-related device-space" data-device-related>
+  <div class="device-related__header">
+    <h2>Другие устройства слива-налива</h2>
+    <div class="device-related__controls">
+      <button type="button" data-device-prev aria-label="Предыдущие устройства">←</button>
+      <button type="button" data-device-next aria-label="Следующие устройства">→</button>
+    </div>
+  </div>
+  <div class="device-related__track" data-device-track tabindex="0" aria-label="Другие устройства слива-налива">{drugie.map((c) => <a href={put(`/catalog/${c.vedyot_na}/`)}>
+    <div class="device-related__media"><img src={put(c.kartinka)} alt="" loading="lazy" width="500" height="400" /><span>{c.nomer}</span></div>
+    <h3>{c.zagolovok} <span class="ms" aria-hidden="true">arrow_outward</span></h3><p>{c.opisanie}</p>
+  </a>)}</div>
+</section>
+
+<!-- ── Запрос: письмо с темой серии, без серверной отправки ───────── -->
+<section class="device-contact device-space" id="device-zapros">
+  <div><span class="device-label">Подбор устройства</span><h2>Обсудим вашу задачу</h2><p>{u.podbor}</p><a class="device-link" href={mailto}>{sayt.pochta}</a></div>
+  <form hidden data-device-contact data-email={sayt.pochta} data-subject={subject}>
+    <label>Имя / компания<input name="name" autocomplete="organization" maxlength="150" /></label>
+    <label>Контактный email<input name="email" type="email" autocomplete="email" required maxlength="200" /></label>
+    <label class="device-wide">Задача<textarea name="message" rows="4" required maxlength="3000" /></label>
+    <p class="device-note device-wide">Кнопка откроет письмо. Опросный лист и фотографии прикрепите в почтовой программе, затем отправьте письмо.</p>
+    <button class="device-button" type="submit">Открыть письмо <span aria-hidden="true">→</span></button>
+  </form>
+  <noscript><p>Направьте запрос на указанный email. Добавьте сведения о продукте и подключении, опросный лист и фотографии.</p></noscript>
+</section>
+
+<style>
+  /* ── Vellum: тёплый фон, белые панели, Manrope, без акцентов и теней ── */
+  .device-space { margin: 24px var(--pole-bok) clamp(36px,4.5vw,64px); }
+  .device-label { display: flex; align-items: center; gap: 10px; text-transform: uppercase; font-size: 12px; letter-spacing: .12em; margin-bottom: 18px; }
+  .device-label::before { content: ''; width: 4px; height: 4px; background: currentColor; flex-shrink: 0; }
+  h1, h2 { font-weight: 300; line-height: 1.08; margin: 0 0 24px; }
+  h1 { font-size: clamp(32px,3.8vw,58px); overflow-wrap: anywhere; }
+  h2 { font-size: clamp(28px,3.2vw,44px); }
+  h3 { font-weight: 400; font-size: 22px; margin: 28px 0 16px; line-height: 1.3; }
+  h4 { font-weight: 400; font-size: 18px; margin: 0 0 12px; }
+  p, li, dd { line-height: 1.6; }
+  p { margin: 0 0 20px; }
+  .device-lead { font-size: 17px; color: var(--tekst-vtoroy); }
+  .device-button { display: inline-flex; align-items: center; justify-content: center; gap: 20px; border: 0; border-radius: 999px; padding: 16px 24px; color: #fff; background: var(--tekst); font: inherit; font-size: 14px; cursor: pointer; }
+  .device-button:hover { color: #fff; background: #4a4440; }
+  .device-link { text-decoration: underline; text-underline-offset: 4px; }
+  /* ── Первый экран: краткое назначение и рендер без обрезки ─────── */
+  .device-hero { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; }
+  .device-hero__text { background: var(--fon-gero); border-radius: var(--radius-karta); padding: clamp(26px,3vw,44px); }
+  .device-back { display: inline-block; margin-bottom: 28px; font-size: 14px; }
+  .device-hero__media { margin: 0; background: #fff; border-radius: var(--radius-karta); padding: 24px; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+  .device-hero__media img { display: block; width: 100%; height: auto; object-fit: contain; }
+  figcaption { margin-top: 20px; color: var(--tekst-vtoroy); font-size: 12px; line-height: 1.5; }
+  /* ── Панели и таблицы: прогрессивное улучшение поверх якорей ───── */
+  .device-tabs { display: flex; gap: 8px; overflow-x: auto; padding: 8px; border: 1px solid #d7d3c9; border-radius: 999px; margin-bottom: 20px; }
+  .device-tabs a { flex: 1 0 auto; border-radius: 999px; padding: 16px 20px; font-size: 14px; text-align: center; }
+  .device-tabs a:hover { background: #fff; }
+  .device-tabs a[aria-selected='true'] { background: var(--tekst); color: #fff; }
+  .device-panel { border-radius: 40px; padding: clamp(24px,3.5vw,48px); background: #fff; margin-bottom: 16px; scroll-margin-top: 24px; }
+  .device-summary { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); margin: 28px 0 16px; gap: 16px; }
+  .device-summary > div { background: var(--fon-gero); border-radius: 24px; padding: 24px; }
+  dt { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--tekst-vtoroy); margin-bottom: 12px; }
+  dd { margin: 0; }
+  .ms { flex-shrink: 0; font-size: 24px; }
+  .device-intro { max-width: 80ch; font-size: 18px; }
+  /* ── Описание: параметры в строку, отдельные темы и карточки узлов ── */
+  .device-technical { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; margin: 0 0 32px; padding: 24px; border: 1px solid #d7d3c9; border-radius: 24px; }
+  .device-technical dd { font-size: clamp(22px,2.3vw,32px); line-height: 1.3; font-weight: 300; }
+  .device-description__row { display: grid; grid-template-columns: minmax(170px, .6fr) minmax(0,1.7fr); gap: 32px; border-top: 1px solid #d7d3c9; padding: 28px 0; }
+  .device-description h3, .device-description__cards h3 { display: flex; align-items: flex-start; gap: 12px; margin: 0 0 18px; font-size: 19px; }
+  .device-description p:last-child, .device-description__cards p:last-child { margin-bottom: 0; }
+  .device-description__cards { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin: 0 0 36px; }
+  .device-description__cards > section { padding: 26px; border-radius: 24px; background: var(--fon); }
+  .device-description__cards p { font-size: 15px; }
+  .device-product-name { display: flex; align-items: flex-start; gap: 14px; }
+  .device-products-table { background: var(--fon); border-collapse: separate; border-spacing: 0; border-radius: 24px; overflow: hidden; }
+  .device-products-table thead th { border-top: 0; padding-top: 22px; }
+  .device-products-table th, .device-products-table td { padding-left: 24px; padding-right: 24px; }
+  .device-note { margin-top: 18px; font-size: 14px; color: var(--tekst-vtoroy); }
+  table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 15px; }
+  caption { font-size: 21px; font-weight: 400; text-align: left; margin-bottom: 18px; }
+  th, td { text-align: left; vertical-align: top; padding: 18px 16px; border-top: 1px solid #d7d3c9; line-height: 1.55; overflow-wrap: anywhere; }
+  th { font-weight: 400; } thead { color: var(--tekst-vtoroy); font-size: 13px; }
+  tbody th { width: 32%; }
+  .device-docs { list-style: none; padding: 0; margin: 28px 0; }
+  .device-docs li { padding: 16px 0; border-top: 1px solid #d7d3c9; }
+  .device-docs li p { margin-bottom: 0; }
+  .device-features { padding-left: 20px; margin: 0 0 28px; }
+  .device-features li { padding-left: 4px; margin-bottom: 14px; }
+  /* ── Соседние серии и форма не требуют фиксированной ширины ───── */
+  .device-related__header { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .device-related__controls { display: flex; gap: 8px; }
+  .device-related__controls button { border: 1px solid #d7d3c9; border-radius: 50%; background: #fff; color: var(--tekst); width: 44px; height: 44px; cursor: pointer; font: inherit; }
+  .device-related__track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 0 12px; }
+  .device-related__track a { flex: 0 0 clamp(230px,23vw,320px); scroll-snap-align: start; background: #fff; border-radius: 32px; padding: 10px 10px 24px; }
+  .device-related__media { position: relative; border-radius: 23px; overflow: hidden; }
+  .device-related__media img { display: block; width: 100%; height: auto; aspect-ratio: 1.25; object-fit: contain; }
+  .device-related__media > span { position: absolute; top: 12px; left: 12px; padding: 5px 10px; border-radius: 99px; background: var(--fon); font-size: 12px; }
+  .device-related__track h3 { display: flex; justify-content: space-between; margin: 14px 10px; font-size: 18px; }
+  .device-related__track p { font-size: 14px; color: var(--tekst-vtoroy); margin: 0 10px; }
+  .device-contact { background: #fff; border-radius: var(--radius-karta); padding: clamp(26px,3.6vw,48px); display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1fr); gap: 36px; scroll-margin-top: 24px; }
+  form { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+  label { display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+  input, textarea { min-width: 0; width: 100%; padding: 14px 18px; border: 1px solid #d7d3c9; border-radius: 20px; background: var(--fon); color: var(--tekst); font: inherit; }
+  textarea { resize: vertical; }
+  .device-wide { grid-column: 1/-1; } form .device-note { margin: 0; }
+  @media (max-width: 768px) { .device-hero, .device-contact { grid-template-columns: 1fr; } .device-summary { grid-template-columns: 1fr; gap: 16px; } .device-hero__media img { max-height: 420px; } .device-description__row { grid-template-columns: 1fr; gap: 0; } }
+  @media (max-width: 600px) { .device-technical, .device-description__cards { grid-template-columns: 1fr; } .device-technical > div + div { border-top: 1px solid #d7d3c9; padding-top: 20px; } .device-related__header { align-items: flex-start; } .device-related__header h2 { font-size: 28px; } .device-related__controls { flex-shrink: 0; } }
+  @media (max-width: 600px) { table, caption, tbody, tr, th, td { display: block; } thead { display: none; } tbody th { width: auto; padding-bottom: 4px; } td { border: 0; padding-top: 4px; color: var(--tekst-vtoroy); } form { grid-template-columns: 1fr; } .device-tabs { border-radius: 24px; } .device-panel { border-radius: 28px; } }
+</style>
+
+<script>
+  // ── Соседние устройства: листание дополняет нативную прокрутку ──
+  document.querySelectorAll<HTMLElement>('[data-device-related]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('[data-device-track]');
+    const card = track?.querySelector<HTMLElement>('a');
+    if (!track || !card) return;
+    const step = () => card.getBoundingClientRect().width + 16;
+    root.querySelector('[data-device-prev]')?.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    root.querySelector('[data-device-next]')?.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+  });
+  // ── Вкладки: ARIA добавляется после JS, hash и клавиатура согласованы ──
+  document.querySelectorAll<HTMLElement>('[data-device-tabs]').forEach((root) => {
+    const tabs = Array.from(root.querySelectorAll<HTMLAnchorElement>('[data-device-tab]'));
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-device-panel]'));
+    root.querySelector('[data-device-tablist]')?.setAttribute('role', 'tablist');
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-controls', panels[i].id);
+      panels[i].setAttribute('role', 'tabpanel');
+      panels[i].tabIndex = 0;
+    });
+    const activate = (index: number, updateHash = false) => {
+      tabs.forEach((tab, i) => {
+        tab.setAttribute('aria-selected', String(i === index));
+        tab.tabIndex = i === index ? 0 : -1;
+        panels[i].hidden = i !== index;
+      });
+      if (updateHash) history.replaceState(null, '', tabs[index].hash);
+    };
+    const fromHash = () => activate(Math.max(0, tabs.findIndex((tab) => tab.hash === location.hash)));
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', (event) => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+        event.preventDefault(); activate(i, true);
+      });
+      tab.addEventListener('keydown', (event) => {
+        if (event.key === ' ') { event.preventDefault(); activate(i, true); return; }
+        const index = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : event.key === 'ArrowRight' ? (i + 1) % tabs.length : event.key === 'ArrowLeft' ? (i + tabs.length - 1) % tabs.length : -1;
+        if (index < 0) return;
+        event.preventDefault(); activate(index, true); tabs[index].focus();
+      });
+    });
+    fromHash();
+    window.addEventListener('hashchange', () => { if (tabs.some((tab) => tab.hash === location.hash)) fromHash(); });
+  });
+  // ── Письмо: локальная проверка и кодирование полей посетителя ─────
+  document.querySelectorAll<HTMLFormElement>('[data-device-contact]').forEach((form) => {
+    form.hidden = false;
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      const body = `Имя / компания: ${String(data.get('name') ?? '').trim()}\nEmail: ${String(data.get('email') ?? '').trim()}\n\n${String(data.get('message') ?? '').trim()}`;
+      location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(form.dataset.subject ?? '')}&body=${encodeURIComponent(body)}`;
+    });
+  });
+</script>

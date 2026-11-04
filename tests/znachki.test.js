@@ -13,6 +13,7 @@ const DOPUSTIMYE = new Set([
   'flight', 'local_gas_station', 'input', 'trolley',
   'plumbing', 'oil_barrel', 'precision_manufacturing',
   'propane_tank', 'factory',
+  'speed', 'shield', 'local_parking', 'build', 'air', 'local_shipping',
 ]);
 
 describe('значки', () => {
