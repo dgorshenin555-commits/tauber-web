@@ -73,4 +73,19 @@ describe('категории на главной', () => {
       expect(existsSync(`dist${src}`), `нет файла ${src}`).toBe(true);
     });
   });
+
+  it('вместо заглушек показывает готовые визуализации четырёх категорий', () => {
+    const ozhidaemye = {
+      'shore-power': '/tauber-web/images/category-shore-power.webp',
+      drums: '/tauber-web/images/category-drums.webp',
+      fmod: '/tauber-web/images/category-fmod.webp',
+      probe: '/tauber-web/images/category-probe.webp',
+    };
+
+    for (const [klyuch, kartinka] of Object.entries(ozhidaemye)) {
+      const img = $(`[data-kartochka] a[href$="/catalog/${klyuch}/"] img`);
+      expect(img.length, `нет картинки у ${klyuch}`).toBe(1);
+      expect(img.attr('src')).toBe(kartinka);
+    }
+  });
 });
