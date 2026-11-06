@@ -6,7 +6,8 @@
     "klyuch": "fmod",
     "nazvanie": "Агрегаты фильтрации топлива (АФТ)"
   },
-  "media_placeholder": true,
+  "kartinka": "/images/aft-priem-suda.webp",
+  "kartinka_alt": "Агрегат приёма топлива из судов с гидроопорожнением",
   "fakty": [],
   "sekcii": [],
   "skhema": {

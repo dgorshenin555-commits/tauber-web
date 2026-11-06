@@ -6,7 +6,8 @@
     "klyuch": "fmod",
     "nazvanie": "Агрегаты фильтрации топлива (АФТ)"
   },
-  "media_placeholder": true,
+  "kartinka": "/images/aft-czs-dozirovanie.webp",
+  "kartinka_alt": "Агрегат заправки из ЦЗС с дозированным вводом ПВКЖ",
   "fakty": [],
   "sekcii": [],
   "skhema": {
