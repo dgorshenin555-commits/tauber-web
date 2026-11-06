@@ -6,7 +6,8 @@
     "klyuch": "fmod",
     "nazvanie": "Агрегаты фильтрации топлива (АФТ)"
   },
-  "media_placeholder": true,
+  "kartinka": "/images/aft-vozvrat.webp",
+  "kartinka_alt": "Агрегат приёма топлива, слитого с воздушных судов, отстоя и ОНП",
   "fakty": [],
   "sekcii": [],
   "skhema": {

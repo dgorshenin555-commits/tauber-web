@@ -32,13 +32,28 @@ describe('стационарные решения АФТ', () => {
     }
   });
 
-  it('дублирует фото из карточки Б.1 как главное на странице агрегата', () => {
-    const $ = page('aft-priem-cisterny');
-    const foto = $('[data-aft-hero-image] img');
-    expect(foto.length).toBe(1);
-    expect(foto.attr('src')).toBe('/tauber-web/images/aft-priem-zhd.webp');
-    expect(foto.attr('alt')).toBe('Агрегат приёма топлива из железнодорожных и автомобильных цистерн');
-    expect($('.aft-hero [data-media-placeholder]').length).toBe(0);
+  it('дублирует изображения карточек как главные на всех страницах агрегатов', () => {
+    const ozhidaemye = {
+      'aft-priem-cisterny': '/tauber-web/images/aft-priem-zhd.webp',
+      'aft-priem-truboprovod': '/tauber-web/images/aft-priem-truboprovod.webp',
+      'aft-priem-suda': '/tauber-web/images/aft-priem-suda.webp',
+      'aft-vydacha': '/tauber-web/images/aft-podgotovka-vydacha-tz.webp',
+      'aft-czs-dozirovanie': '/tauber-web/images/aft-czs-dozirovanie.webp',
+      'aft-czs-bez-vvoda': '/tauber-web/images/aft-czs-bez-vvoda.webp',
+      'aft-pvkzh': '/tauber-web/images/aft-pvkzh.webp',
+      'aft-vozvrat': '/tauber-web/images/aft-vozvrat.webp',
+      'aft-priem-smesi': '/tauber-web/images/aft-priem-smesi.webp',
+      'aft-vydacha-smesi': '/tauber-web/images/aft-vydacha-smesi.webp',
+    };
+
+    for (const [klyuch, kartinka] of Object.entries(ozhidaemye)) {
+      const $ = page(klyuch);
+      const foto = $('[data-aft-hero-image] img');
+      expect(foto.length).toBe(1);
+      expect(foto.attr('src')).toBe(kartinka);
+      expect(foto.attr('alt')?.trim().length).toBeGreaterThan(20);
+      expect($('.aft-hero [data-media-placeholder]').length).toBe(0);
+    }
   });
 
   it('возврат топлива требует проверки качества, ПВКЖ имеет свои параметры', () => {

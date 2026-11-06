@@ -6,7 +6,8 @@
     "klyuch": "fmod",
     "nazvanie": "Агрегаты фильтрации топлива (АФТ)"
   },
-  "media_placeholder": true,
+  "kartinka": "/images/aft-priem-truboprovod.webp",
+  "kartinka_alt": "Агрегат приёма топлива из трубопровода и нефтепродуктовых судов",
   "fakty": [],
   "sekcii": [],
   "skhema": {
