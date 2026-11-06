@@ -25,7 +25,11 @@ const tabs = [
     <p>{d.vvodnyy_tekst}</p>
     <a class="aft-button" href="#obratnaya-svyaz">Отправить заявку на расчёт <span aria-hidden="true">→</span></a>
   </div>
-  <MaterialyAft vid="foto" zagolovok={d.zagolovok} />
+  {d.kartinka ? (
+    <figure class="aft-hero__media" data-aft-hero-image>
+      <img src={put(d.kartinka)} alt={d.kartinka_alt ?? d.zagolovok} />
+    </figure>
+  ) : <MaterialyAft vid="foto" zagolovok={d.zagolovok} />}
 </section>
 
 <!-- ── Вкладки: без JavaScript работают как якоря ко всем разделам ── -->
@@ -124,6 +128,8 @@ const tabs = [
   .aft-hero, .aft-details, .aft-drugie, .aft-contact { margin: 20px var(--pole-bok) 48px; }
   .aft-hero { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: 16px; }
   .aft-hero__text { background: var(--fon-gero); border-radius: 40px; padding: 36px; }
+  .aft-hero__media { margin: 0; min-height: 360px; border-radius: 40px; overflow: hidden; background: var(--fon-gero); }
+  .aft-hero__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .aft-back { display: inline-block; font-size: 14px; margin-bottom: 26px; }
   h1 { margin: 0; font-size: clamp(30px,3.3vw,50px); font-weight: 300; line-height: 1.12; }
   h2 { font-size: clamp(26px,2.3vw,36px); font-weight: 300; margin: 0 0 20px; line-height: 1.25; }
@@ -184,6 +190,7 @@ const tabs = [
   @media (max-width: 768px) {
     .aft-hero, .aft-description, .aft-media, .aft-norms, .aft-contact { grid-template-columns: 1fr; }
     .aft-hero__text, .aft-contact { padding: 26px; }
+    .aft-hero__media { min-height: 0; aspect-ratio: 4 / 3; }
     .aft-tabs a { flex-basis: calc(50% - 8px); padding: 13px 10px; font-size: 14px; }
     .aft-options > div { grid-template-columns: 1fr; gap: 8px; }
     th, td { padding: 14px; }

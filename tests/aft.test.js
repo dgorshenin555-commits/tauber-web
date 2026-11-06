@@ -32,6 +32,15 @@ describe('стационарные решения АФТ', () => {
     }
   });
 
+  it('дублирует фото из карточки Б.1 как главное на странице агрегата', () => {
+    const $ = page('aft-priem-cisterny');
+    const foto = $('[data-aft-hero-image] img');
+    expect(foto.length).toBe(1);
+    expect(foto.attr('src')).toBe('/tauber-web/images/aft-priem-zhd.webp');
+    expect(foto.attr('alt')).toBe('Агрегат приёма топлива из железнодорожных и автомобильных цистерн');
+    expect($('.aft-hero [data-media-placeholder]').length).toBe(0);
+  });
+
   it('возврат топлива требует проверки качества, ПВКЖ имеет свои параметры', () => {
     const vozvrat = page('aft-vozvrat')('main').text();
     expect(vozvrat).toContain('после проверки качества');
