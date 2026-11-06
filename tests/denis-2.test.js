@@ -14,6 +14,26 @@ describe('замечания Денис 2', () => {
     expect($('[data-kartochka-razdela]')).toHaveLength(10);
   });
 
+  it('показывает подписанные рендеры вместо восьми заглушек', () => {
+    const $ = page('fmod');
+    const ozhidaemye = {
+      'aft-priem-truboprovod': '/tauber-web/images/aft-priem-truboprovod.webp',
+      'aft-priem-suda': '/tauber-web/images/aft-priem-suda.webp',
+      'aft-czs-dozirovanie': '/tauber-web/images/aft-czs-dozirovanie.webp',
+      'aft-czs-bez-vvoda': '/tauber-web/images/aft-czs-bez-vvoda.webp',
+      'aft-pvkzh': '/tauber-web/images/aft-pvkzh.webp',
+      'aft-vozvrat': '/tauber-web/images/aft-vozvrat.webp',
+      'aft-priem-smesi': '/tauber-web/images/aft-priem-smesi.webp',
+      'aft-vydacha-smesi': '/tauber-web/images/aft-vydacha-smesi.webp',
+    };
+
+    for (const [klyuch, kartinka] of Object.entries(ozhidaemye)) {
+      const kartochka = $(`[data-kartochka-razdela] a[href$="/catalog/${klyuch}/"]`);
+      expect(kartochka.find('img').attr('src')).toBe(kartinka);
+      expect(kartochka.text()).not.toContain('Фото / 3D-рендер');
+    }
+  });
+
   it('показывает согласованные названия разделов в каталоге и меню', () => {
     const $ = load(readFileSync('dist/index.html', 'utf8'));
     const tekst = $('body').text();
