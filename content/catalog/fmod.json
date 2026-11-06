@@ -41,14 +41,14 @@
       "zagolovok": "Приём топлива из трубопровода и нефтепродуктовых судов",
       "opisanie": "Приём из магистрального трубопровода или по судовой линии. Для соответствующих судовых режимов предусматривается пневмоопорожнение коммуникаций.",
       "vedyot_na": "aft-priem-truboprovod",
-      "media_placeholder": true,
+      "kartinka": "/images/aft-priem-truboprovod.webp",
       "nomer": "Схема Б.2"
     },
     {
       "zagolovok": "Приём топлива из судов с гидроопорожнением",
       "opisanie": "Рейдовый приём с гидроопорожнением коммуникаций и раздельным направлением топлива, воды и паровоздушной фазы.",
       "vedyot_na": "aft-priem-suda",
-      "media_placeholder": true,
+      "kartinka": "/images/aft-priem-suda.webp",
       "nomer": "Схема Б.3"
     },
     {
@@ -62,42 +62,42 @@
       "zagolovok": "Заправка из ЦЗС с вводом ПВКЖ",
       "opisanie": "Выдача к воздушному судну с возможностью дозированного ввода ПВКЖ. Регулирование давления, фильтрация и учёт — в составе узла.",
       "vedyot_na": "aft-czs-dozirovanie",
-      "media_placeholder": true,
+      "kartinka": "/images/aft-czs-dozirovanie.webp",
       "nomer": "Схема Б.5"
     },
     {
       "zagolovok": "Заправка из ЦЗС без ввода ПВКЖ",
       "opisanie": "Заправка от ЦЗС без дозирующего узла на агрегате. На входе может поступать топливо с уже введённой ПВКЖ.",
       "vedyot_na": "aft-czs-bez-vvoda",
-      "media_placeholder": true,
+      "kartinka": "/images/aft-czs-bez-vvoda.webp",
       "nomer": "Схема Б.6"
     },
     {
       "zagolovok": "Приём, хранение и выдача ПВКЖ",
       "opisanie": "Отдельный агрегат для ПВКЖ: приём из транспорта и тары, хранение, внутрискладская перекачка и выдача в расходные системы.",
       "vedyot_na": "aft-pvkzh",
-      "media_placeholder": true,
+      "kartinka": "/images/aft-pvkzh.webp",
       "nomer": "Схема Б.9"
     },
     {
       "zagolovok": "Приём слитого с ВС топлива, отстоя и ОНП",
       "opisanie": "Раздельные контуры для топлива, слитого с ВС, отстоя и отработанных нефтепродуктов. Направление дальнейшего использования зависит от качества и принятой технологии.",
       "vedyot_na": "aft-vozvrat",
-      "media_placeholder": true,
+      "kartinka": "/images/aft-vozvrat.webp",
       "nomer": "Схема Б.10"
     },
     {
       "zagolovok": "Приём и перекачка топлива в смеси с ПВКЖ",
       "opisanie": "Работа с готовой смесью по выделенным транспортным и резервуарным линиям. Фильтрующие элементы выбираются для среды с ПВКЖ.",
       "vedyot_na": "aft-priem-smesi",
-      "media_placeholder": true,
+      "kartinka": "/images/aft-priem-smesi.webp",
       "nomer": "Схема Б.11"
     },
     {
       "zagolovok": "Выдача смеси с ПВКЖ и корректировка концентрации",
       "opisanie": "Налив готовой смеси в средства заправки. Дополнительный ввод ПВКЖ определяется лабораторным контролем исходной концентрации.",
       "vedyot_na": "aft-vydacha-smesi",
-      "media_placeholder": true,
+      "kartinka": "/images/aft-vydacha-smesi.webp",
       "nomer": "Схема Б.12"
     }
   ],
