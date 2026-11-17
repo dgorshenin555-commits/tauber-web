@@ -47,6 +47,15 @@ describe('мобильная измерительная система АСН-15
     expect(priorityForm.nextAll('[data-sekciya]').length).toBeGreaterThan(0);
   });
 
+  it('выделяет название каждого поля в основном шаге заказа', () => {
+    const $ = load(readFileSync(pagePath, 'utf8'));
+    const fieldLabels = $('[data-podbor-prioritet] [data-podpis-akcent]');
+
+    expect(fieldLabels).toHaveLength(7);
+    expect(fieldLabels.eq(0).text().trim()).toBe('Технологическая операция и продукт');
+    expect(fieldLabels.eq(3).text().trim()).toBe('Трубопроводы и подключения');
+  });
+
   it('раскрывает компоновку, дренажную систему и автоматику', () => {
     const $ = load(readFileSync(pagePath, 'utf8'));
     const text = $('body').text().replace(/\s+/g, ' ').trim();

@@ -21,7 +21,7 @@ const { podbor, zagolovok } = Astro.props;
   <form class="prioritetnyy-podbor__forma" data-forma-podbora onsubmit="return false">
     {podbor.parametry.map((p, i) => (
       <label class="prioritetnyy-podbor__pole">
-        <span class="prioritetnyy-podbor__podpis">{p.podpis}</span>
+        <span class="prioritetnyy-podbor__podpis" data-podpis-akcent>{p.podpis}</span>
         {p.mnogostrochnyy
           ? <textarea name={`param-${i}`} data-parametr={p.podpis} rows="3" placeholder={p.podskazka}></textarea>
           : <input type="text" name={`param-${i}`} data-parametr={p.podpis} placeholder={p.podskazka} />}
@@ -99,9 +99,23 @@ const { podbor, zagolovok } = Astro.props;
   }
 
   .prioritetnyy-podbor__podpis {
-    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    font-size: 15px;
+    font-weight: 500;
     line-height: 1.35;
-    color: var(--tekst-vtoroy);
+    color: var(--tekst);
+  }
+
+  .prioritetnyy-podbor__podpis::before {
+    content: '';
+    flex: 0 0 auto;
+    width: 3px;
+    height: 1.1em;
+    border-radius: var(--radius-pilyulya);
+    background: #802028;
   }
 
   .prioritetnyy-podbor__pole input,
