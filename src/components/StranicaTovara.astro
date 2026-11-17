@@ -52,6 +52,7 @@ const prioritetnyyPodbor = d.podbor?.prioritet === true && d.podbor?.tip === 'da
 {d.sekcii.map((s) => (
   <section class="sekciya" data-sekciya>
     {s.zagolovok && <h2 class="sekciya__zagolovok">{s.zagolovok}</h2>}
+    {s.opisanie && <p class="sekciya__vvodnyy-tekst">{s.opisanie}</p>}
 
     {s.tip === 'tekst' && <div class="sekciya__tekst">{s.abzacy.map((p) => <p>{p}</p>)}</div>}
 
@@ -288,6 +289,7 @@ const prioritetnyyPodbor = d.podbor?.prioritet === true && d.podbor?.tip === 'da
 
   .sekciya { padding: 34px var(--pole-bok) 0; }
   .sekciya__zagolovok { margin: 0 0 20px; font-size: 30px; font-weight: 300; letter-spacing: .005em; }
+  .sekciya__vvodnyy-tekst { margin: -6px 0 20px; max-width: 95ch; font-size: 16px; line-height: 1.6; color: var(--tekst-vtoroy); }
 
   .sekciya__kartochki { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
   .sekciya__bloki { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }

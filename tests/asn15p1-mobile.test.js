@@ -46,4 +46,29 @@ describe('мобильная измерительная система АСН-15
     expect(priorityForm.find('[data-parametr]')).toHaveLength(7);
     expect(priorityForm.nextAll('[data-sekciya]').length).toBeGreaterThan(0);
   });
+
+  it('раскрывает компоновку, дренажную систему и автоматику', () => {
+    const $ = load(readFileSync(pagePath, 'utf8'));
+    const text = $('body').text().replace(/\s+/g, ' ').trim();
+    const compositionSection = $('h2')
+      .filter((_, element) => $(element).text().trim() === 'Компоновка и технологические узлы')
+      .closest('[data-sekciya]');
+
+    expect(text).toContain('Компоновка и технологические узлы');
+    expect(compositionSection.find('.sekciya__vvodnyy-tekst')).toHaveLength(1);
+    expect(compositionSection.find('.sekciya__kartochki .reshenie')).toHaveLength(5);
+    expect(text).toContain('Приём продукта → фильтрация и газоотделение → массовое измерение → регулирование и отсечка → слив');
+    expect(text).toContain('МЛ 80');
+    expect(text).toContain('двухступенчат');
+    expect(text).toContain('0,1 мм');
+    expect(text).toContain('ДУ0');
+    expect(text.toLowerCase()).toContain('перепад');
+    expect(text).toContain('полностью опорожнить фильтр-газоотделитель и расходомер');
+    expect(text).toContain('температурн');
+    expect(text).toContain('БУИ');
+    expect(text).toContain('БУК');
+    expect(text).toContain('пневматическ');
+    expect(text).toContain('нержавеющ');
+    expect(text).toContain('металлорукав');
+  });
 });
