@@ -7,7 +7,7 @@
   "knopka": "Получить консультацию",
   "kartinka": "/images/auto-hero.png",
   "plashka": "Надёжные решения для ваших проектов",
-  "chislo": "10",
+  "chislo": "11",
   "chislo_podpis": "решений",
   "perechislenie": "Налив нефтепродуктов • СУГ • Керосин • Авто- и ж/д эстакады • Учёт • Автоматизация",
   "tyomnaya_panel": false,
@@ -28,6 +28,12 @@
       "opisanie": "Автоцистерны • Герметичные соединения",
       "kartinka": "/images/auto-2.png",
       "bez_ssylki": true
+    },
+    {
+      "zagolovok": "Мобильная измерительная система АСН-15П1",
+      "opisanie": "Слив и налив • Массовый учёт • Автоматизация",
+      "media_placeholder": true,
+      "vedyot_na": "asn-15p1-mobile"
     },
     {
       "zagolovok": "Налив для ж/д цистерн",
