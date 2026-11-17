@@ -36,4 +36,14 @@ describe('мобильная измерительная система АСН-15
     expect(html).not.toContain('prompribor-pk.ru');
     expect($('img[src*="prompribor"]')).toHaveLength(0);
   });
+
+  it('показывает единственную компактную форму сразу после ключевых параметров', () => {
+    const $ = load(readFileSync(pagePath, 'utf8'));
+    const priorityForm = $('.fakty + [data-podbor-prioritet]');
+
+    expect(priorityForm).toHaveLength(1);
+    expect($('[data-podbor]')).toHaveLength(1);
+    expect(priorityForm.find('[data-parametr]')).toHaveLength(7);
+    expect(priorityForm.nextAll('[data-sekciya]').length).toBeGreaterThan(0);
+  });
 });

@@ -5,6 +5,7 @@
 import { sayt } from '../lib/content.js';
 import { put } from '../lib/put.js';
 import MaterialyAft from './MaterialyAft.astro';
+import PrioritetnyyPodbor from './PrioritetnyyPodbor.astro';
 
 interface Props {
   d: any;
@@ -13,6 +14,7 @@ interface Props {
 
 const { d, klyuch } = Astro.props;
 const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запрос: ${d.zagolovok}`)}`;
+const prioritetnyyPodbor = d.podbor?.prioritet === true && d.podbor?.tip === 'dannye';
 ---
 
 <!-- ── Первый экран и возвращение в родительский раздел ──────────── -->
@@ -44,6 +46,8 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
     ))}
   </section>
 )}
+
+{prioritetnyyPodbor && <PrioritetnyyPodbor podbor={d.podbor} zagolovok={d.zagolovok} />}
 
 {d.sekcii.map((s) => (
   <section class="sekciya" data-sekciya>
@@ -170,7 +174,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
 )}
 
 <!-- ── Подбор: перечень, прежние варианты или исходные данные ──────── -->
-{d.podbor && (
+{d.podbor && !prioritetnyyPodbor && (
   <section class="podbor" id="podbor" data-podbor>
     <h2 class="podbor__zagolovok">{d.podbor.zagolovok}</h2>
     {d.podbor.opisanie && <p class="podbor__opisanie">{d.podbor.opisanie}</p>}
