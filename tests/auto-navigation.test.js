@@ -15,5 +15,6 @@ describe('карточки сливо-наливных комплексов', ()
     expect(lowerLoading.find('a')).toHaveLength(0);
     expect(cards.find('a[href="/tauber-web/catalog/ank/"]')).toHaveLength(1);
     expect(mobileMetering.find('a[href="/tauber-web/catalog/asn-15p1-mobile/"]')).toHaveLength(1);
+    expect(mobileMetering.find('img[src="/tauber-web/images/asn-15p1-mobile-main.jpg"]')).toHaveLength(1);
   });
 });

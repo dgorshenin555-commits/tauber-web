@@ -163,7 +163,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
 {d.normativ && <section class="sekciya"><h2 class="sekciya__zagolovok">Технологическая задача по ГОСТ</h2><div class="sekciya__tekst"><p>{d.normativ.nazvanie}. Рисунок {d.normativ.risunok}, {d.normativ.punkt}.</p><p>{d.normativ.opisanie}</p><a href={d.normativ.ssylka}>Карточка стандарта Росстандарта <span aria-hidden="true">↗</span></a></div></section>}
 {d.galereya?.length > 0 && (
   <section class="sekciya">
-    <div class="galereya-tovara">
+    <div class:list={['galereya-tovara', { 'galereya-tovara--dve': d.galereya.length === 2 }]}>
       {d.galereya.map((g) => <img src={put(g)} alt={d.zagolovok} loading="lazy" />)}
     </div>
   </section>
@@ -322,6 +322,7 @@ const zayavka = `mailto:${sayt.pochta}?subject=${encodeURIComponent(`Запро�
   .harakteristika__znachenie { margin: 0; font-size: 15px; font-weight: 400; text-align: right; }
 
   .galereya-tovara { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
+  .galereya-tovara--dve { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .galereya-tovara img { width: 100%; border-radius: var(--radius-karta); display: block; }
 
   .podbor { padding: 34px var(--pole-bok) 44px; }

@@ -7,15 +7,26 @@ const pagePath = 'dist/catalog/asn-15p1-mobile/index.html';
 describe('мобильная измерительная система АСН-15П1', () => {
   it('публикуется как самостоятельная техническая страница TAUBER', () => {
     expect(existsSync(pagePath)).toBe(true);
+    expect(existsSync('dist/images/asn-15p1-mobile-main.jpg')).toBe(true);
+    expect(existsSync('dist/images/asn-15p1-mobile-overview.jpg')).toBe(true);
 
     const html = readFileSync(pagePath, 'utf8');
     const $ = load(html);
     const text = $('body').text().replace(/\s+/g, ' ').trim();
 
     expect($('h1').text().replace(/\s+/g, ' ').trim()).toBe('Мобильная измерительная система АСН-15П1');
-    expect($('[data-media-placeholder="foto"]')).toHaveLength(1);
+    expect($('[data-media-placeholder="foto"]')).toHaveLength(0);
+    expect($('.tovar-verh__kartinka img[src="/tauber-web/images/asn-15p1-mobile-main.jpg"]')).toHaveLength(1);
+    expect($('.galereya-tovara--dve img')).toHaveLength(2);
+    expect($('.galereya-tovara img[src="/tauber-web/images/asn-15p1-mobile-main.jpg"]')).toHaveLength(1);
+    expect($('.galereya-tovara img[src="/tauber-web/images/asn-15p1-mobile-overview.jpg"]')).toHaveLength(1);
     expect(text).toContain('15–70 м³/ч');
     expect(text).toContain('±0,25%');
+    expect(text).toContain('погрешности измерения массы при сливе');
+    expect(text).toContain('погрешности измерения объёма при сливе');
+    expect(text).toContain('Минимальный объём налива');
+    expect(text).toContain('600–1200 кг/м³');
+    expect(text).toContain('Не более 100 мкм');
     expect(text).toContain('DN 80');
     expect(text).toContain('RS-485');
     expect(text).toContain('Modbus RTU');
