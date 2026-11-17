@@ -258,7 +258,15 @@ const zayavkaSsylka = `mailto:${sayt.pochta}?subject=${encodeURIComponent('За�
   @media (max-width: 1399px) { .shapka__nav { display: none; } .shapka__svyaz { margin-left: auto; } }
   @media (max-width: 1024px) { .shapka__zayavka { display: inline-flex; } }
   @media (max-width: 768px) { .shapka__logotip, .shapka__logotip img { height: 54px; } .shapka { gap: 16px; padding-block: 14px; } .shapka__zayavka { display: none; } }
-  @media (max-width: 600px) { .shapka__telefon { font-size: 0; } .shapka__telefon .ms { font-size: 24px; } }
+  @media (max-width: 600px) {
+    .shapka__telefon {
+      min-width: 44px;
+      min-height: 44px;
+      justify-content: center;
+      font-size: 0;
+    }
+    .shapka__telefon .ms { font-size: 24px; }
+  }
   @media (max-width: 480px) { .shapka__logotip, .shapka__logotip img { height: auto; width: 168px; } .shapka__svyaz { gap: 0; } }
 </style>
 

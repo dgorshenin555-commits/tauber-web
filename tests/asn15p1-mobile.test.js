@@ -56,6 +56,22 @@ describe('мобильная измерительная система АСН-15
     expect(fieldLabels.eq(3).text().trim()).toBe('Трубопроводы и подключения');
   });
 
+  it('ограничивает компактную мобильную компоновку областью страницы АСН-15П1', () => {
+    const $ = load(readFileSync(pagePath, 'utf8'));
+    const hero = $('.tovar-verh[data-tovar="asn-15p1-mobile"]');
+    const facts = $('.fakty[data-stranica="asn-15p1-mobile"]');
+    const priorityForm = $('[data-podbor-prioritet][data-tovar="asn-15p1-mobile"]');
+
+    expect(hero).toHaveLength(1);
+    expect(facts).toHaveLength(1);
+    expect(priorityForm).toHaveLength(1);
+    expect(facts.find('[data-fakt]')).toHaveLength(4);
+    expect(facts.find('[data-fakt]').eq(0).find('.fakt__zagolovok').text().trim()).toBe('15–70 м³/ч');
+    expect(facts.find('[data-fakt]').eq(0).find('.fakt__podpis').text().trim()).toBe('Рабочий диапазон производительности');
+    expect(facts.find('[data-fakt]').eq(1).find('.fakt__zagolovok').text().trim()).toBe('±0,25%');
+    expect(facts.find('[data-fakt]').eq(1).find('.fakt__podpis').text().trim()).toBe('Проектный предел погрешности при сливе');
+  });
+
   it('раскрывает компоновку, дренажную систему и автоматику', () => {
     const $ = load(readFileSync(pagePath, 'utf8'));
     const text = $('body').text().replace(/\s+/g, ' ').trim();

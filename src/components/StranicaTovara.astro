@@ -18,7 +18,7 @@ const prioritetnyyPodbor = d.podbor?.prioritet === true && d.podbor?.tip === 'da
 ---
 
 <!-- ── Первый экран и возвращение в родительский раздел ──────────── -->
-<section class:list={['tovar-verh', { 'tovar-verh--bez-media': !d.kartinka && !d.media_placeholder }]}>
+<section class:list={['tovar-verh', { 'tovar-verh--bez-media': !d.kartinka && !d.media_placeholder }]} data-tovar={klyuch}>
   <div class="tovar-verh__tekst">
     {d.proizvodnyy_razdel && <a class="tovar-verh__nazad" href={put(`/catalog/${d.proizvodnyy_razdel.klyuch}/`)}>← {d.proizvodnyy_razdel.nazvanie}</a>}
     <h1 class="tovar-verh__zagolovok">{d.zagolovok}</h1>
@@ -36,7 +36,7 @@ const prioritetnyyPodbor = d.podbor?.prioritet === true && d.podbor?.tip === 'da
 
 <!-- ── Факты и содержательные секции: старые JSON и новые АФТ ──────── -->
 {d.fakty.length > 0 && (
-  <section class="fakty">
+  <section class="fakty" data-stranica={klyuch}>
     {d.fakty.map((f) => (
       <article class="fakt" data-fakt>
         {f.znachok && <span class="ms fakt__znachok">{f.znachok}</span>}
@@ -47,7 +47,7 @@ const prioritetnyyPodbor = d.podbor?.prioritet === true && d.podbor?.tip === 'da
   </section>
 )}
 
-{prioritetnyyPodbor && <PrioritetnyyPodbor podbor={d.podbor} zagolovok={d.zagolovok} />}
+{prioritetnyyPodbor && <PrioritetnyyPodbor podbor={d.podbor} zagolovok={d.zagolovok} klyuch={klyuch} />}
 
 {d.sekcii.map((s) => (
   <section class="sekciya" data-sekciya data-vid-sekcii={s.vid}>
@@ -398,6 +398,51 @@ const prioritetnyyPodbor = d.podbor?.prioritet === true && d.podbor?.tip === 'da
 
   @media (max-width: 480px) {
     .fakty, .sekciya__kartochki, .sekciya__bloki, .galereya-tovara { grid-template-columns: 1fr; }
+
+    .tovar-verh[data-tovar='asn-15p1-mobile'] .tovar-verh__tekst {
+      padding: 24px 18px 26px;
+    }
+
+    .tovar-verh[data-tovar='asn-15p1-mobile'] .tovar-verh__knopka {
+      width: 100%;
+      min-height: 48px;
+      box-sizing: border-box;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 14px;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .fakty[data-stranica='asn-15p1-mobile'] {
+      gap: 8px;
+    }
+
+    .fakty[data-stranica='asn-15p1-mobile'] .fakt {
+      display: grid;
+      grid-template-columns: 22px minmax(76px, 96px) minmax(0, 1fr);
+      gap: 8px;
+      align-items: center;
+      min-height: 0;
+      padding: 12px 14px;
+      border-radius: 20px;
+    }
+
+    .fakty[data-stranica='asn-15p1-mobile'] .fakt__znachok {
+      font-size: 20px;
+    }
+
+    .fakty[data-stranica='asn-15p1-mobile'] .fakt__zagolovok {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .fakty[data-stranica='asn-15p1-mobile'] .fakt__podpis {
+      margin: 0;
+      font-size: 12.5px;
+      line-height: 1.35;
+    }
   }
 
   .tovar-verh { grid-template-columns: minmax(0,45fr) minmax(0,55fr); }
