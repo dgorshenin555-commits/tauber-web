@@ -55,6 +55,7 @@ describe('мобильная измерительная система АСН-15
       .closest('[data-sekciya]');
 
     expect(text).toContain('Компоновка и технологические узлы');
+    expect(compositionSection.attr('data-vid-sekcii')).toBe('komponovka');
     expect(compositionSection.find('.sekciya__vvodnyy-tekst')).toHaveLength(1);
     expect(compositionSection.find('.sekciya__kartochki .reshenie')).toHaveLength(5);
     expect(text).toContain('Приём продукта → фильтрация и газоотделение → массовое измерение → регулирование и отсечка → слив');

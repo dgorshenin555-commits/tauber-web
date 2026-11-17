@@ -50,7 +50,7 @@ const prioritetnyyPodbor = d.podbor?.prioritet === true && d.podbor?.tip === 'da
 {prioritetnyyPodbor && <PrioritetnyyPodbor podbor={d.podbor} zagolovok={d.zagolovok} />}
 
 {d.sekcii.map((s) => (
-  <section class="sekciya" data-sekciya>
+  <section class="sekciya" data-sekciya data-vid-sekcii={s.vid}>
     {s.zagolovok && <h2 class="sekciya__zagolovok">{s.zagolovok}</h2>}
     {s.opisanie && <p class="sekciya__vvodnyy-tekst">{s.opisanie}</p>}
 
@@ -403,6 +403,11 @@ const prioritetnyyPodbor = d.podbor?.prioritet === true && d.podbor?.tip === 'da
   .tovar-verh { grid-template-columns: minmax(0,45fr) minmax(0,55fr); }
   .tovar-verh__zagolovok { font-size: clamp(30px, 3.5vw, 56px); }
   .sekciya__kartochki, .sekciya__bloki { grid-template-columns: repeat(auto-fit, minmax(min(100%,250px),1fr)); }
+  @media (min-width: 900px) {
+    [data-vid-sekcii="komponovka"] .sekciya__kartochki { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    [data-vid-sekcii="komponovka"] .reshenie { grid-column: span 2; }
+    [data-vid-sekcii="komponovka"] .reshenie:nth-child(n + 4) { grid-column: span 3; }
+  }
   .sekciya__zagolovok, .podbor__zagolovok { font-weight: 300; }
   .reshenie__kartinka { height: 200px; }
   a.reshenie__telo:hover { transform: none; background: var(--fon-gero); }
